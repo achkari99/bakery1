@@ -127,10 +127,11 @@ p {
 .nav-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 1.15rem 0;
-    display: flex;
+    padding: 1.15rem clamp(1rem, 3vw, 1.5rem);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 1.5rem;
+    gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .brand-mark {
@@ -151,49 +152,86 @@ p {
     color: var(--sage-dark);
 }
 
+.nav-links {
+    display: flex;
+    justify-content: center;
+}
+
 .nav-links ul {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* Nav link double underline - two thin lines centered under text */
 .nav-links a {
     position: relative;
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     font-weight: 500;
     font-size: 0.95rem;
     letter-spacing: 0.05em;
     white-space: nowrap;
-    padding: 0.35rem 0;
-    transition: color var(--transition), transform var(--transition);
+    padding: 0.4rem 0;
+    transition: color 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
 }
 
+.nav-links a::before,
 .nav-links a::after {
     content: "";
     position: absolute;
-    inset: auto 0 0;
+    left: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
     height: 2px;
+    /* line thickness */
+    width: 100%;
     background: var(--sage-dark);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition);
+    border-radius: 2px;
+}
+
+/* Position the two lines: evenly spaced under text */
+.nav-links a::before {
+    bottom: -6px;
+    /* first line */
+}
+
+.nav-links a::after {
+    bottom: -10px;
+    /* second line, 4px below first */
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
     color: var(--sage-dark);
+    text-decoration: none;
+    outline: 2px solid var(--sage-dark);
+    outline-offset: 4px;
 }
 
+/* Animate underlines on hover and active state */
+.nav-links a:hover::before,
 .nav-links a:hover::after,
-.nav-links a:focus-visible::after {
-    transform: scaleX(1);
+.nav-links a:focus-visible::before,
+.nav-links a:focus-visible::after,
+.nav-links a[aria-current="page"]::before,
+.nav-links a[aria-current="page"]::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Active page indicator */
+.nav-links a[aria-current="page"] {
+    color: var(--sage-dark);
+    font-weight: 600;
 }
 
 .nav-actions {
-    margin-left: auto;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.75rem;
 }
 
@@ -202,13 +240,15 @@ p {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-size: 0.8rem;
-    padding: 0.35rem;
+    padding: 0.35rem 0.5rem;
+    white-space: nowrap;
     transition: color var(--transition);
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
     color: var(--sage-dark);
+    text-decoration: none;
 }
 
 .nav-toggle {
@@ -369,14 +409,17 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.85rem 1.8rem;
+    padding: 0.85rem 2rem;
     border-radius: 999px;
     font-weight: 600;
+    font-size: 0.95rem;
     letter-spacing: 0.02em;
     border: 2px solid transparent;
     transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), color var(--transition);
     cursor: pointer;
     box-shadow: none;
+    white-space: nowrap;
+    min-width: fit-content;
 }
 
 .btn:hover,
@@ -467,70 +510,63 @@ p {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
+
     100% {
         transform: scale(1);
     }
 }
 
-.cart-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(127, 156, 137, 0.12);
-    color: var(--sage-dark);
-    border: none;
-    border-radius: 999px;
-    padding: 0.6rem 1.1rem;
-    cursor: pointer;
-    transition: background-color var(--transition);
-}
-
-.cart-button:hover,
-.cart-button:focus-visible {
-    background: rgba(127, 156, 137, 0.2);
-}
-
-.cart-icon {
-    width: 18px;
-    height: 18px;
-    border: 2px solid currentColor;
-    border-top: none;
-    border-radius: 2px 2px 6px 6px;
+/* Lightweight cart icon + badge */
+.cart-icon-button {
     position: relative;
-}
-
-.cart-icon::before,
-.cart-icon::after {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 6px;
-    background: currentColor;
-    top: -4px;
-}
-
-.cart-icon::before {
-    left: 4px;
-}
-
-.cart-icon::after {
-    right: 4px;
-}
-
-.cart-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
+    background: transparent;
+    border: none;
+    color: var(--sage-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.cart-icon-button:hover,
+.cart-icon-button:focus-visible {
+    color: var(--sage);
+    transform: scale(1.05);
+}
+
+.cart-icon-button:focus-visible {
+    outline: 2px solid var(--sage-dark);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.cart-icon-svg {
+    width: 24px;
     height: 24px;
-    border-radius: 50%;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
     background: var(--sage);
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
+    line-height: 1;
 }
 
 .values {
@@ -1570,6 +1606,7 @@ p {
 }
 
 @media (max-width: 1100px) {
+
     .value-grid,
     .product-grid,
     .timeline,
@@ -1624,7 +1661,14 @@ p {
     }
 
     .nav-inner {
+        display: flex;
+        flex-wrap: wrap;
         padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .brand-mark {
+        flex: 1;
     }
 
     .nav-links {
@@ -1773,6 +1817,7 @@ p {
 }
 
 @media (max-width: 680px) {
+
     .value-grid,
     .product-grid,
     .timeline,

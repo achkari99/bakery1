@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinnamona by Mona | Roul&eacute;s &agrave; la cannelle v&eacute;g&eacute;taux &agrave; Marrakech</title>
-    <meta name="description" content="Cinnamona by Mona pr&eacute;pare des roul&eacute;s &agrave; la cannelle et p&acirc;tisseries v&eacute;g&eacute;tales artisanales &agrave; Marrakech. Commandez vos douceurs 100 % maison, disponibles 24h/24.">
+    <meta name="description"
+        content="Cinnamona by Mona pr&eacute;pare des roul&eacute;s &agrave; la cannelle et p&acirc;tisseries v&eacute;g&eacute;tales artisanales &agrave; Marrakech. Commandez vos douceurs 100 % maison, disponibles 24h/24.">
     <meta name="theme-color" content="#7f9c89">
-    <meta property="og:title" content="Cinnamona by Mona &middot; Roul&eacute;s &agrave; la cannelle artisanaux &agrave; Marrakech">
-    <meta property="og:description" content="Roul&eacute;s &agrave; la cannelle, cannel&eacute;s et douceurs v&eacute;g&eacute;tales disponibles 24h/24 &agrave; Marrakech.">
+    <meta property="og:title"
+        content="Cinnamona by Mona &middot; Roul&eacute;s &agrave; la cannelle artisanaux &agrave; Marrakech">
+    <meta property="og:description"
+        content="Roul&eacute;s &agrave; la cannelle, cannel&eacute;s et douceurs v&eacute;g&eacute;tales disponibles 24h/24 &agrave; Marrakech.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cinnamona.ma/">
     <meta property="og:image" content="https://cinnamona.ma/og-image.jpg">
@@ -15,7 +19,8 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
         {
@@ -43,6 +48,7 @@
         }
     </script>
 </head>
+
 <body id="top">
     <a class="skip-link" href="#main-content">Aller au contenu</a>
     <header class="site-header" role="banner">
@@ -60,24 +66,26 @@
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </button>
-                <nav class="nav-links" id="site-navigation" aria-label="Navigation principale" aria-expanded="false">
+                <nav class="nav-links" id="site-navigation" aria-label="Navigation principale">
                     <ul>
-                        <li><a href="#values">Valeurs</a></li>
-                        <li><a href="#featured">Boutique</a></li>
-                        <li><a href="#story">Notre histoire</a></li>
-                        <li><a href="#chef">La cheffe</a></li>
-                        <li><a href="#journal">Journal</a></li>
-                        <li><a href="#events">&eacute;v&eacute;nements</a></li>
+                        <li><a href="#top" data-page="accueil">Accueil</a></li>
+                        <li><a href="#featured" data-page="boutique">Boutique</a></li>
+                        <li><a href="#story" data-page="notre-histoire">Notre histoire</a></li>
+                        <li><a href="#journal" data-page="journal">Journal</a></li>
+                        <li><a href="#events" data-page="evenements">Événements</a></li>
                     </ul>
                 </nav>
                 <div class="nav-actions">
-                    <a class="nav-link" href="#wholesale">Grossiste</a>
-                    <a class="btn btn-small btn-outline" href="tel:+212603981438">Appelez-nous</a>
-                    <a class="btn btn-small btn-primary" href="#shop">Commander maintenant</a>
-                    <button class="cart-button" type="button" aria-label="Voir le panier">
-                        <span class="cart-icon" aria-hidden="true"></span>
-                        <span>Panier</span>
-                        <span class="cart-count" id="cart-count">0</span>
+                    <a class="btn btn-primary" href="#shop">Commander maintenant</a>
+                    <button class="cart-icon-button" type="button" aria-label="Voir le panier (0 articles)">
+                        <svg class="cart-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cart-count">0</span>
                     </button>
                 </div>
             </div>
@@ -86,7 +94,9 @@
             <div class="hero-copy">
                 <span class="hero-kicker">Roul&eacute;s &agrave; la cannelle 100 % v&eacute;g&eacute;taux</span>
                 <h1>Douceurs artisanales, nuit et jour &agrave; Marrakech</h1>
-                <p>Nos roul&eacute;s moelleux, cannel&eacute;s dor&eacute;s et boissons cr&eacute;meuses sont fa&ccedil;onn&eacute;s &agrave; la main et livr&eacute;s chauds, m&ecirc;me &agrave; 3 h du matin.</p>
+                <p>Nos roul&eacute;s moelleux, cannel&eacute;s dor&eacute;s et boissons cr&eacute;meuses sont
+                    fa&ccedil;onn&eacute;s &agrave; la main et livr&eacute;s chauds, m&ecirc;me &agrave; 3 h du matin.
+                </p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" href="#shop">D&eacute;couvrir le menu</a>
                     <a class="btn btn-outline" href="#bestsellers">Voir les best-sellers</a>
@@ -107,9 +117,12 @@
                 </div>
             </div>
             <div class="hero-media">
-                <img src="images/image3.png" alt="Roul&eacute; &agrave; la cannelle caramel et noix de p&eacute;can servi sur assiette turquoise" loading="lazy">
+                <img src="images/image3.png"
+                    alt="Roul&eacute; &agrave; la cannelle caramel et noix de p&eacute;can servi sur assiette turquoise"
+                    loading="lazy">
                 <div class="hero-overlay-card">
-                    <p>&ldquo;Vos roul&eacute;s &agrave; la pistache illuminent nos soir&eacute;es d’&eacute;quipe&nbsp;!&rdquo;</p>
+                    <p>&ldquo;Vos roul&eacute;s &agrave; la pistache illuminent nos soir&eacute;es
+                        d’&eacute;quipe&nbsp;!&rdquo;</p>
                     <span>&mdash; Salma, Gu&eacute;liz</span>
                 </div>
             </div>
@@ -123,12 +136,15 @@
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <path d="M12 32c0-12.15 9.85-22 22-22s22 9.85 22 22-9.85 22-22 22S12 44.15 12 32z" fill="none" stroke-width="2"></path>
-                            <path d="M22 34c6-10 16-14 20-14" fill="none" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M12 32c0-12.15 9.85-22 22-22s22 9.85 22 22-9.85 22-22 22S12 44.15 12 32z"
+                                fill="none" stroke-width="2"></path>
+                            <path d="M22 34c6-10 16-14 20-14" fill="none" stroke-width="2" stroke-linecap="round">
+                            </path>
                         </svg>
                     </div>
                     <h3>Ingr&eacute;dients naturels</h3>
-                    <p>Farines bio, sucres bruts et beurres v&eacute;g&eacute;taux composent des recettes aussi gourmandes que responsables.</p>
+                    <p>Farines bio, sucres bruts et beurres v&eacute;g&eacute;taux composent des recettes aussi
+                        gourmandes que responsables.</p>
                 </article>
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
@@ -138,26 +154,31 @@
                         </svg>
                     </div>
                     <h3>Fabrication quotidienne</h3>
-                    <p>P&eacute;tris, roul&eacute;s et napp&eacute;s &agrave; la main, nos produits sortent du four plusieurs fois par jour.</p>
+                    <p>P&eacute;tris, roul&eacute;s et napp&eacute;s &agrave; la main, nos produits sortent du four
+                        plusieurs fois par jour.</p>
                 </article>
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <path d="M32 12l8.5 14.7L56 30l-12 10.3L46 52l-14-7.3L18 52l2-11.7L8 30l15.5-3.3L32 12z" fill="none" stroke-width="2" stroke-linejoin="round"></path>
+                            <path d="M32 12l8.5 14.7L56 30l-12 10.3L46 52l-14-7.3L18 52l2-11.7L8 30l15.5-3.3L32 12z"
+                                fill="none" stroke-width="2" stroke-linejoin="round"></path>
                         </svg>
                     </div>
                     <h3>Saisonnal &amp; local</h3>
-                    <p>Nos parfums suivent les r&eacute;coltes marocaines&nbsp;: pistache d’Azemmour, amlou du Souss, caf&eacute; de torr&eacute;facteurs locaux.</p>
+                    <p>Nos parfums suivent les r&eacute;coltes marocaines&nbsp;: pistache d’Azemmour, amlou du Souss,
+                        caf&eacute; de torr&eacute;facteurs locaux.</p>
                 </article>
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <path d="M32 46s-14-8.5-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11.5-14 20-14 20z" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M32 46s-14-8.5-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11.5-14 20-14 20z" fill="none"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M20 50h24M24 54h16" fill="none" stroke-width="2" stroke-linecap="round"></path>
                         </svg>
                     </div>
                     <h3>Transparents &amp; solidaires</h3>
-                    <p>Qualit&eacute;, tra&ccedil;abilit&eacute; et soutien aux artisans de Marrakech&nbsp;: chaque roul&eacute; finance des initiatives locales.</p>
+                    <p>Qualit&eacute;, tra&ccedil;abilit&eacute; et soutien aux artisans de Marrakech&nbsp;: chaque
+                        roul&eacute; finance des initiatives locales.</p>
                 </article>
             </div>
         </section>
@@ -165,29 +186,37 @@
         <section class="story" id="story" aria-labelledby="story-heading" data-animate>
             <div class="section-header">
                 <span class="section-kicker">Notre histoire</span>
-                <h2 id="story-heading">De la cuisine familiale &agrave; l’adresse sucr&eacute;e pr&eacute;f&eacute;r&eacute;e de Marrakech</h2>
-                <p class="section-intro">Mona a imagin&eacute; Cinnamona pour proposer des roul&eacute;s &agrave; la cannelle 100&nbsp;% v&eacute;g&eacute;taux &agrave; ses proches. Les commandes se sont vite multipli&eacute;es, puis les livraisons de nuit, jusqu’&agrave; ouvrir notre atelier au quartier Assif C.</p>
+                <h2 id="story-heading">De la cuisine familiale &agrave; l’adresse sucr&eacute;e
+                    pr&eacute;f&eacute;r&eacute;e de Marrakech</h2>
+                <p class="section-intro">Mona a imagin&eacute; Cinnamona pour proposer des roul&eacute;s &agrave; la
+                    cannelle 100&nbsp;% v&eacute;g&eacute;taux &agrave; ses proches. Les commandes se sont vite
+                    multipli&eacute;es, puis les livraisons de nuit, jusqu’&agrave; ouvrir notre atelier au quartier
+                    Assif C.</p>
             </div>
             <div class="timeline">
                 <article>
                     <span class="timeline-year">2019</span>
                     <h3>Premiers roul&eacute;s &agrave; domicile</h3>
-                    <p>Une bo&icirc;te, six roul&eacute;s fondants et un bouche-&agrave;-oreille qui parcourt Marrakech en quelques semaines.</p>
+                    <p>Une bo&icirc;te, six roul&eacute;s fondants et un bouche-&agrave;-oreille qui parcourt Marrakech
+                        en quelques semaines.</p>
                 </article>
                 <article>
                     <span class="timeline-year">2021</span>
                     <h3>Atelier Assif C</h3>
-                    <p>Installation de notre laboratoire v&eacute;g&eacute;tal et lancement des parfums pistache, amlou et caf&eacute; marocain.</p>
+                    <p>Installation de notre laboratoire v&eacute;g&eacute;tal et lancement des parfums pistache, amlou
+                        et caf&eacute; marocain.</p>
                 </article>
                 <article>
                     <span class="timeline-year">2022</span>
                     <h3>&eacute;quipe de nuit</h3>
-                    <p>Production 24h/24 pour satisfaire h&ocirc;tels, caf&eacute;s et voisins gourmands jusque tard dans la nuit.</p>
+                    <p>Production 24h/24 pour satisfaire h&ocirc;tels, caf&eacute;s et voisins gourmands jusque tard
+                        dans la nuit.</p>
                 </article>
                 <article>
                     <span class="timeline-year">2024</span>
                     <h3>Carte sal&eacute;e et boissons</h3>
-                    <p>Arriv&eacute;e des cannel&eacute;s, past&eacute;is de nata et lattes color&eacute;s qui compl&egrave;tent nos roul&eacute;s iconiques.</p>
+                    <p>Arriv&eacute;e des cannel&eacute;s, past&eacute;is de nata et lattes color&eacute;s qui
+                        compl&egrave;tent nos roul&eacute;s iconiques.</p>
                 </article>
             </div>
         </section>
@@ -197,12 +226,18 @@
                 <div>
                     <span class="section-kicker">Origines</span>
                     <h2 id="provenance-heading">Des partenaires marocains choisis avec soin</h2>
-                    <p>Chaque roule´ commence par une fili&egrave;re responsable. Nous s&eacute;lectionnons nos fruits secs, caf&eacute;s et plantes aromatiques aupr&egrave;s de producteurs qui partagent notre vision v&eacute;g&eacute;tale.</p>
+                    <p>Chaque roule´ commence par une fili&egrave;re responsable. Nous s&eacute;lectionnons nos fruits
+                        secs, caf&eacute;s et plantes aromatiques aupr&egrave;s de producteurs qui partagent notre
+                        vision v&eacute;g&eacute;tale.</p>
                     <ul class="provenance-list">
-                        <li><strong>Coop&eacute;rative Pistaches Azemmour</strong> &mdash; Pistaches torr&eacute;fi&eacute;es pour notre roul&eacute; signature.</li>
-                        <li><strong>Torr&eacute;facteur Gu&eacute;liz</strong> &mdash; Grains de caf&eacute; fra&icirc;chement moulus pour la cr&egrave;me moka.</li>
-                        <li><strong>Femmes du Souss</strong> &mdash; Amlou amandes &amp; argan pour nos nappages dor&eacute;s.</li>
-                        <li><strong>Ferme bio Ourika</strong> &mdash; Cannelle de Ceylan, agrumes et herbes fra&icirc;ches.</li>
+                        <li><strong>Coop&eacute;rative Pistaches Azemmour</strong> &mdash; Pistaches
+                            torr&eacute;fi&eacute;es pour notre roul&eacute; signature.</li>
+                        <li><strong>Torr&eacute;facteur Gu&eacute;liz</strong> &mdash; Grains de caf&eacute;
+                            fra&icirc;chement moulus pour la cr&egrave;me moka.</li>
+                        <li><strong>Femmes du Souss</strong> &mdash; Amlou amandes &amp; argan pour nos nappages
+                            dor&eacute;s.</li>
+                        <li><strong>Ferme bio Ourika</strong> &mdash; Cannelle de Ceylan, agrumes et herbes
+                            fra&icirc;ches.</li>
                     </ul>
                 </div>
                 <div class="provenance-map" aria-hidden="true">
@@ -214,7 +249,10 @@
                             </linearGradient>
                         </defs>
                         <rect width="360" height="320" rx="24" fill="url(#mapGradient)" opacity="0.28"></rect>
-                        <path d="M40 220C80 200 96 180 140 176s88 24 110 10 38-62 54-92-8-66-24-84-48-24-74-18-66 32-90 58-48 62-58 96 12 52 32 74z" fill="none" stroke="#7f9c89" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path
+                            d="M40 220C80 200 96 180 140 176s88 24 110 10 38-62 54-92-8-66-24-84-48-24-74-18-66 32-90 58-48 62-58 96 12 52 32 74z"
+                            fill="none" stroke="#7f9c89" stroke-width="4" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
                         <g fill="#7f9c89">
                             <circle cx="112" cy="192" r="8"></circle>
                             <circle cx="146" cy="158" r="8"></circle>
@@ -234,16 +272,23 @@
 
         <section class="chef-spotlight" id="chef" aria-labelledby="chef-heading" data-animate>
             <div class="chef-media">
-                <img src="images/image6.png" alt="Table dress&eacute;e avec roul&eacute;s &agrave; la cannelle et boissons sign&eacute;es Cinnamona" loading="lazy">
+                <img src="images/image6.png"
+                    alt="Table dress&eacute;e avec roul&eacute;s &agrave; la cannelle et boissons sign&eacute;es Cinnamona"
+                    loading="lazy">
             </div>
             <div class="chef-content">
                 <span class="section-kicker">Portrait de cheffe</span>
                 <h2 id="chef-heading">Rencontrez Mona, cr&eacute;atrice des roul&eacute;s Cinnamona</h2>
-                <p>Autodidacte passionn&eacute;e, Mona revisite les p&acirc;tisseries de son enfance en version v&eacute;g&eacute;tale. Elle travaille les textures fondantes, les parfums de pistache, d’amlou et de caf&eacute; marocain pour des roul&eacute;s g&eacute;n&eacute;reux.</p>
+                <p>Autodidacte passionn&eacute;e, Mona revisite les p&acirc;tisseries de son enfance en version
+                    v&eacute;g&eacute;tale. Elle travaille les textures fondantes, les parfums de pistache, d’amlou et
+                    de caf&eacute; marocain pour des roul&eacute;s g&eacute;n&eacute;reux.</p>
                 <ul class="chef-highlights">
-                    <li><strong>Technique f&eacute;tiche&nbsp;:</strong> pousse lente de la p&acirc;te pour un moelleux incomparable.</li>
-                    <li><strong>Ingr&eacute;dient signature&nbsp;:</strong> amlou maison au miel vegan, torr&eacute;fi&eacute; chaque semaine.</li>
-                    <li><strong>Engagement&nbsp;:</strong> former de jeunes p&acirc;tissier&middot;&egrave;re&middot;s aux recettes v&eacute;g&eacute;tales.</li>
+                    <li><strong>Technique f&eacute;tiche&nbsp;:</strong> pousse lente de la p&acirc;te pour un moelleux
+                        incomparable.</li>
+                    <li><strong>Ingr&eacute;dient signature&nbsp;:</strong> amlou maison au miel vegan,
+                        torr&eacute;fi&eacute; chaque semaine.</li>
+                    <li><strong>Engagement&nbsp;:</strong> former de jeunes p&acirc;tissier&middot;&egrave;re&middot;s
+                        aux recettes v&eacute;g&eacute;tales.</li>
                 </ul>
                 <div class="chef-actions">
                     <a class="btn btn-primary" href="#journal">D&eacute;couvrir ses recettes</a>
@@ -261,15 +306,19 @@
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge">Classique</span>
-                        <img src="images/image13.png" alt="Roul&eacute; &agrave; la cannelle napp&eacute; de gla&ccedil;age vanille" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Roul&eacute; cannelle classique">Aper&ccedil;u</button>
+                        <img src="images/image13.png"
+                            alt="Roul&eacute; &agrave; la cannelle napp&eacute; de gla&ccedil;age vanille"
+                            loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Roul&eacute; cannelle classique">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; cannelle classique</h3>
                             <p class="product-price">20&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">P&acirc;te moelleuse, cannelle de Ceylan et gla&ccedil;age vanille &agrave; base de lait d’amande.</p>
+                        <p class="product-desc">P&acirc;te moelleuse, cannelle de Ceylan et gla&ccedil;age vanille
+                            &agrave; base de lait d’amande.</p>
                         <ul class="product-tags">
                             <li>V&eacute;g&eacute;tal</li>
                             <li>Sans &OElig;ufs</li>
@@ -277,51 +326,61 @@
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; cannelle classique">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Roul&eacute; cannelle classique">Ajouter au panier</button>
                         </div>
                     </div>
                 </article>
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Noisettes</span>
-                        <img src="images/image10.png" alt="Roul&eacute; napp&eacute; de chocolat noir et &eacute;clats de noisettes" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Roul&eacute; chocolat noisettes">Aper&ccedil;u</button>
+                        <img src="images/image10.png"
+                            alt="Roul&eacute; napp&eacute; de chocolat noir et &eacute;clats de noisettes"
+                            loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Roul&eacute; chocolat noisettes">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; chocolat noisettes</h3>
                             <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Gla&ccedil;age double chocolat, noisettes grill&eacute;es et caramel v&eacute;g&eacute;tal, id&eacute;al pour les brunchs.</p>
+                        <p class="product-desc">Gla&ccedil;age double chocolat, noisettes grill&eacute;es et caramel
+                            v&eacute;g&eacute;tal, id&eacute;al pour les brunchs.</p>
                         <ul class="product-tags">
                             <li>Sans lactose</li>
                             <li>Graines torr&eacute;fi&eacute;es</li>
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; chocolat noisettes">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Roul&eacute; chocolat noisettes">Ajouter au panier</button>
                         </div>
                     </div>
                 </article>
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Signature</span>
-                        <img src="images/image12.png" alt="Roul&eacute; caramel aux noix de p&eacute;can" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Roul&eacute; caramel p&eacute;can">Aper&ccedil;u</button>
+                        <img src="images/image12.png" alt="Roul&eacute; caramel aux noix de p&eacute;can"
+                            loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Roul&eacute; caramel p&eacute;can">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; caramel p&eacute;can</h3>
                             <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Caramel &agrave; l’amlou, noix de p&eacute;can croustillantes et c&OElig;ur fondant cannelle.</p>
+                        <p class="product-desc">Caramel &agrave; l’amlou, noix de p&eacute;can croustillantes et
+                            c&OElig;ur fondant cannelle.</p>
                         <ul class="product-tags">
                             <li>Sans produits laitiers</li>
                             <li>Texture fondante</li>
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; caramel p&eacute;can">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Roul&eacute; caramel p&eacute;can">Ajouter au panier</button>
                         </div>
                     </div>
                 </article>
@@ -337,66 +396,79 @@
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge">Pistache</span>
-                        <img src="images/image5.png" alt="Roul&eacute; pistache amandes sur assiette graphique" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Roul&eacute; pistache amandes">Aper&ccedil;u</button>
+                        <img src="images/image5.png" alt="Roul&eacute; pistache amandes sur assiette graphique"
+                            loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Roul&eacute; pistache amandes">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; pistache amandes</h3>
                             <p class="product-price">40&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Cr&egrave;me pistache maison, amandes torr&eacute;fi&eacute;es et nappage matcha pour une touche fra&icirc;che.</p>
+                        <p class="product-desc">Cr&egrave;me pistache maison, amandes torr&eacute;fi&eacute;es et
+                            nappage matcha pour une touche fra&icirc;che.</p>
                         <ul class="product-tags">
                             <li>Edition limit&eacute;e</li>
                             <li>Sans colorant</li>
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; pistache amandes">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Roul&eacute; pistache amandes">Ajouter au panier</button>
                         </div>
                     </div>
                 </article>
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Past&eacute;is</span>
-                        <img src="images/image2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Past&eacute;is de nata v&eacute;g&eacute;taux">Aper&ccedil;u</button>
+                        <img src="images/image2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s"
+                            loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Past&eacute;is de nata v&eacute;g&eacute;taux">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Past&eacute;is de nata v&eacute;g&eacute;taux</h3>
                             <p class="product-price">8&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Cr&egrave;me &agrave; la vanille, p&acirc;te feuillet&eacute;e croustillante et sucre muscovado caram&eacute;lis&eacute;.</p>
+                        <p class="product-desc">Cr&egrave;me &agrave; la vanille, p&acirc;te feuillet&eacute;e
+                            croustillante et sucre muscovado caram&eacute;lis&eacute;.</p>
                         <ul class="product-tags">
                             <li>Par unit&eacute;</li>
                             <li>Cuisson minute</li>
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Past&eacute;is de nata v&eacute;g&eacute;taux">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Past&eacute;is de nata v&eacute;g&eacute;taux">Ajouter au
+                                panier</button>
                         </div>
                     </div>
                 </article>
                 <article class="product-card" data-product>
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Cannel&eacute;s</span>
-                        <img src="images/image4.png" alt="Plateau de cannel&eacute;s dor&eacute;s pr&ecirc;ts &agrave; croquer" loading="lazy">
-                        <button class="product-quickview" type="button" data-quickview="Cannel&eacute;s v&eacute;g&eacute;taux">Aper&ccedil;u</button>
+                        <img src="images/image4.png"
+                            alt="Plateau de cannel&eacute;s dor&eacute;s pr&ecirc;ts &agrave; croquer" loading="lazy">
+                        <button class="product-quickview" type="button"
+                            data-quickview="Cannel&eacute;s v&eacute;g&eacute;taux">Aper&ccedil;u</button>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Cannel&eacute;s au lait d’amande</h3>
                             <p class="product-price">10&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">C&OElig;ur moelleux parfum&eacute; &agrave; la vanille, coque caram&eacute;lis&eacute;e et touche de fleur d’oranger.</p>
+                        <p class="product-desc">C&OElig;ur moelleux parfum&eacute; &agrave; la vanille, coque
+                            caram&eacute;lis&eacute;e et touche de fleur d’oranger.</p>
                         <ul class="product-tags">
                             <li>Cro&ucirc;te caram&eacute;lis&eacute;e</li>
                             <li>Sans alcool</li>
                         </ul>
                         <div class="product-actions">
                             <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button" data-add-to-cart="Cannel&eacute;s v&eacute;g&eacute;taux">Ajouter au panier</button>
+                            <button class="btn btn-ghost" type="button"
+                                data-add-to-cart="Cannel&eacute;s v&eacute;g&eacute;taux">Ajouter au panier</button>
                         </div>
                     </div>
                 </article>
@@ -416,66 +488,80 @@
                     <article class="product-card" data-product>
                         <div class="product-media">
                             <span class="product-badge">Box</span>
-                            <img src="images/image7.png" alt="Bo&icirc;te de six roul&eacute;s Cinnamona aux gla&ccedil;ages vari&eacute;s" loading="lazy">
-                            <button class="product-quickview" type="button" data-quickview="Box d&eacute;couverte 6 roul&eacute;s">Aper&ccedil;u</button>
+                            <img src="images/image7.png"
+                                alt="Bo&icirc;te de six roul&eacute;s Cinnamona aux gla&ccedil;ages vari&eacute;s"
+                                loading="lazy">
+                            <button class="product-quickview" type="button"
+                                data-quickview="Box d&eacute;couverte 6 roul&eacute;s">Aper&ccedil;u</button>
                         </div>
                         <div class="product-info">
                             <div class="product-header">
                                 <h3>Box d&eacute;couverte 6 roul&eacute;s</h3>
                                 <p class="product-price">110&nbsp;MAD</p>
                             </div>
-                            <p class="product-desc">Un assortiment pr&ecirc;t-&agrave;-partager de nos roul&eacute;s embl&eacute;matiques&nbsp;: vanille, caramel, chocolat, framboise et pistache.</p>
+                            <p class="product-desc">Un assortiment pr&ecirc;t-&agrave;-partager de nos roul&eacute;s
+                                embl&eacute;matiques&nbsp;: vanille, caramel, chocolat, framboise et pistache.</p>
                             <ul class="product-tags">
                                 <li>Id&eacute;al brunch</li>
                                 <li>6 saveurs</li>
                             </ul>
                             <div class="product-actions">
                                 <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button" data-add-to-cart="Box d&eacute;couverte 6 roul&eacute;s">Ajouter au panier</button>
+                                <button class="btn btn-ghost" type="button"
+                                    data-add-to-cart="Box d&eacute;couverte 6 roul&eacute;s">Ajouter au panier</button>
                             </div>
                         </div>
                     </article>
                     <article class="product-card" data-product>
                         <div class="product-media">
                             <span class="product-badge product-badge--calm">Framboise</span>
-                            <img src="images/image8.png" alt="Roul&eacute; &agrave; la cannelle gla&ccedil;age framboise" loading="lazy">
-                            <button class="product-quickview" type="button" data-quickview="Roul&eacute; framboise">Aper&ccedil;u</button>
+                            <img src="images/image8.png"
+                                alt="Roul&eacute; &agrave; la cannelle gla&ccedil;age framboise" loading="lazy">
+                            <button class="product-quickview" type="button"
+                                data-quickview="Roul&eacute; framboise">Aper&ccedil;u</button>
                         </div>
                         <div class="product-info">
                             <div class="product-header">
                                 <h3>Roul&eacute; framboise</h3>
                                 <p class="product-price">30&nbsp;MAD</p>
                             </div>
-                            <p class="product-desc">Cr&egrave;me vanille l&eacute;g&egrave;re, coulis de framboise et gla&ccedil;age rose sur un roule´ moelleux.</p>
+                            <p class="product-desc">Cr&egrave;me vanille l&eacute;g&egrave;re, coulis de framboise et
+                                gla&ccedil;age rose sur un roule´ moelleux.</p>
                             <ul class="product-tags">
                                 <li>Sans colorant artificiel</li>
                                 <li>&agrave; d&eacute;guster frais</li>
                             </ul>
                             <div class="product-actions">
                                 <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; framboise">Ajouter au panier</button>
+                                <button class="btn btn-ghost" type="button"
+                                    data-add-to-cart="Roul&eacute; framboise">Ajouter au panier</button>
                             </div>
                         </div>
                     </article>
                     <article class="product-card" data-product>
                         <div class="product-media">
                             <span class="product-badge product-badge--bright">Moka</span>
-                            <img src="images/image9.png" alt="Roul&eacute; &agrave; la cannelle napp&eacute; de cr&egrave;me caf&eacute; et grains torr&eacute;fi&eacute;s" loading="lazy">
-                            <button class="product-quickview" type="button" data-quickview="Roul&eacute; caf&eacute; marocain">Aper&ccedil;u</button>
+                            <img src="images/image9.png"
+                                alt="Roul&eacute; &agrave; la cannelle napp&eacute; de cr&egrave;me caf&eacute; et grains torr&eacute;fi&eacute;s"
+                                loading="lazy">
+                            <button class="product-quickview" type="button"
+                                data-quickview="Roul&eacute; caf&eacute; marocain">Aper&ccedil;u</button>
                         </div>
                         <div class="product-info">
                             <div class="product-header">
                                 <h3>Roul&eacute; caf&eacute; marocain</h3>
                                 <p class="product-price">30&nbsp;MAD</p>
                             </div>
-                            <p class="product-desc">Gla&ccedil;age moka aux grains de caf&eacute; Gu&eacute;liz, caramel blond et touche de fleur d’oranger.</p>
+                            <p class="product-desc">Gla&ccedil;age moka aux grains de caf&eacute; Gu&eacute;liz, caramel
+                                blond et touche de fleur d’oranger.</p>
                             <ul class="product-tags">
                                 <li>Energy boost</li>
                                 <li>Sans lactose</li>
                             </ul>
                             <div class="product-actions">
                                 <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button" data-add-to-cart="Roul&eacute; caf&eacute; marocain">Ajouter au panier</button>
+                                <button class="btn btn-ghost" type="button"
+                                    data-add-to-cart="Roul&eacute; caf&eacute; marocain">Ajouter au panier</button>
                             </div>
                         </div>
                     </article>
@@ -495,16 +581,21 @@
                 <div class="testimonial-track" data-testimonial-track role="list" aria-live="off">
                     <article class="testimonial-card" id="testimonial-1" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Pr&eacute;parer l&rsquo;anniversaire de ma s&oelig;ur a &eacute;t&eacute; un jeu d&rsquo;enfant&nbsp;: box de roul&eacute;s, latte pistache et livraison &agrave; minuit pile.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Pr&eacute;parer l&rsquo;anniversaire de ma s&oelig;ur a &eacute;t&eacute; un
+                                jeu d&rsquo;enfant&nbsp;: box de roul&eacute;s, latte pistache et livraison &agrave;
+                                minuit pile.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Nadia &middot; Marrakech</span>
-                            <span class="testimonial-meta">&eacute;v&eacute;nement priv&eacute; &middot; Juin 2024</span>
+                            <span class="testimonial-meta">&eacute;v&eacute;nement priv&eacute; &middot; Juin
+                                2024</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-2" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;En tant que caf&eacute; v&eacute;g&eacute;tal, nous cherchions des roul&eacute;s gourmands et fiables. Cinnamona livre chaud chaque matin, m&ecirc;me le dimanche.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;En tant que caf&eacute; v&eacute;g&eacute;tal, nous cherchions des
+                                roul&eacute;s gourmands et fiables. Cinnamona livre chaud chaque matin, m&ecirc;me le
+                                dimanche.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Younes &middot; Kasbah Coffee</span>
@@ -513,7 +604,9 @@
                     </article>
                     <article class="testimonial-card" id="testimonial-3" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Nos soir&eacute;es s&eacute;ries ne commencent jamais sans roul&eacute;s framboise et cannel&eacute;s Cinnamona. Service ultra rapide, m&ecirc;me apr&egrave;s 22&nbsp;h.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Nos soir&eacute;es s&eacute;ries ne commencent jamais sans roul&eacute;s
+                                framboise et cannel&eacute;s Cinnamona. Service ultra rapide, m&ecirc;me apr&egrave;s
+                                22&nbsp;h.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Imane &amp; Rachid</span>
@@ -522,7 +615,8 @@
                     </article>
                     <article class="testimonial-card" id="testimonial-4" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Notre riad sert les plateaux petit-d&eacute;jeuner Cinnamona&nbsp;: p&acirc;tisseries ti&egrave;des et service toujours ponctuel.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Notre riad sert les plateaux petit-d&eacute;jeuner Cinnamona&nbsp;:
+                                p&acirc;tisseries ti&egrave;des et service toujours ponctuel.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Salma &amp; l&rsquo;&eacute;quipe Dar Yasmine</span>
@@ -531,7 +625,8 @@
                     </article>
                     <article class="testimonial-card" id="testimonial-5" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Les coffrets brunch sont devenus notre best-seller du week-end&nbsp;: clients combl&eacute;s et stocks toujours r&eacute;assortis.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Les coffrets brunch sont devenus notre best-seller du week-end&nbsp;:
+                                clients combl&eacute;s et stocks toujours r&eacute;assortis.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Maja &middot; Concept store Majorelle</span>
@@ -540,7 +635,8 @@
                     </article>
                     <article class="testimonial-card" id="testimonial-6" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Notre &eacute;quipe running termine chaque sortie par des roul&eacute;s pistache&nbsp;: &eacute;nergie douce et sourires garantis.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Notre &eacute;quipe running termine chaque sortie par des roul&eacute;s
+                                pistache&nbsp;: &eacute;nergie douce et sourires garantis.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Club Atlas Runners</span>
@@ -549,7 +645,8 @@
                     </article>
                     <article class="testimonial-card" id="testimonial-7" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;En shooting photo, les roul&eacute;s restent moelleux des heures&nbsp;: c&rsquo;est notre secret pour des mises en sc&egrave;ne parfaites.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;En shooting photo, les roul&eacute;s restent moelleux des heures&nbsp;:
+                                c&rsquo;est notre secret pour des mises en sc&egrave;ne parfaites.&nbsp;&raquo;</p>
                         </blockquote>
                         <footer>
                             <span class="testimonial-name">Nora &middot; Styliste culinaire</span>
@@ -570,7 +667,8 @@
                     <a href="#">
                         <span class="journal-tag">Recette</span>
                         <h3>R&eacute;aliser notre roul&eacute; pistache &agrave; la maison</h3>
-                        <p>Mona d&eacute;taille la p&acirc;te, la cr&egrave;me v&eacute;g&eacute;tale et les astuces pour un gla&ccedil;age brillant.</p>
+                        <p>Mona d&eacute;taille la p&acirc;te, la cr&egrave;me v&eacute;g&eacute;tale et les astuces
+                            pour un gla&ccedil;age brillant.</p>
                         <span class="journal-meta">Lecture 6&nbsp;min &middot; Juillet 2025</span>
                     </a>
                 </article>
@@ -578,7 +676,8 @@
                     <a href="#">
                         <span class="journal-tag">Atelier</span>
                         <h3>Une nuit dans notre laboratoire 24h/24</h3>
-                        <p>Suivez l&rsquo;&eacute;quipe qui assure les fourn&eacute;es du soir, des cannel&eacute;s aux commandes de derni&egrave;re minute.</p>
+                        <p>Suivez l&rsquo;&eacute;quipe qui assure les fourn&eacute;es du soir, des cannel&eacute;s aux
+                            commandes de derni&egrave;re minute.</p>
                         <span class="journal-meta">Lecture 5&nbsp;min &middot; Ao&ucirc;t 2025</span>
                     </a>
                 </article>
@@ -586,7 +685,8 @@
                     <a href="#">
                         <span class="journal-tag">Guide</span>
                         <h3>Accorder lattes v&eacute;g&eacute;taux et roul&eacute;s gourmands</h3>
-                        <p>Nos conseils pour marier roul&eacute; caramel p&eacute;can, latte pistache et boissons froides ou chaudes.</p>
+                        <p>Nos conseils pour marier roul&eacute; caramel p&eacute;can, latte pistache et boissons
+                            froides ou chaudes.</p>
                         <span class="journal-meta">Lecture 8&nbsp;min &middot; Septembre 2025</span>
                     </a>
                 </article>
@@ -606,7 +706,8 @@
                             <span class="event-date">12 oct. &middot; 10:00</span>
                             <div>
                                 <h3>Atelier roul&eacute;s moelleux</h3>
-                                <p>Fabriquez votre propre p&acirc;te v&eacute;g&eacute;tale et repartez avec une bo&icirc;te de roul&eacute;s pr&ecirc;ts &agrave; cuire.</p>
+                                <p>Fabriquez votre propre p&acirc;te v&eacute;g&eacute;tale et repartez avec une
+                                    bo&icirc;te de roul&eacute;s pr&ecirc;ts &agrave; cuire.</p>
                             </div>
                             <button class="btn btn-ghost" type="button">S&rsquo;inscrire sur liste</button>
                         </li>
@@ -614,7 +715,8 @@
                             <span class="event-date">25 oct. &middot; 18:00</span>
                             <div>
                                 <h3>Soir&eacute;e accords desserts &amp; lattes</h3>
-                                <p>D&eacute;gustation de roul&eacute;s sal&eacute;s/sucr&eacute;s avec boissons v&eacute;g&eacute;tales, suivie d&rsquo;une visite de l&rsquo;atelier.</p>
+                                <p>D&eacute;gustation de roul&eacute;s sal&eacute;s/sucr&eacute;s avec boissons
+                                    v&eacute;g&eacute;tales, suivie d&rsquo;une visite de l&rsquo;atelier.</p>
                             </div>
                             <button class="btn btn-ghost" type="button">R&eacute;server</button>
                         </li>
@@ -622,7 +724,8 @@
                             <span class="event-date">8 nov. &middot; 16:00</span>
                             <div>
                                 <h3>Masterclass cannel&eacute;s v&eacute;g&eacute;taux</h3>
-                                <p>Ma&icirc;trisez la cuisson crousti-fondante, du choix des moules &agrave; la caram&eacute;lisation parfaite.</p>
+                                <p>Ma&icirc;trisez la cuisson crousti-fondante, du choix des moules &agrave; la
+                                    caram&eacute;lisation parfaite.</p>
                             </div>
                             <button class="btn btn-ghost" type="button">Je participe</button>
                         </li>
@@ -653,8 +756,12 @@
                 <div class="community-layout">
                     <div class="community-copy">
                         <span class="section-kicker">Communaut&eacute;</span>
-                        <h2 id="community-heading">Partagez vos pauses sucr&eacute;es avec <span class="highlight">#CinnamonaByMona</span></h2>
-                        <p class="community-lede">Chaque jour, notre cercle gourmand s&rsquo;agrandit&nbsp;: brunchs en terrasse, plateaux livr&eacute;s &agrave; minuit, ateliers improvis&eacute;s. Rejoignez les cr&eacute;ateurs et cr&eacute;atrices qui font rayonner Cinnamona partout &agrave; Marrakech.</p>
+                        <h2 id="community-heading">Partagez vos pauses sucr&eacute;es avec <span
+                                class="highlight">#CinnamonaByMona</span></h2>
+                        <p class="community-lede">Chaque jour, notre cercle gourmand s&rsquo;agrandit&nbsp;: brunchs en
+                            terrasse, plateaux livr&eacute;s &agrave; minuit, ateliers improvis&eacute;s. Rejoignez les
+                            cr&eacute;ateurs et cr&eacute;atrices qui font rayonner Cinnamona partout &agrave;
+                            Marrakech.</p>
                         <dl class="community-highlights">
                             <div>
                                 <dt>+250</dt>
@@ -670,60 +777,81 @@
                             </div>
                         </dl>
                         <div class="community-actions">
-                            <a class="btn btn-primary" href="https://www.instagram.com" target="_blank" rel="noreferrer">Suivez-nous sur Instagram</a>
+                            <a class="btn btn-primary" href="https://www.instagram.com" target="_blank"
+                                rel="noreferrer">Suivez-nous sur Instagram</a>
                             <a class="btn btn-outline" href="#newsletter-heading">Partager votre photo</a>
                         </div>
                     </div>
                     <div class="community-media">
-                        <div class="community-gallery" data-circular-gallery data-bend="3" data-text-color="#ffffff" data-border-radius="0.05" data-scroll-ease="0.02">
+                        <div class="community-gallery" data-circular-gallery data-bend="3" data-text-color="#ffffff"
+                            data-border-radius="0.05" data-scroll-ease="0.02">
                             <div class="community-gallery__ring" data-gallery-ring>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image1.png" alt="Affiche menu Cinnamona by Mona photographi&eacute;e sur un plan de travail" loading="lazy">
+                                    <img src="images/image1.png"
+                                        alt="Affiche menu Cinnamona by Mona photographi&eacute;e sur un plan de travail"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@sweetmarrakech</span>
-                                        <span class="community-gallery__note">Menu pr&ecirc;t pour la livraison du soir.</span>
+                                        <span class="community-gallery__note">Menu pr&ecirc;t pour la livraison du
+                                            soir.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s pr&ecirc;ts &agrave; partager" loading="lazy">
+                                    <img src="images/image2.png"
+                                        alt="Plateau de past&eacute;is de nata dor&eacute;s pr&ecirc;ts &agrave; partager"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@riadpalmeraie</span>
-                                        <span class="community-gallery__note">Past&eacute;is ti&egrave;des pour le th&eacute; de l&rsquo;apr&egrave;s-midi.</span>
+                                        <span class="community-gallery__note">Past&eacute;is ti&egrave;des pour le
+                                            th&eacute; de l&rsquo;apr&egrave;s-midi.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image7.png" alt="Bo&icirc;te de six roul&eacute;s Cinnamona aux gla&ccedil;ages vari&eacute;s" loading="lazy">
+                                    <img src="images/image7.png"
+                                        alt="Bo&icirc;te de six roul&eacute;s Cinnamona aux gla&ccedil;ages vari&eacute;s"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@brunchclub.ma</span>
-                                        <span class="community-gallery__note">Box gourmande pour un brunch au jardin.</span>
+                                        <span class="community-gallery__note">Box gourmande pour un brunch au
+                                            jardin.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image11.png" alt="Roul&eacute; au caramel amlou vu de dessus" loading="lazy">
+                                    <img src="images/image11.png" alt="Roul&eacute; au caramel amlou vu de dessus"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@coffeebylina</span>
-                                        <span class="community-gallery__note">Latte pistache et roul&eacute; amlou au bureau.</span>
+                                        <span class="community-gallery__note">Latte pistache et roul&eacute; amlou au
+                                            bureau.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image9.png" alt="Roul&eacute; &agrave; la cannelle napp&eacute; de cr&egrave;me caf&eacute; et grains torr&eacute;fi&eacute;s" loading="lazy">
+                                    <img src="images/image9.png"
+                                        alt="Roul&eacute; &agrave; la cannelle napp&eacute; de cr&egrave;me caf&eacute; et grains torr&eacute;fi&eacute;s"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@midnightlatte</span>
-                                        <span class="community-gallery__note">Pause caf&eacute; apr&egrave;s le service du soir.</span>
+                                        <span class="community-gallery__note">Pause caf&eacute; apr&egrave;s le service
+                                            du soir.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image4.png" alt="Plateau de cannel&eacute;s dor&eacute;s partag&eacute;s entre amis" loading="lazy">
+                                    <img src="images/image4.png"
+                                        alt="Plateau de cannel&eacute;s dor&eacute;s partag&eacute;s entre amis"
+                                        loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@morningmarkets</span>
-                                        <span class="community-gallery__note">Cannel&eacute;s dor&eacute;s pour la table du march&eacute;.</span>
+                                        <span class="community-gallery__note">Cannel&eacute;s dor&eacute;s pour la table
+                                            du march&eacute;.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image8.png" alt="Roul&eacute; framboise photographi&eacute; en terrasse" loading="lazy">
+                                    <img src="images/image8.png"
+                                        alt="Roul&eacute; framboise photographi&eacute; en terrasse" loading="lazy">
                                     <figcaption>
                                         <span class="community-gallery__handle">@weekendwithimene</span>
-                                        <span class="community-gallery__note">Go&ucirc;ter en plein soleil &agrave; Marrakech.</span>
+                                        <span class="community-gallery__note">Go&ucirc;ter en plein soleil &agrave;
+                                            Marrakech.</span>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -754,12 +882,14 @@
             <div class="specials-grid">
                 <article class="special-card" id="party-cakes">
                     <h3>G&acirc;teaux de f&ecirc;te</h3>
-                    <p>Choisissez un parfum de saison, un gla&ccedil;age botanique et nous composons un centre de table sur-mesure.</p>
+                    <p>Choisissez un parfum de saison, un gla&ccedil;age botanique et nous composons un centre de table
+                        sur-mesure.</p>
                     <a href="#party-cakes" class="btn btn-primary">C&eacute;l&eacute;brer en douceur</a>
                 </article>
                 <article class="special-card" id="wholesale">
                     <h3>Programme pro</h3>
-                    <p>Nos roul&eacute;s v&eacute;g&eacute;taux compl&egrave;tent l’offre des caf&eacute;s, h&ocirc;tels et concept stores avec des livraisons 24h/24.</p>
+                    <p>Nos roul&eacute;s v&eacute;g&eacute;taux compl&egrave;tent l’offre des caf&eacute;s, h&ocirc;tels
+                        et concept stores avec des livraisons 24h/24.</p>
                     <a href="#wholesale" class="btn btn-outline">Discuter B2B</a>
                 </article>
             </div>
@@ -768,7 +898,8 @@
         <section class="cta-banner" id="shop" data-animate>
             <div class="cta-content">
                 <h2>Envie d’une pause sucr&eacute;e&nbsp;?</h2>
-                <p>Parcourez toute notre collection de roul&eacute;s, cannel&eacute;s, past&eacute;is et boissons maison.</p>
+                <p>Parcourez toute notre collection de roul&eacute;s, cannel&eacute;s, past&eacute;is et boissons
+                    maison.</p>
                 <a href="#featured" class="btn btn-dark">Commander maintenant</a>
             </div>
         </section>
@@ -794,7 +925,8 @@
                 <h2>Cinnamona by Mona</h2>
                 <p>27 Lotissement Bouaamriya Assif C, Marrakech 40000</p>
                 <p>Ouverts 24h/24 &middot; 7j/7</p>
-                <p><a href="tel:+212603981438">+212 603 981 438</a> &middot; <a href="mailto:bonjour@cinnamona.ma">bonjour@cinnamona.ma</a></p>
+                <p><a href="tel:+212603981438">+212 603 981 438</a> &middot; <a
+                        href="mailto:bonjour@cinnamona.ma">bonjour@cinnamona.ma</a></p>
             </div>
             <nav class="footer-nav" aria-label="Footer navigation">
                 <h3>Explorer</h3>
@@ -810,7 +942,8 @@
                     <li>
                         <a href="https://www.instagram.com" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5"></rect>
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
+                                </rect>
                                 <circle cx="12" cy="12" r="4.5" fill="none" stroke-width="1.5"></circle>
                                 <circle cx="17.5" cy="6.5" r="1"></circle>
                             </svg>
@@ -820,8 +953,12 @@
                     <li>
                         <a href="https://www.facebook.com" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5"></rect>
-                                <path d="M14 10h2V7h-2c-2 0-3.5 1.5-3.5 3.5V12H9v3h1.5v5h3v-5H15l.5-3h-3v-1c0-.6.4-1 1-1z" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
+                                </rect>
+                                <path
+                                    d="M14 10h2V7h-2c-2 0-3.5 1.5-3.5 3.5V12H9v3h1.5v5h3v-5H15l.5-3h-3v-1c0-.6.4-1 1-1z"
+                                    fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                             </svg>
                             <span class="sr-only">Facebook</span>
                         </a>
@@ -829,8 +966,12 @@
                     <li>
                         <a href="https://www.pinterest.com" aria-label="Pinterest">
                             <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5"></rect>
-                                <path d="M12 7c-2.2 0-4 1.7-4 4 0 1.7 1.1 3.1 2.6 3.7-.1-.3-.1-.6 0-.9L11 12c-.2-.4-.4-.8-.4-1.3 0-1 .6-1.7 1.6-1.7.8 0 1.3.5 1.3 1.3 0 .5-.2 1-.3 1.5-.1.3.1.7.4.8 1.2-.5 2-1.7 2-3 0-1.9-1.7-3.6-3.6-3.6z" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
+                                </rect>
+                                <path
+                                    d="M12 7c-2.2 0-4 1.7-4 4 0 1.7 1.1 3.1 2.6 3.7-.1-.3-.1-.6 0-.9L11 12c-.2-.4-.4-.8-.4-1.3 0-1 .6-1.7 1.6-1.7.8 0 1.3.5 1.3 1.3 0 .5-.2 1-.3 1.5-.1.3.1.7.4.8 1.2-.5 2-1.7 2-3 0-1.9-1.7-3.6-3.6-3.6z"
+                                    fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                             </svg>
                             <span class="sr-only">Pinterest</span>
                         </a>
@@ -839,21 +980,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p id="policies"><a href="#">Politique de confidentialit&eacute;</a> &middot; <a href="#">Politique de remboursement</a> &middot; <a href="#">Conditions d&rsquo;utilisation</a></p>
-            <p class="footer-credit">Site cr&eacute;&eacute; avec amour par Cinnamona by Mona &middot; &copy; <span id="current-year"></span></p>
+            <p id="policies"><a href="#">Politique de confidentialit&eacute;</a> &middot; <a href="#">Politique de
+                    remboursement</a> &middot; <a href="#">Conditions d&rsquo;utilisation</a></p>
+            <p class="footer-credit">Site cr&eacute;&eacute; avec amour par Cinnamona by Mona &middot; &copy; <span
+                    id="current-year"></span></p>
         </div>
     </footer>
 
     <script src="script.js" type="module"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-

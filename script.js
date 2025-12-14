@@ -1,6 +1,38 @@
 import CircularGallery from "./animation/galerry.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Set active navigation state based on current hash or scroll position
+    const setActiveNav = () => {
+        const hash = window.location.hash || '#top';
+        const navLinks = document.querySelectorAll('.nav-links a[data-page]');
+
+        // Map hashes to data-page values
+        const hashMap = {
+            '#top': 'accueil',
+            '': 'accueil',
+            '#featured': 'boutique',
+            '#story': 'notre-histoire',
+            '#journal': 'journal',
+            '#events': 'evenements'
+        };
+
+        const activePage = hashMap[hash] || 'accueil';
+
+        navLinks.forEach(link => {
+            if (link.dataset.page === activePage) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+
+    // Set initial active state
+    setActiveNav();
+
+    // Update active state on hash change
+    window.addEventListener('hashchange', setActiveNav);
+
     const yearEl = document.getElementById("current-year");
     if (yearEl) {
         yearEl.textContent = new Date().getFullYear().toString();
