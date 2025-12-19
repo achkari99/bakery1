@@ -18,6 +18,9 @@ class CircularGallery {
         this.slice = this.items.length > 0 ? (Math.PI * 2) / this.items.length : 0;
         this.pointerActive = false;
         this.lastPointerX = 0;
+        this.lastPointerY = 0;
+        this.cursorVelocity = 0;
+        this.movementDetected = false;
         this.autoPlay = true;
         this.frame = undefined;
         this.idleTimer = undefined;
@@ -33,6 +36,19 @@ class CircularGallery {
         this.items.forEach((item, index) => {
             item.dataset.index = index.toString();
             item.style.borderRadius = `${this.options.borderRadius * 100}%`;
+
+            // Prevent default drag behavior on images
+            const images = item.querySelectorAll("img");
+            images.forEach(img => {
+                img.draggable = false;
+                img.style.userSelect = "none";
+                img.style.webkitUserDrag = "none";
+                img.addEventListener("dragstart", (e) => e.preventDefault());
+            });
+
+            // Prevent text selection on the entire item
+            item.style.userSelect = "none";
+            item.style.webkitUserSelect = "none";
         });
 
         if (typeof ResizeObserver === "function") {
@@ -47,6 +63,11 @@ class CircularGallery {
     }
 
     bindEvents() {
+        // Prevent default drag on the root element
+        this.root.addEventListener("dragstart", (e) => e.preventDefault());
+        this.root.style.userSelect = "none";
+        this.root.style.webkitUserSelect = "none";
+
         this.onWheel = (event) => {
             event.preventDefault();
             this.nudge(event.deltaY * 0.001);
@@ -54,8 +75,12 @@ class CircularGallery {
         this.root.addEventListener("wheel", this.onWheel, { passive: false });
 
         this.onPointerDown = (event) => {
+            event.preventDefault(); // Prevent default drag behavior
             this.pointerActive = true;
             this.lastPointerX = event.clientX;
+            this.lastPointerY = event.clientY;
+            this.cursorVelocity = 0;
+            this.movementDetected = false;
             this.root.classList.add("is-dragging");
             this.autoPlay = false;
             window.clearTimeout(this.idleTimer);
@@ -64,9 +89,30 @@ class CircularGallery {
 
         this.onPointerMove = (event) => {
             if (!this.pointerActive) return;
+
             const dx = event.clientX - this.lastPointerX;
+            const dy = event.clientY - this.lastPointerY;
+
+            // Only update if there's actual movement
+            if (dx !== 0 || dy !== 0) {
+                this.movementDetected = true;
+
+                // Calculate diagonal movement influence
+                // Moving cursor right rotates gallery right (inverted for intuitive feel)
+                // Moving cursor left rotates gallery left
+                // Diagonal movement combines both axes
+                const horizontalInfluence = dx * 0.0035;
+                const verticalInfluence = dy * 0.002; // Vertical has less influence
+
+                this.cursorVelocity = horizontalInfluence + verticalInfluence;
+                this.nudge(this.cursorVelocity, false);
+            } else {
+                // Mouse is pressed but not moving - pause completely
+                this.cursorVelocity = 0;
+            }
+
             this.lastPointerX = event.clientX;
-            this.nudge(-dx * 0.0035, false);
+            this.lastPointerY = event.clientY;
         };
         window.addEventListener("pointermove", this.onPointerMove);
 
@@ -74,6 +120,9 @@ class CircularGallery {
             if (!this.pointerActive) return;
             this.pointerActive = false;
             this.lastPointerX = 0;
+            this.lastPointerY = 0;
+            this.cursorVelocity = 0;
+            this.movementDetected = false;
             this.root.classList.remove("is-dragging");
             this.queueIdleResume();
         };

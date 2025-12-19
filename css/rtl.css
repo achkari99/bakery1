@@ -1,0 +1,373 @@
+/**
+ * RTL (Right-to-Left) Support for Arabic
+ * Applied when html[dir="rtl"] is set
+ */
+
+/* Base RTL direction */
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation */
+html[dir="rtl"] .nav-inner {
+    grid-template-columns: auto auto 1fr;
+}
+
+html[dir="rtl"] .nav-links {
+    order: 0;
+}
+
+html[dir="rtl"] .brand-mark {
+    order: 1;
+    text-align: center;
+}
+
+html[dir="rtl"] .nav-actions {
+    order: -1;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .nav-links ul {
+    flex-direction: row-reverse;
+}
+
+/* Hero section */
+html[dir="rtl"] .hero-copy {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-actions {
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .hero-metadata {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-overlay-card {
+    left: auto;
+    right: 10%;
+}
+
+/* Buttons */
+html[dir="rtl"] .btn {
+    flex-direction: row-reverse;
+}
+
+/* Value cards and grids */
+html[dir="rtl"] .value-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .value-grid {
+    direction: rtl;
+}
+
+/* Timeline */
+html[dir="rtl"] .timeline {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline article {
+    text-align: right;
+}
+
+/* Provenance section */
+html[dir="rtl"] .provenance-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .provenance-list {
+    text-align: right;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* Chef spotlight */
+html[dir="rtl"] .chef-spotlight {
+    direction: rtl;
+}
+
+html[dir="rtl"] .chef-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .chef-highlights {
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .chef-highlights li::before {
+    left: auto;
+    right: -1rem;
+}
+
+html[dir="rtl"] .chef-actions {
+    justify-content: flex-start;
+}
+
+/* Product cards */
+html[dir="rtl"] .product-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .product-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .product-tags {
+    padding-right: 0;
+    padding-left: 0;
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .product-actions {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .product-badge {
+    left: auto;
+    right: 1rem;
+}
+
+/* Section headers */
+html[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+/* Carousel */
+html[dir="rtl"] .carousel {
+    direction: rtl;
+}
+
+html[dir="rtl"] .carousel-control.prev {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .carousel-control.next {
+    right: auto;
+    left: 0;
+}
+
+/* Testimonials */
+html[dir="rtl"] .testimonial-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .testimonial-track {
+    animation-direction: reverse;
+}
+
+/* Journal */
+html[dir="rtl"] .journal-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .journal-card {
+    text-align: right;
+}
+
+/* Events */
+html[dir="rtl"] .events-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .event-list li {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] .events-form {
+    text-align: right;
+}
+
+/* Community section */
+html[dir="rtl"] .community-layout {
+    direction: rtl;
+}
+
+html[dir="rtl"] .community-copy {
+    text-align: right;
+}
+
+html[dir="rtl"] .community-highlights {
+    direction: rtl;
+}
+
+html[dir="rtl"] .community-actions {
+    justify-content: flex-start;
+}
+
+/* Press */
+html[dir="rtl"] .press-logos {
+    direction: rtl;
+}
+
+/* Specials */
+html[dir="rtl"] .specials-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .special-card {
+    text-align: right;
+}
+
+/* CTA Banner */
+html[dir="rtl"] .cta-content {
+    text-align: right;
+}
+
+/* Newsletter */
+html[dir="rtl"] .newsletter-inner {
+    text-align: right;
+}
+
+html[dir="rtl"] .newsletter-form {
+    direction: rtl;
+}
+
+/* Footer */
+html[dir="rtl"] .footer-top {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-brand {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-nav {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-social ul {
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .footer-bottom {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Forms */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Skip link */
+html[dir="rtl"] .skip-link {
+    left: auto;
+    right: -999px;
+}
+
+html[dir="rtl"] .skip-link:focus {
+    right: 1rem;
+    left: auto;
+}
+
+/* Language selector */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 0.75rem;
+}
+
+html[dir="rtl"] .lang-selector {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible {
+    background: rgba(127, 156, 137, 0.12);
+    color: var(--sage-dark);
+}
+
+.lang-btn:focus-visible {
+    outline: 2px solid var(--sage-dark);
+    outline-offset: 2px;
+}
+
+.lang-btn.active {
+    background: var(--sage);
+    color: #fff;
+    border-color: var(--sage);
+}
+
+.lang-separator {
+    color: var(--sage-muted);
+    font-size: 0.85rem;
+}
+
+/* Mobile RTL adjustments */
+@media (max-width: 880px) {
+    html[dir="rtl"] .nav-inner {
+        grid-template-columns: 1fr auto auto;
+    }
+
+    html[dir="rtl"] .brand-mark {
+        order: 0;
+        text-align: right;
+    }
+
+    html[dir="rtl"] .nav-toggle {
+        order: 2;
+    }
+
+    html[dir="rtl"] .nav-links {
+        right: auto;
+        left: 0;
+        text-align: right;
+    }
+
+    html[dir="rtl"] .nav-links ul {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 680px) {
+    html[dir="rtl"] .hero {
+        text-align: right;
+    }
+
+    html[dir="rtl"] .hero-metadata {
+        justify-items: end;
+    }
+
+    html[dir="rtl"] .timeline {
+        padding-right: 2rem;
+        padding-left: 0;
+        border-left: none;
+        border-right: 2px solid var(--sage-muted);
+    }
+
+    html[dir="rtl"] .timeline article::before {
+        left: auto;
+        right: -2.5rem;
+    }
+}

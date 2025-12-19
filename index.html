@@ -22,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/interactive-cta.css">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -50,46 +52,9 @@
 </head>
 
 <body id="top">
-    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    <!-- Header loaded dynamically from components/header.html -->
+    <div id="header-placeholder"></div>
     <header class="site-header" role="banner">
-        <div class="promo-banner">
-            <p>Livraison gratuite sur Marrakech d&egrave;s 300 MAD &middot; Ouverts 24h/24 et 7j/7</p>
-        </div>
-        <div class="primary-nav" data-sticky>
-            <div class="nav-inner">
-                <a class="brand-mark" href="#top" aria-label="Retour &agrave; l’accueil Cinnamona by Mona">
-                    <span class="brand-name">Cinnamona by Mona</span>
-                    <span class="brand-tagline">Roul&eacute;s v&eacute;g&eacute;taux</span>
-                </a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
-                    <span class="sr-only">Ouvrir ou fermer la navigation</span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </button>
-                <nav class="nav-links" id="site-navigation" aria-label="Navigation principale">
-                    <ul>
-                        <li><a href="#top" data-page="accueil">Accueil</a></li>
-                        <li><a href="#featured" data-page="boutique">Boutique</a></li>
-                        <li><a href="#story" data-page="notre-histoire">Notre histoire</a></li>
-                        <li><a href="#journal" data-page="journal">Journal</a></li>
-                        <li><a href="#events" data-page="evenements">Événements</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-actions">
-                    <a class="btn btn-primary" href="#shop">Commander maintenant</a>
-                    <button class="cart-icon-button" type="button" aria-label="Voir le panier (0 articles)">
-                        <svg class="cart-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            aria-hidden="true">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                        <span class="cart-badge" id="cart-count">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
         <div class="hero">
             <div class="hero-copy">
                 <span class="hero-kicker">Roul&eacute;s &agrave; la cannelle 100 % v&eacute;g&eacute;taux</span>
@@ -117,7 +82,7 @@
                 </div>
             </div>
             <div class="hero-media">
-                <img src="images/image3.png"
+                <img src="images/image.png"
                     alt="Roul&eacute; &agrave; la cannelle caramel et noix de p&eacute;can servi sur assiette turquoise"
                     loading="lazy">
                 <div class="hero-overlay-card">
@@ -136,35 +101,48 @@
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <path d="M12 32c0-12.15 9.85-22 22-22s22 9.85 22 22-9.85 22-22 22S12 44.15 12 32z"
-                                fill="none" stroke-width="2"></path>
-                            <path d="M22 34c6-10 16-14 20-14" fill="none" stroke-width="2" stroke-linecap="round">
-                            </path>
+                            <!-- Shield with checkmark - protection and verification -->
+                            <path d="M32 8L16 14v12c0 10 7 19 16 22 9-3 16-12 16-22V14L32 8z" fill="none"
+                                stroke-width="2.5" stroke-linejoin="round" />
+                            <path d="M24 30l6 6 10-12" fill="none" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3>Ingr&eacute;dients naturels</h3>
-                    <p>Farines bio, sucres bruts et beurres v&eacute;g&eacute;taux composent des recettes aussi
-                        gourmandes que responsables.</p>
+                    <h3>Healthy Ingredients</h3>
+                    <p>Crafted for your <strong>safety and peace of mind</strong>, using carefully selected natural
+                        ingredients.</p>
                 </article>
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <rect x="12" y="20" width="40" height="24" rx="6" fill="none" stroke-width="2"></rect>
-                            <path d="M20 20v-4h24v4" fill="none" stroke-width="2"></path>
+                            <!-- Sunrise with rays - freshness and daily renewal -->
+                            <circle cx="32" cy="36" r="10" fill="none" stroke-width="2.5" />
+                            <!-- Vertical and horizontal rays -->
+                            <path d="M32 26v-8M32 46v8M42 36h8M22 36h-8" stroke-width="2.5" stroke-linecap="round" />
+                            <!-- Diagonal rays -->
+                            <path d="M39 29l6-6M25 43l-6 6M39 43l6 6M25 29l-6-6" stroke-width="2.5"
+                                stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>Fabrication quotidienne</h3>
-                    <p>P&eacute;tris, roul&eacute;s et napp&eacute;s &agrave; la main, nos produits sortent du four
-                        plusieurs fois par jour.</p>
+                    <h3>Daily Production</h3>
+                    <p>Freshly prepared every day to ensure quality, safety, and consistent flavor.</p>
                 </article>
                 <article class="value-card">
                     <div class="value-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64" role="img">
-                            <path d="M32 12l8.5 14.7L56 30l-12 10.3L46 52l-14-7.3L18 52l2-11.7L8 30l15.5-3.3L32 12z"
-                                fill="none" stroke-width="2" stroke-linejoin="round"></path>
+                            <!-- Network nodes expanding - growth and scaling -->
+                            <circle cx="32" cy="32" r="5" fill="none" stroke-width="2.5" />
+                            <circle cx="20" cy="20" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="44" cy="20" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="20" cy="44" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="44" cy="44" r="3.5" fill="none" stroke-width="2" />
+                            <path d="M28 28L22 22M36 28L42 22M28 36L22 42M36 36L42 42" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path d="M16 16L14 14M48 16L50 14M16 48L14 50M48 48L50 50" stroke-width="2"
+                                stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>Saisonnal &amp; local</h3>
+                    <h3>high expansion</h3>
                     <p>Nos parfums suivent les r&eacute;coltes marocaines&nbsp;: pistache d’Azemmour, amlou du Souss,
                         caf&eacute; de torr&eacute;facteurs locaux.</p>
                 </article>
@@ -176,9 +154,8 @@
                             <path d="M20 50h24M24 54h16" fill="none" stroke-width="2" stroke-linecap="round"></path>
                         </svg>
                     </div>
-                    <h3>Transparents &amp; solidaires</h3>
-                    <p>Qualit&eacute;, tra&ccedil;abilit&eacute; et soutien aux artisans de Marrakech&nbsp;: chaque
-                        roul&eacute; finance des initiatives locales.</p>
+                    <h3>Transparent & Supportive</h3>
+                    <p>Built on honesty and responsibility, with clear sourcing and support for the local community.</p>
                 </article>
             </div>
         </section>
@@ -224,48 +201,20 @@
         <section class="provenance" aria-labelledby="provenance-heading" data-animate>
             <div class="provenance-content">
                 <div>
-                    <span class="section-kicker">Origines</span>
-                    <h2 id="provenance-heading">Des partenaires marocains choisis avec soin</h2>
-                    <p>Chaque roule´ commence par une fili&egrave;re responsable. Nous s&eacute;lectionnons nos fruits
-                        secs, caf&eacute;s et plantes aromatiques aupr&egrave;s de producteurs qui partagent notre
-                        vision v&eacute;g&eacute;tale.</p>
+                    <span class="section-kicker">ORIGINS</span>
+                    <h2 id="provenance-heading">Moroccan Partners Chosen With Care</h2>
+                    <p>Each sweet starts with a responsible supply chain. We select our dried fruits, coffee, and
+                        aromatic plants from producers who share our plant-based vision.</p>
                     <ul class="provenance-list">
-                        <li><strong>Coop&eacute;rative Pistaches Azemmour</strong> &mdash; Pistaches
-                            torr&eacute;fi&eacute;es pour notre roul&eacute; signature.</li>
-                        <li><strong>Torr&eacute;facteur Gu&eacute;liz</strong> &mdash; Grains de caf&eacute;
-                            fra&icirc;chement moulus pour la cr&egrave;me moka.</li>
-                        <li><strong>Femmes du Souss</strong> &mdash; Amlou amandes &amp; argan pour nos nappages
-                            dor&eacute;s.</li>
-                        <li><strong>Ferme bio Ourika</strong> &mdash; Cannelle de Ceylan, agrumes et herbes
-                            fra&icirc;ches.</li>
+                        <li><strong>Azemmour Pistachio Cooperative</strong> — Roasted pistachios for our signature
+                            rolls.</li>
+                        <li><strong>Guéliz Roaster</strong> — Freshly ground coffee beans for mocha cream.</li>
+                        <li><strong>Women of Souss</strong> — Almond & argan amlou for our golden toppings.</li>
+                        <li><strong>Ourika Organic Farm</strong> — Ceylon cinnamon, citrus, and fresh herbs.</li>
                     </ul>
                 </div>
                 <div class="provenance-map" aria-hidden="true">
-                    <svg viewBox="0 0 360 320">
-                        <defs>
-                            <linearGradient id="mapGradient" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0" stop-color="#c8d7cb"></stop>
-                                <stop offset="1" stop-color="#f3d8d8"></stop>
-                            </linearGradient>
-                        </defs>
-                        <rect width="360" height="320" rx="24" fill="url(#mapGradient)" opacity="0.28"></rect>
-                        <path
-                            d="M40 220C80 200 96 180 140 176s88 24 110 10 38-62 54-92-8-66-24-84-48-24-74-18-66 32-90 58-48 62-58 96 12 52 32 74z"
-                            fill="none" stroke="#7f9c89" stroke-width="4" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <g fill="#7f9c89">
-                            <circle cx="112" cy="192" r="8"></circle>
-                            <circle cx="146" cy="158" r="8"></circle>
-                            <circle cx="216" cy="150" r="8"></circle>
-                            <circle cx="248" cy="112" r="8"></circle>
-                        </g>
-                        <g fill="#2f2f2b" font-family="Work Sans, sans-serif" font-size="14">
-                            <text x="124" y="188">Marrakech</text>
-                            <text x="158" y="148">Azemmour</text>
-                            <text x="224" y="138">Souss</text>
-                            <text x="260" y="104">Ourika</text>
-                        </g>
-                    </svg>
+                    <canvas id="provenance-globe" style="width: 100%; height: 100%; aspect-ratio: 1;"></canvas>
                 </div>
             </div>
         </section>
@@ -303,84 +252,71 @@
                 <h2 id="featured-heading">Nos roul&eacute;s les plus demand&eacute;s</h2>
             </div>
             <div class="product-grid">
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="Notre roulé signature avec cannelle de Ceylan et glaçage vanille onctueux."
+                    data-tags="Classique,Best-seller">
                     <div class="product-media">
                         <span class="product-badge">Classique</span>
                         <img src="images/image13.png"
                             alt="Roul&eacute; &agrave; la cannelle napp&eacute; de gla&ccedil;age vanille"
                             loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Roul&eacute; cannelle classique">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Classique</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; cannelle classique</h3>
                             <p class="product-price">20&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">P&acirc;te moelleuse, cannelle de Ceylan et gla&ccedil;age vanille
-                            &agrave; base de lait d’amande.</p>
-                        <ul class="product-tags">
-                            <li>V&eacute;g&eacute;tal</li>
-                            <li>Sans &OElig;ufs</li>
-                            <li>Pr&ecirc;t &agrave; r&eacute;chauffer</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé cannelle classique">Quick View</button>
                             <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Roul&eacute; cannelle classique">Ajouter au panier</button>
+                                data-add-to-cart="Roul&eacute; cannelle classique">Add to Cart</button>
                         </div>
                     </div>
                 </article>
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="Chocolat noir belge fondu sur pâte moelleuse, garni d'éclats de noisettes torréfiées."
+                    data-tags="Gourmand,Sans gluten">
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Noisettes</span>
                         <img src="images/image10.png"
                             alt="Roul&eacute; napp&eacute; de chocolat noir et &eacute;clats de noisettes"
                             loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Roul&eacute; chocolat noisettes">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Noisettes</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; chocolat noisettes</h3>
                             <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Gla&ccedil;age double chocolat, noisettes grill&eacute;es et caramel
-                            v&eacute;g&eacute;tal, id&eacute;al pour les brunchs.</p>
-                        <ul class="product-tags">
-                            <li>Sans lactose</li>
-                            <li>Graines torr&eacute;fi&eacute;es</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé chocolat noisettes">Quick View</button>
                             <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Roul&eacute; chocolat noisettes">Ajouter au panier</button>
+                                data-add-to-cart="Roul&eacute; chocolat noisettes">Add to Cart</button>
                         </div>
                     </div>
                 </article>
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="Caramel au beurre salé et noix de pécan croquantes sur base de cannelle dorée."
+                    data-tags="Signature,Premium">
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Signature</span>
                         <img src="images/image12.png" alt="Roul&eacute; caramel aux noix de p&eacute;can"
                             loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Roul&eacute; caramel p&eacute;can">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Signature</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; caramel p&eacute;can</h3>
                             <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Caramel &agrave; l’amlou, noix de p&eacute;can croustillantes et
-                            c&OElig;ur fondant cannelle.</p>
-                        <ul class="product-tags">
-                            <li>Sans produits laitiers</li>
-                            <li>Texture fondante</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé caramel pécan">Quick View</button>
                             <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Roul&eacute; caramel p&eacute;can">Ajouter au panier</button>
+                                data-add-to-cart="Roul&eacute; caramel p&eacute;can">Add to Cart</button>
                         </div>
                     </div>
                 </article>
@@ -393,82 +329,69 @@
                 <h2 id="seasonal-heading">Les saveurs qui rythment la saison</h2>
             </div>
             <div class="product-grid">
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="Crème pistache maison, amandes torréfiées et nappage matcha pour une touche fraîche."
+                    data-tags="Edition limitée,Sans colorant">
                     <div class="product-media">
                         <span class="product-badge">Pistache</span>
                         <img src="images/image5.png" alt="Roul&eacute; pistache amandes sur assiette graphique"
                             loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Roul&eacute; pistache amandes">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Pistache</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Roul&eacute; pistache amandes</h3>
                             <p class="product-price">40&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Cr&egrave;me pistache maison, amandes torr&eacute;fi&eacute;es et
-                            nappage matcha pour une touche fra&icirc;che.</p>
-                        <ul class="product-tags">
-                            <li>Edition limit&eacute;e</li>
-                            <li>Sans colorant</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Roul&eacute; pistache amandes">Ajouter au panier</button>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé pistache amandes">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roulé pistache amandes">Add to
+                                Cart</button>
                         </div>
                     </div>
                 </article>
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="Crème à la vanille, pâte feuilletée croustillante et sucre muscovado caramélisé."
+                    data-tags="Par unité,Cuisson minute">
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Past&eacute;is</span>
                         <img src="images/image2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s"
                             loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Past&eacute;is de nata v&eacute;g&eacute;taux">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Pastéis</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
                             <h3>Past&eacute;is de nata v&eacute;g&eacute;taux</h3>
                             <p class="product-price">8&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">Cr&egrave;me &agrave; la vanille, p&acirc;te feuillet&eacute;e
-                            croustillante et sucre muscovado caram&eacute;lis&eacute;.</p>
-                        <ul class="product-tags">
-                            <li>Par unit&eacute;</li>
-                            <li>Cuisson minute</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Past&eacute;is de nata v&eacute;g&eacute;taux">Ajouter au
-                                panier</button>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Pastéis de nata végétaux">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Pastéis de nata végétaux">Add
+                                to Cart</button>
                         </div>
                     </div>
                 </article>
-                <article class="product-card" data-product>
+                <article class="product-card" data-product
+                    data-description="CŒur moelleux parfumé à la vanille, coque caramélisée et touche de fleur d'oranger."
+                    data-tags="Croûte caramélisée,Sans alcool">
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Cannel&eacute;s</span>
                         <img src="images/image4.png"
                             alt="Plateau de cannel&eacute;s dor&eacute;s pr&ecirc;ts &agrave; croquer" loading="lazy">
-                        <button class="product-quickview" type="button"
-                            data-quickview="Cannel&eacute;s v&eacute;g&eacute;taux">Aper&ccedil;u</button>
+                        <span class="product-category-overlay">Cannelés</span>
                     </div>
                     <div class="product-info">
                         <div class="product-header">
-                            <h3>Cannel&eacute;s au lait d’amande</h3>
+                            <h3>Cannel&eacute;s au lait d'amande</h3>
                             <p class="product-price">10&nbsp;MAD</p>
                         </div>
-                        <p class="product-desc">C&OElig;ur moelleux parfum&eacute; &agrave; la vanille, coque
-                            caram&eacute;lis&eacute;e et touche de fleur d’oranger.</p>
-                        <ul class="product-tags">
-                            <li>Cro&ucirc;te caram&eacute;lis&eacute;e</li>
-                            <li>Sans alcool</li>
-                        </ul>
                         <div class="product-actions">
-                            <a href="#shop" class="btn btn-secondary">Commander</a>
-                            <button class="btn btn-ghost" type="button"
-                                data-add-to-cart="Cannel&eacute;s v&eacute;g&eacute;taux">Ajouter au panier</button>
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Cannelés au lait d'amande">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Cannelés végétaux">Add to
+                                Cart</button>
                         </div>
                     </div>
                 </article>
@@ -480,177 +403,171 @@
                 <span class="section-kicker">Best-sellers</span>
                 <h2 id="bestsellers-heading">Les douceurs qui reviennent chaque nuit</h2>
             </div>
-            <div class="carousel" data-carousel>
-                <button class="carousel-control prev" aria-label="Previous item" data-carousel-button="prev">
-                    <span aria-hidden="true">&lsaquo;</span>
-                </button>
-                <div class="carousel-track" data-carousel-track>
-                    <article class="product-card" data-product>
-                        <div class="product-media">
-                            <span class="product-badge">Box</span>
-                            <img src="images/image7.png"
-                                alt="Bo&icirc;te de six roul&eacute;s Cinnamona aux gla&ccedil;ages vari&eacute;s"
-                                loading="lazy">
-                            <button class="product-quickview" type="button"
-                                data-quickview="Box d&eacute;couverte 6 roul&eacute;s">Aper&ccedil;u</button>
+            <div class="product-grid">
+                <article class="product-card" data-product
+                    data-description="Un assortiment prêt-à-partager de nos roulés emblématiques : vanille, caramel, chocolat, framboise et pistache."
+                    data-tags="Idéal brunch,6 saveurs">
+                    <div class="product-media">
+                        <span class="product-badge">Box</span>
+                        <img src="images/image7.png" alt="Boîte de six roulés Cinnamona aux glaçages variés"
+                            loading="lazy">
+                        <span class="product-category-overlay">Box</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Box découverte 6 roulés</h3>
+                            <p class="product-price">110&nbsp;MAD</p>
                         </div>
-                        <div class="product-info">
-                            <div class="product-header">
-                                <h3>Box d&eacute;couverte 6 roul&eacute;s</h3>
-                                <p class="product-price">110&nbsp;MAD</p>
-                            </div>
-                            <p class="product-desc">Un assortiment pr&ecirc;t-&agrave;-partager de nos roul&eacute;s
-                                embl&eacute;matiques&nbsp;: vanille, caramel, chocolat, framboise et pistache.</p>
-                            <ul class="product-tags">
-                                <li>Id&eacute;al brunch</li>
-                                <li>6 saveurs</li>
-                            </ul>
-                            <div class="product-actions">
-                                <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button"
-                                    data-add-to-cart="Box d&eacute;couverte 6 roul&eacute;s">Ajouter au panier</button>
-                            </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Box découverte 6 roulés">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Box découverte 6 roulés">Add
+                                to Cart</button>
                         </div>
-                    </article>
-                    <article class="product-card" data-product>
-                        <div class="product-media">
-                            <span class="product-badge product-badge--calm">Framboise</span>
-                            <img src="images/image8.png"
-                                alt="Roul&eacute; &agrave; la cannelle gla&ccedil;age framboise" loading="lazy">
-                            <button class="product-quickview" type="button"
-                                data-quickview="Roul&eacute; framboise">Aper&ccedil;u</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product
+                    data-description="Crème vanille légère, coulis de framboise et glaçage rose sur un roule´ moelleux."
+                    data-tags="Sans colorant artificiel,à déguster frais">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--calm">Framboise</span>
+                        <img src="images/image8.png" alt="Roulé à la cannelle glaçage framboise" loading="lazy">
+                        <span class="product-category-overlay">Framboise</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Roulé framboise</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <div class="product-info">
-                            <div class="product-header">
-                                <h3>Roul&eacute; framboise</h3>
-                                <p class="product-price">30&nbsp;MAD</p>
-                            </div>
-                            <p class="product-desc">Cr&egrave;me vanille l&eacute;g&egrave;re, coulis de framboise et
-                                gla&ccedil;age rose sur un roule´ moelleux.</p>
-                            <ul class="product-tags">
-                                <li>Sans colorant artificiel</li>
-                                <li>&agrave; d&eacute;guster frais</li>
-                            </ul>
-                            <div class="product-actions">
-                                <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button"
-                                    data-add-to-cart="Roul&eacute; framboise">Ajouter au panier</button>
-                            </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé framboise">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roulé framboise">Add to
+                                Cart</button>
                         </div>
-                    </article>
-                    <article class="product-card" data-product>
-                        <div class="product-media">
-                            <span class="product-badge product-badge--bright">Moka</span>
-                            <img src="images/image9.png"
-                                alt="Roul&eacute; &agrave; la cannelle napp&eacute; de cr&egrave;me caf&eacute; et grains torr&eacute;fi&eacute;s"
-                                loading="lazy">
-                            <button class="product-quickview" type="button"
-                                data-quickview="Roul&eacute; caf&eacute; marocain">Aper&ccedil;u</button>
+                    </div>
+                </article>
+                <article class="product-card" data-product
+                    data-description="Glaçage moka aux grains de café Guéliz, caramel blond et touche de fleur d'oranger."
+                    data-tags="Energy boost,Sans lactose">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright">Moka</span>
+                        <img src="images/image9.png" alt="Roulé à la cannelle nappé de crème café et grains torréfiés"
+                            loading="lazy">
+                        <span class="product-category-overlay">Moka</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Roulé café marocain</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
                         </div>
-                        <div class="product-info">
-                            <div class="product-header">
-                                <h3>Roul&eacute; caf&eacute; marocain</h3>
-                                <p class="product-price">30&nbsp;MAD</p>
-                            </div>
-                            <p class="product-desc">Gla&ccedil;age moka aux grains de caf&eacute; Gu&eacute;liz, caramel
-                                blond et touche de fleur d’oranger.</p>
-                            <ul class="product-tags">
-                                <li>Energy boost</li>
-                                <li>Sans lactose</li>
-                            </ul>
-                            <div class="product-actions">
-                                <a href="#shop" class="btn btn-secondary">Commander</a>
-                                <button class="btn btn-ghost" type="button"
-                                    data-add-to-cart="Roul&eacute; caf&eacute; marocain">Ajouter au panier</button>
-                            </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Roulé café marocain">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Roulé café marocain">Add
+                                to Cart</button>
                         </div>
-                    </article>
-                </div>
-                <button class="carousel-control next" aria-label="Next item" data-carousel-button="next">
-                    <span aria-hidden="true">&rsaquo;</span>
-                </button>
+                    </div>
+                </article>
             </div>
         </section>
 
         <section class="testimonials" id="temoignages" aria-labelledby="testimonials-heading" data-animate>
             <div class="section-header">
-                <span class="section-kicker">Ils en parlent</span>
-                <h2 id="testimonials-heading">La communaut&eacute; Cinnamona t&eacute;moigne</h2>
+                <span class="section-kicker">Customer Love</span>
+                <h2 id="testimonials-heading">Golden <span style="color: #edc01f;">Sweet</span> Community</h2>
             </div>
             <div class="testimonial-carousel" data-testimonial-marquee>
                 <div class="testimonial-track" data-testimonial-track role="list" aria-live="off">
                     <article class="testimonial-card" id="testimonial-1" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Pr&eacute;parer l&rsquo;anniversaire de ma s&oelig;ur a &eacute;t&eacute; un
-                                jeu d&rsquo;enfant&nbsp;: box de roul&eacute;s, latte pistache et livraison &agrave;
-                                minuit pile.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Delicious desserts that feel safe to enjoy. You can really taste the care in
+                                every detail.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Nadia &middot; Marrakech</span>
-                            <span class="testimonial-meta">&eacute;v&eacute;nement priv&eacute; &middot; Juin
-                                2024</span>
+                            <span class="testimonial-name">Amina K.</span>
+                            <span class="testimonial-meta">Verified Customer</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-2" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;En tant que caf&eacute; v&eacute;g&eacute;tal, nous cherchions des
-                                roul&eacute;s gourmands et fiables. Cinnamona livre chaud chaque matin, m&ecirc;me le
-                                dimanche.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;A place where healthy doesn't mean boring. Everything feels thoughtful,
+                                clean, and well made.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Younes &middot; Kasbah Coffee</span>
-                            <span class="testimonial-meta">Partenaire pro depuis 2022</span>
+                            <span class="testimonial-name">Youssef B.</span>
+                            <span class="testimonial-meta">Regular Customer</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-3" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Nos soir&eacute;es s&eacute;ries ne commencent jamais sans roul&eacute;s
-                                framboise et cannel&eacute;s Cinnamona. Service ultra rapide, m&ecirc;me apr&egrave;s
-                                22&nbsp;h.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;I love knowing exactly what I'm eating. Great flavors, great quality, and
+                                real peace of mind.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Imane &amp; Rachid</span>
-                            <span class="testimonial-meta">Abonn&eacute;s hebdo &middot; Marrakech</span>
+                            <span class="testimonial-name">Salma H.</span>
+                            <span class="testimonial-meta">Health-Conscious Buyer</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-4" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Notre riad sert les plateaux petit-d&eacute;jeuner Cinnamona&nbsp;:
-                                p&acirc;tisseries ti&egrave;des et service toujours ponctuel.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Perfect for anyone looking for sugar-free or special-diet options without
+                                sacrificing taste.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Salma &amp; l&rsquo;&eacute;quipe Dar Yasmine</span>
-                            <span class="testimonial-meta">Riad privatis&eacute; &middot; Avril 2025</span>
+                            <span class="testimonial-name">Omar M.</span>
+                            <span class="testimonial-meta">Diabetic Customer</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-5" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Les coffrets brunch sont devenus notre best-seller du week-end&nbsp;:
-                                clients combl&eacute;s et stocks toujours r&eacute;assortis.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;Elegant desserts with balanced flavors and a strong sense of trust in the
+                                ingredients.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Maja &middot; Concept store Majorelle</span>
-                            <span class="testimonial-meta">Partenaire retail &middot; 2023</span>
+                            <span class="testimonial-name">Fatima Z.</span>
+                            <span class="testimonial-meta">Food Enthusiast</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-6" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;Notre &eacute;quipe running termine chaque sortie par des roul&eacute;s
-                                pistache&nbsp;: &eacute;nergie douce et sourires garantis.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;You can tell safety and quality are taken seriously here. Fresh, light, and
+                                satisfying.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Club Atlas Runners</span>
-                            <span class="testimonial-meta">Sessions sport &middot; Marrakech</span>
+                            <span class="testimonial-name">Karim A.</span>
+                            <span class="testimonial-meta">Verified Purchase</span>
                         </footer>
                     </article>
                     <article class="testimonial-card" id="testimonial-7" role="listitem">
                         <blockquote>
-                            <p>&laquo;&nbsp;En shooting photo, les roul&eacute;s restent moelleux des heures&nbsp;:
-                                c&rsquo;est notre secret pour des mises en sc&egrave;ne parfaites.&nbsp;&raquo;</p>
+                            <p>&laquo;&nbsp;A refined approach to healthy pastries — beautifully made, reassuring, and
+                                enjoyable.&nbsp;&raquo;</p>
                         </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            ★★★★★
+                        </div>
                         <footer>
-                            <span class="testimonial-name">Nora &middot; Styliste culinaire</span>
-                            <span class="testimonial-meta">Studio Marrakech &middot; Mai 2025</span>
+                            <span class="testimonial-name">Zineb R.</span>
+                            <span class="testimonial-meta">Premium Customer</span>
                         </footer>
                     </article>
                 </div>
@@ -696,58 +613,53 @@
             </div>
         </section>
 
-        <section class="events" id="events" aria-labelledby="events-heading" data-animate>
-            <div class="events-content">
-                <div>
-                    <span class="section-kicker">Ateliers &amp; d&eacute;gustations</span>
-                    <h2 id="events-heading">Rejoignez nos exp&eacute;riences sucr&eacute;es</h2>
-                    <ul class="event-list">
-                        <li>
-                            <span class="event-date">12 oct. &middot; 10:00</span>
-                            <div>
-                                <h3>Atelier roul&eacute;s moelleux</h3>
-                                <p>Fabriquez votre propre p&acirc;te v&eacute;g&eacute;tale et repartez avec une
-                                    bo&icirc;te de roul&eacute;s pr&ecirc;ts &agrave; cuire.</p>
-                            </div>
-                            <button class="btn btn-ghost" type="button">S&rsquo;inscrire sur liste</button>
-                        </li>
-                        <li>
-                            <span class="event-date">25 oct. &middot; 18:00</span>
-                            <div>
-                                <h3>Soir&eacute;e accords desserts &amp; lattes</h3>
-                                <p>D&eacute;gustation de roul&eacute;s sal&eacute;s/sucr&eacute;s avec boissons
-                                    v&eacute;g&eacute;tales, suivie d&rsquo;une visite de l&rsquo;atelier.</p>
-                            </div>
-                            <button class="btn btn-ghost" type="button">R&eacute;server</button>
-                        </li>
-                        <li>
-                            <span class="event-date">8 nov. &middot; 16:00</span>
-                            <div>
-                                <h3>Masterclass cannel&eacute;s v&eacute;g&eacute;taux</h3>
-                                <p>Ma&icirc;trisez la cuisson crousti-fondante, du choix des moules &agrave; la
-                                    caram&eacute;lisation parfaite.</p>
-                            </div>
-                            <button class="btn btn-ghost" type="button">Je participe</button>
-                        </li>
-                    </ul>
-                </div>
-                <form class="events-form" aria-label="Inscription ateliers">
-                    <h3>Recevez les prochaines dates en avant-premi&egrave;re</h3>
-                    <label for="events-name" class="sr-only">Nom complet</label>
-                    <input type="text" id="events-name" name="events-name" placeholder="Nom complet" required>
-                    <label for="events-email" class="sr-only">Adresse e-mail</label>
-                    <input type="email" id="events-email" name="events-email" placeholder="Adresse e-mail" required>
-                    <label for="events-interest" class="sr-only">Centre d&rsquo;int&eacute;r&ecirc;t</label>
-                    <select id="events-interest" name="events-interest">
-                        <option value="">Choisissez votre envie</option>
-                        <option value="sourdough">Roul&eacute;s &amp; p&acirc;te lev&eacute;e</option>
-                        <option value="pastry">P&acirc;tisserie v&eacute;g&eacute;tale</option>
-                        <option value="drinks">Boissons &amp; lattes</option>
-                        <option value="wholesale">Offre professionnelle</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary">Me pr&eacute;venir</button>
-                    <p class="form-footnote">Deux e-mails par mois, des recettes et z&eacute;ro spam.</p>
-                </form>
+        <section class="events-modern" id="events" aria-labelledby="events-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker">Ateliers &amp; dégustations</span>
+                <h2 id="events-heading">Rejoignez nos expériences sucrées</h2>
+            </div>
+            <div class="events-grid">
+                <article class="event-card" data-animate>
+                    <div class="event-card-header">
+                        <span class="event-tag">Atelier pratique</span>
+                        <span class="event-date">12 oct. · 10:00</span>
+                    </div>
+                    <h3>Atelier roulés moelleux</h3>
+                    <p>Fabriquez votre propre pâte végétale et repartez avec une boîte de roulés prêts à cuire.</p>
+                    <div class="event-meta">
+                        <span class="event-duration">⏱ 2h30</span>
+                        <span class="event-spots">👥 8 places</span>
+                    </div>
+                    <button class="btn btn-outline" type="button">S'inscrire sur liste</button>
+                </article>
+
+                <article class="event-card" data-animate>
+                    <div class="event-card-header">
+                        <span class="event-tag event-tag-premium">Dégustation</span>
+                        <span class="event-date">25 oct. · 18:00</span>
+                    </div>
+                    <h3>Soirée accords desserts &amp; lattes</h3>
+                    <p>Dégustation de roulés salés/sucrés avec boissons végétales, suivie d'une visite de l'atelier.</p>
+                    <div class="event-meta">
+                        <span class="event-duration">⏱ 1h30</span>
+                        <span class="event-spots">👥 12 places</span>
+                    </div>
+                    <button class="btn btn-outline" type="button">Réserver</button>
+                </article>
+
+                <article class="event-card" data-animate>
+                    <div class="event-card-header">
+                        <span class="event-tag event-tag-master">Masterclass</span>
+                        <span class="event-date">8 nov. · 16:00</span>
+                    </div>
+                    <h3>Masterclass cannelés végétaux</h3>
+                    <p>Maîtrisez la cuisson crousti-fondante, du choix des moules à la caramélisation parfaite.</p>
+                    <div class="event-meta">
+                        <span class="event-duration">⏱ 3h</span>
+                        <span class="event-spots">👥 6 places</span>
+                    </div>
+                    <button class="btn btn-outline" type="button">Je participe</button>
+                </article>
             </div>
         </section>
 
@@ -755,31 +667,30 @@
             <div class="community-shell">
                 <div class="community-layout">
                     <div class="community-copy">
-                        <span class="section-kicker">Communaut&eacute;</span>
-                        <h2 id="community-heading">Partagez vos pauses sucr&eacute;es avec <span
+                        <span class="section-kicker">COMMUNITY</span>
+                        <h2 id="community-heading">Share Your Sweet Moments With <span
                                 class="highlight">#CinnamonaByMona</span></h2>
-                        <p class="community-lede">Chaque jour, notre cercle gourmand s&rsquo;agrandit&nbsp;: brunchs en
-                            terrasse, plateaux livr&eacute;s &agrave; minuit, ateliers improvis&eacute;s. Rejoignez les
-                            cr&eacute;ateurs et cr&eacute;atrices qui font rayonner Cinnamona partout &agrave;
-                            Marrakech.</p>
+                        <p class="community-lede">Every day, our foodie circle grows: terrace brunches,
+                            midnight deliveries, spontaneous workshops. Join the creators making Cinnamona
+                            shine all across Marrakech.</p>
                         <dl class="community-highlights">
                             <div>
                                 <dt>+250</dt>
-                                <dd>photos tagu&eacute;es chaque mois</dd>
+                                <dd>photos tagged each month</dd>
                             </div>
                             <div>
                                 <dt>7j/7</dt>
-                                <dd>moments partag&eacute;s de jour comme de nuit</dd>
+                                <dd>moments shared day and night</dd>
                             </div>
                             <div>
                                 <dt>1 hashtag</dt>
-                                <dd>#CinnamonaByMona pour vous retrouver</dd>
+                                <dd>#CinnamonaByMona to find you</dd>
                             </div>
                         </dl>
                         <div class="community-actions">
-                            <a class="btn btn-primary" href="https://www.instagram.com" target="_blank"
-                                rel="noreferrer">Suivez-nous sur Instagram</a>
-                            <a class="btn btn-outline" href="#newsletter-heading">Partager votre photo</a>
+                            <a class="btn btn-primary"
+                                href="https://www.instagram.com/goldensweetchefaziza/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#"
+                                target="_blank" rel="noopener noreferrer">Follow Us on Instagram</a>
                         </div>
                     </div>
                     <div class="community-media">
@@ -861,18 +772,6 @@
             </div>
         </section>
 
-        <section class="press" aria-labelledby="press-heading" data-animate>
-            <div class="section-header">
-                <span class="section-kicker">Presse &amp; partenaires</span>
-                <h2 id="press-heading">Ils ont go&ucirc;t&eacute; et approuv&eacute; nos roul&eacute;s</h2>
-            </div>
-            <div class="press-logos" role="list">
-                <span role="listitem">Atlas Food Guide</span>
-                <span role="listitem">Marrakech Vegan Tour</span>
-                <span role="listitem">Plant Pastry Journal</span>
-                <span role="listitem">Radio Medina FM</span>
-            </div>
-        </section>
 
         <section class="specials" aria-labelledby="specials-heading" data-animate>
             <div class="section-header">
@@ -895,98 +794,45 @@
             </div>
         </section>
 
-        <section class="cta-banner" id="shop" data-animate>
-            <div class="cta-content">
-                <h2>Envie d’une pause sucr&eacute;e&nbsp;?</h2>
-                <p>Parcourez toute notre collection de roul&eacute;s, cannel&eacute;s, past&eacute;is et boissons
-                    maison.</p>
-                <a href="#featured" class="btn btn-dark">Commander maintenant</a>
-            </div>
-        </section>
-
-        <section class="newsletter" aria-labelledby="newsletter-heading" data-animate>
-            <div class="newsletter-inner">
-                <span class="section-kicker">Newsletter</span>
-                <h2 id="newsletter-heading">Recevez nos menus saisonniers et offres de nuit</h2>
-                <form class="newsletter-form">
-                    <label for="full-name" class="sr-only">Nom complet</label>
-                    <input type="text" id="full-name" name="full-name" placeholder="Nom complet" required>
-                    <label for="email" class="sr-only">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
-                    <button type="submit" class="btn btn-primary">Je m&rsquo;inscris</button>
-                </form>
+        <section class="compact-cta" id="shop" data-animate>
+            <div class="compact-cta-inner">
+                <div class="cta-message">
+                    <span class="cta-urgency"><img src="fire.png" alt="Fire" class="fire-icon"> Limited Fresh Batches
+                        Daily</span>
+                    <h2>Craving Something Sweet & Healthy?</h2>
+                    <p>100% Healthy, sugar-free, gluten-free treats made fresh every day</p>
+                </div>
+                <div class="cta-action">
+                    <a href="pages/catalogue.html" class="cta-btn-premium">
+                        <span class="btn-text">Order Now</span>
+                        <span class="btn-badge">Same-Day Delivery</span>
+                    </a>
+                    <span class="cta-trust">⭐ 4.9/5 from 247+ orders</span>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <h2>Cinnamona by Mona</h2>
-                <p>27 Lotissement Bouaamriya Assif C, Marrakech 40000</p>
-                <p>Ouverts 24h/24 &middot; 7j/7</p>
-                <p><a href="tel:+212603981438">+212 603 981 438</a> &middot; <a
-                        href="mailto:bonjour@cinnamona.ma">bonjour@cinnamona.ma</a></p>
-            </div>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <h3>Explorer</h3>
-                <ul>
-                    <li><a href="#featured">Boutique</a></li>
-                    <li><a href="#wholesale">Offre pro</a></li>
-                    <li><a href="#policies">Politique &amp; mentions</a></li>
-                </ul>
-            </nav>
-            <div class="footer-social">
-                <h3>Suivez-nous</h3>
-                <ul>
-                    <li>
-                        <a href="https://www.instagram.com" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
-                                </rect>
-                                <circle cx="12" cy="12" r="4.5" fill="none" stroke-width="1.5"></circle>
-                                <circle cx="17.5" cy="6.5" r="1"></circle>
-                            </svg>
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
-                                </rect>
-                                <path
-                                    d="M14 10h2V7h-2c-2 0-3.5 1.5-3.5 3.5V12H9v3h1.5v5h3v-5H15l.5-3h-3v-1c0-.6.4-1 1-1z"
-                                    fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                            <span class="sr-only">Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.pinterest.com" aria-label="Pinterest">
-                            <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke-width="1.5">
-                                </rect>
-                                <path
-                                    d="M12 7c-2.2 0-4 1.7-4 4 0 1.7 1.1 3.1 2.6 3.7-.1-.3-.1-.6 0-.9L11 12c-.2-.4-.4-.8-.4-1.3 0-1 .6-1.7 1.6-1.7.8 0 1.3.5 1.3 1.3 0 .5-.2 1-.3 1.5-.1.3.1.7.4.8 1.2-.5 2-1.7 2-3 0-1.9-1.7-3.6-3.6-3.6z"
-                                    fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                            <span class="sr-only">Pinterest</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p id="policies"><a href="#">Politique de confidentialit&eacute;</a> &middot; <a href="#">Politique de
-                    remboursement</a> &middot; <a href="#">Conditions d&rsquo;utilisation</a></p>
-            <p class="footer-credit">Site cr&eacute;&eacute; avec amour par Cinnamona by Mona &middot; &copy; <span
-                    id="current-year"></span></p>
-        </div>
-    </footer>
+    <!-- Footer loaded dynamically from components/footer.html -->
+    <div id="footer-placeholder"></div>
 
+    <script src="js/header-loader.js"></script>
+    <script src="js/footer-loader.js"></script>
+    <script type="module">
+        import { initProvenanceGlobe } from './js/globe.js';
+        // Initialize globe when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initProvenanceGlobe);
+        } else {
+            initProvenanceGlobe();
+        }
+    </script>
+    <script src="js/cart-manager.js"></script>
+    <script>
+        // Initialize cart manager
+        window.cartManager = new CartManager();
+    </script>
+    <script src="js/modal.js"></script>
     <script src="script.js" type="module"></script>
 </body>
 

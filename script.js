@@ -393,35 +393,15 @@ document.addEventListener("DOMContentLoaded", () => {
         start();
     });
 
-    const cartDisplay = document.getElementById("cart-count");
-    let cartCount = Number.parseInt(cartDisplay?.textContent ?? "0", 10) || 0;
+    // Cart Management - handled by CartManager class (loaded from js/cart-manager.js)
+    // Initialize CartManager
+    if (typeof CartManager !== 'undefined') {
+        window.cartManager = new CartManager();
+    }
 
-    const updateCart = () => {
-        if (cartDisplay) {
-            cartDisplay.textContent = cartCount.toString();
-        }
-    };
+    // Quick view functionality handled by modal.js
 
-    document.querySelectorAll("[data-add-to-cart]").forEach((button) => {
-        button.addEventListener("click", () => {
-            cartCount += 1;
-            updateCart();
-            const nomProduit = button.dataset.addToCart || "produit";
-            const suffixe = cartCount === 1 ? "" : "s";
-            announce(`${nomProduit} ajoute au panier. Le panier contient desormais ${cartCount} article${suffixe}.`);
-            button.classList.add("is-added");
-            window.setTimeout(() => button.classList.remove("is-added"), 400);
-        });
-    });
-
-    document.querySelectorAll("[data-quickview]").forEach((button) => {
-        button.addEventListener("click", () => {
-            const name = button.dataset.quickview || "ce produit";
-            toast.show(`Previsualisation de ${name}. Consultez la fiche produit pour en savoir plus.`);
-            announce(`Previsualisation prete pour ${name}`);
-        });
-    });
-
+    // Initialize circular gallery
     const galleryRoots = document.querySelectorAll("[data-circular-gallery]");
     if (galleryRoots.length) {
         galleryRoots.forEach((root) => {

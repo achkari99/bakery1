@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog | Cinnamona by Mona</title>
+    <meta name="description"
+        content="Browse our full range of plant-based cinnamon rolls, cannelés, pastéis de nata and drinks.">
+    <meta name="theme-color" content="#7f9c89">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/cart-hover.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/interactive.css">
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Shared header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <section class="page-hero" data-animate>
+            <div class="page-hero-content">
+                <span class="section-kicker" data-i18n="catalogue.hero_subtitle">Discover our full range of artisan
+                    treats</span>
+                <h1 data-i18n="catalogue.hero_title">Our Products</h1>
+            </div>
+        </section>
+
+        <section class="section-container" data-animate>
+            <!-- Filters -->
+            <div class="catalog-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n="catalogue.filter_all">All</button>
+                <button class="filter-btn" data-filter="rolls" data-i18n="catalogue.filter_rolls">Cinnamon
+                    Rolls</button>
+                <button class="filter-btn" data-filter="canneles"
+                    data-i18n="catalogue.filter_canneles">Cannelés</button>
+                <button class="filter-btn" data-filter="pasteis" data-i18n="catalogue.filter_pasteis">Pastéis</button>
+                <button class="filter-btn" data-filter="drinks" data-i18n="catalogue.filter_drinks">Drinks</button>
+                <button class="filter-btn" data-filter="boxes" data-i18n="catalogue.filter_boxes">Gift Boxes</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <!-- Cinnamon Rolls -->
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Soft dough, Ceylon cinnamon and almond milk vanilla glaze."
+                    data-tags="Vegan,Egg-Free">
+                    <div class="product-media">
+                        <span class="product-badge">Classic</span>
+                        <img src="../images/image13.png" alt="Classic Cinnamon Roll">
+                        <span class="product-category-overlay">Classic</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Classic Cinnamon Roll</h3>
+                            <p class="product-price">20&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Classic Cinnamon Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Classic Cinnamon Roll">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Amlou caramel, crunchy pecans and melting cinnamon center."
+                    data-tags="Dairy-Free,Signature">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright">Signature</span>
+                        <img src="../images/image12.png" alt="Caramel Pecan Roll">
+                        <span class="product-category-overlay">Signature</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Caramel Pecan Roll</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Caramel Pecan Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Caramel Pecan Roll">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Double chocolate glaze, roasted hazelnuts and vegan caramel."
+                    data-tags="Lactose-Free,Roasted">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--calm">Hazelnuts</span>
+                        <img src="../images/image10.png" alt="Chocolate Hazelnut Roll">
+                        <span class="product-category-overlay">Hazelnuts</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Chocolate Hazelnut Roll</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Chocolate Hazelnut Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Chocolate Hazelnut Roll">Add
+                                to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Homemade pistachio cream, roasted almonds and matcha glaze."
+                    data-tags="Limited Edition,No Colorants">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright">Pistachio</span>
+                        <img src="../images/image5.png" alt="Pistachio Almond Roll">
+                        <span class="product-category-overlay">Pistachio</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pistachio Almond Roll</h3>
+                            <p class="product-price">40&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Pistachio Almond Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Pistachio Almond Roll">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Light vanilla cream, raspberry coulis and pink glaze."
+                    data-tags="Fruity,Serve Fresh">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--calm">Raspberry</span>
+                        <img src="../images/image8.png" alt="Raspberry Roll">
+                        <span class="product-category-overlay">Raspberry</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Raspberry Roll</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Raspberry Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Raspberry Roll">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product data-category="rolls"
+                    data-description="Mocha glaze with Guéliz coffee beans and orange blossom."
+                    data-tags="Energy Boost,Lactose-Free">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright">Mocha</span>
+                        <img src="../images/image9.png" alt="Moroccan Coffee Roll">
+                        <span class="product-category-overlay">Mocha</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Moroccan Coffee Roll</h3>
+                            <p class="product-price">30&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Moroccan Coffee Roll">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Moroccan Coffee Roll">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cannelés -->
+                <article class="product-card" data-product data-category="canneles"
+                    data-description="Soft vanilla center, caramelized shell and orange blossom."
+                    data-tags="Per Unit,Caramelized">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright">Cannelés</span>
+                        <img src="../images/image4.png" alt="Almond Milk Cannelés">
+                        <span class="product-category-overlay">Cannelés</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Almond Milk Cannelés</h3>
+                            <p class="product-price">10&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Almond Milk Cannelés">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Cannelés végétaux">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pastéis -->
+                <article class="product-card" data-product data-category="pasteis"
+                    data-description="Vanilla custard, flaky pastry and caramelized muscovado."
+                    data-tags="Per Unit,Fresh Baked">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--calm">Pastéis</span>
+                        <img src="../images/image2.png" alt="Plant-Based Pastéis de Nata">
+                        <span class="product-category-overlay">Pastéis</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pastéis de Nata</h3>
+                            <p class="product-price">8&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Pastéis de Nata">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Pastéis de nata végétaux">Add
+                                to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Gift Boxes -->
+                <article class="product-card" data-product data-category="boxes"
+                    data-description="An assortment of our iconic rolls: vanilla, caramel, chocolate, raspberry and pistachio."
+                    data-tags="Gift,6 Flavors">
+                    <div class="product-media">
+                        <span class="product-badge">Box</span>
+                        <img src="../images/image7.png" alt="Discovery Box - 6 Rolls">
+                        <span class="product-category-overlay">Box</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Discovery Box - 6 Rolls</h3>
+                            <p class="product-price">110&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Discovery Box - 6 Rolls">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Box découverte 6 roulés">Add
+                                to Cart</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Drinks -->
+                <article class="product-card" data-product data-category="drinks"
+                    data-description="Creamy oat milk, house-made pistachio paste and a hint of vanilla."
+                    data-tags="Hot or Iced,Oat Milk">
+                    <div class="product-media">
+                        <span class="product-badge">Drinks</span>
+                        <img src="../images/image11.png" alt="Pistachio Latte">
+                        <span class="product-category-overlay">Drinks</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3>Pistachio Latte</h3>
+                            <p class="product-price">35&nbsp;MAD</p>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-outline btn-small" type="button"
+                                data-quickview="Pistachio Latte">Quick View</button>
+                            <button class="btn btn-ghost" type="button" data-add-to-cart="Pistachio Latte">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-banner" data-animate>
+            <div class="cta-content">
+                <h2>Custom orders welcome!</h2>
+                <p>Need a special flavor or larger quantity? We're happy to create custom orders.</p>
+                <a href="contact.html" class="btn btn-dark">Request Custom Order</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer loaded dynamically from components/footer.html -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/cart-manager.js"></script>
+    <script src="../script.js" type="module"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/i18n.js" type="module"></script>
+    <script>
+
+        // Simple filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="../js/header-loader.js"></script>
+    <script src="../js/footer-loader.js"></script>
+</body>
+
+</html>
