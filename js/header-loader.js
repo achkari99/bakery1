@@ -23,6 +23,21 @@
                     });
                 }
 
+                // Highlight active link
+                const currentPath = window.location.pathname;
+                const currentFile = currentPath.split('/').pop() || 'index.html';
+
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    const linkFile = linkHref.split('/').pop();
+
+                    if (currentFile === linkFile) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+
                 // Dispatch headerLoaded event for cart manager
                 window.dispatchEvent(new Event('headerLoaded'));
                 console.log('[HeaderLoader] Header loaded, event dispatched');
