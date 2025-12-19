@@ -1,6 +1,7 @@
 /**
- * TYPING-ANIMATION.JS - Word-level typing effect for hero headline
- * Only animates the final word, keeping the rest of the sentence static
+ * Typing Animation for Hero Section
+ * Animates typing effect for h1 title with multiple phrases
+ * Only animates the words that change between phrases
  */
 
 class TypingAnimation {
@@ -9,91 +10,105 @@ class TypingAnimation {
         this.textElement = element.querySelector('.typed-text');
         this.cursorElement = element.querySelector('.typing-cursor');
 
-        // Parse words from data attribute
-        try {
-            this.words = JSON.parse(element.dataset.typingWords);
-        } catch (e) {
-            console.error('Invalid typing words data:', e);
-            this.words = ['regret'];
-        }
-
-        this.currentWordIndex = 0;
-        this.currentCharIndex = 0;
-        this.isDeleting = false;
-        this.isPaused = false;
-        this.hasStarted = false;
-
-        // Timing configuration (in milliseconds)
-        this.typingSpeed = 80;        // Speed of typing characters
-        this.deletingSpeed = 40;      // Speed of deleting characters
-        this.pauseAfterTyping = 2500; // Pause when word is complete
-        this.pauseAfterDeleting = 300; // Brief pause before typing next word
-        this.initialDelay = 2000;      // Delay before first word change
-
-        this.init();
-    }
-
-    init() {
-        // Start with the first word already displayed
-        // Wait for initial delay before starting animation
-        setTimeout(() => {
-            this.hasStarted = true;
-            this.isDeleting = true;
-            this.currentCharIndex = this.words[0].length;
-            this.animate();
-        }, this.initialDelay);
-    }
-
-    animate() {
-        if (!this.hasStarted) return;
-
-        const currentWord = this.words[this.currentWordIndex];
-
-        if (this.isPaused) {
-            // Handle pause state
+        if (!this.textElement || !this.cursorElement) {
+            console.error('Typing animation requires .typed-text and .typing-cursor elements');
             return;
         }
 
-        if (!this.isDeleting && this.currentCharIndex <= currentWord.length) {
-            // Typing phase
-            this.textElement.textContent = currentWord.substring(0, this.currentCharIndex);
-            this.currentCharIndex++;
-
-            if (this.currentCharIndex > currentWord.length) {
-                // Finished typing, pause before deleting
-                this.isPaused = true;
-                setTimeout(() => {
-                    this.isPaused = false;
-                    this.isDeleting = true;
-                    this.animate();
-                }, this.pauseAfterTyping);
-                return;
-            }
-
-            setTimeout(() => this.animate(), this.typingSpeed);
-
-        } else if (this.isDeleting && this.currentCharIndex >= 0) {
-            // Deleting phase
-            this.textElement.textContent = currentWord.substring(0, this.currentCharIndex);
-            this.currentCharIndex--;
-
-            if (this.currentCharIndex < 0) {
-                // Finished deleting, move to next word
-                this.isDeleting = false;
-                this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
-                this.currentCharIndex = 0;
-
-                // Pause before typing next word
-                this.isPaused = true;
-                setTimeout(() => {
-                    this.isPaused = false;
-                    this.animate();
-                }, this.pauseAfterDeleting);
-                return;
-            }
-
-            setTimeout(() => this.animate(), this.deletingSpeed);
+        // Get words from data attribute
+        const wordsAttr = element.getAttribute('data-typing-words');
+        try {
+            this.phrases = JSON.parse(wordsAttr);
+        } catch (e) {
+            console.error('Invalid JSON in data-typing-words attribute');
+            return;
         }
+
+        this.currentPhraseIndex = 0;
+        this.typeSpeed = 80; // ms per character
+        this.deleteSpeed = 40; // ms per character when deleting
+        this.pauseAfterPhrase = 2500; // pause after typing complete phrase
+
+        this.start();
+    }
+
+    // Find common prefix between two strings
+    findCommonPrefix(str1, str2) {
+        let i = 0;
+        while (i < str1.length && i < str2.length && str1[i] === str2[i]) {
+            i++;
+        }
+        return str1.substring(0, i);
+    }
+
+    start() {
+        // Start with the first phrase
+        const firstPhrase = this.phrases[0];
+        this.textElement.textContent = firstPhrase;
+
+        setTimeout(() => {
+            this.nextPhrase();
+        }, this.pauseAfterPhrase);
+    }
+
+    nextPhrase() {
+        const currentPhrase = this.phrases[this.currentPhraseIndex];
+        const nextIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
+        const nextPhrase = this.phrases[nextIndex];
+
+        // Find the common prefix
+        const commonPrefix = this.findCommonPrefix(currentPhrase, nextPhrase);
+        const currentSuffix = currentPhrase.substring(commonPrefix.length);
+        const nextSuffix = nextPhrase.substring(commonPrefix.length);
+
+        // Delete the current suffix, then type the new suffix
+        this.deleteText(commonPrefix, currentSuffix, () => {
+            this.typeText(commonPrefix, nextSuffix, () => {
+                this.currentPhraseIndex = nextIndex;
+                setTimeout(() => this.nextPhrase(), this.pauseAfterPhrase);
+            });
+        });
+    }
+
+    deleteText(prefix, suffix, callback) {
+        if (suffix.length === 0) {
+            callback();
+            return;
+        }
+
+        const deleteStep = () => {
+            suffix = suffix.substring(0, suffix.length - 1);
+            this.textElement.textContent = prefix + suffix;
+
+            if (suffix.length === 0) {
+                setTimeout(callback, 200);
+            } else {
+                setTimeout(deleteStep, this.deleteSpeed);
+            }
+        };
+
+        deleteStep();
+    }
+
+    typeText(prefix, suffix, callback) {
+        if (suffix.length === 0) {
+            callback();
+            return;
+        }
+
+        let currentIndex = 0;
+        const typeStep = () => {
+            currentIndex++;
+            this.textElement.textContent = prefix + suffix.substring(0, currentIndex);
+
+            if (currentIndex === suffix.length) {
+                callback();
+            } else {
+                setTimeout(typeStep, this.typeSpeed);
+            }
+        };
+
+        typeStep();
     }
 }
 
