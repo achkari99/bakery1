@@ -2,8 +2,8 @@
     "meta": {
         "lang": "en",
         "dir": "ltr",
-        "title": "Golden Sweet | Dietary Pastry in Tangier",
-        "description": "Golden Sweet creates artisan plant-based cinnamon rolls and pastries in Tangier. Order your 100% homemade treats, available 24/7."
+        "title": "Golden Sweet | Dietary Pastry in Tetouan & Tangier",
+        "description": "Golden Sweet creates artisan plant-based cinnamon rolls and pastries in Tetouan & Tangier. Order your 100% homemade treats, available 24/7."
     },
     "nav": {
         "home": "Home",
@@ -18,11 +18,11 @@
         "order": "Order Now"
     },
     "promo": {
-        "banner": "Available delivery in Tangier · Open 24/7"
+        "banner": "Available delivery in Tetouan & Tangier · Open 24/7"
     },
     "home": {
         "hero_kicker": "100% Plant-Based Cinnamon Rolls",
-        "hero_title": "Artisan treats, day and night in Marrakech",
+        "hero_title": "Artisan treats, day and night in Tetouan & Tangier",
         "hero_description": "Our soft rolls, golden cannelés and creamy drinks are handcrafted and delivered warm, even at 3 AM.",
         "hero_cta_menu": "Discover the menu",
         "hero_cta_bestsellers": "View bestsellers",
@@ -37,13 +37,13 @@
         "value3_title": "Seasonal & Local",
         "value3_desc": "Our flavors follow Moroccan harvests: Azemmour pistachios, Souss amlou, locally roasted coffee.",
         "value4_title": "Transparent & Supportive",
-        "value4_desc": "Quality, traceability and support for Marrakech artisans: every roll funds local initiatives.",
+        "value4_desc": "Quality, traceability and support for local artisans: every roll funds community initiatives.",
         "story_kicker": "Our Story",
-        "story_heading": "From family kitchen to Marrakech's favorite sweet spot",
-        "story_intro": "Mona created Cinnamona to offer 100% plant-based cinnamon rolls to loved ones. Orders multiplied quickly, then night deliveries, until we opened our workshop in Assif C.",
+        "story_heading": "From family kitchen to the north's favorite sweet spot",
+        "story_intro": "Chef Aziza created Golden Sweet to offer 100% plant-based cinnamon rolls to loved ones. Orders multiplied quickly, then night deliveries, until we opened our workshop in Tetouan.",
         "timeline_2019": "First Home Rolls",
-        "timeline_2019_desc": "One box, six soft rolls and word-of-mouth that spread across Marrakech in weeks.",
-        "timeline_2021": "Assif C Workshop",
+        "timeline_2019_desc": "One box, six soft rolls and word-of-mouth that spread across Tetouan in weeks.",
+        "timeline_2021": "Tetouan Workshop",
         "timeline_2021_desc": "Installation of our plant-based lab and launch of pistachio, amlou and Moroccan coffee flavors.",
         "timeline_2022": "Night Team",
         "timeline_2022_desc": "24/7 production to satisfy hotels, cafés and late-night neighbors.",
@@ -53,8 +53,8 @@
         "provenance_heading": "Carefully chosen Moroccan partners",
         "provenance_desc": "Every roll starts with responsible sourcing. We select our nuts, coffees and aromatic plants from producers who share our plant-based vision.",
         "chef_kicker": "Chef Portrait",
-        "chef_heading": "Meet Mona, creator of Cinnamona rolls",
-        "chef_desc": "Self-taught and passionate, Mona reimagines childhood pastries in plant-based versions. She works soft textures, pistachio, amlou and Moroccan coffee flavors for generous rolls.",
+        "chef_heading": "Meet Chef Aziza, creator of Golden Sweet rolls",
+        "chef_desc": "Self-taught and passionate, Chef Aziza reimagines childhood pastries in plant-based versions. She works soft textures, pistachio, amlou and Moroccan coffee flavors for generous rolls.",
         "chef_technique": "Signature technique: slow dough rise for incomparable softness.",
         "chef_ingredient": "Signature ingredient: homemade amlou with vegan honey, roasted weekly.",
         "chef_commitment": "Commitment: training young pastry chefs in plant-based recipes.",
@@ -67,7 +67,7 @@
         "bestsellers_kicker": "Bestsellers",
         "bestsellers_heading": "Treats that return every night",
         "testimonials_kicker": "They're talking about us",
-        "testimonials_heading": "The Cinnamona community speaks",
+        "testimonials_heading": "The Golden Sweet community speaks",
         "journal_kicker": "Journal",
         "journal_heading": "Recipes, behind-the-scenes and tasty ideas",
         "journal_cta": "View all articles",
@@ -78,8 +78,8 @@
         "events_form_note": "Two emails per month, recipes and zero spam.",
         "community_kicker": "Community",
         "community_heading": "Share your sweet moments with",
-        "community_hashtag": "#CinnamonaByMona",
-        "community_desc": "Every day, our gourmet circle grows: terrace brunches, midnight deliveries, impromptu workshops. Join the creators who make Cinnamona shine throughout Marrakech.",
+        "community_hashtag": "#GoldenSweetPatisserie",
+        "community_desc": "Every day, our gourmet circle grows: terrace brunches, midnight deliveries, impromptu workshops. Join the creators who make Golden Sweet shine throughout the north.",
         "community_photos": "photos tagged each month",
         "community_247": "moments shared day and night",
         "community_1hashtag": "to find you",
@@ -103,16 +103,16 @@
         "newsletter_cta": "Sign me up"
     },
     "lamaison": {
-        "title": "Our House | Cinnamona by Mona",
-        "hero_title": "The Cinnamona Story",
-        "hero_subtitle": "From a home kitchen to Marrakech's beloved pastry destination",
+        "title": "Our House | Golden Sweet",
+        "hero_title": "The Golden Sweet Story",
+        "hero_subtitle": "From a home kitchen to Tetouan's beloved pastry destination",
         "history_heading": "Our Journey",
         "values_heading": "What We Stand For",
         "team_heading": "Meet Our Team",
         "vision_heading": "Our Vision"
     },
     "laboratoire": {
-        "title": "The Laboratory | Cinnamona by Mona",
+        "title": "The Laboratory | Golden Sweet",
         "hero_title": "Where Magic Happens",
         "hero_subtitle": "Discover our artisan process and quality standards",
         "process_heading": "Our Process",
@@ -122,9 +122,9 @@
         "gallery_heading": "Inside the Lab"
     },
     "boutiques": {
-        "title": "Our Shops | Cinnamona by Mona",
+        "title": "Our Shops | Golden Sweet",
         "hero_title": "Visit Us",
-        "hero_subtitle": "Find a Cinnamona location near you",
+        "hero_subtitle": "Find a Golden Sweet location near you",
         "map_heading": "All Locations",
         "hours": "Opening Hours",
         "phone": "Phone",
@@ -132,7 +132,7 @@
         "whatsapp": "Chat on WhatsApp"
     },
     "services": {
-        "title": "Our Services | Cinnamona by Mona",
+        "title": "Our Services | Golden Sweet",
         "hero_title": "Services Tailored to You",
         "hero_subtitle": "From catering to workshops, we've got you covered",
         "catering_title": "Catering",
@@ -148,7 +148,7 @@
         "quote_cta": "Request a Quote"
     },
     "catalogue": {
-        "title": "Catalog | Cinnamona by Mona",
+        "title": "Catalog | Golden Sweet",
         "hero_title": "Our Products",
         "hero_subtitle": "Discover our full range of artisan treats",
         "filter_all": "All",
@@ -162,7 +162,7 @@
         "allergens": "Allergens"
     },
     "presse": {
-        "title": "Press & Awards | Cinnamona by Mona",
+        "title": "Press & Awards | Golden Sweet",
         "hero_title": "In the Press",
         "hero_subtitle": "Media coverage and recognition",
         "articles_heading": "Press Articles",
@@ -170,7 +170,7 @@
         "social_heading": "Social Mentions"
     },
     "faq": {
-        "title": "FAQ | Cinnamona by Mona",
+        "title": "FAQ | Golden Sweet",
         "hero_title": "Frequently Asked Questions",
         "hero_subtitle": "Find answers to common questions",
         "cat_allergens": "Allergens",
@@ -181,7 +181,7 @@
         "cat_general": "General"
     },
     "contact": {
-        "title": "Contact | Cinnamona by Mona",
+        "title": "Contact | Golden Sweet",
         "hero_title": "Get in Touch",
         "hero_subtitle": "We'd love to hear from you",
         "form_name": "Full Name",
@@ -197,7 +197,7 @@
         "form_submit": "Send Message",
         "form_success": "Thank you! We'll get back to you soon.",
         "info_heading": "Contact Information",
-        "info_address": "27 Lotissement Bouaamriya Assif C, Marrakech 40000",
+        "info_address": "Route de Sebta, M'diq-Tetouan",
         "info_hours": "Open 24/7",
         "info_response": "We typically respond within 24 hours",
         "social_heading": "Follow Us"
