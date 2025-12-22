@@ -8,12 +8,12 @@
 
     // Configuration
     const CONFIG = {
-        width: 450,      // Single page width (reduced from 550)
-        height: 600,     // Single page height (reduced from 733, 4:3 ratio)
+        width: 550,      // Single page width
+        height: 733,     // Single page height (4:3 ratio)
         minWidth: 315,
-        maxWidth: 450,
+        maxWidth: 550,
         minHeight: 420,
-        maxHeight: 600,
+        maxHeight: 733,
         showCover: true,
         mobileScrollSupport: false,
         swipeDistance: 30,
