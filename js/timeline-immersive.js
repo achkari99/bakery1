@@ -132,6 +132,7 @@ class ImmersiveTimeline {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     updateProgress();
+                    this.updateYearTransparency();
                     ticking = false;
                 });
                 ticking = true;
@@ -140,6 +141,43 @@ class ImmersiveTimeline {
 
         // Initial update
         updateProgress();
+        this.updateYearTransparency();
+    }
+
+    updateYearTransparency() {
+        this.sections.forEach(section => {
+            const year = section.querySelector('.timeline-year-huge');
+            if (!year) return;
+
+            const rect = section.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+
+            // Sticky threshold is 10vh, matching CSS top: 10vh
+            const stickThreshold = viewHeight * 0.1;
+
+            // Only process if section is somewhat visible
+            if (rect.bottom > 0 && rect.top < viewHeight) {
+                // Calculate how far we've scrolled past the "stick point"
+                const scrolledPastStick = stickThreshold - rect.top;
+
+                if (scrolledPastStick > 0 && section.classList.contains('active')) {
+                    // We are scrolling past the stick point
+                    // Fade out much faster (shorter distance) and deeper
+                    const maxFadeDistance = 250; // Reduced from 600 for faster effect
+                    const fadeProgress = Math.min(1, scrolledPastStick / maxFadeDistance);
+
+                    // Fade down to 5% opacity (almost invisible)
+                    const opacity = Math.max(0.05, 1 - (fadeProgress * 0.95));
+
+                    year.style.opacity = opacity;
+                    year.style.transform = `translateX(0) scale(${1 - fadeProgress * 0.15})`; // Slightly more scale down
+                } else if (section.classList.contains('active')) {
+                    // Reset if active but not yet scrolled deep
+                    year.style.opacity = 1;
+                    year.style.transform = 'translateX(0) scale(1)';
+                }
+            }
+        });
     }
 
     // Keyboard navigation
