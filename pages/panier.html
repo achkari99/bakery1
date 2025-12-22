@@ -60,13 +60,30 @@
     <!-- Footer loaded dynamically from components/footer.html -->
     <div id="footer-placeholder"></div>
 
+    <!-- html2canvas for invoice generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script src="../js/header-loader.js"></script>
     <script src="../js/footer-loader.js"></script>
     <script src="../js/cart-manager.js"></script>
+    <script src="../js/invoice-generator.js"></script>
     <script src="../js/cart-page.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../script.js" type="module"></script>
     <script src="../js/i18n.js" type="module"></script>
+
+    <!-- Add spinning animation for loading state -->
+    <style>
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </body>
 
 </html>

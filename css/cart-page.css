@@ -184,6 +184,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: var(--charcoal);
+    appearance: textfield;
     -moz-appearance: textfield;
 }
 
@@ -293,14 +294,189 @@
     color: var(--sage-dark);
 }
 
+/* Customer Information Form */
+.customer-info-form {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: 0 16px 40px rgba(44, 36, 22, 0.12);
+    border: 1px solid rgba(205, 159, 71, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.customer-info-form h2 {
+    font-size: 1.3rem;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.customer-info-form h2::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(180deg, var(--sage-dark), var(--sage));
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.form-group label svg {
+    color: var(--sage-dark);
+    flex-shrink: 0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid rgba(205, 159, 71, 0.2);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--charcoal);
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 200ms ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--sage-dark);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(205, 159, 71, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input:valid,
+.form-group textarea:valid {
+    border-color: rgba(205, 159, 71, 0.3);
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: rgba(231, 76, 60, 0.4);
+}
+
+/* Proceed to Order Button */
+.cart-proceed-order-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.cart-proceed-order-btn svg {
+    flex-shrink: 0;
+}
+
+/* Back Button */
+.summary-back-button {
+    margin-bottom: 1.5rem;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: var(--sage-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    transition: color 200ms ease, transform 200ms ease;
+}
+
+.btn-back:hover {
+    color: var(--sage);
+    transform: translateX(-4px);
+}
+
+.btn-back svg {
+    flex-shrink: 0;
+}
+
+/* Customer Info Preview */
+.customer-info-preview {
+    background: rgba(205, 159, 71, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--sage-dark);
+}
+
+.preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.preview-item:not(:last-child) {
+    border-bottom: 1px solid rgba(205, 159, 71, 0.15);
+}
+
+.preview-item strong {
+    color: var(--charcoal);
+    font-weight: 600;
+    min-width: 100px;
+}
+
+.preview-item span {
+    color: var(--text);
+    text-align: right;
+    flex: 1;
+}
+
 .cart-checkout-btn,
 .cart-continue-btn {
     width: 100%;
     justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .cart-checkout-btn {
     margin-bottom: 0.75rem;
+}
+
+.cart-checkout-btn svg {
+    flex-shrink: 0;
 }
 
 .cart-empty {

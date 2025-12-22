@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/interactive.css">
     <link rel="stylesheet" href="css/interactive-cta.css">
+    <link rel="stylesheet" href="css/flipbook.css">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -278,29 +279,282 @@
             </div>
         </section>
 
-        <section class="chef-spotlight" id="chef" aria-labelledby="chef-heading" data-animate>
-            <div class="chef-media">
-                <img src="images/image6.png"
-                    alt="Table dress&eacute;e avec roul&eacute;s &agrave; la cannelle et boissons sign&eacute;es Cinnamona"
-                    loading="lazy">
-            </div>
-            <div class="chef-content">
-                <span class="section-kicker">Portrait de cheffe</span>
-                <h2 id="chef-heading">Rencontrez Mona, cr&eacute;atrice des roul&eacute;s Cinnamona</h2>
-                <p>Autodidacte passionn&eacute;e, Mona revisite les p&acirc;tisseries de son enfance en version
-                    v&eacute;g&eacute;tale. Elle travaille les textures fondantes, les parfums de pistache, d’amlou et
-                    de caf&eacute; marocain pour des roul&eacute;s g&eacute;n&eacute;reux.</p>
-                <ul class="chef-highlights">
-                    <li><strong>Technique f&eacute;tiche&nbsp;:</strong> pousse lente de la p&acirc;te pour un moelleux
-                        incomparable.</li>
-                    <li><strong>Ingr&eacute;dient signature&nbsp;:</strong> amlou maison au miel vegan,
-                        torr&eacute;fi&eacute; chaque semaine.</li>
-                    <li><strong>Engagement&nbsp;:</strong> former de jeunes p&acirc;tissier&middot;&egrave;re&middot;s
-                        aux recettes v&eacute;g&eacute;tales.</li>
-                </ul>
-                <div class="chef-actions">
-                    <a class="btn btn-primary" href="#journal">D&eacute;couvrir ses recettes</a>
-                    <a class="btn btn-outline" href="#events">R&eacute;server un atelier</a>
+        <!-- Interactive Flipbook Catalog -->
+        <section class="flipbook-catalog" id="catalog" aria-labelledby="catalog-heading" data-animate>
+            <div class="flipbook-wrapper">
+                <div class="flipbook-header">
+                    <span class="section-kicker">DISCOVER OUR STORY</span>
+                    <h2 id="catalog-heading">The Golden Sweet Experience</h2>
+                    <p>Explore our interactive catalog to discover our journey, products, and vision</p>
+                </div>
+
+                <div id="flipbook-container">
+                    <!-- Page 1: Front Cover -->
+                    <div class="page">
+                        <div class="page-content cover-page">
+                            <div class="cover-logo">Golden Sweet</div>
+                            <div class="cover-tagline">100% Healthy Indulgence</div>
+                            <div class="cover-subtitle">Crafted for your safety and peace of mind, using carefully
+                                selected natural ingredients</div>
+                        </div>
+                    </div>
+
+                    <!-- Page 2: Our Story -->
+                    <div class="page">
+                        <div class="page-content story-page left">
+                            <h3>Our Story</h3>
+                            <p>Golden Sweet was founded in 2019, during the COVID-19 pandemic, when health and immunity
+                                became global priorities. This moment shaped our vision: <strong>indulgence should never
+                                    come at the expense of well-being</strong>.</p>
+                            <p>From day one, we chose to create 100% natural, sugar-free pastries designed to be safe,
+                                balanced, and bring true peace of mind.</p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>2019</strong>
+                                    <p>First sugar-free recipes</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>2021</strong>
+                                    <p>Quality standards established</p>
+                                </div>
+                            </div>
+                            <span class="page-number">2</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 3: Our Philosophy -->
+                    <div class="page">
+                        <div class="page-content story-page right">
+                            <h3>Our Philosophy</h3>
+                            <p>Every pastry we create is built on three core principles:</p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Healthy Ingredients</strong>
+                                    <p>No refined sugar, no harmful additives. Only natural oils (argan, olive, coconut)
+                                        and quality flours (barley, almond, corn).</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Daily Production</strong>
+                                    <p>Freshly prepared every day to ensure quality, safety, and consistent flavor.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Transparency</strong>
+                                    <p>Clear sourcing and support for the local Moroccan community.</p>
+                                </div>
+                            </div>
+                            <span class="page-number">3</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 4: Signature Products -->
+                    <div class="page">
+                        <div class="page-content product-page left">
+                            <h3>Signature Products</h3>
+                            <div class="product-grid-catalog">
+                                <div class="catalog-product">
+                                    <img src="images/image1.png" alt="Classic Cinnamon Roll">
+                                    <h4>Classic Roll</h4>
+                                    <p>20 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image2.png" alt="Chocolate Hazelnut Roll">
+                                    <h4>Chocolate Hazelnut</h4>
+                                    <p>30 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image3.png" alt="Caramel Pecan Roll">
+                                    <h4>Caramel Pecan</h4>
+                                    <p>30 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image_1.png" alt="Pistachio Almond Roll">
+                                    <h4>Pistachio Almond</h4>
+                                    <p>40 MAD</p>
+                                </div>
+                            </div>
+                            <span class="page-number">4</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 5: More Products -->
+                    <div class="page">
+                        <div class="page-content product-page right">
+                            <h3>Seasonal Delights</h3>
+                            <div class="product-grid-catalog">
+                                <div class="catalog-product">
+                                    <img src="images/image_2.png" alt="Pastéis de Nata">
+                                    <h4>Pastéis de Nata</h4>
+                                    <p>8 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image_3.png" alt="Cannelés">
+                                    <h4>Cannelés</h4>
+                                    <p>10 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image(1).png" alt="Discovery Box">
+                                    <h4>Discovery Box</h4>
+                                    <p>110 MAD</p>
+                                </div>
+                                <div class="catalog-product">
+                                    <img src="images/image(2).png" alt="Raspberry Roll">
+                                    <h4>Raspberry Roll</h4>
+                                    <p>30 MAD</p>
+                                </div>
+                            </div>
+                            <span class="page-number">5</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 6: Services -->
+                    <div class="page">
+                        <div class="page-content services-page left">
+                            <h3>Our Services</h3>
+                            <div class="services-list">
+                                <div class="service-item">
+                                    <h4>🎂 Custom Orders</h4>
+                                    <p>Choose a seasonal flavor, a botanical glaze, and we'll create a custom
+                                        centerpiece for your celebrations.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h4>👩‍🍳 Workshops</h4>
+                                    <p>Learn our techniques and create healthy pastries with expert guidance from Chef
+                                        Mona.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h4>🏢 B2B Program</h4>
+                                    <p>Partner with cafes, hotels, and concept stores. 24/7 delivery of our healthy
+                                        products.</p>
+                                </div>
+                            </div>
+                            <span class="page-number">6</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 7: Franchising -->
+                    <div class="page">
+                        <div class="page-content services-page right">
+                            <h3>Franchising</h3>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">Join the Golden Sweet
+                                family and bring our healthy, premium pastries to your city. We provide complete
+                                support, training, and the proven recipes that make us unique.</p>
+                            <div class="services-list">
+                                <div class="service-item">
+                                    <h4>🌍 Global Vision</h4>
+                                    <p>Expansion through franchising while maintaining the same quality, recipes, and
+                                        standards worldwide.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h4>📚 Complete Training</h4>
+                                    <p>Comprehensive training program covering recipes, operations, and quality
+                                        standards.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h4>🤝 Ongoing Support</h4>
+                                    <p>Continuous support to ensure your success and maintain our brand excellence.</p>
+                                </div>
+                            </div>
+                            <span class="page-number">7</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 8: Vision & Goals -->
+                    <div class="page">
+                        <div class="page-content vision-page left">
+                            <h3>Vision & Goals</h3>
+                            <div class="vision-points">
+                                <div class="vision-point">
+                                    <div class="vision-icon">🎯</div>
+                                    <div class="vision-content">
+                                        <h4>Controlled Growth</h4>
+                                        <p>Expand production and menu offerings while preserving freshness, safety, and
+                                            our sugar-free philosophy.</p>
+                                    </div>
+                                </div>
+                                <div class="vision-point">
+                                    <div class="vision-icon">🌱</div>
+                                    <div class="vision-content">
+                                        <h4>Sustainable Practices</h4>
+                                        <p>Support local Moroccan producers and maintain eco-friendly operations.</p>
+                                    </div>
+                                </div>
+                                <div class="vision-point">
+                                    <div class="vision-icon">💚</div>
+                                    <div class="vision-content">
+                                        <h4>Health First</h4>
+                                        <p>Continue innovating with 100% natural ingredients that never compromise on
+                                            safety or taste.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="page-number">8</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 9: Availability -->
+                    <div class="page">
+                        <div class="page-content story-page right">
+                            <h3>Availability</h3>
+                            <p><strong>Crafted in Tetouan</strong>, Golden Sweet is made exclusively with 100% natural
+                                ingredients. To protect freshness, safety, and quality, delivery is currently limited to
+                                <strong>Tangier</strong>.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Why Limited?</strong>
+                                    <p>Delicate products with no preservatives require careful handling.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Our Choice</strong>
+                                    <p>Quality over quantity - we never compromise on freshness.</p>
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>The Solution</strong>
+                                    <p>Franchising is bringing Golden Sweet locally to cities worldwide.</p>
+                                </div>
+                            </div>
+                            <span class="page-number">9</span>
+                        </div>
+                    </div>
+
+                    <!-- Page 10: Back Cover / Contact -->
+                    <div class="page">
+                        <div class="page-content contact-page">
+                            <h3>Get In Touch</h3>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <div class="contact-icon">📍</div>
+                                    <div class="contact-text">
+                                        <h4>Location</h4>
+                                        <p>Tetouan, Morocco</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">📞</div>
+                                    <div class="contact-text">
+                                        <h4>Phone</h4>
+                                        <p>+212 603 981 438</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">📧</div>
+                                    <div class="contact-text">
+                                        <h4>Follow Us</h4>
+                                        <p>@goldensweetchefaziza</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 3rem; text-align: center; font-size: 2rem; opacity: 0.9;">✨</div>
+                            <span class="page-number">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flipbook Controls -->
+                <div class="flipbook-controls">
+                    <button id="prev-btn" class="flip-btn" aria-label="Previous page">←</button>
+                    <div id="page-indicator" class="page-indicator">Page 1 / 10</div>
+                    <button id="next-btn" class="flip-btn" aria-label="Next page">→</button>
                 </div>
             </div>
         </section>
@@ -316,7 +570,7 @@
                     data-tags="Classique,Best-seller">
                     <div class="product-media">
                         <span class="product-badge">Classique</span>
-                        <img src="images/image13.png"
+                        <img src="images/image1.png"
                             alt="Roul&eacute; &agrave; la cannelle napp&eacute; de gla&ccedil;age vanille"
                             loading="lazy">
                         <span class="product-category-overlay">Classique</span>
@@ -339,7 +593,7 @@
                     data-tags="Gourmand,Sans gluten">
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Noisettes</span>
-                        <img src="images/image10.png"
+                        <img src="images/image2.png"
                             alt="Roul&eacute; napp&eacute; de chocolat noir et &eacute;clats de noisettes"
                             loading="lazy">
                         <span class="product-category-overlay">Noisettes</span>
@@ -362,8 +616,7 @@
                     data-tags="Signature,Premium">
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Signature</span>
-                        <img src="images/image12.png" alt="Roul&eacute; caramel aux noix de p&eacute;can"
-                            loading="lazy">
+                        <img src="images/image3.png" alt="Roul&eacute; caramel aux noix de p&eacute;can" loading="lazy">
                         <span class="product-category-overlay">Signature</span>
                     </div>
                     <div class="product-info">
@@ -393,7 +646,7 @@
                     data-tags="Edition limitée,Sans colorant">
                     <div class="product-media">
                         <span class="product-badge">Pistache</span>
-                        <img src="images/image5.png" alt="Roul&eacute; pistache amandes sur assiette graphique"
+                        <img src="images/image_1.png" alt="Roul&eacute; pistache amandes sur assiette graphique"
                             loading="lazy">
                         <span class="product-category-overlay">Pistache</span>
                     </div>
@@ -415,7 +668,7 @@
                     data-tags="Par unité,Cuisson minute">
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Past&eacute;is</span>
-                        <img src="images/image2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s"
+                        <img src="images/image_2.png" alt="Plateau de past&eacute;is de nata dor&eacute;s"
                             loading="lazy">
                         <span class="product-category-overlay">Pastéis</span>
                     </div>
@@ -437,7 +690,7 @@
                     data-tags="Croûte caramélisée,Sans alcool">
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Cannel&eacute;s</span>
-                        <img src="images/image4.png"
+                        <img src="images/image_3.png"
                             alt="Plateau de cannel&eacute;s dor&eacute;s pr&ecirc;ts &agrave; croquer" loading="lazy">
                         <span class="product-category-overlay">Cannelés</span>
                     </div>
@@ -468,7 +721,7 @@
                     data-tags="Idéal brunch,6 saveurs">
                     <div class="product-media">
                         <span class="product-badge">Box</span>
-                        <img src="images/image7.png" alt="Boîte de six roulés Cinnamona aux glaçages variés"
+                        <img src="images/image(1).png" alt="Boîte de six roulés Cinnamona aux glaçages variés"
                             loading="lazy">
                         <span class="product-category-overlay">Box</span>
                     </div>
@@ -490,7 +743,7 @@
                     data-tags="Sans colorant artificiel,à déguster frais">
                     <div class="product-media">
                         <span class="product-badge product-badge--calm">Framboise</span>
-                        <img src="images/image8.png" alt="Roulé à la cannelle glaçage framboise" loading="lazy">
+                        <img src="images/image(2).png" alt="Roulé à la cannelle glaçage framboise" loading="lazy">
                         <span class="product-category-overlay">Framboise</span>
                     </div>
                     <div class="product-info">
@@ -511,7 +764,7 @@
                     data-tags="Energy boost,Sans lactose">
                     <div class="product-media">
                         <span class="product-badge product-badge--bright">Moka</span>
-                        <img src="images/image9.png" alt="Roulé à la cannelle nappé de crème café et grains torréfiés"
+                        <img src="images/image(3).png" alt="Roulé à la cannelle nappé de crème café et grains torréfiés"
                             loading="lazy">
                         <span class="product-category-overlay">Moka</span>
                     </div>
@@ -677,62 +930,61 @@
                             data-border-radius="0.05" data-scroll-ease="0.02">
                             <div class="community-gallery__ring" data-gallery-ring>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image1.png"
-                                        alt="Golden Sweet menu poster photographed on a countertop" loading="lazy">
+                                    <img src="images/insta1.png" alt="Delivery available to Tangier" loading="lazy">
                                     <figcaption>
-                                        <span class="community-gallery__handle">@sweetmarrakech</span>
-                                        <span class="community-gallery__note">Menu ready for evening delivery.</span>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">Delivery is available to the city of
+                                            #tangier</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image2.png" alt="Tray of golden pastéis de nata ready to share"
+                                    <img src="images/insta2.png" alt="Healthy Dubai chocolate without gluten and sugar"
                                         loading="lazy">
                                     <figcaption>
-                                        <span class="community-gallery__handle">@riadpalmeraie</span>
-                                        <span class="community-gallery__note">Warm Pastéis for afternoon tea.</span>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">Healthy Dubai chocolate without gluten and
+                                            sugar.</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image7.png" alt="Box of six Golden Sweet rolls with various icings"
+                                    <img src="images/insta3.png" alt="Healthy pastry" loading="lazy">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">#Healthy 🎂</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta4.png" alt="Healthy oat blueberry cheesecake" loading="lazy">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">#cheesecake_avoine_myrtille_pure_miel
+                                            #healthy</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta5.png" alt="Healthy pastries" loading="lazy">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">#healthyfood #goldensweet84
+                                            #patisseriedietetique #chef_aziza</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta6.png" alt="Gluten-free, lactose-free, no added sugar"
                                         loading="lazy">
                                     <figcaption>
-                                        <span class="community-gallery__handle">@brunchclub.ma</span>
-                                        <span class="community-gallery__note">Gourmet box for a garden brunch.</span>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">#sansgluten #sanslactose
+                                            #sans_sucre_ajouté</span>
                                     </figcaption>
                                 </figure>
                                 <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image11.png" alt="Caramel amlou roll seen from above"
+                                    <img src="images/insta7.png" alt="Dietary amlou dark chocolate fondant"
                                         loading="lazy">
                                     <figcaption>
-                                        <span class="community-gallery__handle">@coffeebylina</span>
-                                        <span class="community-gallery__note">Pistachio latte and amlou roll at the
-                                            office.</span>
-                                    </figcaption>
-                                </figure>
-                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image9.png"
-                                        alt="Cinnamon roll topped with coffee cream and roasted grains" loading="lazy">
-                                    <figcaption>
-                                        <span class="community-gallery__handle">@midnightlatte</span>
-                                        <span class="community-gallery__note">Coffee break after the evening
-                                            shift.</span>
-                                    </figcaption>
-                                </figure>
-                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image4.png" alt="Tray of golden cannelés shared among friends"
-                                        loading="lazy">
-                                    <figcaption>
-                                        <span class="community-gallery__handle">@morningmarkets</span>
-                                        <span class="community-gallery__note">Golden Cannelés for the market
-                                            table.</span>
-                                    </figcaption>
-                                </figure>
-                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
-                                    <img src="images/image8.png" alt="Raspberry roll photographed on a terrace"
-                                        loading="lazy">
-                                    <figcaption>
-                                        <span class="community-gallery__handle">@weekendwithimene</span>
-                                        <span class="community-gallery__note">Sunny afternoon snack in Tetouan.</span>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note">Fondant_diétetique amlou_choco_noir
+                                            #healthyfood</span>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -756,7 +1008,7 @@
                 </article>
                 <article class="special-card" id="wholesale">
                     <h3>Pro Program</h3>
-                    <p>Our plant-based rolls complement the offerings of cafes, hotels, and concept stores with 24/7
+                    <p>Our healthy products complement the offerings of cafes, hotels, and concept stores with 24/7
                         delivery.</p>
                     <a href="pages/contact.html" class="btn btn-outline">Let's Talk B2B</a>
                 </article>
@@ -772,7 +1024,7 @@
                     <p>100% Healthy, sugar-free, gluten-free treats made fresh every day</p>
                 </div>
                 <div class="cta-action">
-                    <a href="pages/catalogue.html" class="cta-btn-premium">
+                    <a href="pages/menu.html" class="cta-btn-premium">
                         <span class="btn-text">Order Now</span>
                         <span class="btn-badge">Same-Day Delivery</span>
                     </a>
@@ -804,6 +1056,8 @@
     <script src="js/modal.js"></script>
     <script src="js/typing-animation.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/page-flip.browser.js"></script>
+    <script src="js/flipbook.js"></script>
     <script src="script.js" type="module"></script>
 </body>
 

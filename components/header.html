@@ -2,8 +2,23 @@
 <a class="skip-link" href="#main-content" data-i18n="common.skip_to_content">Skip to content</a>
 <header class="site-header" role="banner">
     <div class="promo-banner">
-        <p data-i18n="promo.banner">Available delivery in Tangier · Open 24/7</p>
+        <p id="promo-text" data-i18n="promo.banner">FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs</p>
     </div>
+    <script>
+        // Show different promo text on homepage vs other pages
+        (function () {
+            const promoText = document.getElementById('promo-text');
+            const isHomePage = window.location.pathname === '/' ||
+                window.location.pathname === '/index.html' ||
+                window.location.pathname.endsWith('/bakery/') ||
+                window.location.pathname.endsWith('/bakery/index.html');
+
+            if (isHomePage && promoText) {
+                promoText.textContent = 'Available delivery in Tetouan & Tangier · Open 24/7';
+                promoText.removeAttribute('data-i18n'); // Prevent i18n from overwriting
+            }
+        })();
+    </script>
     <div class="primary-nav" data-sticky>
         <div class="nav-inner">
             <a class="brand-mark" href="index.html" aria-label="Cinnamona by Mona Home">
@@ -21,14 +36,14 @@
                     <li><a href="pages/la-maison.html" data-page="lamaison" data-i18n="nav.lamaison">Our House</a></li>
                     <li><a href="pages/nos-services.html" data-page="services" data-i18n="nav.services">Our Services</a>
                     </li>
-                    <li><a href="pages/catalogue.html" data-page="catalogue" data-i18n="nav.catalogue">Catalog</a></li>
+                    <li><a href="pages/menu.html" data-page="menu" data-i18n="nav.menu">Menu</a></li>
                     <li><a href="pages/franchising.html" data-page="franchising"
                             data-i18n="nav.franchising">Franchising</a></li>
                     <li><a href="pages/contact.html" data-page="contact" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="nav-actions">
-                <a class="btn btn-primary" href="pages/catalogue.html" data-i18n="nav.order">Order Now</a>
+                <a class="btn btn-primary" href="pages/menu.html" data-i18n="nav.order">Order Now</a>
                 <button class="cart-icon-button" type="button" aria-label="View cart (0 items)">
                     <svg class="cart-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

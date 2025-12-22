@@ -304,19 +304,19 @@ html[dir="rtl"] .lang-selector {
 
 .lang-btn:hover,
 .lang-btn:focus-visible {
-    background: rgba(127, 156, 137, 0.12);
-    color: var(--sage-dark);
+    background: rgba(237, 192, 31, 0.12);
+    color: #c49615;
 }
 
 .lang-btn:focus-visible {
-    outline: 2px solid var(--sage-dark);
+    outline: 2px solid #edc01f;
     outline-offset: 2px;
 }
 
 .lang-btn.active {
-    background: var(--sage);
+    background: #edc01f;
     color: #fff;
-    border-color: var(--sage);
+    border-color: #edc01f;
 }
 
 .lang-separator {

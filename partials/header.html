@@ -1,8 +1,23 @@
 <!-- Site Header - Shared across all pages -->
 <header class="site-header" role="banner">
     <div class="promo-banner">
-        <p data-i18n="promo.banner">Free delivery in Marrakech from 300 MAD · Open 24/7</p>
+        <p id="promo-text" data-i18n="promo.banner">FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs</p>
     </div>
+    <script>
+        // Show different promo text on homepage vs other pages
+        (function () {
+            const promoText = document.getElementById('promo-text');
+            const isHomePage = window.location.pathname === '/' ||
+                window.location.pathname === '/index.html' ||
+                window.location.pathname.endsWith('/bakery/') ||
+                window.location.pathname.endsWith('/bakery/index.html');
+
+            if (isHomePage && promoText) {
+                promoText.textContent = 'Available delivery in Tetouan & Tangier · Open 24/7';
+                promoText.removeAttribute('data-i18n'); // Prevent i18n from overwriting
+            }
+        })();
+    </script>
     <div class="primary-nav" data-sticky>
         <div class="nav-inner">
             <a class="brand-mark" href="INDEX_LINK" aria-label="Cinnamona by Mona Home">
