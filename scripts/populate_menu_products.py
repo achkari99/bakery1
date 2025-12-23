@@ -44,7 +44,7 @@ if match:
         
         card = f'''                <article class="product-card" data-product data-category="{product['category']}"
                     data-description="{product['name']}"
-                    data-tags="Healthy,Premium">
+                    data-tags="{product['tags']}">
                     <div class="product-media">
                         {badge_html}
                         <img src="../images/{product['image']}" alt="{product['name']}" loading="lazy">
