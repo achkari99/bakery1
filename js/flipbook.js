@@ -17,7 +17,7 @@
         showCover: true,
         mobileScrollSupport: false,
         swipeDistance: 30,
-        flippingTime: 900,
+        flippingTime: 1300,
         usePortrait: true,
         startPage: 0,
         size: 'stretch',

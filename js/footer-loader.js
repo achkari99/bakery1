@@ -18,6 +18,25 @@
                     yearElement.textContent = new Date().getFullYear();
                 }
 
+                // Fix navigation links based on current location
+                if (!isInPagesDir) {
+                    // We're on homepage - need to add 'pages/' prefix to non-home links
+                    const footerNav = document.querySelector('.footer-nav');
+                    if (footerNav) {
+                        const links = footerNav.querySelectorAll('a');
+                        links.forEach(link => {
+                            const href = link.getAttribute('href');
+                            // Skip home link and already correct paths
+                            if (href && !href.includes('index.html') && !href.startsWith('pages/')) {
+                                link.setAttribute('href', 'pages/' + href);
+                            } else if (href === '../index.html') {
+                                // Fix home link for homepage
+                                link.setAttribute('href', 'index.html');
+                            }
+                        });
+                    }
+                }
+
                 console.log('[FooterLoader] Footer loaded successfully');
             }
         })

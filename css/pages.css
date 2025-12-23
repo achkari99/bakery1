@@ -52,13 +52,21 @@
 
 .history-text p {
     margin-bottom: 1rem;
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    color: #2c241b;
+    letter-spacing: 0.01em;
+    font-style: italic;
+
 }
 
 .history-image img {
-    border-radius: var(--radius-lg);
-    box-shadow: 0 24px 48px var(--shadow);
+    width: 120%;
+    max-width: 650px;
+    height: auto;
+    transform: translateX(-10%);
 }
 
 /* Vertical Timeline */
