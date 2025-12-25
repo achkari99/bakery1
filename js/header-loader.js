@@ -49,6 +49,11 @@
                 window.dispatchEvent(new Event('headerLoaded'));
                 console.log('[HeaderLoader] Header loaded, event dispatched');
 
+                // Trigger translations for the newly injected header
+                if (window.I18n && typeof window.I18n.applyTranslations === 'function') {
+                    window.I18n.applyTranslations();
+                }
+
                 // Reinitialize cart count after header loads
                 if (typeof updateCartBadge === 'function') {
                     updateCartBadge();

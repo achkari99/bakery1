@@ -45,6 +45,11 @@
                 }
 
                 console.log('[FooterLoader] Footer loaded successfully');
+
+                // Trigger translations for the newly injected footer
+                if (window.I18n && typeof window.I18n.applyTranslations === 'function') {
+                    window.I18n.applyTranslations();
+                }
             }
         })
         .catch(error => console.error('Error loading footer:', error));
