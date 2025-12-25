@@ -643,7 +643,8 @@
         "cancel": "Cancel",
         "confirm": "Confirm",
         "skip_to_content": "Skip to content",
-        "whatsapp": "WhatsApp"
+        "whatsapp": "WhatsApp",
+        "currency": "MAD"
     },
     "products": {
         "classic_title": "Classic Cinnamon Roll",
@@ -801,5 +802,52 @@
         "terms_intro": "By accessing and using the Golden Sweet website and services, you accept and agree to be bound by these Terms of Use and our Privacy Policy. If you do not agree with these terms, please do not use our services.",
         "contact_questions": "If you have questions about this policy or wish to exercise your rights, please contact us:",
         "address_tetouan": "mourrir, jamae oma, no 9 Av. Mohamed Hajjaj, Tetouan, Morocco"
+    },
+    "cart": {
+        "title": "Your Cart",
+        "empty_title": "Your cart is empty",
+        "empty_desc": "Discover our delicious healthy pastries and add them to your cart!",
+        "discover_products": "Discover our products",
+        "items": "Items",
+        "subtotal": "Subtotal",
+        "delivery": "Delivery",
+        "free": "Free",
+        "delivery_notice": "Free delivery from 500 MAD",
+        "total": "Total",
+        "proceed_order": "Proceed to Order",
+        "order_summary": "Order Summary",
+        "edit_info": "Edit Information",
+        "customer_info": "Customer Information",
+        "full_name": "Full Name",
+        "name_placeholder": "Enter your full name",
+        "phone_number": "Phone Number",
+        "phone_placeholder": "06XXXXXXXX",
+        "delivery_address": "Delivery Address",
+        "address_placeholder": "Street, City, Postal Code",
+        "special_instructions": "Special Instructions (optional)",
+        "notes_placeholder": "Any special requests or delivery instructions?",
+        "customer_preview": "Customer:",
+        "phone_preview": "Phone:",
+        "address_preview": "Address:",
+        "proceed_checkout": "Proceed to checkout",
+        "continue_shopping": "Continue shopping",
+        "opening_whatsapp": "Opening WhatsApp...",
+        "send_error": "Error sending to WhatsApp. Please try again.",
+        "customer_info_error": "Error: Customer information not found. Please go back and fill the form again."
+    },
+    "whatsapp": {
+        "order_title": "NEW ORDER - Golden Sweet",
+        "customer_info": "CUSTOMER INFORMATION:",
+        "name": "Name",
+        "phone": "Phone",
+        "address": "Address",
+        "notes": "Notes",
+        "order_details": "ORDER DETAILS:",
+        "summary": "SUMMARY:",
+        "subtotal": "Subtotal",
+        "delivery": "Delivery",
+        "free_delivery": "Free",
+        "total": "TOTAL TO PAY",
+        "thank_you": "Thank you for confirming my order! ✨"
     }
 }

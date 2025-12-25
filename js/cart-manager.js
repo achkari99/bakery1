@@ -10,6 +10,12 @@ class CartManager {
         this.hoverPanel = null;
         this.hoverTimer = null;
         this.init();
+
+        // Listen for language changes to update UI
+        document.addEventListener('i18n:applied', () => {
+            this.updateBadge();
+            this.updateHoverPanel();
+        });
     }
 
     init() {
@@ -198,14 +204,16 @@ class CartManager {
             return;
         }
 
+        const t = (key, fallback) => window.I18n ? window.I18n.t(key, fallback) : fallback;
+
         const itemsHTML = this.cart.map(item => `
             <div class="cart-hover-item">
                 <div class="cart-hover-item-image">
                     <img src="${item.image}" alt="${item.name}" loading="lazy">
                 </div>
                 <div class="cart-hover-item-info">
-                    <h4>${item.name}</h4>
-                    <p class="cart-hover-item-price">${item.price} MAD × ${item.quantity}</p>
+                    <h4 ${item.productKey ? `data-i18n="${item.productKey}"` : ''}>${item.productKey ? t(item.productKey, item.name) : item.name}</h4>
+                    <p class="cart-hover-item-price">${item.price} <span data-i18n="common.currency">${t('common.currency', 'MAD')}</span> × ${item.quantity}</p>
                 </div>
                 <button 
                     class="cart-hover-item-remove" 
@@ -224,18 +232,20 @@ class CartManager {
 
         this.hoverPanel.innerHTML = `
             <div class="cart-hover-header">
-                <h3>Mon Panier</h3>
-                <span>${this.getTotalItems()} article${this.getTotalItems() > 1 ? 's' : ''}</span>
+                <h3 data-i18n="cart.title">${t('cart.title', 'Mon Panier')}</h3>
+                <span>${this.getTotalItems()} <span data-i18n="cart.items">${t('cart.items', 'article' + (this.getTotalItems() > 1 ? 's' : ''))}</span></span>
             </div>
             <div class="cart-hover-items">
                 ${itemsHTML}
             </div>
             <div class="cart-hover-footer">
                 <div class="cart-hover-total">
-                    <span>Total</span>
-                    <strong>${total} MAD</strong>
+                    <span data-i18n="cart.total">${t('cart.total', 'Total')}</span>
+                    <strong>${total} <span data-i18n="common.currency">${t('common.currency', 'MAD')}</span></strong>
                 </div>
-                <a href="pages/panier.html" class="btn btn-primary btn-small cart-hover-view-btn">Voir le panier</a>
+                <a href="${window.location.pathname.includes('/pages/') ? 'panier.html' : 'pages/panier.html'}" class="btn btn-primary btn-small cart-hover-view-btn" data-i18n="cart.title">
+                    ${t('cart.title', 'Voir le panier')}
+                </a>
             </div>
         `;
 
@@ -257,10 +267,14 @@ class CartManager {
                 const priceEl = productCard.querySelector('.product-price');
                 const imageEl = productCard.querySelector('img');
 
+                // Get translation key from the nearest h3 with data-i18n
+                const nameEl = productCard.querySelector('h3[data-i18n]');
+                const productKey = nameEl ? nameEl.dataset.i18n : null;
+
                 const price = priceEl ? parseInt(priceEl.textContent.match(/\d+/)?.[0] || '0') : 0;
                 const image = imageEl ? imageEl.src : '';
 
-                const product = { name, price, image };
+                const product = { name, price, image, productKey };
                 this.addProduct(product);
 
                 const total = this.getTotalItems();

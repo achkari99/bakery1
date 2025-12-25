@@ -109,7 +109,7 @@ class PricingCalculator {
         }
 
         const message = `Hi! I'd like a quote for:\n${items.join('\n')}`;
-        const phone = '+212603981438';
+        const phone = '212637629395';
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     }

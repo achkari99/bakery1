@@ -5,6 +5,7 @@
 class ModalManager {
     constructor() {
         this.activeModal = null;
+        this.currentProduct = null;
         this.init();
     }
 
@@ -57,15 +58,19 @@ class ModalManager {
     }
 
     quickView(product) {
+        this.currentProduct = product;
+        const t = (key, fallback) => (window.I18n && window.I18n.t) ? window.I18n.t(key, fallback) : fallback;
+        const productName = product.productKey ? t(product.productKey, product.name) : product.name;
+
         const content = `
             <div class="quick-view">
                 <div class="quick-view-grid">
                     <div class="quick-view-image image-zoom">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="${product.image}" alt="${productName}">
                     </div>
                     <div class="quick-view-info">
-                        <h2>${product.name}</h2>
-                        <p class="quick-view-price">${product.price} MAD</p>
+                        <h2 ${product.productKey ? `data-i18n="${product.productKey}"` : ''}>${productName}</h2>
+                        <p class="quick-view-price">${product.price} <span data-i18n="common.currency">${t('common.currency', 'MAD')}</span></p>
                         <p class="quick-view-description">${product.description}</p>
                         ${product.tags ? `
                             <div class="quick-view-tags">
@@ -73,7 +78,7 @@ class ModalManager {
                             </div>
                         ` : ''}
                         <button class="btn btn-primary btn-animated" onclick="Modal.addToCart('${product.id}')">
-                            ${(window.I18n && window.I18n.t) ? window.I18n.t('products.add_to_cart') : 'Add to Cart'}
+                            ${t('products.add_to_cart', 'Add to Cart')}
                         </button>
                     </div>
                 </div>
@@ -83,13 +88,14 @@ class ModalManager {
     }
 
     addToCart(productId) {
-        // Cart animation
-        const badge = document.querySelector('.cart-badge');
-        if (badge) {
-            const current = parseInt(badge.textContent) || 0;
-            badge.textContent = current + 1;
-            badge.classList.add('active', 'bump');
-            setTimeout(() => badge.classList.remove('bump'), 500);
+        if (this.currentProduct && window.cartManager) {
+            const productToAdd = {
+                name: this.currentProduct.name,
+                price: parseInt(this.currentProduct.price) || 0,
+                image: this.currentProduct.image,
+                productKey: this.currentProduct.productKey
+            };
+            window.cartManager.addProduct(productToAdd);
         }
 
         this.close();
@@ -131,9 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 tags = Array.from(productCard.querySelectorAll('.product-tags li')).map(li => li.textContent);
             }
 
+            const nameEl = productCard.querySelector('h3');
+            const productKey = nameEl?.dataset.i18n || null;
+
             const product = {
                 id: productCard.dataset.productId || Date.now(),
-                name: productCard.querySelector('h3')?.textContent || 'Product',
+                name: nameEl?.textContent || 'Product',
+                productKey: productKey,
                 price: productCard.querySelector('.product-price')?.textContent?.replace(/&nbsp;/g, ' ').replace(' MAD', '') || '0',
                 description: description,
                 image: productCard.querySelector('img')?.src || '',
