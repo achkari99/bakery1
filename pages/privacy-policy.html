@@ -6,6 +6,11 @@
     <script>
         // Add loading class immediately to prevent Flash of Untranslated Content
         document.documentElement.classList.add('i18n-loading');
+
+        // Safety timeout
+        setTimeout(() => {
+            document.documentElement.classList.remove('i18n-loading');
+        }, 3000);
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Golden Sweet</title>
@@ -162,6 +167,7 @@
 
     <script src="../js/header-loader.js"></script>
     <script src="../js/footer-loader.js"></script>
+    <script src="../js/i18n.js" type="module"></script>
     <script src="../js/animations.js"></script>
 </body>
 
