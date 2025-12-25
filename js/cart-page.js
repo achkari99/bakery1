@@ -460,8 +460,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart();
     updateCartBadge();
 
-    // Re-render when language changes
-    document.addEventListener('i18n:applied', () => {
-        renderCart();
-    });
+    // i18n listener removed to prevent loops - MutationObserver handles updates
 });
