@@ -292,6 +292,12 @@ const I18n = (() => {
         initLanguageSelector();
         updateLanguageSelector(lang);
 
+        // Listen for header injection to apply translations to it
+        window.addEventListener('headerLoaded', () => {
+            console.log('i18n: Header loaded event received, applying translations...');
+            applyTranslations();
+        });
+
         console.log(`i18n: Initialized with "${currentLang}" language`);
     }
 

@@ -243,7 +243,7 @@ class CartManager {
                     <span data-i18n="cart.total">${t('cart.total', 'Total')}</span>
                     <strong>${total} <span data-i18n="common.currency">${t('common.currency', 'MAD')}</span></strong>
                 </div>
-                <a href="${window.location.pathname.includes('/pages/') ? 'panier.html' : 'pages/panier.html'}" class="btn btn-primary btn-small cart-hover-view-btn" data-i18n="cart.title">
+                <a href="/pages/panier.html" class="btn btn-primary btn-small cart-hover-view-btn" data-i18n="cart.title">
                     ${t('cart.title', 'Voir le panier')}
                 </a>
             </div>
@@ -291,9 +291,7 @@ class CartManager {
     setupClickNavigation() {
         if (this.cartButton) {
             this.cartButton.addEventListener('click', (e) => {
-                const isInSubfolder = window.location.pathname.includes('/pages/');
-                const cartPath = isInSubfolder ? 'panier.html' : 'pages/panier.html';
-                window.location.href = cartPath;
+                window.location.href = '/pages/panier.html';
             });
         }
     }

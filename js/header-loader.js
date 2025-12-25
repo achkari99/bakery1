@@ -1,8 +1,7 @@
 // Header Component Loader
 (function () {
-    // Determine the correct path based on current location
-    const isInPagesDir = window.location.pathname.includes('/pages/');
-    const headerPath = isInPagesDir ? '../components/header.html' : 'components/header.html';
+    // Use absolute path for header component
+    const headerPath = '/components/header.html';
 
     // Load header component
     fetch(headerPath)
@@ -12,45 +11,48 @@
             if (headerPlaceholder) {
                 headerPlaceholder.outerHTML = html;
 
-                // Fix navigation links based on current location
-                if (isInPagesDir) {
-                    // We're in /pages directory, so adjust links
-                    document.querySelectorAll('header a[href^="pages/"]').forEach(link => {
-                        link.href = link.href.replace('pages/', '');
-                    });
-                    document.querySelectorAll('header a[href="index.html"]').forEach(link => {
-                        link.href = '../index.html';
-                    });
-                }
-
-                // Highlight active link
+                // Highlight active link logic
                 const currentPath = window.location.pathname;
-                // Remove trailing slash and .html extension for robust comparison
-                const cleanCurrent = currentPath.replace(/\/$/, '').replace(/\.html$/, '').split('/').pop() || 'index';
+
+                // Helper to normalize paths for comparison
+                const normalizePath = (path) => {
+                    // Remove trailing slash, .html extension, and leading slash
+                    return path.replace(/\/$/, '').replace(/\.html$/, '').replace(/^\//, '');
+                };
+
+                const normalizedCurrent = normalizePath(currentPath);
 
                 document.querySelectorAll('.nav-links a').forEach(link => {
                     const linkHref = link.getAttribute('href');
-                    const linkFile = linkHref.replace(/\.html$/, '').split('/').pop() || 'index';
+                    const normalizedLink = normalizePath(linkHref);
 
-                    // Special case for home
-                    if (cleanCurrent === 'index' && (linkFile === 'index' || linkFile === '')) {
-                        link.setAttribute('area-current', 'page');
-                        link.classList.add('active'); // Add class for easier styling
-                    } else if (cleanCurrent === linkFile) {
+                    // Robust comparison logic
+                    let isActive = false;
+
+                    if (normalizedCurrent === '' || normalizedCurrent === 'index') {
+                        // Home page case
+                        isActive = (normalizedLink === 'index' || normalizedLink === '');
+                    } else {
+                        // Other pages: check if the link ends with the current page name
+                        // This handles /pages/contact vs /contact scenarios
+                        isActive = normalizedCurrent.endsWith(normalizedLink.split('/').pop());
+                    }
+
+                    if (isActive) {
                         link.setAttribute('aria-current', 'page');
                         link.classList.add('active');
                     } else {
-                        link.removeAttribute('aria-current');
                         link.classList.remove('active');
+                        link.removeAttribute('aria-current');
                     }
                 });
 
-                // Dispatch headerLoaded event for cart manager
+                // Dispatch headerLoaded event for cart manager and i18n
                 window.dispatchEvent(new Event('headerLoaded'));
                 console.log('[HeaderLoader] Header loaded, event dispatched');
 
-                // Trigger translations for the newly injected header
-                if (window.I18n && typeof window.I18n.applyTranslations === 'function') {
+                // Trigger translations immediately if i18n is ready
+                if (window.I18n && window.I18n.isLoaded) {
                     window.I18n.applyTranslations();
                 }
 
@@ -58,7 +60,9 @@
                 if (typeof updateCartBadge === 'function') {
                     updateCartBadge();
                 }
+
+                // Note: If I18n is not ready, it will apply translations itself when it loads
+                // listening to the 'headerLoaded' event in i18n.js is the backup safety
             }
         })
-        .catch(error => console.error('Error loading header:', error));
 })();
