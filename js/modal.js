@@ -111,15 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const productCard = btn.closest('.product-card');
+
+            // Translate description if it looks like a key (contains dots) or just try translating
+            let description = productCard.dataset.description || productCard.querySelector('.product-desc')?.textContent || '';
+            if (window.I18n && window.I18n.t) {
+                // If it's a key, this returns translation. If it's text and no key matches, it returns text.
+                description = window.I18n.t(description);
+            }
+
+            // Translate tags
+            let tags = [];
+            if (productCard.dataset.tags) {
+                tags = productCard.dataset.tags.split(',').map(tag => {
+                    const tagKey = tag.trim();
+                    return (window.I18n && window.I18n.t) ? window.I18n.t(tagKey) : tagKey;
+                });
+            } else if (productCard.querySelectorAll('.product-tags li').length > 0) {
+                tags = Array.from(productCard.querySelectorAll('.product-tags li')).map(li => li.textContent);
+            }
+
             const product = {
                 id: productCard.dataset.productId || Date.now(),
                 name: productCard.querySelector('h3')?.textContent || 'Product',
                 price: productCard.querySelector('.product-price')?.textContent?.replace(/&nbsp;/g, ' ').replace(' MAD', '') || '0',
-                description: productCard.dataset.description || productCard.querySelector('.product-desc')?.textContent || '',
+                description: description,
                 image: productCard.querySelector('img')?.src || '',
-                tags: productCard.dataset.tags
-                    ? productCard.dataset.tags.split(',').map(tag => tag.trim())
-                    : Array.from(productCard.querySelectorAll('.product-tags li')).map(li => li.textContent)
+                tags: tags
             };
             window.Modal.quickView(product);
         });

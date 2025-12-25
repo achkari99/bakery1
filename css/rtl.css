@@ -197,7 +197,14 @@ html[dir="rtl"] .community-copy {
 }
 
 html[dir="rtl"] .community-highlights {
-    direction: rtl;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .community-highlights div,
+html[dir="rtl"] .community-highlights dt,
+html[dir="rtl"] .community-highlights dd {
+    text-align: left !important;
 }
 
 html[dir="rtl"] .community-actions {

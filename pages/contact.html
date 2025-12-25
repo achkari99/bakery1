@@ -94,8 +94,13 @@
                             <circle cx="12" cy="10" r="3" />
                         </svg>
                         <div>
-                            <strong>Service Area</strong><br>
-                            Production: Tetouan<br>Delivery: Tetouan & Tangier<br>Address: mourrir, jamae oma, no 9 Av. Mohamed Hajjaj
+                            <strong data-i18n="contact.service_area_label">Service Area</strong><br>
+                            <span data-i18n="contact.production_label">Production</span>: <span
+                                data-i18n="contact.city_tetouan">Tetouan</span><br>
+                            <span data-i18n="contact.delivery_label">Delivery</span>: <span
+                                data-i18n="contact.city_tetouan_tangier">Tetouan & Tangier</span><br>
+                            <span data-i18n="contact.address_label">Address</span>: <span
+                                data-i18n="contact.address_val">mourrir, jamae oma, no 9 Av. Mohamed Hajjaj</span>
                         </div>
                     </div>
 
@@ -105,7 +110,7 @@
                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                         <div>
-                            <strong>Phone</strong><br>
+                            <strong data-i18n="contact.phone_label">Phone</strong><br>
                             <a href="tel:+212637629395">+212 637-629395</a>
                         </div>
                     </div>
@@ -116,7 +121,7 @@
                             <polyline points="22,6 12,13 2,6" />
                         </svg>
                         <div>
-                            <strong>Email</strong><br>
+                            <strong data-i18n="contact.email_label">Email</strong><br>
                             <a href="mailto:contact@goldensweet.ma">contact@goldensweet.ma</a>
                         </div>
                     </div>
@@ -127,9 +132,9 @@
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
                         <div>
-                            <strong>Hours</strong><br>
-                            winter : 10am - 8pm<br>
-                            summer : 10am - 10pm<br>
+                            <strong data-i18n="contact.hours_label">Hours</strong><br>
+                            <span data-i18n="contact.season_winter">Winter</span> : 10am - 8pm<br>
+                            <span data-i18n="contact.season_summer">Summer</span> : 10am - 10pm<br>
                         </div>
                     </div>
 
@@ -248,30 +253,44 @@
                 popupAnchor: [0, -40]
             });
 
-            // Add marker with custom icon
-            const marker = L.marker(businessLocation, { icon: goldenIcon }).addTo(map);
+            const createPopupContent = () => {
+                const title = window.I18n ? window.I18n.t('contact.map_title', 'Golden Sweet') : 'Golden Sweet';
+                const tagline = window.I18n ? window.I18n.t('contact.map_tagline', 'Pâtisserie Artisanale & Saine') : 'Pâtisserie Artisanale & Saine';
+                const city = window.I18n ? window.I18n.t('contact.city_tetouan', 'Tetouan') + ', Morocco' : 'Tetouan, Morocco';
+                const directions = window.I18n ? window.I18n.t('contact.map_directions', 'Get Directions') : 'Get Directions';
 
-            // Add popup
-            marker.bindPopup(`
+                return `
                 <div style="font-family: 'Work Sans', sans-serif; padding: 8px;">
                     <h3 style="margin: 0 0 8px 0; color: #cd9f47; font-size: 16px; font-weight: 700;">
-                        🥐 Golden Sweet
+                        🥐 ${title}
                     </h3>
                     <p style="margin: 0 0 6px 0; color: #2c2416; font-size: 14px;">
-                        Pâtisserie Artisanale & Saine
+                        ${tagline}
                     </p>
                     <p style="margin: 0; color: #666; font-size: 13px;">
-                        Tetouan, Morocco
+                        ${city}
                     </p>
                     <a href="https://www.google.com/maps/dir/?api=1&destination=35.5733369,-5.3537282" 
                        target="_blank" 
                        style="display: inline-block; margin-top: 10px; padding: 6px 12px; background: #cd9f47; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
-                        Get Directions
+                        ${directions}
                     </a>
                 </div>
-            `, {
+                `;
+            };
+
+            // Add marker with custom icon
+            const marker = L.marker(businessLocation, { icon: goldenIcon }).addTo(map);
+
+            // Add popup
+            marker.bindPopup(createPopupContent(), {
                 maxWidth: 280,
                 className: 'custom-popup'
+            });
+
+            // Listen for language changes to update popup
+            document.addEventListener('i18n:applied', () => {
+                marker.setPopupContent(createPopupContent());
             });
 
             // Add custom CSS for marker animation

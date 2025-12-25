@@ -280,22 +280,43 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             const delta = timestamp - lastTimestamp;
             lastTimestamp = timestamp;
+
+            const isRTL = document.documentElement.dir === 'rtl';
+
             offset += (speed * delta) / 1000;
-
             let gap = getGap();
-            let firstCard = cards[0];
 
-            while (firstCard) {
-                const widthWithGap = firstCard.getBoundingClientRect().width + gap;
-                if (offset < widthWithGap) break;
-                offset -= widthWithGap;
-                track.appendChild(firstCard);
-                cards = Array.from(track.children);
-                firstCard = cards[0];
-                gap = getGap();
+            if (!isRTL) {
+                // NORMAL LTR: Move Left
+                let firstCard = cards[0];
+                while (firstCard) {
+                    const widthWithGap = firstCard.getBoundingClientRect().width + gap;
+                    if (offset < widthWithGap) break;
+                    offset -= widthWithGap;
+                    track.appendChild(firstCard);
+                    cards = Array.from(track.children);
+                    firstCard = cards[0];
+                    gap = getGap();
+                }
+                track.style.transform = `translateX(-${offset}px)`;
+            } else {
+                // RTL: Move Right
+                // Recycle items from Right (first) to Left (last)
+                let firstCard = cards[0];
+                while (firstCard) {
+                    const widthWithGap = firstCard.getBoundingClientRect().width + gap;
+                    if (offset < widthWithGap) break;
+
+                    offset -= widthWithGap;
+                    track.appendChild(firstCard);
+
+                    cards = Array.from(track.children);
+                    firstCard = cards[0];
+                    gap = getGap();
+                }
+                track.style.transform = `translateX(${offset}px)`;
             }
 
-            track.style.transform = `translateX(-${offset}px)`;
             rafId = window.requestAnimationFrame(step);
         };
 
@@ -359,6 +380,20 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         onMotionPreferenceChange(handleMotionChange);
+
+        // Reset on language change to recalculate widths
+        document.addEventListener("i18n:applied", () => {
+            window.clearTimeout(resizeTimer);
+            // Small delay to ensure DOM updates are rendered and new widths calculate correctly
+            resizeTimer = window.setTimeout(() => {
+                const wasRunning = Boolean(rafId);
+                stop();
+                reset();
+                if (wasRunning && !prefersReducedMotion.matches) {
+                    start();
+                }
+            }, 100);
+        });
 
         reset();
         start();

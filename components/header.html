@@ -14,8 +14,8 @@
                 window.location.pathname.endsWith('/bakery/index.html');
 
             if (isHomePage && promoText) {
-                promoText.textContent = '';
-                promoText.removeAttribute('data-i18n'); // Prevent i18n from overwriting
+                // Use different translation key for homepage
+                promoText.setAttribute('data-i18n', 'promo.banner_home');
             }
         })();
     </script>

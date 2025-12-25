@@ -130,39 +130,103 @@ const I18n = (() => {
         // Apply to all elements with data-i18n
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            const translation = t(key);
 
-            if (translation && translation !== key) {
-                // Check if it's an input placeholder
-                if (el.hasAttribute('placeholder')) {
-                    el.setAttribute('placeholder', translation);
+            // Store original content as fallback on first run
+            if (!el.hasAttribute('data-i18n-fallback')) {
+                const originalContent = el.textContent.trim();
+                if (originalContent) {
+                    el.setAttribute('data-i18n-fallback', originalContent);
                 }
-                // Check if it's for aria-label
-                else if (el.hasAttribute('data-i18n-aria')) {
-                    el.setAttribute('aria-label', translation);
-                }
-                // Default: set text content
-                else {
-                    el.textContent = translation;
-                }
+            }
+
+            const translation = t(key);
+            const fallback = el.getAttribute('data-i18n-fallback');
+
+            // Priority: translation > fallback > key
+            const finalText = (translation && translation !== key) ? translation : (fallback || key);
+
+            // Check if it's an input placeholder
+            if (el.hasAttribute('placeholder')) {
+                el.setAttribute('placeholder', finalText);
+            }
+            // Check if it's for aria-label
+            else if (el.hasAttribute('data-i18n-aria')) {
+                el.setAttribute('aria-label', finalText);
+            }
+            // Default: set text content
+            else {
+                el.textContent = finalText;
             }
         });
 
         // Apply to elements with data-i18n-placeholder
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
-            const translation = t(key);
-            if (translation && translation !== key) {
-                el.setAttribute('placeholder', translation);
+
+            // Store original placeholder as fallback
+            if (!el.hasAttribute('data-i18n-placeholder-fallback')) {
+                const originalPlaceholder = el.getAttribute('placeholder');
+                if (originalPlaceholder) {
+                    el.setAttribute('data-i18n-placeholder-fallback', originalPlaceholder);
+                }
             }
+
+            const translation = t(key);
+            const fallback = el.getAttribute('data-i18n-placeholder-fallback');
+            const finalText = (translation && translation !== key) ? translation : (fallback || key);
+
+            el.setAttribute('placeholder', finalText);
         });
 
         // Apply to elements with data-i18n-aria
         document.querySelectorAll('[data-i18n-aria]').forEach(el => {
             const key = el.getAttribute('data-i18n-aria');
+
+            // Store original aria-label as fallback
+            if (!el.hasAttribute('data-i18n-aria-fallback')) {
+                const originalAria = el.getAttribute('aria-label');
+                if (originalAria) {
+                    el.setAttribute('data-i18n-aria-fallback', originalAria);
+                }
+            }
+
             const translation = t(key);
-            if (translation && translation !== key) {
-                el.setAttribute('aria-label', translation);
+            const fallback = el.getAttribute('data-i18n-aria-fallback');
+            const finalText = (translation && translation !== key) ? translation : (fallback || key);
+
+            el.setAttribute('aria-label', finalText);
+        });
+
+        // Apply to elements with data-i18n-alt (images)
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const key = el.getAttribute('data-i18n-alt');
+
+            // Store original alt as fallback
+            if (!el.hasAttribute('data-i18n-alt-fallback')) {
+                const originalAlt = el.getAttribute('alt');
+                if (originalAlt) {
+                    el.setAttribute('data-i18n-alt-fallback', originalAlt);
+                }
+            }
+
+            const translation = t(key);
+            const fallback = el.getAttribute('data-i18n-alt-fallback');
+            const finalText = (translation && translation !== key) ? translation : (fallback || key);
+
+            el.setAttribute('alt', finalText);
+        });
+
+        // Apply to elements with data-i18n-typing (typing animation)
+        document.querySelectorAll('[data-i18n-typing]').forEach(el => {
+            const key = el.getAttribute('data-i18n-typing');
+            const translation = t(key); // Should be an array or string
+
+            if (Array.isArray(translation)) {
+                el.setAttribute('data-typing-words', JSON.stringify(translation));
+
+                // Trigger re-initialization of typing animation if needed
+                // Dispath a custom event that the typing script can listen to
+                el.dispatchEvent(new CustomEvent('typing-update', { bubbles: true }));
             }
         });
 
@@ -251,6 +315,9 @@ const I18n = (() => {
         SUPPORTED_LANGS
     };
 })();
+
+// Expose to window for global access
+window.I18n = I18n;
 
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
