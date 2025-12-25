@@ -23,6 +23,17 @@
                     });
                 }
 
+                // Update promo text for homepage
+                const promoText = document.getElementById('promo-text');
+                const isHomePage = window.location.pathname === '/' ||
+                    window.location.pathname === '/index.html' ||
+                    window.location.pathname.endsWith('/bakery/') ||
+                    window.location.pathname.endsWith('/bakery/index.html');
+
+                if (isHomePage && promoText) {
+                    promoText.setAttribute('data-i18n', 'promo.banner_home');
+                }
+
                 // Highlight active link
                 const currentPath = window.location.pathname;
                 const currentFile = currentPath.split('/').pop() || 'index.html';

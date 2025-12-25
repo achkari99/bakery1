@@ -48,62 +48,85 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
-    if (navToggle && navLinks) {
-        const closeNav = () => {
+    const initNavigation = () => {
+        const navToggle = document.querySelector(".nav-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        if (navToggle && navLinks) {
+            const closeNav = () => {
+                navToggle.setAttribute("aria-expanded", "false");
+                navLinks.setAttribute("aria-expanded", "false");
+            };
             navToggle.setAttribute("aria-expanded", "false");
             navLinks.setAttribute("aria-expanded", "false");
-        };
-        navToggle.setAttribute("aria-expanded", "false");
-        navLinks.setAttribute("aria-expanded", "false");
 
-        navToggle.addEventListener("click", () => {
-            const expanded = navToggle.getAttribute("aria-expanded") === "true";
-            const next = !expanded;
-            navToggle.setAttribute("aria-expanded", String(next));
-            navLinks.setAttribute("aria-expanded", String(next));
-        });
+            // Remove existing listener if any (to prevent multiple listeners)
+            const newNavToggle = navToggle.cloneNode(true);
+            navToggle.parentNode.replaceChild(newNavToggle, navToggle);
 
-        const collapseOnLink = () => {
-            if (window.matchMedia("(max-width: 900px)").matches) {
-                closeNav();
+            newNavToggle.addEventListener("click", () => {
+                const expanded = newNavToggle.getAttribute("aria-expanded") === "true";
+                const next = !expanded;
+                newNavToggle.setAttribute("aria-expanded", String(next));
+                navLinks.setAttribute("aria-expanded", String(next));
+            });
+
+            const collapseOnLink = () => {
+                if (window.matchMedia("(max-width: 900px)").matches) {
+                    closeNav();
+                }
+            };
+
+            navLinks.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", collapseOnLink);
+            });
+
+            // Use event delegation for click outside to avoid multiple document listeners
+            if (!window._navClickHandled) {
+                document.addEventListener("click", (event) => {
+                    const currentNavToggle = document.querySelector(".nav-toggle");
+                    const currentNavLinks = document.querySelector(".nav-links");
+                    if (!window.matchMedia("(max-width: 900px)").matches || !currentNavToggle || !currentNavLinks) return;
+                    if (!currentNavLinks.contains(event.target) && !currentNavToggle.contains(event.target)) {
+                        currentNavToggle.setAttribute("aria-expanded", "false");
+                        currentNavLinks.setAttribute("aria-expanded", "false");
+                    }
+                });
+                window._navClickHandled = true;
             }
-        };
 
-        navLinks.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", collapseOnLink);
-        });
+            window.addEventListener("resize", () => {
+                if (!window.matchMedia("(max-width: 900px)").matches) {
+                    closeNav();
+                }
+            });
 
-        document.addEventListener("click", (event) => {
-            if (!window.matchMedia("(max-width: 900px)").matches) return;
-            if (!navLinks.contains(event.target) && !navToggle.contains(event.target)) {
-                closeNav();
-            }
-        });
+            document.addEventListener("keydown", (event) => {
+                const currentNavToggle = document.querySelector(".nav-toggle");
+                if (event.key === "Escape" && currentNavToggle && currentNavToggle.getAttribute("aria-expanded") === "true") {
+                    currentNavToggle.setAttribute("aria-expanded", "false");
+                    document.querySelector(".nav-links").setAttribute("aria-expanded", "false");
+                    currentNavToggle.focus();
+                }
+            });
+        }
+    };
 
-        window.addEventListener("resize", () => {
-            if (!window.matchMedia("(max-width: 900px)").matches) {
-                closeNav();
-            }
-        });
+    initNavigation();
+    window.addEventListener('headerLoaded', initNavigation);
 
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
-                closeNav();
-                navToggle.focus();
-            }
-        });
-    }
+    const initStickyHeader = () => {
+        const stickyTarget = document.querySelector("[data-sticky]");
+        if (stickyTarget) {
+            const toggleSticky = () => {
+                stickyTarget.classList.toggle("is-sticky", window.scrollY > 12);
+            };
+            toggleSticky();
+            window.addEventListener("scroll", toggleSticky, { passive: true });
+        }
+    };
 
-    const stickyTarget = document.querySelector("[data-sticky]");
-    if (stickyTarget) {
-        const toggleSticky = () => {
-            stickyTarget.classList.toggle("is-sticky", window.scrollY > 12);
-        };
-        toggleSticky();
-        window.addEventListener("scroll", toggleSticky, { passive: true });
-    }
+    initStickyHeader();
+    window.addEventListener('headerLoaded', initStickyHeader);
 
     const animated = document.querySelectorAll("[data-animate]");
     if (animated.length) {

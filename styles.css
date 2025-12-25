@@ -25,7 +25,10 @@
     box-sizing: border-box;
 }
 
-/* Prevent flash of untranslated content */
+html {
+    overflow-x: clip;
+}
+
 html.i18n-loading body {
     visibility: hidden;
     opacity: 0;
@@ -36,6 +39,8 @@ body {
     font-family: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--text);
     background-color: var(--cream);
+    overflow-x: clip;
+    /* Modern browsers support clip which doesn't break sticky */
 
     /* === BACKGROUND PATTERN === */
     /* Alternative: PNG Pattern */
@@ -115,32 +120,27 @@ p {
 
 .skip-link {
     position: absolute;
-    left: -999px;
-    top: 0;
+    top: -100px;
+    left: 1rem;
     background: var(--charcoal);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     z-index: 999;
-    transition: transform var(--transition);
+    transition: top var(--transition);
 }
 
 .skip-link:focus {
-    left: 1rem;
-}
-
-.primary-nav {
-    position: sticky;
     top: 0;
-    z-index: 90;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(127, 156, 137, 0.18);
-    transition: box-shadow var(--transition), padding var(--transition), background-color var(--transition);
 }
 
-.primary-nav.is-sticky {
+.site-header.is-sticky {
     box-shadow: 0 12px 32px rgba(28, 46, 43, 0.12);
+}
+
+.site-header.is-sticky .nav-inner {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
 
 .nav-inner {
@@ -151,6 +151,7 @@ p {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: clamp(1.5rem, 4vw, 3rem);
+    transition: padding var(--transition);
 }
 
 .brand-mark {
@@ -312,8 +313,13 @@ html[dir="rtl"] .nav-links ul {
 }
 
 .site-header {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(127, 156, 137, 0.18);
+    transition: box-shadow var(--transition), padding var(--transition), background-color var(--transition);
 }
 
 .promo-banner {

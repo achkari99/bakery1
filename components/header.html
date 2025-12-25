@@ -1,25 +1,10 @@
 <!-- Shared Header Component -->
 <a class="skip-link" href="#main-content" data-i18n="common.skip_to_content">Skip to content</a>
-<header class="site-header" role="banner">
-    <div class="promo-banner">
-        <p id="promo-text" data-i18n="promo.banner">FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs</p>
-    </div>
-    <script>
-        // Show different promo text on homepage vs other pages
-        (function () {
-            const promoText = document.getElementById('promo-text');
-            const isHomePage = window.location.pathname === '/' ||
-                window.location.pathname === '/index.html' ||
-                window.location.pathname.endsWith('/bakery/') ||
-                window.location.pathname.endsWith('/bakery/index.html');
-
-            if (isHomePage && promoText) {
-                // Use different translation key for homepage
-                promoText.setAttribute('data-i18n', 'promo.banner_home');
-            }
-        })();
-    </script>
-    <div class="primary-nav" data-sticky>
+<div class="promo-banner">
+    <p id="promo-text" data-i18n="promo.banner">FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs</p>
+</div>
+<header class="site-header" role="banner" data-sticky>
+    <div class="primary-nav">
         <div class="nav-inner">
             <a class="brand-mark" href="index.html" aria-label="Cinnamona by Mona Home">
                 <span class="brand-name">Golden Sweet</span>

@@ -306,17 +306,6 @@ html[dir="rtl"] select {
     direction: rtl;
 }
 
-/* Skip link */
-html[dir="rtl"] .skip-link {
-    left: auto;
-    right: -999px;
-}
-
-html[dir="rtl"] .skip-link:focus {
-    right: 1rem;
-    left: auto;
-}
-
 /* Language selector */
 .lang-selector {
     display: flex;
