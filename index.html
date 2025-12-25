@@ -3,6 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        // Add loading class immediately to prevent Flash of Untranslated Content
+        // The class is removed in js/i18n.js after translations are applied
+        document.documentElement.classList.add('i18n-loading');
+
+        // Safety timeout: remove class after 3s even if translation fails
+        // to ensure content is visible
+        setTimeout(() => {
+            document.documentElement.classList.remove('i18n-loading');
+        }, 3000);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golden Sweet | Roul&eacute;s &agrave; la cannelle v&eacute;g&eacute;taux &agrave; Marrakech</title>
     <meta name="description"

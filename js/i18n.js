@@ -233,6 +233,9 @@ const I18n = (() => {
             }
         });
 
+        // Remove loading class (fixes FOUC)
+        document.documentElement.classList.remove('i18n-loading');
+
         // Dispatch event for custom handlers
         document.dispatchEvent(new CustomEvent('i18n:applied', {
             detail: { lang: currentLang, translations }
