@@ -51,11 +51,6 @@
                 window.dispatchEvent(new Event('headerLoaded'));
                 console.log('[HeaderLoader] Header loaded, event dispatched');
 
-                // Trigger translations immediately if i18n is ready
-                if (window.I18n && window.I18n.isLoaded) {
-                    window.I18n.applyTranslations();
-                }
-
                 // Reinitialize cart count after header loads
                 if (typeof updateCartBadge === 'function') {
                     updateCartBadge();

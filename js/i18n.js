@@ -286,24 +286,57 @@ const I18n = (() => {
                 switchLanguage(lang);
             }
         });
+    }
 
-        // Listen for header injection to apply translations to it
-        // Registered here (synchronously) to catch early events
-        window.addEventListener('headerLoaded', () => {
-            console.log('i18n: Header loaded event received, applying translations...');
-            applyTranslations();
+    /**
+     * Setup MutationObserver to handle dynamic content automatically
+     */
+    function setupObserver() {
+        const observer = new MutationObserver((mutations) => {
+            let shouldUpdate = false;
+
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    // Check if added nodes contain translatable elements
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === 1) { // Element node
+                            if (node.hasAttribute('data-i18n') ||
+                                node.querySelector('[data-i18n]') ||
+                                node.querySelector('[data-lang-switch]')) {
+                                shouldUpdate = true;
+                            }
+                        }
+                    });
+                }
+            });
+
+            if (shouldUpdate && isLoaded) {
+                // Debounce slighty to avoid thrashing if many nodes added at once
+                if (window._i18nDebounce) clearTimeout(window._i18nDebounce);
+                window._i18nDebounce = setTimeout(() => {
+                    applyTranslations(); // Re-apply to catch new elements
+                }, 50);
+            }
         });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        console.log('i18n: MutationObserver active');
     }
 
     /**
      * Initialize i18n system
      */
     async function init() {
-        setupGlobalListeners(); // Set up event delegation once
+        setupGlobalListeners(); // Set up event delegation
+        setupObserver(); // Start watching for dynamic content
 
         const lang = detectLanguage();
         await loadTranslations(lang);
-        applyTranslations(); // This will now also update the selector UI
+        applyTranslations(); // Initial translation
 
         console.log(`i18n: Initialized with "${currentLang}" language`);
     }
