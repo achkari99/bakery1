@@ -240,6 +240,7 @@ const I18n = (() => {
         }
 
         if (lang === currentLang && isLoaded) {
+            updateLanguageSelector(lang); // Ensure UI matches state
             return true; // Already on this language
         }
 
@@ -285,6 +286,13 @@ const I18n = (() => {
                 switchLanguage(lang);
             }
         });
+
+        // Listen for header injection to apply translations to it
+        // Registered here (synchronously) to catch early events
+        window.addEventListener('headerLoaded', () => {
+            console.log('i18n: Header loaded event received, applying translations...');
+            applyTranslations();
+        });
     }
 
     /**
@@ -296,12 +304,6 @@ const I18n = (() => {
         const lang = detectLanguage();
         await loadTranslations(lang);
         applyTranslations(); // This will now also update the selector UI
-
-        // Listen for header injection to apply translations to it
-        window.addEventListener('headerLoaded', () => {
-            console.log('i18n: Header loaded event received, applying translations...');
-            applyTranslations();
-        });
 
         console.log(`i18n: Initialized with "${currentLang}" language`);
     }
