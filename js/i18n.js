@@ -43,9 +43,8 @@ const I18n = (() => {
         }
 
         try {
-            // Determine the correct path based on current page location
-            const basePath = getBasePath();
-            const response = await fetch(`${basePath}locales/${lang}.json`);
+            // Use absolute path to ensure correct loading from any subdirectory
+            const response = await fetch(`/locales/${lang}.json`);
 
             if (!response.ok) {
                 throw new Error(`Failed to load ${lang} translations`);
@@ -66,20 +65,6 @@ const I18n = (() => {
 
             return null;
         }
-    }
-
-    /**
-     * Get base path for locales based on current page
-     */
-    function getBasePath() {
-        const path = window.location.pathname;
-
-        // If we're in a subdirectory (like /pages/), go up one level
-        if (path.includes('/pages/')) {
-            return '../';
-        }
-
-        return './';
     }
 
     /**
