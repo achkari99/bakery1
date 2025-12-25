@@ -21,13 +21,20 @@
                 // Fix navigation links based on current location
                 if (!isInPagesDir) {
                     // We're on homepage - need to add 'pages/' prefix to non-home links
-                    const footerNav = document.querySelector('.footer-nav');
-                    if (footerNav) {
-                        const links = footerNav.querySelectorAll('a');
+                    const siteFooter = document.querySelector('.site-footer');
+                    if (siteFooter) {
+                        const links = siteFooter.querySelectorAll('a');
                         links.forEach(link => {
                             const href = link.getAttribute('href');
                             // Skip home link and already correct paths
-                            if (href && !href.includes('index.html') && !href.startsWith('pages/')) {
+                            // Skip home link, already correct paths, external links, and anchors
+                            if (href &&
+                                !href.includes('index.html') &&
+                                !href.startsWith('pages/') &&
+                                !href.startsWith('http') &&
+                                !href.startsWith('mailto:') &&
+                                !href.startsWith('tel:') &&
+                                !href.startsWith('#')) {
                                 link.setAttribute('href', 'pages/' + href);
                             } else if (href === '../index.html') {
                                 // Fix home link for homepage
