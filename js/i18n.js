@@ -225,6 +225,9 @@ const I18n = (() => {
         document.dispatchEvent(new CustomEvent('i18n:applied', {
             detail: { lang: currentLang, translations }
         }));
+
+        // Ensure language selectors are in sync
+        updateLanguageSelector(currentLang);
     }
 
     /**
@@ -245,7 +248,7 @@ const I18n = (() => {
         if (success) {
             localStorage.setItem(STORAGE_KEY, lang);
             applyTranslations();
-            updateLanguageSelector(lang);
+            // updateLanguageSelector is now called within applyTranslations
             return true;
         }
 
@@ -270,15 +273,17 @@ const I18n = (() => {
     }
 
     /**
-     * Initialize language selector buttons
+     * Initialize global event listeners (Event Delegation)
      */
-    function initLanguageSelector() {
-        document.querySelectorAll('[data-lang-switch]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+    function setupGlobalListeners() {
+        // Use event delegation for language switching
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-lang-switch]');
+            if (btn) {
                 e.preventDefault();
                 const lang = btn.getAttribute('data-lang-switch');
                 switchLanguage(lang);
-            });
+            }
         });
     }
 
@@ -286,11 +291,11 @@ const I18n = (() => {
      * Initialize i18n system
      */
     async function init() {
+        setupGlobalListeners(); // Set up event delegation once
+
         const lang = detectLanguage();
         await loadTranslations(lang);
-        applyTranslations();
-        initLanguageSelector();
-        updateLanguageSelector(lang);
+        applyTranslations(); // This will now also update the selector UI
 
         // Listen for header injection to apply translations to it
         window.addEventListener('headerLoaded', () => {
