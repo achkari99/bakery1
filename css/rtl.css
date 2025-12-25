@@ -37,9 +37,7 @@ html[dir="rtl"] .hero-copy {
     text-align: right;
 }
 
-html[dir="rtl"] .hero-actions {
-    justify-content: flex-end;
-}
+
 
 html[dir="rtl"] .hero-metadata {
     direction: rtl;
@@ -50,10 +48,6 @@ html[dir="rtl"] .hero-overlay-card {
     right: 10%;
 }
 
-/* Buttons */
-html[dir="rtl"] .btn {
-    flex-direction: row-reverse;
-}
 
 /* Value cards and grids */
 html[dir="rtl"] .value-card {
@@ -197,14 +191,57 @@ html[dir="rtl"] .community-copy {
 }
 
 html[dir="rtl"] .community-highlights {
-    direction: ltr !important;
-    text-align: left !important;
+    direction: rtl;
+    gap: 2rem;
+    padding-right: 0.25rem !important;
+    /* Pushing titles even further to the right edge */
+    padding-left: 1.5rem !important;
 }
 
-html[dir="rtl"] .community-highlights div,
-html[dir="rtl"] .community-highlights dt,
+html[dir="rtl"] .community-highlights div {
+    text-align: right !important;
+    /* Force override of base text-align: left */
+    justify-items: end;
+    /* Align grid items to the end (right in RTL) */
+    align-items: start;
+    /* Keep vertical alignment at start */
+}
+
+html[dir="rtl"] .community-highlights div:not(:first-child) {
+    border-right: none;
+    padding-right: 0;
+    border-left: none;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .community-highlights div:first-child {
+    padding-right: 0 !important;
+    /* Remove internal padding for the rightmost item */
+}
+
+html[dir="rtl"] .community-highlights dt {
+    text-align: right;
+    justify-self: end;
+    /* Align this grid item to the right */
+    width: 100%;
+    /* Take full width */
+}
+
 html[dir="rtl"] .community-highlights dd {
-    text-align: left !important;
+    line-height: 1.5;
+    text-align: right !important;
+    /* Force right alignment for wrapped text */
+    text-align-last: right;
+    /* Ensure the last line also aligns right */
+    margin: 0;
+    direction: rtl;
+    /* Explicitly set RTL direction */
+    justify-self: end;
+    /* Align this grid item to the right */
+    width: 100%;
+    /* Take full width */
+    white-space: normal;
+    /* Allow wrapping */
 }
 
 html[dir="rtl"] .community-actions {
@@ -377,4 +414,38 @@ html[dir="rtl"] .lang-selector {
         left: auto;
         right: -2.5rem;
     }
+}
+
+/* Service Cards RTL */
+html[dir="rtl"] .service-card-premium {
+    text-align: right;
+}
+
+html[dir="rtl"] .service-card-content {
+    align-items: stretch !important;
+}
+
+html[dir="rtl"] .service-feature {
+    flex-direction: row;
+    gap: 0.75rem;
+}
+
+html[dir="rtl"] .service-feature svg {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+html[dir="rtl"] .service-cta {
+    width: 100% !important;
+    min-width: 100% !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .service-cta svg {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .service-cta:hover svg {
+    transform: rotate(180deg) translateX(5px);
 }

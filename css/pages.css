@@ -635,9 +635,14 @@
 
 .vision-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1afr 0.8fr;
     gap: 3rem;
     align-items: center;
+}
+
+.vision-image {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .vision-text h2 {
@@ -738,7 +743,7 @@
 
 .services-grid-premium {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -764,20 +769,8 @@
         0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Background Images for Each Service */
-.service-card-premium[data-service="custom"] .service-card-bg {
-    background-image: url('../assets/custom_orders_bg.png');
-}
-
-.service-card-premium[data-service="b2b"] .service-card-bg {
-    background-image: url('../assets/b2b_wholesale_bg.png');
-}
-
-.service-card-premium[data-service="delivery"] .service-card-bg {
-    background-image: url('../assets/delivery_247_bg.png');
-}
-
-.service-card-bg {
+.service-card-premium::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -789,7 +782,19 @@
     z-index: 1;
 }
 
-.service-card-premium:hover .service-card-bg {
+.service-card-premium[data-service="custom"]::after {
+    background-image: url('../assets/custom_orders_bg.png');
+}
+
+.service-card-premium[data-service="b2b"]::after {
+    background-image: url('../assets/b2b_wholesale_bg.png');
+}
+
+.service-card-premium[data-service="delivery"]::after {
+    background-image: url('../assets/delivery_247_bg.png');
+}
+
+.service-card-premium:hover::after {
     transform: scale(1.1);
 }
 
@@ -837,6 +842,7 @@
     padding: 3rem 2.5rem;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 /* Service Number */
@@ -938,7 +944,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    margin-bottom: auto;
+    margin-bottom: 2rem;
 }
 
 .service-feature {
@@ -976,13 +982,18 @@
 }
 
 /* CTA Button */
-.service-cta {
-    display: inline-flex;
+.service-card-premium .service-cta {
+    display: flex !important;
+    width: 100% !important;
+    flex: 1 !important;
+    min-width: 100% !important;
+    align-self: stretch !important;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
     padding: 1.1rem 2rem;
-    margin-top: 2rem;
+    margin-top: auto !important;
+    box-sizing: border-box !important;
     background: var(--sage-dark);
     color: #fff;
     text-decoration: none;

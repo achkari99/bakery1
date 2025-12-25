@@ -42,35 +42,41 @@
             <div class="contact-layout">
                 <!-- Contact Form -->
                 <div class="contact-form-card">
-                    <h2>Send us a Message</h2>
+                    <h2 data-i18n="contact.form_title">Send us a Message</h2>
                     <form id="contact-form" action="#" method="POST">
                         <div class="form-group">
                             <label for="name" data-i18n="contact.form_name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name">
+                            <input type="text" id="name" name="name" required placeholder="Your name"
+                                data-i18n="contact.form_name_placeholder">
                         </div>
                         <div class="form-group">
                             <label for="email" data-i18n="contact.form_email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            <input type="email" id="email" name="email" required placeholder="your@email.com"
+                                data-i18n="contact.form_email_placeholder">
                         </div>
                         <div class="form-group">
                             <label for="phone" data-i18n="contact.form_phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+212 6XX XXX XXX">
+                            <input type="tel" id="phone" name="phone" placeholder="+212 6XX XXX XXX"
+                                data-i18n="contact.form_phone_placeholder">
                         </div>
                         <div class="form-group">
                             <label for="subject" data-i18n="contact.form_subject">Subject</label>
                             <select id="subject" name="subject" required>
                                 <option value="" data-i18n="contact.form_subject_general">General Inquiry</option>
-                                <option value="order">Order Question</option>
-                                <option value="catering">Catering Request</option>
-                                <option value="wholesale">Wholesale Inquiry</option>
-                                <option value="workshop">Workshop Booking</option>
-                                <option value="press">Press & Media</option>
+                                <option value="order" data-i18n="contact.form_subject_order">Order Question</option>
+                                <option value="catering" data-i18n="contact.form_subject_catering">Catering Request
+                                </option>
+                                <option value="wholesale" data-i18n="contact.form_subject_wholesale">Wholesale Inquiry
+                                </option>
+                                <option value="workshop" data-i18n="contact.form_subject_workshop">Workshop Booking
+                                </option>
+                                <option value="press" data-i18n="contact.form_subject_press">Press & Media</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message" data-i18n="contact.form_message">Your Message</label>
-                            <textarea id="message" name="message" required
-                                placeholder="How can we help you?"></textarea>
+                            <textarea id="message" name="message" required placeholder="How can we help you?"
+                                data-i18n="contact.form_message_placeholder"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" data-i18n="contact.form_submit">Send

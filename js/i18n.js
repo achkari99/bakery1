@@ -226,7 +226,10 @@ const I18n = (() => {
 
                 // Trigger re-initialization of typing animation if needed
                 // Dispath a custom event that the typing script can listen to
-                el.dispatchEvent(new CustomEvent('typing-update', { bubbles: true }));
+                el.dispatchEvent(new CustomEvent('typing-update', {
+                    bubbles: true,
+                    detail: { words: translation }
+                }));
             }
         });
 

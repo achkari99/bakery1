@@ -29,6 +29,11 @@ class TypingAnimation {
         this.deleteSpeed = 40; // ms per character when deleting
         this.pauseAfterPhrase = 2500; // pause after typing complete phrase
 
+        // Timer references for cleanup
+        this.typingTimeout = null;
+        this.deleteTimeout = null;
+        this.nextPhraseTimeout = null;
+
         this.start();
     }
 
@@ -42,13 +47,24 @@ class TypingAnimation {
     }
 
     start() {
-        // Start with the first phrase
-        const firstPhrase = this.phrases[0];
-        this.textElement.textContent = firstPhrase;
+        // Clear any existing timeouts first
+        this.stop();
 
-        setTimeout(() => {
-            this.nextPhrase();
-        }, this.pauseAfterPhrase);
+        // Start with the first phrase
+        if (this.phrases && this.phrases.length > 0) {
+            const firstPhrase = this.phrases[0];
+            this.textElement.textContent = firstPhrase;
+
+            this.nextPhraseTimeout = setTimeout(() => {
+                this.nextPhrase();
+            }, this.pauseAfterPhrase);
+        }
+    }
+
+    stop() {
+        if (this.typingTimeout) clearTimeout(this.typingTimeout);
+        if (this.deleteTimeout) clearTimeout(this.deleteTimeout);
+        if (this.nextPhraseTimeout) clearTimeout(this.nextPhraseTimeout);
     }
 
     nextPhrase() {
@@ -65,7 +81,7 @@ class TypingAnimation {
         this.deleteText(commonPrefix, currentSuffix, () => {
             this.typeText(commonPrefix, nextSuffix, () => {
                 this.currentPhraseIndex = nextIndex;
-                setTimeout(() => this.nextPhrase(), this.pauseAfterPhrase);
+                this.nextPhraseTimeout = setTimeout(() => this.nextPhrase(), this.pauseAfterPhrase);
             });
         });
     }
@@ -77,13 +93,14 @@ class TypingAnimation {
         }
 
         const deleteStep = () => {
+            if (!this.textElement) return;
             suffix = suffix.substring(0, suffix.length - 1);
             this.textElement.textContent = prefix + suffix;
 
             if (suffix.length === 0) {
-                setTimeout(callback, 200);
+                this.deleteTimeout = setTimeout(callback, 200);
             } else {
-                setTimeout(deleteStep, this.deleteSpeed);
+                this.deleteTimeout = setTimeout(deleteStep, this.deleteSpeed);
             }
         };
 
@@ -98,13 +115,14 @@ class TypingAnimation {
 
         let currentIndex = 0;
         const typeStep = () => {
+            if (!this.textElement) return;
             currentIndex++;
             this.textElement.textContent = prefix + suffix.substring(0, currentIndex);
 
             if (currentIndex === suffix.length) {
                 callback();
             } else {
-                setTimeout(typeStep, this.typeSpeed);
+                this.typingTimeout = setTimeout(typeStep, this.typeSpeed);
             }
         };
 
@@ -116,6 +134,32 @@ class TypingAnimation {
 document.addEventListener('DOMContentLoaded', () => {
     const typingElement = document.querySelector('[data-typing-words]');
     if (typingElement) {
-        new TypingAnimation(typingElement);
+        let typingInstance = new TypingAnimation(typingElement);
+
+        // Listen for language updates
+        window.addEventListener('typing-update', (event) => {
+            // Stop current animation
+            if (typingInstance) {
+                typingInstance.stop();
+
+                // Get new words from event detail or attribute
+                let newWords = [];
+                if (event.detail && event.detail.words) {
+                    newWords = event.detail.words;
+                } else {
+                    try {
+                        newWords = JSON.parse(typingElement.getAttribute('data-typing-words'));
+                    } catch (e) {
+                        console.error('Failed to parse new typing words');
+                    }
+                }
+
+                if (newWords && newWords.length > 0) {
+                    typingInstance.phrases = newWords;
+                    typingInstance.currentPhraseIndex = 0;
+                    typingInstance.start();
+                }
+            }
+        });
     }
 });

@@ -20,7 +20,7 @@
         "order": "اطلب الآن"
     },
     "promo": {
-        "banner": "توصيل مجاني في تطوان وطنجة ابتداءً من 300 درهم · مفتوح 24/7",
+        "banner": "لفترة محدودة · توصيل مجاني إلى طنجة ابتداءً من 500 درهم",
         "banner_home": ""
     },
     "home": {
@@ -122,7 +122,7 @@
         "community_hashtag": "#GoldenSweetPatisserie",
         "community_desc": "كل يوم، تكبر دائرتنا الذواقة: فطور على الشرفة، توصيلات منتصف الليل، ورش عمل عفوية. انضم للمبدعين الذين يجعلون غولدن سويت تتألق في الشمال.",
         "community_stat1_val": "أكثر من 290",
-        "community_stat1_label": "منشور تمت مشاركته <br> في المجموع",
+        "community_stat1_label": "منشور تمت مشاركته في المجموع",
         "community_stat2_val": "طوال الأسبوع",
         "community_stat2_label": "لحظات مشتركة ليلاً ونهاراً",
         "community_stat3_val": "هاشتاغ واحد",
@@ -514,6 +514,15 @@
         "add_to_cart": "أضف للسلة",
         "allergens": "مسببات الحساسية"
     },
+    "menu": {
+        "hero_title": "قائمتنا",
+        "hero_subtitle": "اكتشف مجموعتنا الكاملة من الحلويات الحرفية",
+        "filter_all": "الكل",
+        "filter_sugar_free": "بدون سكر",
+        "filter_gluten_free": "بدون غلوتين",
+        "filter_keto": "كيتو",
+        "filter_low_carb": "قليل الكربوهيدرات"
+    },
     "presse": {
         "title": "الصحافة والجوائز | غولدن سويت",
         "hero_title": "في الصحافة",
@@ -537,16 +546,22 @@
         "title": "اتصل بنا | غولدن سويت",
         "hero_title": "تواصل معنا",
         "hero_subtitle": "نحب أن نسمع منك",
+        "form_title": "أرسل لنا رسالة",
         "form_name": "الاسم الكامل",
+        "form_name_placeholder": "اسمك الكامل",
         "form_email": "البريد الإلكتروني",
+        "form_email_placeholder": "your@email.com",
         "form_phone": "رقم الهاتف",
+        "form_phone_placeholder": "+212 6XX XXX XXX",
         "form_subject": "الموضوع",
         "form_subject_general": "استفسار عام",
         "form_subject_order": "سؤال عن الطلب",
         "form_subject_catering": "طلب تموين",
         "form_subject_wholesale": "استفسار الجملة",
+        "form_subject_workshop": "حجز ورشة عمل",
         "form_subject_press": "الصحافة والإعلام",
         "form_message": "رسالتك",
+        "form_message_placeholder": "كيف يمكننا مساعدتك؟",
         "form_submit": "إرسال الرسالة",
         "form_success": "شكراً لك! سنتواصل معك قريباً.",
         "info_heading": "معلومات الاتصال",
@@ -591,7 +606,7 @@
         "custom_btn": "طلب خاص"
     },
     "footer": {
-        "brand_tagline": "لفائف نباتية",
+        "brand_tagline": "مخبوزات صحية",
         "explore": "اكتشف",
         "shop": "المتجر",
         "pro": "العرض المهني",
@@ -606,6 +621,7 @@
     "common": {
         "loading": "جارٍ التحميل...",
         "error": "حدث خطأ ما",
+        "added_to_cart": "تمت الإضافة إلى السلة!",
         "retry": "حاول مرة أخرى",
         "close": "إغلاق",
         "previous": "السابق",

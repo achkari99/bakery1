@@ -73,7 +73,7 @@ class ModalManager {
                             </div>
                         ` : ''}
                         <button class="btn btn-primary btn-animated" onclick="Modal.addToCart('${product.id}')">
-                            Add to Cart
+                            ${(window.I18n && window.I18n.t) ? window.I18n.t('products.add_to_cart') : 'Add to Cart'}
                         </button>
                     </div>
                 </div>
@@ -96,7 +96,8 @@ class ModalManager {
 
         // Show toast
         if (window.showToast) {
-            window.showToast('Added to cart!', 'success');
+            const message = (window.I18n && window.I18n.t) ? window.I18n.t('common.added_to_cart') : 'Added to cart!';
+            window.showToast(message, 'success');
         }
     }
 }

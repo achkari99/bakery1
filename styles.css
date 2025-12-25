@@ -179,6 +179,10 @@ p {
     padding: 0;
 }
 
+html[dir="rtl"] .nav-links ul {
+    direction: ltr;
+}
+
 /* Nav link double underline - two thin lines centered under text */
 .nav-links a {
     position: relative;
@@ -361,6 +365,8 @@ p {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    align-items: flex-start;
+    margin-top: 0.5rem;
 }
 
 /* Enhanced Hero Button Hover Effects */
@@ -689,6 +695,8 @@ p {
     box-shadow: none;
     white-space: nowrap;
     min-width: fit-content;
+    min-height: 48px;
+    line-height: 1.2;
 }
 
 .btn:hover,
@@ -2444,10 +2452,10 @@ p {
 }
 
 .community-highlights dt {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--sage-dark);
-    letter-spacing: -0.01em;
+
 }
 
 .community-highlights dd {
@@ -2455,6 +2463,7 @@ p {
     font-size: 0.9rem;
     line-height: 1.4;
     color: rgba(63, 64, 58, 0.75);
+    width: 85%;
 }
 
 .community-media {

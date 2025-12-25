@@ -1,7 +1,4 @@
-/**
- * Cinnamona by Mona - Express Server
- * Backend API for admin panel and content management
- */
+
 
 require('dotenv').config();
 const express = require('express');
@@ -58,11 +55,11 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`
 ╔═══════════════════════════════════════════════╗
-║     🥐 Cinnamona by Mona Server Running       ║
+║     🥐 Golden Sweet Server Running            ║
 ╠═══════════════════════════════════════════════╣
-║  Website: http://localhost:${PORT}              ║
-║  Admin:   http://localhost:${PORT}/admin        ║
-║  API:     http://localhost:${PORT}/api          ║
+║  Website: http://localhost:${PORT}               ║
+║  Admin:   http://localhost:${PORT}/admin         ║
+║  API:     http://localhost:${PORT}/api           ║
 ╚═══════════════════════════════════════════════╝
     `);
 });
