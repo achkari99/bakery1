@@ -132,6 +132,7 @@
                                 Products</button>
                             <button class="btn btn-secondary" onclick="Admin.showSection('contacts')">View
                                 Messages</button>
+                            <button class="btn btn-outline" onclick="Admin.exportData()">Export Data</button>
                         </div>
                     </div>
                 </section>
@@ -243,6 +244,11 @@
                             <label for="site-address">Address</label>
                             <textarea id="site-address" name="address"
                                 rows="2">27 Lotissement Bouaamriya Assif C, Marrakech 40000</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="promo-text">Promo Banner Text</label>
+                            <input type="text" id="promo-text" name="promoText"
+                                placeholder="e.g. FREE DELIVERY FROM 500 DHS">
                         </div>
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>

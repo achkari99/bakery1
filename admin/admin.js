@@ -1,75 +1,100 @@
 /**
  * Cinnamona Admin Panel JavaScript
- * Handles authentication, CRUD operations, and UI
+ * Handles authentication, CRUD operations, and UI using LocalStorage
  */
 
 const Admin = (() => {
-    const API_BASE = '/api';
-    let token = localStorage.getItem('cinnamona-admin-token');
+    // Keys for LocalStorage
+    const KEYS = {
+        TOKEN: 'cinnamona-admin-token',
+        PRODUCTS: 'cinnamona-products',
+        SHOPS: 'cinnamona-shops',
+        FAQS: 'cinnamona-faqs',
+        CONTACTS: 'cinnamona-contacts',
+        SETTINGS: 'cinnamona-settings'
+    };
+
+    let currentUser = null;
     let currentSection = 'overview';
 
     // =====================
-    // API Helpers
+    // Data Management
     // =====================
 
-    async function api(endpoint, options = {}) {
-        const headers = {
-            'Content-Type': 'application/json',
-            ...(token && { Authorization: `Bearer ${token}` })
-        };
-
-        const response = await fetch(`${API_BASE}${endpoint}`, {
-            ...options,
-            headers: { ...headers, ...options.headers }
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'API Error');
+    const initialData = {
+        products: [
+            { id: 'p1', name: 'Original Cinnamon Roll', category: 'rolls', price: 25, status: 'Active', featured: true, description: 'Classic cinnamon roll with our signature frosting.' },
+            { id: 'p2', name: 'Chocolate Hazelnut', category: 'rolls', price: 30, status: 'Active', featured: true, description: 'Rich chocolate and hazelnut filling.' },
+            { id: 'p3', name: 'Salted Caramel', category: 'rolls', price: 28, status: 'Active', featured: false, description: 'Topped with homemade salted caramel sauce.' },
+            { id: 'p4', name: 'Box of 4', category: 'boxes', price: 95, status: 'Active', featured: false, description: 'Your choice of 4 rolls.' }
+        ],
+        shops: [
+            { id: 's1', name: 'Cinnamona Marrakech', address: '27 Lotissement Bouaamriya Assif C, Marrakech', phone: '+212 637-629395', hours: '10:00 - 22:00' }
+        ],
+        faqs: [
+            { id: 'f1', question: 'Do you offer delivery?', category: 'delivery', answer: 'Yes, we deliver to all of Marrakech.' },
+            { id: 'f2', question: 'Are they vegan?', category: 'allergens', answer: 'Our standard rolls contain dairy and eggs.' }
+        ],
+        contacts: [
+            { id: 'c1', name: 'Test User', email: 'test@example.com', subject: 'Inquiry', message: 'Do you cater for weddings?', status: 'new', createdAt: new Date().toISOString() }
+        ],
+        settings: {
+            siteName: 'Cinnamona by Mona',
+            phone: '+212 637-629395',
+            email: 'bonjour@cinnamona.ma',
+            address: '27 Lotissement Bouaamriya Assif C, Marrakech 40000',
+            promoText: 'FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs'
         }
+    };
 
-        return data;
+    function loadData(key) {
+        const stored = localStorage.getItem(key);
+        if (!stored) {
+            // Initialize with default data if empty
+            const defaultKey = key.replace('cinnamona-', '');
+            if (initialData[defaultKey]) {
+                localStorage.setItem(key, JSON.stringify(initialData[defaultKey]));
+                return initialData[defaultKey];
+            }
+            return [];
+        }
+        return JSON.parse(stored);
+    }
+
+    function saveData(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     // =====================
     // Authentication
     // =====================
 
-    async function login(email, password) {
-        try {
-            const result = await api('/auth/login', {
-                method: 'POST',
-                body: JSON.stringify({ email, password })
-            });
-
-            token = result.token;
-            localStorage.setItem('cinnamona-admin-token', token);
+    function login(email, password) {
+        // Simple mock authentication
+        if (email === 'admin@cinnamona.ma' && password === 'admin123') {
+            const token = 'mock-token-' + Date.now();
+            localStorage.setItem(KEYS.TOKEN, token);
+            currentUser = { email, name: 'Admin' };
             showDashboard();
             loadStats();
-        } catch (err) {
-            document.getElementById('login-error').textContent = err.message;
+        } else {
+            document.getElementById('login-error').textContent = 'Invalid credentials (try admin@cinnamona.ma / admin123)';
         }
     }
 
     function logout() {
-        token = null;
-        localStorage.removeItem('cinnamona-admin-token');
+        localStorage.removeItem(KEYS.TOKEN);
+        currentUser = null;
         showLogin();
     }
 
-    async function checkAuth() {
-        if (!token) {
-            showLogin();
-            return;
-        }
-
-        try {
-            await api('/auth/me');
+    function checkAuth() {
+        const token = localStorage.getItem(KEYS.TOKEN);
+        if (token) {
             showDashboard();
             loadStats();
-        } catch (err) {
-            logout();
+        } else {
+            showLogin();
         }
     }
 
@@ -115,23 +140,13 @@ const Admin = (() => {
         loadSectionData(section);
     }
 
-    async function loadSectionData(section) {
+    function loadSectionData(section) {
         switch (section) {
-            case 'products':
-                await loadProducts();
-                break;
-            case 'shops':
-                await loadShops();
-                break;
-            case 'faqs':
-                await loadFaqs();
-                break;
-            case 'contacts':
-                await loadContacts();
-                break;
-            case 'settings':
-                await loadSettings();
-                break;
+            case 'products': renderProducts(); break;
+            case 'shops': renderShops(); break;
+            case 'faqs': renderFaqs(); break;
+            case 'contacts': renderContacts(); break;
+            case 'settings': renderSettings(); break;
         }
     }
 
@@ -139,258 +154,236 @@ const Admin = (() => {
     // Stats
     // =====================
 
-    async function loadStats() {
-        try {
-            const [products, shops, faqs, contacts] = await Promise.all([
-                api('/products'),
-                api('/shops'),
-                api('/faqs'),
-                api('/contacts')
-            ]);
+    function loadStats() {
+        const products = loadData(KEYS.PRODUCTS);
+        const shops = loadData(KEYS.SHOPS);
+        const faqs = loadData(KEYS.FAQS);
+        const contacts = loadData(KEYS.CONTACTS);
 
-            document.getElementById('stat-products').textContent = products.data?.length || 0;
-            document.getElementById('stat-shops').textContent = shops.data?.length || 0;
-            document.getElementById('stat-faqs').textContent = faqs.data?.length || 0;
-            document.getElementById('stat-contacts').textContent =
-                contacts.data?.filter(c => c.status === 'new').length || 0;
-        } catch (err) {
-            console.error('Error loading stats:', err);
-        }
+        document.getElementById('stat-products').textContent = products.length;
+        document.getElementById('stat-shops').textContent = shops.length;
+        document.getElementById('stat-faqs').textContent = faqs.length;
+        document.getElementById('stat-contacts').textContent = contacts.filter(c => c.status === 'new').length;
     }
 
     // =====================
     // Products CRUD
     // =====================
 
-    async function loadProducts() {
-        try {
-            const result = await api('/products');
-            const tbody = document.getElementById('products-table');
+    function renderProducts() {
+        const products = loadData(KEYS.PRODUCTS);
+        const tbody = document.getElementById('products-table');
 
-            if (!result.data || result.data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem">No products yet. Click "Add Product" to create one.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = result.data.map(p => `
-                <tr>
-                    <td><strong>${p.name}</strong></td>
-                    <td>${p.category || '-'}</td>
-                    <td>${p.price} MAD</td>
-                    <td><span class="badge badge-active">${p.status || 'Active'}</span></td>
-                    <td class="actions">
-                        <button class="btn btn-outline btn-small" onclick="Admin.editProduct('${p.id}')">Edit</button>
-                        <button class="btn btn-danger btn-small" onclick="Admin.deleteProduct('${p.id}')">Delete</button>
-                    </td>
-                </tr>
-            `).join('');
-        } catch (err) {
-            console.error('Error loading products:', err);
+        if (products.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem">No products yet. Click "Add Product" to create one.</td></tr>';
+            return;
         }
+
+        tbody.innerHTML = products.map(p => `
+            <tr>
+                <td>
+                    <strong>${p.name}</strong>
+                    ${p.featured ? '<span class="badge badge-replied" style="font-size:0.75em; margin-left:8px">Featured</span>' : ''}
+                </td>
+                <td>${p.category || '-'}</td>
+                <td>${p.price} MAD</td>
+                <td><span class="badge badge-active">${p.status || 'Active'}</span></td>
+                <td class="actions">
+                    <button class="btn btn-outline btn-small" onclick="Admin.editProduct('${p.id}')">Edit</button>
+                    <button class="btn btn-danger btn-small" onclick="Admin.deleteProduct('${p.id}')">Delete</button>
+                </td>
+            </tr>
+        `).join('');
     }
 
-    async function saveProduct(data, id = null) {
-        try {
-            if (id) {
-                await api(`/products/${id}`, { method: 'PUT', body: JSON.stringify(data) });
-            } else {
-                await api('/products', { method: 'POST', body: JSON.stringify(data) });
+    function saveProduct(data, id = null) {
+        const products = loadData(KEYS.PRODUCTS);
+
+        // Handle checkbox for featured (it might not be in data if unchecked)
+        data.featured = data.featured === 'on';
+
+        if (id) {
+            const index = products.findIndex(p => p.id === id);
+            if (index !== -1) {
+                products[index] = { ...products[index], ...data };
             }
-            closeModal();
-            loadProducts();
-            loadStats();
-        } catch (err) {
-            alert('Error saving product: ' + err.message);
+        } else {
+            products.push({ ...data, id: 'p' + Date.now(), status: 'Active' });
         }
+        saveData(KEYS.PRODUCTS, products);
+        closeModal();
+        renderProducts();
+        loadStats();
     }
 
-    async function deleteProduct(id) {
+    function deleteProduct(id) {
         if (!confirm('Are you sure you want to delete this product?')) return;
-        try {
-            await api(`/products/${id}`, { method: 'DELETE' });
-            loadProducts();
-            loadStats();
-        } catch (err) {
-            alert('Error deleting product: ' + err.message);
-        }
+        const products = loadData(KEYS.PRODUCTS);
+        const filtered = products.filter(p => p.id !== id);
+        saveData(KEYS.PRODUCTS, filtered);
+        renderProducts();
+        loadStats();
     }
 
-    async function editProduct(id) {
-        const result = await api(`/products/${id}`);
-        openModal('product', result.data);
+    function editProduct(id) {
+        const products = loadData(KEYS.PRODUCTS);
+        const product = products.find(p => p.id === id);
+        if (product) openModal('product', product);
     }
 
     // =====================
     // Shops CRUD
     // =====================
 
-    async function loadShops() {
-        try {
-            const result = await api('/shops');
-            const tbody = document.getElementById('shops-table');
+    function renderShops() {
+        const shops = loadData(KEYS.SHOPS);
+        const tbody = document.getElementById('shops-table');
 
-            if (!result.data || result.data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem">No shops yet.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = result.data.map(s => `
-                <tr>
-                    <td><strong>${s.name}</strong></td>
-                    <td>${s.address || '-'}</td>
-                    <td>${s.phone || '-'}</td>
-                    <td class="actions">
-                        <button class="btn btn-outline btn-small" onclick="Admin.editShop('${s.id}')">Edit</button>
-                        <button class="btn btn-danger btn-small" onclick="Admin.deleteShop('${s.id}')">Delete</button>
-                    </td>
-                </tr>
-            `).join('');
-        } catch (err) {
-            console.error('Error loading shops:', err);
+        if (shops.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem">No shops yet.</td></tr>';
+            return;
         }
+
+        tbody.innerHTML = shops.map(s => `
+            <tr>
+                <td><strong>${s.name}</strong></td>
+                <td>${s.address || '-'}</td>
+                <td>${s.phone || '-'}</td>
+                <td class="actions">
+                    <button class="btn btn-outline btn-small" onclick="Admin.editShop('${s.id}')">Edit</button>
+                    <button class="btn btn-danger btn-small" onclick="Admin.deleteShop('${s.id}')">Delete</button>
+                </td>
+            </tr>
+        `).join('');
     }
 
-    async function saveShop(data, id = null) {
-        try {
-            if (id) {
-                await api(`/shops/${id}`, { method: 'PUT', body: JSON.stringify(data) });
-            } else {
-                await api('/shops', { method: 'POST', body: JSON.stringify(data) });
-            }
-            closeModal();
-            loadShops();
-            loadStats();
-        } catch (err) {
-            alert('Error saving shop: ' + err.message);
+    function saveShop(data, id = null) {
+        const shops = loadData(KEYS.SHOPS);
+        if (id) {
+            const index = shops.findIndex(s => s.id === id);
+            if (index !== -1) shops[index] = { ...shops[index], ...data };
+        } else {
+            shops.push({ ...data, id: 's' + Date.now() });
         }
+        saveData(KEYS.SHOPS, shops);
+        closeModal();
+        renderShops();
+        loadStats();
     }
 
-    async function deleteShop(id) {
+    function deleteShop(id) {
         if (!confirm('Delete this shop?')) return;
-        try {
-            await api(`/shops/${id}`, { method: 'DELETE' });
-            loadShops();
-            loadStats();
-        } catch (err) {
-            alert('Error: ' + err.message);
-        }
+        const shops = loadData(KEYS.SHOPS);
+        const filtered = shops.filter(s => s.id !== id);
+        saveData(KEYS.SHOPS, filtered);
+        renderShops();
+        loadStats();
     }
 
-    async function editShop(id) {
-        const result = await api(`/shops/${id}`);
-        openModal('shop', result.data);
+    function editShop(id) {
+        const shops = loadData(KEYS.SHOPS);
+        const shop = shops.find(s => s.id === id);
+        if (shop) openModal('shop', shop);
     }
 
     // =====================
     // FAQs CRUD
     // =====================
 
-    async function loadFaqs() {
-        try {
-            const result = await api('/faqs');
-            const tbody = document.getElementById('faqs-table');
+    function renderFaqs() {
+        const faqs = loadData(KEYS.FAQS);
+        const tbody = document.getElementById('faqs-table');
 
-            if (!result.data || result.data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;padding:2rem">No FAQs yet.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = result.data.map(f => `
-                <tr>
-                    <td>${f.question}</td>
-                    <td>${f.category || '-'}</td>
-                    <td class="actions">
-                        <button class="btn btn-outline btn-small" onclick="Admin.editFaq('${f.id}')">Edit</button>
-                        <button class="btn btn-danger btn-small" onclick="Admin.deleteFaq('${f.id}')">Delete</button>
-                    </td>
-                </tr>
-            `).join('');
-        } catch (err) {
-            console.error('Error loading FAQs:', err);
+        if (faqs.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;padding:2rem">No FAQs yet.</td></tr>';
+            return;
         }
+
+        tbody.innerHTML = faqs.map(f => `
+            <tr>
+                <td>${f.question}</td>
+                <td>${f.category || '-'}</td>
+                <td class="actions">
+                    <button class="btn btn-outline btn-small" onclick="Admin.editFaq('${f.id}')">Edit</button>
+                    <button class="btn btn-danger btn-small" onclick="Admin.deleteFaq('${f.id}')">Delete</button>
+                </td>
+            </tr>
+        `).join('');
     }
 
-    async function saveFaq(data, id = null) {
-        try {
-            if (id) {
-                await api(`/faqs/${id}`, { method: 'PUT', body: JSON.stringify(data) });
-            } else {
-                await api('/faqs', { method: 'POST', body: JSON.stringify(data) });
-            }
-            closeModal();
-            loadFaqs();
-            loadStats();
-        } catch (err) {
-            alert('Error saving FAQ: ' + err.message);
+    function saveFaq(data, id = null) {
+        const faqs = loadData(KEYS.FAQS);
+        if (id) {
+            const index = faqs.findIndex(f => f.id === id);
+            if (index !== -1) faqs[index] = { ...faqs[index], ...data };
+        } else {
+            faqs.push({ ...data, id: 'f' + Date.now() });
         }
+        saveData(KEYS.FAQS, faqs);
+        closeModal();
+        renderFaqs();
+        loadStats();
     }
 
-    async function deleteFaq(id) {
+    function deleteFaq(id) {
         if (!confirm('Delete this FAQ?')) return;
-        try {
-            await api(`/faqs/${id}`, { method: 'DELETE' });
-            loadFaqs();
-            loadStats();
-        } catch (err) {
-            alert('Error: ' + err.message);
-        }
+        const faqs = loadData(KEYS.FAQS);
+        const filtered = faqs.filter(f => f.id !== id);
+        saveData(KEYS.FAQS, filtered);
+        renderFaqs();
+        loadStats();
     }
 
-    async function editFaq(id) {
-        const result = await api(`/faqs/${id}`);
-        openModal('faq', result.data);
+    function editFaq(id) {
+        const faqs = loadData(KEYS.FAQS);
+        const faq = faqs.find(f => f.id === id);
+        if (faq) openModal('faq', faq);
     }
 
     // =====================
     // Contacts
     // =====================
 
-    async function loadContacts() {
-        try {
-            const result = await api('/contacts');
-            const tbody = document.getElementById('contacts-table');
+    function renderContacts() {
+        const contacts = loadData(KEYS.CONTACTS);
+        const tbody = document.getElementById('contacts-table');
 
-            if (!result.data || result.data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem">No messages yet.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = result.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(c => `
-                <tr>
-                    <td>${new Date(c.createdAt).toLocaleDateString()}</td>
-                    <td><strong>${c.name}</strong></td>
-                    <td><a href="mailto:${c.email}">${c.email}</a></td>
-                    <td>${c.subject || '-'}</td>
-                    <td><span class="badge badge-${c.status}">${c.status}</span></td>
-                    <td class="actions">
-                        <button class="btn btn-outline btn-small" onclick="Admin.viewContact('${c.id}')">View</button>
-                        <button class="btn btn-small" onclick="Admin.markReplied('${c.id}')">Mark Replied</button>
-                    </td>
-                </tr>
-            `).join('');
-        } catch (err) {
-            console.error('Error loading contacts:', err);
+        if (contacts.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem">No messages yet.</td></tr>';
+            return;
         }
+
+        tbody.innerHTML = contacts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(c => `
+            <tr>
+                <td>${new Date(c.createdAt).toLocaleDateString()}</td>
+                <td><strong>${c.name}</strong></td>
+                <td><a href="mailto:${c.email}">${c.email}</a></td>
+                <td>${c.subject || '-'}</td>
+                <td><span class="badge badge-${c.status}">${c.status}</span></td>
+                <td class="actions">
+                    <button class="btn btn-outline btn-small" onclick="Admin.viewContact('${c.id}')">View</button>
+                    <button class="btn btn-small" onclick="Admin.markReplied('${c.id}')">Mark Replied</button>
+                </td>
+            </tr>
+        `).join('');
     }
 
-    async function viewContact(id) {
-        const result = await api(`/contacts`);
-        const contact = result.data.find(c => c.id === id);
+    function viewContact(id) {
+        const contacts = loadData(KEYS.CONTACTS);
+        const contact = contacts.find(c => c.id === id);
         if (contact) {
             alert(`From: ${contact.name}\nEmail: ${contact.email}\nPhone: ${contact.phone || 'N/A'}\nSubject: ${contact.subject || 'N/A'}\n\nMessage:\n${contact.message}`);
         }
     }
 
-    async function markReplied(id) {
-        try {
-            await api(`/contacts/${id}`, {
-                method: 'PUT',
-                body: JSON.stringify({ status: 'replied' })
-            });
-            loadContacts();
+    function markReplied(id) {
+        const contacts = loadData(KEYS.CONTACTS);
+        const index = contacts.findIndex(c => c.id === id);
+        if (index !== -1) {
+            contacts[index].status = 'replied';
+            saveData(KEYS.CONTACTS, contacts);
+            renderContacts();
             loadStats();
-        } catch (err) {
-            alert('Error: ' + err.message);
         }
     }
 
@@ -398,27 +391,42 @@ const Admin = (() => {
     // Settings
     // =====================
 
-    async function loadSettings() {
-        try {
-            const result = await api('/settings');
-            if (result.data) {
-                document.getElementById('site-name').value = result.data.siteName || '';
-                document.getElementById('site-phone').value = result.data.phone || '';
-                document.getElementById('site-email').value = result.data.email || '';
-                document.getElementById('site-address').value = result.data.address || '';
-            }
-        } catch (err) {
-            console.error('Error loading settings:', err);
+    function renderSettings() {
+        const settings = loadData(KEYS.SETTINGS);
+        if (settings) {
+            document.getElementById('site-name').value = settings.siteName || '';
+            document.getElementById('site-phone').value = settings.phone || '';
+            document.getElementById('site-email').value = settings.email || '';
+            document.getElementById('site-address').value = settings.address || '';
+            document.getElementById('promo-text').value = settings.promoText || '';
         }
     }
 
-    async function saveSettings(data) {
-        try {
-            await api('/settings', { method: 'PUT', body: JSON.stringify(data) });
-            alert('Settings saved!');
-        } catch (err) {
-            alert('Error saving settings: ' + err.message);
-        }
+    function saveSettings(data) {
+        saveData(KEYS.SETTINGS, data);
+        alert('Settings saved successfully!');
+    }
+
+    // =====================
+    // Export Data
+    // =====================
+
+    function exportData() {
+        const data = {
+            products: loadData(KEYS.PRODUCTS),
+            shops: loadData(KEYS.SHOPS),
+            faqs: loadData(KEYS.FAQS),
+            settings: loadData(KEYS.SETTINGS)
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cinnamona-config.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     // =====================
@@ -458,6 +466,10 @@ const Admin = (() => {
                     <div class="form-group">
                         <label>Description</label>
                         <textarea name="description" rows="3">${data?.description || ''}</textarea>
+                    </div>
+                   <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="featured-check" name="featured" ${data?.featured ? 'checked' : ''} style="width: auto; margin: 0;">
+                        <label for="featured-check" style="margin: 0; font-weight: normal;">Featured on Homepage</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Save Product</button>
                 </form>
@@ -514,7 +526,7 @@ const Admin = (() => {
         modal.classList.remove('hidden');
 
         // Form submit handler
-        document.getElementById('modal-form').addEventListener('submit', async (e) => {
+        document.getElementById('modal-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
             const obj = Object.fromEntries(formData);
@@ -522,9 +534,9 @@ const Admin = (() => {
             delete obj.id;
 
             switch (type) {
-                case 'product': await saveProduct(obj, id); break;
-                case 'shop': await saveShop(obj, id); break;
-                case 'faq': await saveFaq(obj, id); break;
+                case 'product': saveProduct(obj, id); break;
+                case 'shop': saveShop(obj, id); break;
+                case 'faq': saveFaq(obj, id); break;
             }
         });
     }
@@ -592,6 +604,7 @@ const Admin = (() => {
         editFaq,
         deleteFaq,
         viewContact,
-        markReplied
+        markReplied,
+        exportData
     };
 })();
