@@ -11,7 +11,8 @@ const Admin = (() => {
         SHOPS: 'cinnamona-shops',
         FAQS: 'cinnamona-faqs',
         CONTACTS: 'cinnamona-contacts',
-        SETTINGS: 'cinnamona-settings'
+        SETTINGS: 'cinnamona-settings',
+        ORDERS: 'cinnamona-orders'
     };
 
     let currentUser = null;
@@ -44,7 +45,10 @@ const Admin = (() => {
             email: 'bonjour@cinnamona.ma',
             address: 'Tetouan & Tangier, Morocco',
             promoText: 'FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs'
-        }
+        },
+        orders: [
+            { id: 'o1', customer: 'John Doe', items: '2x Original Cinnamon Roll', total: 50, date: new Date().toISOString(), status: 'WhatsApp Sent' }
+        ]
     };
 
     function loadData(key) {
@@ -71,14 +75,14 @@ const Admin = (() => {
 
     function login(email, password) {
         // Simple mock authentication
-        if (email === 'admin@cinnamona.ma' && password === 'admin123') {
+        if (email === 'admin@goldensweet.ma' && password === 'admin123') {
             const token = 'mock-token-' + Date.now();
             localStorage.setItem(KEYS.TOKEN, token);
             currentUser = { email, name: 'Admin' };
             showDashboard();
             loadStats();
         } else {
-            document.getElementById('login-error').textContent = 'Invalid credentials (try admin@cinnamona.ma / admin123)';
+            document.getElementById('login-error').textContent = 'Invalid credentials (try admin@goldensweet.ma / admin123)';
         }
     }
 
@@ -132,7 +136,8 @@ const Admin = (() => {
             shops: 'Shops',
             faqs: 'FAQs',
             contacts: 'Messages',
-            settings: 'Settings'
+            settings: 'Settings',
+            orders: 'Order History'
         };
         document.getElementById('page-title').textContent = titles[section] || 'Dashboard';
 
@@ -147,6 +152,7 @@ const Admin = (() => {
             case 'faqs': renderFaqs(); break;
             case 'contacts': renderContacts(); break;
             case 'settings': renderSettings(); break;
+            case 'orders': renderOrders(); break;
         }
     }
 
@@ -159,11 +165,18 @@ const Admin = (() => {
         const shops = loadData(KEYS.SHOPS);
         const faqs = loadData(KEYS.FAQS);
         const contacts = loadData(KEYS.CONTACTS);
+        const orders = loadData(KEYS.ORDERS);
+        const settings = loadData(KEYS.SETTINGS);
 
         document.getElementById('stat-products').textContent = products.length;
         document.getElementById('stat-shops').textContent = shops.length;
         document.getElementById('stat-faqs').textContent = faqs.length;
-        document.getElementById('stat-contacts').textContent = contacts.filter(c => c.status === 'new').length;
+        document.getElementById('stat-contacts').textContent = (contacts.filter(c => c.status === 'new').length + orders.length);
+
+        // Update site name in dashboard header if changed
+        if (settings.siteName) {
+            document.querySelectorAll('.sidebar-header h2, .login-header h1').forEach(el => el.textContent = settings.siteName);
+        }
     }
 
     // =====================
@@ -187,8 +200,9 @@ const Admin = (() => {
                 </td>
                 <td>${p.category || '-'}</td>
                 <td>${p.price} MAD</td>
-                <td><span class="badge badge-active">${p.status || 'Active'}</span></td>
+                <td><span class="badge ${p.inStock !== false ? 'badge-active' : 'badge-danger'}">${p.inStock !== false ? 'In Stock' : 'Sold Out'}</span></td>
                 <td class="actions">
+                    <button class="btn btn-outline btn-small" onclick="Admin.toggleStock('${p.id}')">${p.inStock !== false ? 'Mark Sold Out' : 'Restock'}</button>
                     <button class="btn btn-outline btn-small" onclick="Admin.editProduct('${p.id}')">Edit</button>
                     <button class="btn btn-danger btn-small" onclick="Admin.deleteProduct('${p.id}')">Delete</button>
                 </td>
@@ -199,8 +213,9 @@ const Admin = (() => {
     function saveProduct(data, id = null) {
         const products = loadData(KEYS.PRODUCTS);
 
-        // Handle checkbox for featured (it might not be in data if unchecked)
+        // Handle checkboxes (featured and inStock)
         data.featured = data.featured === 'on';
+        data.inStock = data.inStock === 'on';
 
         if (id) {
             const index = products.findIndex(p => p.id === id);
@@ -208,12 +223,22 @@ const Admin = (() => {
                 products[index] = { ...products[index], ...data };
             }
         } else {
-            products.push({ ...data, id: 'p' + Date.now(), status: 'Active' });
+            products.push({ ...data, id: 'p' + Date.now() });
         }
         saveData(KEYS.PRODUCTS, products);
         closeModal();
         renderProducts();
         loadStats();
+    }
+
+    function toggleStock(id) {
+        const products = loadData(KEYS.PRODUCTS);
+        const index = products.findIndex(p => p.id === id);
+        if (index !== -1) {
+            products[index].inStock = products[index].inStock === false ? true : false;
+            saveData(KEYS.PRODUCTS, products);
+            renderProducts();
+        }
     }
 
     function deleteProduct(id) {
@@ -388,6 +413,46 @@ const Admin = (() => {
     }
 
     // =====================
+    // Orders Tracking
+    // =====================
+
+    function renderOrders() {
+        const orders = loadData(KEYS.ORDERS);
+        const tbody = document.getElementById('orders-table');
+
+        if (!tbody) return;
+
+        if (orders.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem">No orders recorded yet. Orders are tracked when users click "Order on WhatsApp".</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = orders.sort((a, b) => new Date(b.date) - new Date(a.date)).map(o => `
+            <tr>
+                <td>${new Date(o.date).toLocaleString()}</td>
+                <td><strong>${o.customer}</strong></td>
+                <td><small>${o.items}</small></td>
+                <td>${o.total} MAD</td>
+                <td><span class="badge badge-replied">${o.status || 'WhatsApp Sent'}</span></td>
+            </tr>
+        `).join('');
+    }
+
+    /**
+     * Public method to record an order from other scripts
+     */
+    function recordOrder(orderData) {
+        const orders = loadData(KEYS.ORDERS);
+        orders.push({
+            id: 'o' + Date.now(),
+            date: new Date().toISOString(),
+            status: 'WhatsApp Sent',
+            ...orderData
+        });
+        saveData(KEYS.ORDERS, orders);
+    }
+
+    // =====================
     // Settings
     // =====================
 
@@ -467,9 +532,13 @@ const Admin = (() => {
                         <label>Description</label>
                         <textarea name="description" rows="3">${data?.description || ''}</textarea>
                     </div>
-                   <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                         <input type="checkbox" id="featured-check" name="featured" ${data?.featured ? 'checked' : ''} style="width: auto; margin: 0;">
                         <label for="featured-check" style="margin: 0; font-weight: normal;">Featured on Homepage</label>
+                    </div>
+                    <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="instock-check" name="inStock" ${data?.inStock !== false ? 'checked' : ''} style="width: auto; margin: 0;">
+                        <label for="instock-check" style="margin: 0; font-weight: normal;">In Stock / Available</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Save Product</button>
                 </form>
@@ -605,6 +674,8 @@ const Admin = (() => {
         deleteFaq,
         viewContact,
         markReplied,
-        exportData
+        exportData,
+        recordOrder,
+        toggleStock
     };
 })();

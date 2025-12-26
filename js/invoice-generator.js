@@ -3,12 +3,15 @@
 
 class InvoiceGenerator {
     constructor() {
-        this.businessWhatsApp = '212637629395'; // Updated business number
+        this.businessWhatsApp = '212603981438'; // Updated business number
     }
 
     async sendToWhatsApp(customerInfo, cartItems, totals) {
         // Create WhatsApp message with all details
         const message = this.createWhatsAppMessage(customerInfo, cartItems, totals);
+
+        // Record the order locally for the Admin Panel
+        this.recordOrderLocally(customerInfo, cartItems, totals);
 
         // Open WhatsApp Web with the message
         const whatsappUrl = `https://wa.me/${this.businessWhatsApp}?text=${encodeURIComponent(message)}`;
@@ -18,6 +21,33 @@ class InvoiceGenerator {
             success: true,
             message: 'WhatsApp opened'
         };
+    }
+
+    recordOrderLocally(customerInfo, cartItems, totals) {
+        try {
+            const KEYS = { ORDERS: 'cinnamona-orders' };
+            const stored = localStorage.getItem(KEYS.ORDERS);
+            const orders = stored ? JSON.parse(stored) : [];
+
+            const itemsSummary = cartItems.map(item => {
+                const t = (key, fallback) => window.I18n ? window.I18n.t(key, fallback) : fallback;
+                const itemName = item.productKey ? t(item.productKey, item.name) : item.name;
+                return `${item.quantity}x ${itemName}`;
+            }).join(', ');
+
+            orders.push({
+                id: 'o' + Date.now(),
+                customer: customerInfo.name,
+                items: itemsSummary,
+                total: totals.total,
+                date: new Date().toISOString(),
+                status: 'WhatsApp Sent'
+            });
+
+            localStorage.setItem(KEYS.ORDERS, JSON.stringify(orders.slice(-100))); // Keep last 100 orders
+        } catch (e) {
+            console.error('Failed to record order locally:', e);
+        }
     }
 
     createWhatsAppMessage(customerInfo, cartItems, totals) {

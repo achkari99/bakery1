@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Cinnamona by Mona</title>
+    <title>Admin Dashboard | Golden Sweet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/admin/admin.css">
@@ -17,13 +17,13 @@
         <div id="login-screen" class="login-container">
             <div class="login-card">
                 <div class="login-header">
-                    <h1>Cinnamona</h1>
-                    <p>Admin Dashboard</p>
+                    <h1>Golden Sweet</h1>
+                    <p>Business Admin Dashboard</p>
                 </div>
                 <form id="login-form">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="admin@cinnamona.ma">
+                        <input type="email" id="email" name="email" required placeholder="admin@goldensweet.ma">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -40,8 +40,8 @@
             <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <h2>Cinnamona</h2>
-                    <span>Admin Panel</span>
+                    <h2>Golden Sweet</h2>
+                    <span>Business Control</span>
                 </div>
                 <nav class="sidebar-nav">
                     <a href="#" class="nav-item active" data-section="overview">
@@ -52,6 +52,13 @@
                             <rect x="3" y="14" width="7" height="7" />
                         </svg>
                         Dashboard
+                    </a>
+                    <a href="#" class="nav-item" data-section="orders">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                        Orders
                     </a>
                     <a href="#" class="nav-item" data-section="products">
                         <svg viewBox="0 0 24 24">
@@ -123,18 +130,40 @@
                         </div>
                         <div class="stat-card highlight">
                             <h3 id="stat-contacts">0</h3>
-                            <p>New Messages</p>
+                            <p>Total Activity</p>
                         </div>
                     </div>
                     <div class="quick-actions">
-                        <h2>Quick Actions</h2>
+                        <h2>Business Control</h2>
                         <div class="action-buttons">
-                            <button class="btn btn-primary" onclick="Admin.showSection('products')">Manage
-                                Products</button>
-                            <button class="btn btn-secondary" onclick="Admin.showSection('contacts')">View
-                                Messages</button>
-                            <button class="btn btn-outline" onclick="Admin.exportData()">Export Data</button>
+                            <button class="btn btn-primary" onclick="Admin.showSection('orders')">View Orders
+                                History</button>
+                            <button class="btn btn-secondary" onclick="Admin.showSection('products')">Manage Stock
+                                Levels</button>
+                            <button class="btn btn-outline" onclick="Admin.exportData()">Export Data Backup</button>
                         </div>
+                    </div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="section-orders" class="content-section">
+                    <div class="section-header">
+                        <h2>Order History</h2>
+                        <span class="badge badge-replied">Tracked from WhatsApp Clicks</span>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table"></tbody>
+                        </table>
                     </div>
                 </section>
 
@@ -151,7 +180,7 @@
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price</th>
-                                    <th>Status</th>
+                                    <th>Inventory</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -231,15 +260,15 @@
                     <form id="settings-form" class="settings-form">
                         <div class="form-group">
                             <label for="site-name">Site Name</label>
-                            <input type="text" id="site-name" name="siteName" value="Cinnamona by Mona">
+                            <input type="text" id="site-name" name="siteName" value="Golden Sweet">
                         </div>
                         <div class="form-group">
                             <label for="site-phone">Phone</label>
-                            <input type="tel" id="site-phone" name="phone" value="+212 637-629395">
+                            <input type="tel" id="site-phone" name="phone" value="+212 603-981438">
                         </div>
                         <div class="form-group">
                             <label for="site-email">Email</label>
-                            <input type="email" id="site-email" name="email" value="bonjour@cinnamona.ma">
+                            <input type="email" id="site-email" name="email" value="bonjour@goldensweet.ma">
                         </div>
                         <div class="form-group">
                             <label for="site-address">Address</label>
@@ -252,6 +281,30 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>
+                </section>
+
+                <!-- Business Insights & Tips -->
+                <section class="content-section" style="display: block; margin-top: 3rem; opacity: 0.8;">
+                    <hr style="margin-bottom: 2rem; border-top: 1px solid #eee;">
+                    <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Business Success Guide</h2>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div style="background: #f9f9f9; padding: 1.2rem; border-radius: 8px;">
+                            <h3 style="font-size: 1rem; color: #cd9f47;">Customer Experience</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Respond to WhatsApp orders within 15
+                                minutes. Speed is the #1 factor in closing sales for online bakeries.</p>
+                        </div>
+                        <div style="background: #f9f9f9; padding: 1.2rem; border-radius: 8px;">
+                            <h3 style="font-size: 1rem; color: #cd9f47;">Inventory Tip</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">If a batch is sold out, use the "Manage
+                                Stock" button immediately. It builds trust when customers see accurate availability.</p>
+                        </div>
+                        <div style="background: #f9f9f9; padding: 1.2rem; border-radius: 8px;">
+                            <h3 style="font-size: 1rem; color: #cd9f47;">Data Safety</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Since this dashboard runs in your browser,
+                                remember to click "Export Data Backup" weekly to save your order history.</p>
+                        </div>
+                    </div>
                 </section>
             </main>
         </div>
