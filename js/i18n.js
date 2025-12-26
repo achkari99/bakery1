@@ -353,5 +353,4 @@ const I18n = (() => {
         I18n.init();
     }
 
-    // Export for module use
-    export default I18n;
+
