@@ -29,10 +29,10 @@ const Admin = (() => {
             { id: 'p4', name: 'Box of 4', category: 'boxes', price: 95, status: 'Active', featured: false, description: 'Your choice of 4 rolls.' }
         ],
         shops: [
-            { id: 's1', name: 'Cinnamona Marrakech', address: '27 Lotissement Bouaamriya Assif C, Marrakech', phone: '+212 637-629395', hours: '10:00 - 22:00' }
+            { id: 's1', name: 'Golden Sweet Tetouan', address: 'Tetouan, Morocco', phone: '+212 603-981438', hours: '10:00 - 22:00' }
         ],
         faqs: [
-            { id: 'f1', question: 'Do you offer delivery?', category: 'delivery', answer: 'Yes, we deliver to all of Marrakech.' },
+            { id: 'f1', question: 'Do you offer delivery?', category: 'delivery', answer: 'Yes, we deliver to Tetouan & Tangier.' },
             { id: 'f2', question: 'Are they vegan?', category: 'allergens', answer: 'Our standard rolls contain dairy and eggs.' }
         ],
         contacts: [
@@ -42,7 +42,7 @@ const Admin = (() => {
             siteName: 'Cinnamona by Mona',
             phone: '+212 637-629395',
             email: 'bonjour@cinnamona.ma',
-            address: '27 Lotissement Bouaamriya Assif C, Marrakech 40000',
+            address: 'Tetouan & Tangier, Morocco',
             promoText: 'FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs'
         }
     };
