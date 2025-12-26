@@ -226,21 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <h2 data-i18n="cart.order_summary">${t('cart.order_summary', 'Order Summary')}</h2>
                         
-                        <!-- Customer Info Preview -->
-                        <div class="customer-info-preview">
-                            <div class="preview-item">
-                                <strong data-i18n="cart.customer_preview">${t('cart.customer_preview', 'Customer:')}</strong>
-                                <span id="preview-name"></span>
-                            </div>
-                            <div class="preview-item">
-                                <strong data-i18n="cart.phone_preview">${t('cart.phone_preview', 'Phone:')}</strong>
-                                <span id="preview-phone"></span>
-                            </div>
-                            <div class="preview-item">
-                                <strong data-i18n="cart.address_preview">${t('cart.address_preview', 'Address:')}</strong>
-                                <span id="preview-address"></span>
-                            </div>
-                        </div>
+
 
                         <div class="cart-summary-line">
                             <span data-i18n="cart.subtotal">${t('cart.subtotal', 'Subtotal')}</span>
@@ -328,10 +314,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Store in localStorage
                 localStorage.setItem('customer-info', JSON.stringify(customerInfo));
 
-                // Update preview in order summary
-                document.getElementById('preview-name').textContent = customerInfo.name;
-                document.getElementById('preview-phone').textContent = customerInfo.phone;
-                document.getElementById('preview-address').textContent = customerInfo.address;
+                // Update preview in order summary - removed as per request
+                // document.getElementById('preview-name').textContent = customerInfo.name;
+                // document.getElementById('preview-phone').textContent = customerInfo.phone;
+                // document.getElementById('preview-address').textContent = customerInfo.address;
 
                 // Smooth transition: Hide form, show summary
                 const formPanel = document.getElementById('customer-info-panel');

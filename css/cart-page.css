@@ -298,10 +298,10 @@
 .customer-info-form {
     background: rgba(255, 255, 255, 0.95);
     border-radius: var(--radius-md);
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 16px 40px rgba(44, 36, 22, 0.12);
     border: 1px solid rgba(205, 159, 71, 0.15);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .customer-info-form h2 {
@@ -322,7 +322,7 @@
 }
 
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
 }
 
 .form-group:last-child {
