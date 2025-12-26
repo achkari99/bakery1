@@ -220,166 +220,138 @@ const I18n = (() => {
     // Apply to elements with data-i18n-typing (typing animation)
     document.querySelectorAll('[data-i18n-typing]').forEach(el => {
         const key = el.getAttribute('data-i18n-typing');
-        const translation = t(key); // Should be an array or string
+        /**
+         * Switch to a different language
+         */
+        async function switchLanguage(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) {
+                console.warn(`Language "${lang}" not supported`);
+                return false;
+            }
 
-        if (Array.isArray(translation)) {
-            el.setAttribute('data-typing-words', JSON.stringify(translation));
+            if (lang === currentLang && isLoaded) {
+                updateLanguageSelector(lang); // Ensure UI matches state
+                return true; // Already on this language
+            }
 
-            // Trigger re-initialization of typing animation if needed
-            // Dispath a custom event that the typing script can listen to
-            el.dispatchEvent(new CustomEvent('typing-update', {
-                bubbles: true,
-                detail: { words: translation }
-            }));
+            const success = await loadTranslations(lang);
+
+            if (success) {
+                localStorage.setItem(STORAGE_KEY, lang);
+                applyTranslations();
+                // updateLanguageSelector is now called within applyTranslations
+                return true;
+            }
+
+            return false;
         }
-    });
 
-    // Remove loading class (fixes FOUC)
-    document.documentElement.classList.remove('i18n-loading');
+        /**
+         * Update language selector UI
+         */
+        function updateLanguageSelector(lang) {
+            document.querySelectorAll('[data-lang-switch]').forEach(el => {
+                const btnLang = el.getAttribute('data-lang-switch');
 
-    // Dispatch event for custom handlers
-    if (emitEvent) {
-        document.dispatchEvent(new CustomEvent('i18n:applied', {
-            detail: { lang: currentLang, translations }
-        }));
-    }
-
-    // Ensure language selectors are in sync
-    updateLanguageSelector(currentLang);
-}
-
-    /**
-     * Switch to a different language
-     */
-    async function switchLanguage(lang) {
-    if (!SUPPORTED_LANGS.includes(lang)) {
-        console.warn(`Language "${lang}" not supported`);
-        return false;
-    }
-
-    if (lang === currentLang && isLoaded) {
-        updateLanguageSelector(lang); // Ensure UI matches state
-        return true; // Already on this language
-    }
-
-    const success = await loadTranslations(lang);
-
-    if (success) {
-        localStorage.setItem(STORAGE_KEY, lang);
-        applyTranslations();
-        // updateLanguageSelector is now called within applyTranslations
-        return true;
-    }
-
-    return false;
-}
-
-/**
- * Update language selector UI
- */
-function updateLanguageSelector(lang) {
-    document.querySelectorAll('[data-lang-switch]').forEach(el => {
-        const btnLang = el.getAttribute('data-lang-switch');
-
-        if (btnLang === lang) {
-            el.classList.add('active');
-            el.setAttribute('aria-current', 'true');
-        } else {
-            el.classList.remove('active');
-            el.removeAttribute('aria-current');
+                if (btnLang === lang) {
+                    el.classList.add('active');
+                    el.setAttribute('aria-current', 'true');
+                } else {
+                    el.classList.remove('active');
+                    el.removeAttribute('aria-current');
+                }
+            });
         }
-    });
-}
 
-/**
- * Initialize global event listeners (Event Delegation)
- */
-function setupGlobalListeners() {
-    // Use event delegation for language switching
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-lang-switch]');
-        if (btn) {
-            e.preventDefault();
-            const lang = btn.getAttribute('data-lang-switch');
-            switchLanguage(lang);
+        /**
+         * Initialize global event listeners (Event Delegation)
+         */
+        function setupGlobalListeners() {
+            // Use event delegation for language switching
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-lang-switch]');
+                if (btn) {
+                    e.preventDefault();
+                    const lang = btn.getAttribute('data-lang-switch');
+                    switchLanguage(lang);
+                }
+            });
         }
-    });
-}
 
-/**
- * Setup MutationObserver to handle dynamic content automatically
- */
-function setupObserver() {
-    const observer = new MutationObserver((mutations) => {
-        let shouldUpdate = false;
+        /**
+         * Setup MutationObserver to handle dynamic content automatically
+         */
+        function setupObserver() {
+            const observer = new MutationObserver((mutations) => {
+                let shouldUpdate = false;
 
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                // Check if added nodes contain translatable elements
-                mutation.addedNodes.forEach((node) => {
-                    if (node.nodeType === 1) { // Element node
-                        if (node.hasAttribute('data-i18n') ||
-                            node.querySelector('[data-i18n]') ||
-                            node.querySelector('[data-lang-switch]')) {
-                            shouldUpdate = true;
-                        }
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                        // Check if added nodes contain translatable elements
+                        mutation.addedNodes.forEach((node) => {
+                            if (node.nodeType === 1) { // Element node
+                                if (node.hasAttribute('data-i18n') ||
+                                    node.querySelector('[data-i18n]') ||
+                                    node.querySelector('[data-lang-switch]')) {
+                                    shouldUpdate = true;
+                                }
+                            }
+                        });
                     }
                 });
-            }
-        });
 
-        if (shouldUpdate && isLoaded) {
-            // Debounce slighty to avoid thrashing if many nodes added at once
-            if (window._i18nDebounce) clearTimeout(window._i18nDebounce);
-            window._i18nDebounce = setTimeout(() => {
-                applyTranslations(false); // Re-apply but DON'T trigger global event to avoid loops
-            }, 50);
+                if (shouldUpdate && isLoaded) {
+                    // Debounce slighty to avoid thrashing if many nodes added at once
+                    if (window._i18nDebounce) clearTimeout(window._i18nDebounce);
+                    window._i18nDebounce = setTimeout(() => {
+                        applyTranslations(false); // Re-apply but DON'T trigger global event to avoid loops
+                    }, 50);
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('i18n: MutationObserver active');
         }
-    });
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+        /**
+         * Initialize i18n system
+         */
+        async function init() {
+            setupGlobalListeners(); // Set up event delegation
+            setupObserver(); // Start watching for dynamic content
 
-    console.log('i18n: MutationObserver active');
-}
+            const lang = detectLanguage();
+            await loadTranslations(lang);
+            applyTranslations(); // Initial translation
 
-/**
- * Initialize i18n system
- */
-async function init() {
-    setupGlobalListeners(); // Set up event delegation
-    setupObserver(); // Start watching for dynamic content
+            console.log(`i18n: Initialized with "${currentLang}" language`);
+        }
 
-    const lang = detectLanguage();
-    await loadTranslations(lang);
-    applyTranslations(); // Initial translation
+        // Public API
+        return {
+            init,
+            t,
+            switchLanguage,
+            applyTranslations,
+            get currentLang() { return currentLang; },
+            get isLoaded() { return isLoaded; },
+            SUPPORTED_LANGS
+        };
+    })();
 
-    console.log(`i18n: Initialized with "${currentLang}" language`);
-}
+    // Expose to window for global access
+    window.I18n = I18n;
 
-// Public API
-return {
-    init,
-    t,
-    switchLanguage,
-    applyTranslations,
-    get currentLang() { return currentLang; },
-    get isLoaded() { return isLoaded; },
-    SUPPORTED_LANGS
-};
-}) ();
+    // Auto-initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => I18n.init());
+    } else {
+        I18n.init();
+    }
 
-// Expose to window for global access
-window.I18n = I18n;
-
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => I18n.init());
-} else {
-    I18n.init();
-}
-
-// Export for module use
-export default I18n;
+    // Export for module use
+    export default I18n;
