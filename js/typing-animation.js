@@ -24,6 +24,7 @@
     };
 
     const normalizeText = (value) => value.replace(/\s+/g, " ").trim();
+    
 
     const commonPrefixLength = (a, b) => {
         const max = Math.min(a.length, b.length);
