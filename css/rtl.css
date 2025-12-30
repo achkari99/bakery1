@@ -309,6 +309,10 @@ html[dir="rtl"] .footer-social ul {
     html[dir="rtl"] .footer-social ul {
         justify-content: center;
     }
+
+    html[dir="rtl"] .hero-copy h1 {
+        min-height: 2.6em;
+    }
 }
 
 html[dir="rtl"] .footer-bottom {
