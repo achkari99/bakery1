@@ -232,6 +232,19 @@
     .timeline-nav button {
         font-size: 0.8rem !important;
     }
+
+    .timeline-icon {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .timeline-icon img {
+        margin: 0 auto !important;
+    }
+
+    html[dir="rtl"] .timeline-section {
+        background-position: 70% center;
+    }
 }
 
 /* 13. FAQ Accordion Mobile Padding */
@@ -433,5 +446,11 @@
     /* Optional: Hide scrollbar for cleaner look but keep functionality */
     .community-gallery::-webkit-scrollbar {
         display: none;
+    }
+}
+
+@media (max-width: 880px) {
+    html[dir="rtl"] .history-image img {
+        transform: translateX(10%);
     }
 }
