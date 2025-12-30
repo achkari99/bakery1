@@ -3,7 +3,7 @@
 
 class InvoiceGenerator {
     constructor() {
-        this.businessWhatsApp = '212603981438'; // Updated business number
+        this.businessWhatsApp = '212637629395'; // Corrected business number
     }
 
     async sendToWhatsApp(customerInfo, cartItems, totals) {
@@ -77,7 +77,7 @@ class InvoiceGenerator {
         message += `${t('whatsapp.delivery', 'Delivery')}: ${deliveryText}\n`;
         message += `*${t('whatsapp.total', 'TOTAL TO PAY')}: ${totals.total} ${t('common.currency', 'MAD')}*\n\n`;
 
-        message += `${t('whatsapp.thank_you', 'Thank you for confirming my order! ✨')}`;
+        message += `${t('whatsapp.thank_you', 'Thank you for confirming my order!')}`;
 
         return message;
     }

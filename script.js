@@ -1,4 +1,4 @@
-import CircularGallery from "./animation/galerry.js";
+import CircularGallery from "./animation/gallery.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     // Active navigation state is now handled by js/header-loader.js
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     });
                 },
-                { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+                { threshold: 0.01, rootMargin: "0px 0px 200px 0px" }
             );
 
         const applyMotionPreference = () => {
@@ -162,6 +162,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         applyMotionPreference();
         onMotionPreferenceChange(applyMotionPreference);
+
+        // Re-check animations after translations are applied and loading class is removed
+        document.addEventListener("i18n:applied", () => {
+            if (observer) {
+                animated.forEach((el) => {
+                    if (!el.classList.contains("is-visible")) {
+                        observer.unobserve(el);
+                        observer.observe(el);
+                    }
+                });
+            }
+        });
     }
 
     const parseGap = (value) => {

@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../globe_test"
+		},
+		{
+			"path": "../digotal -catalogue2"
+		},
+		{
+			"path": "../../../Downloads/goldenSweet1"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "bakery"
+	}
+}
