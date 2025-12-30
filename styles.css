@@ -315,11 +315,28 @@ html[dir="rtl"] .nav-links ul {
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1500;
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(127, 156, 137, 0.18);
     transition: box-shadow var(--transition), padding var(--transition), background-color var(--transition);
+}
+
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn,
+    a,
+    button,
+    .product-card,
+    .value-card,
+    .nav-toggle,
+    .filter-btn {
+        user-select: none;
+        -webkit-user-select: none;
+    }
 }
 
 .promo-banner {
@@ -3536,11 +3553,13 @@ html[dir="rtl"] .nav-links ul {
 
     .footer-top {
         grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .footer-bottom {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
 }
 

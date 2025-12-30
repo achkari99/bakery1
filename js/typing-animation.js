@@ -1,165 +1,169 @@
-/**
- * Typing Animation for Hero Section
- * Animates typing effect for h1 title with multiple phrases
- * Only animates the words that change between phrases
- */
+(() => {
+    const selectors = '[data-typing-words]';
+    const DEFAULTS = {
+        typeSpeed: 80,
+        deleteSpeed: 55,
+        holdDelay: 2000,
+        startDelay: 700,
+    };
 
-class TypingAnimation {
-    constructor(element) {
-        this.element = element;
-        this.textElement = element.querySelector('.typed-text');
-        this.cursorElement = element.querySelector('.typing-cursor');
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-        if (!this.textElement || !this.cursorElement) {
-            console.error('Typing animation requires .typed-text and .typing-cursor elements');
-            return;
-        }
-
-        // Get words from data attribute
-        const wordsAttr = element.getAttribute('data-typing-words');
+    const parseWords = (el) => {
+        const raw = el.getAttribute("data-typing-words");
+        if (!raw) return [];
         try {
-            this.phrases = JSON.parse(wordsAttr);
-        } catch (e) {
-            console.error('Invalid JSON in data-typing-words attribute');
-            return;
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+                return parsed.map(String).filter((word) => word.trim().length > 0);
+            }
+        } catch (error) {
+            console.warn("Typing animation: invalid data-typing-words", error);
         }
+        return [];
+    };
 
-        this.currentPhraseIndex = 0;
-        this.typeSpeed = 80; // ms per character
-        this.deleteSpeed = 40; // ms per character when deleting
-        this.pauseAfterPhrase = 2500; // pause after typing complete phrase
+    const normalizeText = (value) => value.replace(/\s+/g, " ").trim();
 
-        // Timer references for cleanup
-        this.typingTimeout = null;
-        this.deleteTimeout = null;
-        this.nextPhraseTimeout = null;
-
-        this.start();
-    }
-
-    // Find common prefix between two strings
-    findCommonPrefix(str1, str2) {
+    const commonPrefixLength = (a, b) => {
+        const max = Math.min(a.length, b.length);
         let i = 0;
-        while (i < str1.length && i < str2.length && str1[i] === str2[i]) {
-            i++;
-        }
-        return str1.substring(0, i);
-    }
+        while (i < max && a[i] === b[i]) i += 1;
+        return i;
+    };
 
-    start() {
-        // Clear any existing timeouts first
-        this.stop();
-
-        // Start with the first phrase
-        if (this.phrases && this.phrases.length > 0) {
-            const firstPhrase = this.phrases[0];
-            this.textElement.textContent = firstPhrase;
-
-            this.nextPhraseTimeout = setTimeout(() => {
-                this.nextPhrase();
-            }, this.pauseAfterPhrase);
-        }
-    }
-
-    stop() {
-        if (this.typingTimeout) clearTimeout(this.typingTimeout);
-        if (this.deleteTimeout) clearTimeout(this.deleteTimeout);
-        if (this.nextPhraseTimeout) clearTimeout(this.nextPhraseTimeout);
-    }
-
-    nextPhrase() {
-        const currentPhrase = this.phrases[this.currentPhraseIndex];
-        const nextIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-        const nextPhrase = this.phrases[nextIndex];
-
-        // Find the common prefix
-        const commonPrefix = this.findCommonPrefix(currentPhrase, nextPhrase);
-        const currentSuffix = currentPhrase.substring(commonPrefix.length);
-        const nextSuffix = nextPhrase.substring(commonPrefix.length);
-
-        // Delete the current suffix, then type the new suffix
-        this.deleteText(commonPrefix, currentSuffix, () => {
-            this.typeText(commonPrefix, nextSuffix, () => {
-                this.currentPhraseIndex = nextIndex;
-                this.nextPhraseTimeout = setTimeout(() => this.nextPhrase(), this.pauseAfterPhrase);
-            });
-        });
-    }
-
-    deleteText(prefix, suffix, callback) {
-        if (suffix.length === 0) {
-            callback();
-            return;
+    class Typewriter {
+        constructor(root) {
+            this.root = root;
+            this.textEl = root.querySelector(".typed-text") || root;
+            this.words = parseWords(root).map((word) => normalizeText(word));
+            this.wordsKey = this.words.join("\n");
+            this.currentText = normalizeText(this.textEl.textContent);
+            this.wordIndex = this.getInitialIndex();
+            this.phase = "holding";
+            this.deleteTo = 0;
+            this.targetIndex = this.wordIndex;
+            this.targetWord = this.words[this.wordIndex] || this.currentText;
+            this.timer = null;
+            this.running = false;
         }
 
-        const deleteStep = () => {
-            if (!this.textElement) return;
-            suffix = suffix.substring(0, suffix.length - 1);
-            this.textElement.textContent = prefix + suffix;
+        getInitialIndex() {
+            const normalizedCurrent = normalizeText(this.currentText);
+            const idx = this.words.findIndex((word) => word === normalizedCurrent);
+            return idx >= 0 ? idx : 0;
+        }
 
-            if (suffix.length === 0) {
-                this.deleteTimeout = setTimeout(callback, 200);
-            } else {
-                this.deleteTimeout = setTimeout(deleteStep, this.deleteSpeed);
+        setWords(nextWords) {
+            const normalized = nextWords.map((word) => normalizeText(word));
+            const nextKey = normalized.join("\n");
+            if (nextKey === this.wordsKey) return;
+
+            this.words = normalized;
+            this.wordsKey = nextKey;
+            if (!this.words.length) return;
+
+            const normalizedCurrent = normalizeText(this.currentText);
+            const exactIndex = this.words.findIndex((word) => word === normalizedCurrent);
+            if (exactIndex >= 0) {
+                this.wordIndex = exactIndex;
+                this.targetIndex = exactIndex;
+                this.targetWord = this.words[exactIndex];
+                return;
             }
-        };
 
-        deleteStep();
-    }
-
-    typeText(prefix, suffix, callback) {
-        if (suffix.length === 0) {
-            callback();
-            return;
+            this.startTransition(0);
         }
 
-        let currentIndex = 0;
-        const typeStep = () => {
-            if (!this.textElement) return;
-            currentIndex++;
-            this.textElement.textContent = prefix + suffix.substring(0, currentIndex);
-
-            if (currentIndex === suffix.length) {
-                callback();
-            } else {
-                this.typingTimeout = setTimeout(typeStep, this.typeSpeed);
+        start() {
+            if (this.running) return;
+            if (prefersReducedMotion.matches) {
+                if (this.words.length) {
+                    this.updateText(this.words[0]);
+                }
+                return;
             }
-        };
+            this.running = true;
+            this.schedule(DEFAULTS.startDelay);
+        }
 
-        typeStep();
-    }
-}
+        schedule(delay) {
+            if (this.timer) {
+                window.clearTimeout(this.timer);
+            }
+            this.timer = window.setTimeout(() => this.tick(), delay);
+        }
 
-// Initialize typing animation when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const typingElement = document.querySelector('[data-typing-words]');
-    if (typingElement) {
-        let typingInstance = new TypingAnimation(typingElement);
+        updateText(value) {
+            this.currentText = value;
+            this.textEl.textContent = value;
+        }
 
-        // Listen for language updates
-        window.addEventListener('typing-update', (event) => {
-            // Stop current animation
-            if (typingInstance) {
-                typingInstance.stop();
+        startTransition(nextIndex) {
+            if (!this.words.length) return;
+            this.targetIndex = nextIndex;
+            this.targetWord = this.words[nextIndex] || "";
+            this.deleteTo = commonPrefixLength(this.currentText, this.targetWord);
+            this.phase = "deleting";
+            this.schedule(DEFAULTS.deleteSpeed);
+        }
 
-                // Get new words from event detail or attribute
-                let newWords = [];
-                if (event.detail && event.detail.words) {
-                    newWords = event.detail.words;
-                } else {
-                    try {
-                        newWords = JSON.parse(typingElement.getAttribute('data-typing-words'));
-                    } catch (e) {
-                        console.error('Failed to parse new typing words');
-                    }
+        tick() {
+            if (!this.words.length) return;
+
+            if (this.phase === "holding") {
+                const nextIndex = (this.wordIndex + 1) % this.words.length;
+                this.startTransition(nextIndex);
+                return;
+            }
+
+            if (this.phase === "deleting") {
+                if (this.currentText.length > this.deleteTo) {
+                    this.updateText(this.currentText.slice(0, -1));
+                    this.schedule(DEFAULTS.deleteSpeed);
+                    return;
+                }
+                this.phase = "typing";
+                this.schedule(DEFAULTS.typeSpeed);
+                return;
+            }
+
+            if (this.phase === "typing") {
+                if (this.currentText.length < this.targetWord.length) {
+                    const nextChar = this.targetWord[this.currentText.length];
+                    this.updateText(this.currentText + nextChar);
+                    this.schedule(DEFAULTS.typeSpeed);
+                    return;
                 }
 
-                if (newWords && newWords.length > 0) {
-                    typingInstance.phrases = newWords;
-                    typingInstance.currentPhraseIndex = 0;
-                    typingInstance.start();
-                }
+                this.wordIndex = this.targetIndex;
+                this.phase = "holding";
+                this.schedule(DEFAULTS.holdDelay);
             }
-        });
+        }
     }
-});
+
+    const instances = new Map();
+
+    const initTypewriters = () => {
+        document.querySelectorAll(selectors).forEach((el) => {
+            if (instances.has(el)) return;
+            const instance = new Typewriter(el);
+            instances.set(el, instance);
+            instance.start();
+        });
+    };
+
+    const refreshWords = () => {
+        instances.forEach((instance) => {
+            instance.setWords(parseWords(instance.root));
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initTypewriters();
+        refreshWords();
+    });
+
+    window.addEventListener("typing-update", refreshWords);
+})();

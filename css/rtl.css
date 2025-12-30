@@ -32,6 +32,21 @@ html[dir="rtl"] .nav-links ul {
     flex-direction: row-reverse;
 }
 
+/* Disable blue selection on phone version for interactive elements */
+@media (max-width: 768px) {
+
+    .btn,
+    a,
+    button,
+    .product-card,
+    .value-card,
+    .nav-toggle,
+    .filter-btn {
+        user-select: none;
+        -webkit-user-select: none;
+    }
+}
+
 /* Hero section */
 html[dir="rtl"] .hero-copy {
     text-align: right;
@@ -286,16 +301,30 @@ html[dir="rtl"] .footer-brand {
 }
 
 html[dir="rtl"] .footer-nav {
-    text-align: right;
+    text-align: center;
 }
 
 html[dir="rtl"] .footer-social ul {
     justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+
+    html[dir="rtl"] .footer-brand,
+    html[dir="rtl"] .footer-nav,
+    html[dir="rtl"] .footer-social h3 {
+        text-align: center;
+    }
+
+    html[dir="rtl"] .footer-social ul {
+        justify-content: center;
+    }
+}
+
 html[dir="rtl"] .footer-bottom {
     direction: rtl;
-    text-align: right;
+    text-align: center;
+    justify-content: center;
 }
 
 /* Forms */
@@ -360,26 +389,35 @@ html[dir="rtl"] .lang-selector {
 /* Mobile RTL adjustments */
 @media (max-width: 880px) {
     html[dir="rtl"] .nav-inner {
-        grid-template-columns: 1fr auto auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     html[dir="rtl"] .brand-mark {
-        order: 0;
-        text-align: right;
+        order: 1;
+        flex: 1;
+        text-align: center;
     }
 
     html[dir="rtl"] .nav-toggle {
+        order: 0;
+    }
+
+    html[dir="rtl"] .nav-actions {
         order: 2;
     }
 
     html[dir="rtl"] .nav-links {
-        right: auto;
-        left: 0;
-        text-align: right;
+        text-align: center;
+        inset: calc(100% + 0.5rem) 1.25rem auto 1.25rem !important;
+        right: 1.25rem !important;
+        left: 1.25rem !important;
     }
 
     html[dir="rtl"] .nav-links ul {
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

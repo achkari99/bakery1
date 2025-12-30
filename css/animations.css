@@ -436,6 +436,7 @@
 .typed-text {
     display: inline-block;
     min-height: 1em;
+    width: 120%;
 }
 
 /* Prevent layout shift during typing */

@@ -30,6 +30,12 @@
         flex-direction: column;
         gap: 1rem;
     }
+
+    /* Homepage Hero Title Adjustment */
+    .hero-copy h1 {
+        font-size: 2.6rem !important;
+        line-height: 1.1;
+    }
 }
 
 /* 2. Page Hero Spacing */
@@ -65,7 +71,7 @@
 @media (max-width: 768px) {
     #flipbook-container {
         width: 95vw !important;
-        height: 500px !important;
+        height: 420px !important;
     }
 
     .flipbook-catalog {
@@ -324,6 +330,11 @@
     .community-lede {
         text-align: center !important;
         margin: 0 auto !important;
+        font-size: 0.9rem !important;
+    }
+
+    .community-copy h2 {
+        font-size: 1.5rem !important;
     }
 
     .community-actions {
@@ -340,11 +351,77 @@
     }
 
     .community-media {
-        margin-top: 2rem;
+        display: block !important;
+        width: 100% !important;
+        overflow: hidden !important;
     }
 
-
     .community-gallery {
-        margin: 0 auto !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        /* Wrapper is block */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        touch-action: pan-x !important;
+        overscroll-behavior-x: contain;
+        /* scroll-snap-type: x mandatory; */
+        padding-bottom: 2rem !important;
+        /* Space for shadow/scroll */
+
+        /* Ensure touch scrolling works */
+        -webkit-overflow-scrolling: touch;
+
+        /* Reset styles */
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        animation: none !important;
+        perspective: none !important;
+    }
+
+    .community-gallery__ring {
+        display: flex !important;
+        width: max-content !important;
+        /* Force content width */
+        gap: 1.5rem !important;
+        padding: 1rem 1.5rem !important;
+        /* Side padding */
+
+        /* Reset positioning */
+        position: static !important;
+        transform: none !important;
+        inset: auto !important;
+    }
+
+    /* Direct children of gallery (if structure is different) or items themselves */
+    .community-gallery__item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: translateZ(0) !important;
+        /* HW Acceleration */
+
+        /* Ensure no focusing/dimming effects */
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        scale: 1 !important;
+
+        /* Card sizing */
+        flex: 0 0 240px !important;
+        /* Fixed width cards */
+        width: 240px !important;
+        height: 320px !important;
+
+        scroll-snap-align: center;
+        margin: 0 !important;
+    }
+
+    /* Optional: Hide scrollbar for cleaner look but keep functionality */
+    .community-gallery::-webkit-scrollbar {
+        display: none;
     }
 }

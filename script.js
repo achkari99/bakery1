@@ -442,11 +442,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Quick view functionality handled by modal.js
 
-    // Initialize circular gallery
+    // Initialize circular gallery (desktop only)
     const galleryRoots = document.querySelectorAll("[data-circular-gallery]");
+    let galleryInstances = [];
     if (galleryRoots.length) {
-        galleryRoots.forEach((root) => {
-            new CircularGallery(root, { prefersReducedMotion });
-        });
+        const galleryQuery = window.matchMedia("(max-width: 768px)");
+        let resizeTimer;
+
+        const updateGalleries = () => {
+            const isMobile = galleryQuery.matches;
+            if (isMobile) {
+                galleryInstances.forEach((instance) => instance.destroy());
+                galleryInstances = [];
+                return;
+            }
+            if (galleryInstances.length) return;
+            galleryRoots.forEach((root) => {
+                galleryInstances.push(new CircularGallery(root, { prefersReducedMotion }));
+            });
+        };
+
+        const handleResize = () => {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(updateGalleries, 150);
+        };
+
+        if (typeof galleryQuery.addEventListener === "function") {
+            galleryQuery.addEventListener("change", updateGalleries);
+        } else if (typeof galleryQuery.addListener === "function") {
+            galleryQuery.addListener(updateGalleries);
+        }
+        window.addEventListener("resize", handleResize, { passive: true });
+
+        updateGalleries();
     }
 });
