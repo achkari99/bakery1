@@ -131,6 +131,12 @@ class CartManager {
 
     setupHoverPanel() {
         if (!this.cartButton) return;
+        if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            const existingPanels = document.querySelectorAll('.cart-hover-panel');
+            existingPanels.forEach(panel => panel.remove());
+            this.hoverPanel = null;
+            return;
+        }
 
         // Remove any existing hover panels to prevent duplicates
         const existingPanels = document.querySelectorAll('.cart-hover-panel');
@@ -177,7 +183,10 @@ class CartManager {
         // Position panel relative to cart button
         const rect = this.cartButton.getBoundingClientRect();
         this.hoverPanel.style.position = 'fixed';
-        this.hoverPanel.style.top = `${rect.bottom + 12}px`;
+        const viewportPadding = 12;
+        const maxTop = window.innerHeight - this.hoverPanel.offsetHeight - viewportPadding;
+        const preferredTop = rect.bottom + 12;
+        this.hoverPanel.style.top = `${Math.max(viewportPadding, Math.min(preferredTop, maxTop))}px`;
         this.hoverPanel.style.right = `${window.innerWidth - rect.right}px`;
 
         this.hoverPanel.classList.add('is-visible');
