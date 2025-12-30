@@ -93,6 +93,7 @@
                 }
                 return;
             }
+            this.root.setAttribute("data-typing-initialized", "true");
             this.running = true;
             this.schedule(DEFAULTS.startDelay);
         }
@@ -160,7 +161,6 @@
             if (instances.has(el)) return;
             const instance = new Typewriter(el);
             instances.set(el, instance);
-            instance.start();
         });
     };
 
@@ -169,13 +169,15 @@
     const refreshWords = () => {
         instances.forEach((instance) => {
             instance.setWords(parseWords(instance.root), { initial: !hasInitialSync });
+            if (!instance.running) {
+                instance.start();
+            }
         });
         hasInitialSync = true;
     };
 
     document.addEventListener("DOMContentLoaded", () => {
         initTypewriters();
-        refreshWords();
     });
 
     window.addEventListener("typing-update", refreshWords);

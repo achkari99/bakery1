@@ -130,7 +130,8 @@ const I18n = (() => {
 
         // Apply to all elements with data-i18n
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            if (el.closest('[data-i18n-typing]')) return;
+            const typingRoot = el.closest('[data-i18n-typing]');
+            if (typingRoot && typingRoot.hasAttribute('data-typing-initialized')) return;
             const key = el.getAttribute('data-i18n');
 
             // Store original content as fallback on first run
