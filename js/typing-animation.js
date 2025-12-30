@@ -55,7 +55,7 @@
             return idx >= 0 ? idx : 0;
         }
 
-        setWords(nextWords) {
+        setWords(nextWords, options = {}) {
             const normalized = nextWords.map((word) => normalizeText(word));
             const nextKey = normalized.join("\n");
             if (nextKey === this.wordsKey) return;
@@ -70,6 +70,15 @@
                 this.wordIndex = exactIndex;
                 this.targetIndex = exactIndex;
                 this.targetWord = this.words[exactIndex];
+                return;
+            }
+
+            if (options.initial) {
+                this.wordIndex = 0;
+                this.targetIndex = 0;
+                this.targetWord = this.words[0];
+                this.phase = "holding";
+                this.updateText(this.words[0]);
                 return;
             }
 
@@ -155,10 +164,13 @@
         });
     };
 
+    let hasInitialSync = false;
+
     const refreshWords = () => {
         instances.forEach((instance) => {
-            instance.setWords(parseWords(instance.root));
+            instance.setWords(parseWords(instance.root), { initial: !hasInitialSync });
         });
+        hasInitialSync = true;
     };
 
     document.addEventListener("DOMContentLoaded", () => {

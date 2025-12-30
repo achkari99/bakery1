@@ -209,17 +209,14 @@ html[dir="rtl"] .community-highlights {
     direction: rtl;
     gap: 2rem;
     padding-right: 0.25rem !important;
-    /* Pushing titles even further to the right edge */
     padding-left: 1.5rem !important;
+    text-align: center;
 }
 
 html[dir="rtl"] .community-highlights div {
-    text-align: right !important;
-    /* Force override of base text-align: left */
-    justify-items: end;
-    /* Align grid items to the end (right in RTL) */
-    align-items: start;
-    /* Keep vertical alignment at start */
+    text-align: center !important;
+    justify-items: center;
+    align-items: center;
 }
 
 html[dir="rtl"] .community-highlights div:not(:first-child) {
@@ -235,26 +232,19 @@ html[dir="rtl"] .community-highlights div:first-child {
 }
 
 html[dir="rtl"] .community-highlights dt {
-    text-align: right;
-    justify-self: end;
-    /* Align this grid item to the right */
+    text-align: center;
+    justify-self: center;
     width: 100%;
-    /* Take full width */
 }
 
 html[dir="rtl"] .community-highlights dd {
     line-height: 1.5;
-    text-align: right !important;
-    /* Force right alignment for wrapped text */
-    text-align-last: right;
-    /* Ensure the last line also aligns right */
+    text-align: center !important;
+    text-align-last: center;
     margin: 0;
     direction: rtl;
-    /* Explicitly set RTL direction */
-    justify-self: end;
-    /* Align this grid item to the right */
+    justify-self: center;
     width: 100%;
-    /* Take full width */
     white-space: normal;
     /* Allow wrapping */
 }
