@@ -32,6 +32,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="preload" as="image" href="images/image.png" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/cart-hover.css">
     <link rel="stylesheet" href="css/interactive.css">
@@ -107,9 +108,8 @@
                     </div>
                 </div>
                 <div class="hero-media">
-                    <img src="images/image.png"
-                        alt="Roul&eacute; &agrave; la cannelle caramel et noix de p&eacute;can servi sur assiette turquoise"
-                        loading="lazy">
+                    <img src="images/image.png" fetchpriority="high" decoding="async" loading="eager"
+                        alt="Roul&eacute; &agrave; la cannelle caramel et noix de p&eacute;can servi sur assiette turquoise">
                     <div class="hero-overlay-card">
                         <p data-i18n="home.hero_testimonial">&ldquo;Vos roul&eacute;s &agrave; la pistache illuminent
                             nos soir&eacute;es
@@ -1620,10 +1620,6 @@
         }
     </script>
     <script src="js/cart-manager.js"></script>
-    <script>
-        // Initialize cart manager
-        window.cartManager = new CartManager();
-    </script>
     <script src="js/modal.js"></script>
     <script src="js/typing-animation.js"></script>
     <script src="js/animations.js"></script>
