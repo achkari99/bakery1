@@ -378,10 +378,21 @@ html[dir="rtl"] .nav-links ul {
     display: flex;
     flex-direction: column;
     gap: 0rem;
+    justify-self: start;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .hero-copy p {
     margin-bottom: 2rem;
+}
+
+.hero-section .hero-kicker,
+.hero-section p,
+.hero-section .btn,
+.hero-section .metric,
+.hero-section .metric-label {
+    font-weight: 600;
 }
 
 .hero-kicker {
@@ -562,6 +573,7 @@ html[dir="rtl"] .nav-links ul {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: #3a2f1f;
 }
 
 .hero-media {
