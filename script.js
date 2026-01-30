@@ -48,6 +48,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    const initHeroIntro = () => {
+        const root = document.body;
+        if (!root) return;
+        let started = false;
+        const begin = () => {
+            if (started) return;
+            started = true;
+            root.classList.add("hero-bg-ready");
+            const delay = 1000;
+            window.setTimeout(() => {
+                root.classList.remove("hero-intro-pending");
+                root.classList.add("hero-intro-ready");
+            }, delay);
+        };
+
+        if (!document.documentElement.classList.contains("i18n-loading")) {
+            begin();
+            return;
+        }
+
+        document.addEventListener("i18n:applied", begin, { once: true });
+        const observer = new MutationObserver(() => {
+            if (!document.documentElement.classList.contains("i18n-loading")) {
+                observer.disconnect();
+                begin();
+            }
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+        window.setTimeout(() => {
+            observer.disconnect();
+            begin();
+        }, 3500);
+    };
+
     const initNavigation = () => {
         const navToggle = document.querySelector(".nav-toggle");
         const navLinks = document.querySelector(".nav-links");
@@ -127,6 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initStickyHeader();
     window.addEventListener('headerLoaded', initStickyHeader);
+    initHeroIntro();
+
 
     const animated = document.querySelectorAll("[data-animate]");
     if (animated.length) {
