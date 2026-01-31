@@ -3678,12 +3678,12 @@ html[dir="rtl"] .nav-links ul {
 
     /* Tighter hero on mobile */
     .hero-logo {
-        width: clamp(130px, 35vw, 190px);
+        width: clamp(150px, 38vw, 210px);
     }
 
     .hero-copy h1 {
-        font-size: clamp(1.0rem, 4vw, 1.4rem);
-        line-height: 1.2;
+        font-size: clamp(0.95rem, 3.8vw, 1.3rem);
+        line-height: 1.15;
     }
 
     .hero-section .hero-actions .btn {
