@@ -1,6 +1,17 @@
 import CircularGallery from "./animation/gallery.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Ensure GA4 is loaded on every page (some pages don't have the head tag snippet)
+    if (typeof gtag !== "function") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        const gaScript = document.createElement("script");
+        gaScript.async = true;
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-GQVHJLZL31";
+        document.head.appendChild(gaScript);
+        gtag("js", new Date());
+        gtag("config", "G-GQVHJLZL31", { anonymize_ip: true });
+    }
     // Active navigation state is now handled by js/header-loader.js
     // to support multi-page navigation correctly.
 
