@@ -3683,9 +3683,9 @@ html[dir="rtl"] .nav-links ul {
     }
 
     .hero-copy h1 {
-        font-size: clamp(0.8rem, 3vw, 1.1rem);
-        line-height: 1.12;
-        max-width: 16ch;
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+        line-height: 1.2;
+        max-width: 18ch;
     }
 
     .hero-section .hero-actions .btn {
@@ -3708,10 +3708,9 @@ html[dir="rtl"] .nav-links ul {
     }
 
     .hero-copy h1 {
-        /* about half the previous size */
-        font-size: clamp(0.55rem, 2.2vw, 0.75rem);
-        line-height: 1.1;
-        max-width: 15ch;
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+        line-height: 1.2;
+        max-width: 18ch;
     }
 
     .hero-section {

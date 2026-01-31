@@ -40,13 +40,6 @@
         gap: 1rem;
     }
 
-    /* Homepage Hero Title Adjustment */
-    .hero-copy h1 {
-        font-size: 1.1rem !important;
-        line-height: 1.2 !important;
-        min-height: unset !important;
-        max-width: 16ch;
-    }
 }
 
 /* 2. Page Hero Spacing */
