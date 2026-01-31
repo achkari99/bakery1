@@ -151,7 +151,10 @@
                 <section id="section-orders" class="content-section">
                     <div class="section-header">
                         <h2>Order History</h2>
-                        <span class="badge badge-replied">Tracked from WhatsApp Clicks</span>
+                        <div class="section-actions">
+                            <span class="badge badge-replied">Tracked from WhatsApp Clicks</span>
+                            <button class="btn btn-primary" onclick="Admin.openModal('order')">+ Add Order</button>
+                        </div>
                     </div>
                     <div class="data-table-container">
                         <table class="data-table">
@@ -162,6 +165,7 @@
                                     <th>Items</th>
                                     <th>Total</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="orders-table"></tbody>
@@ -266,20 +270,15 @@
                         </div>
                         <div class="form-group">
                             <label for="site-phone">Phone</label>
-                            <input type="tel" id="site-phone" name="phone" value="+212 603-981438">
+                            <input type="tel" id="site-phone" name="phone" value="+212 637-629395">
                         </div>
                         <div class="form-group">
                             <label for="site-email">Email</label>
-                            <input type="email" id="site-email" name="email" value="bonjour@goldensweet.ma">
+                            <input type="email" id="site-email" name="email" value="contact@goldensweet.co">
                         </div>
                         <div class="form-group">
                             <label for="site-address">Address</label>
-                            <textarea id="site-address" name="address" rows="2">Tetouan & Tangier, Morocco</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="promo-text">Promo Banner Text</label>
-                            <input type="text" id="promo-text" name="promoText"
-                                placeholder="e.g. FREE DELIVERY FROM 500 DHS">
+                            <textarea id="site-address" name="address" rows="2">Morocco, Tetouan</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save Settings</button>
                     </form>

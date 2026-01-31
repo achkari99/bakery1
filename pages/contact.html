@@ -116,7 +116,7 @@
                             <span data-i18n="contact.delivery_label">Delivery</span>: <span
                                 data-i18n="contact.city_tetouan_tangier">Morocco, Tetouan & Morocco, Tangier</span><br>
                             <span data-i18n="contact.address_label">Address</span>: <span
-                                data-i18n="contact.address_val">mourrir, jamae oma, no 9 Av. Mohamed Hajjaj</span>
+                                data-i18n="contact.address_val" data-contact-address>mourrir, jamae oma, no 9 Av. Mohamed Hajjaj</span>
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
                         </svg>
                         <div>
                             <strong data-i18n="contact.phone_label">Phone</strong><br>
-                            <a href="tel:+212637629395">+212 637-629395</a>
+                            <a href="tel:+212637629395" data-contact-phone>+212 637-629395</a>
                         </div>
                     </div>
 
@@ -138,7 +138,7 @@
                         </svg>
                         <div>
                             <strong data-i18n="contact.email_label">Email</strong><br>
-                            <a href="mailto:contact@goldensweet.co">contact@goldensweet.co</a>
+                            <a href="mailto:contact@goldensweet.co" data-contact-email>contact@goldensweet.co</a>
                         </div>
                     </div>
 
@@ -203,6 +203,36 @@
     <script src="../js/animations.js"></script>
     <script src="../js/form-validation.js"></script>
     <script src="../js/i18n.js" type="module"></script>
+    <script>
+        // Sync contact info from Admin Settings (localStorage) to the public contact page
+        (function syncContactFromSettings() {
+            try {
+                const raw = localStorage.getItem('cinnamona-settings');
+                if (!raw) return;
+                const settings = JSON.parse(raw);
+                if (settings.phone) {
+                    const phoneEl = document.querySelector('[data-contact-phone]');
+                    if (phoneEl) {
+                        phoneEl.textContent = settings.phone;
+                        phoneEl.href = `tel:${settings.phone.replace(/[^+\\d]/g, '')}`;
+                    }
+                }
+                if (settings.email) {
+                    const emailEl = document.querySelector('[data-contact-email]');
+                    if (emailEl) {
+                        emailEl.textContent = settings.email;
+                        emailEl.href = `mailto:${settings.email}`;
+                    }
+                }
+                if (settings.address) {
+                    const addrEl = document.querySelector('[data-contact-address]');
+                    if (addrEl) addrEl.textContent = settings.address;
+                }
+            } catch (e) {
+                console.warn('Settings sync failed', e);
+            }
+        })();
+    </script>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

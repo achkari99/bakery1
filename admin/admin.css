@@ -438,6 +438,14 @@ body {
     color: #155724;
 }
 
+/* Table action buttons aligned horizontally */
+.table-actions {
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .badge-danger {
     background: #f8d7da;
     color: #721c24;

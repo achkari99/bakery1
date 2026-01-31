@@ -531,7 +531,8 @@
         "filter_sugar_free": "Sugar-Free",
         "filter_gluten_free": "Gluten-Free",
         "filter_keto": "Keto",
-        "filter_low_carb": "Low-Carb"
+        "filter_low_carb": "Low-Carb",
+        "filter_healthy": "Healthy"
     },
     "presse": {
         "title": "Press & Awards | Golden Sweet",

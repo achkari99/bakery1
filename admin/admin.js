@@ -74,9 +74,8 @@ const Admin = (() => {
         settings: {
             siteName: 'Golden Sweet',
             phone: '+212 637-629395',
-            email: 'bonjour@cinnamona.ma',
-            address: 'Tetouan & Tangier, Morocco',
-            promoText: 'FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs'
+            email: 'contact@goldensweet.co',
+            address: 'Tetouan & Tangier, Morocco'
         },
         orders: [
             { id: 'o1', customer: 'John Doe', items: '2x Original Cinnamon Roll', total: 50, date: new Date().toISOString(), status: 'WhatsApp Sent' }
@@ -95,12 +94,19 @@ const Admin = (() => {
             return [];
         }
         const parsed = JSON.parse(stored);
-        if (key === KEYS.SETTINGS && parsed?.siteName === 'Cinnamona by Mona') {
-            parsed.siteName = 'Golden Sweet';
-            localStorage.setItem(key, JSON.stringify(parsed));
-        } else if (key === KEYS.SETTINGS && parsed?.siteName === 'Cinnamona') {
-            parsed.siteName = 'Golden Sweet';
-            localStorage.setItem(key, JSON.stringify(parsed));
+        if (key === KEYS.SETTINGS) {
+            let dirty = false;
+            if (parsed?.siteName === 'Cinnamona by Mona' || parsed?.siteName === 'Cinnamona') {
+                parsed.siteName = 'Golden Sweet';
+                dirty = true;
+            }
+            if (parsed?.email === 'bonjour@cinnamona.ma') {
+                parsed.email = 'contact@goldensweet.co';
+                dirty = true;
+            }
+            if (dirty) {
+                localStorage.setItem(key, JSON.stringify(parsed));
+            }
         }
         return parsed;
     }
@@ -587,19 +593,40 @@ const Admin = (() => {
         if (!tbody) return;
 
         if (orders.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem">No orders recorded yet. Orders are tracked when users click "Order on WhatsApp".</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem">No orders recorded yet. Orders are tracked when users click "Order on WhatsApp".</td></tr>';
             return;
         }
 
-        tbody.innerHTML = orders.sort((a, b) => new Date(b.date) - new Date(a.date)).map(o => `
+        tbody.innerHTML = orders
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map(o => `
             <tr>
                 <td>${new Date(o.date).toLocaleString()}</td>
-                <td><strong>${o.customer}</strong></td>
+                <td><strong>${o.customer}</strong><br><small>${o.phone || ''}</small></td>
                 <td><small>${o.items}</small></td>
                 <td>${o.total} MAD</td>
                 <td><span class="badge badge-replied">${o.status || 'WhatsApp Sent'}</span></td>
+                <td>
+                    <div class="table-actions">
+                        <button class="btn btn-secondary btn-small" data-edit-order="${o.id}">Edit</button>
+                        <button class="btn btn-danger btn-small" data-delete-order="${o.id}">Delete</button>
+                    </div>
+                </td>
             </tr>
         `).join('');
+
+        tbody.querySelectorAll('[data-edit-order]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const order = orders.find(o => o.id === btn.dataset.editOrder);
+                openModal('order', order);
+            });
+        });
+
+        tbody.querySelectorAll('[data-delete-order]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                deleteOrder(btn.dataset.deleteOrder);
+            });
+        });
     }
 
     /**
@@ -616,6 +643,33 @@ const Admin = (() => {
         saveData(KEYS.ORDERS, orders);
     }
 
+    function saveOrder(orderData, id) {
+        const orders = loadData(KEYS.ORDERS);
+        if (id) {
+            const idx = orders.findIndex(o => o.id === id);
+            if (idx !== -1) {
+                orders[idx] = { ...orders[idx], ...orderData, id };
+            }
+        } else {
+            orders.push({
+                id: 'o' + Date.now(),
+                date: new Date().toISOString(),
+                status: 'Updated',
+                ...orderData
+            });
+        }
+        saveData(KEYS.ORDERS, orders);
+        renderOrders();
+        loadStats();
+    }
+
+    function deleteOrder(id) {
+        const orders = loadData(KEYS.ORDERS).filter(o => o.id !== id);
+        saveData(KEYS.ORDERS, orders);
+        renderOrders();
+        loadStats();
+    }
+
     // =====================
     // Settings
     // =====================
@@ -627,7 +681,6 @@ const Admin = (() => {
             document.getElementById('site-phone').value = settings.phone || '';
             document.getElementById('site-email').value = settings.email || '';
             document.getElementById('site-address').value = settings.address || '';
-            document.getElementById('promo-text').value = settings.promoText || '';
         }
     }
 
@@ -772,6 +825,44 @@ const Admin = (() => {
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Save FAQ</button>
                 </form>
+            `,
+            order: `
+                <form id="modal-form">
+                    <input type="hidden" name="id" value="${data?.id || ''}">
+                    <div class="form-group">
+                        <label>Customer</label>
+                        <input type="text" name="customer" required value="${data?.customer || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" value="${data?.phone || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Items</label>
+                        <textarea name="items" rows="3" required>${data?.items || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Total (MAD)</label>
+                        <input type="number" name="total" min="0" step="0.01" required value="${data?.total || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea name="address" rows="2" placeholder="City, neighborhood, street...">${data?.address || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions</label>
+                        <textarea name="instructions" rows="2" placeholder="No sugar, call on arrival, gate code, etc.">${data?.instructions || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status">
+                            ${['WhatsApp Sent','Pending','Confirmed','Preparing','Ready','Delivered','Cancelled'].map(s => `
+                                <option value="${s}" ${data?.status === s ? 'selected' : ''}>${s}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Save Order</button>
+                </form>
             `
         };
 
@@ -816,6 +907,14 @@ const Admin = (() => {
                             await saveFaq(data, id);
                         }
                         break;
+                    case 'order': {
+                        const data = Object.fromEntries(formData);
+                        const numericTotal = Number(data.total || 0);
+                        data.total = Number.isFinite(numericTotal) ? numericTotal : 0;
+                        delete data.id;
+                        saveOrder(data, id);
+                        break;
+                    }
                 }
             } catch (err) {
                 alert(err.message || 'Something went wrong. Please try again.');

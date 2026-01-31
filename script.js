@@ -356,6 +356,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Menu page filters (including new Healthy filter)
+    const catalogFilters = document.querySelector('.catalog-filters');
+    if (catalogFilters) {
+        const filterButtons = Array.from(catalogFilters.querySelectorAll('.filter-btn'));
+        const productCards = Array.from(document.querySelectorAll('.product-card'));
+
+        const applyFilter = (filter) => {
+            filterButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.filter === filter));
+            productCards.forEach((card) => {
+                const categories = (card.dataset.category || '').split(/[\s,]+/).filter(Boolean);
+                const match = filter === 'all' || filter === 'healthy' || categories.includes(filter);
+                card.style.display = match ? '' : 'none';
+            });
+        };
+
+        filterButtons.forEach((btn) => {
+            btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+        });
+    }
+
 
     const animated = document.querySelectorAll("[data-animate]");
     if (animated.length) {
