@@ -17,6 +17,7 @@
     --radius-sm: 12px;
     --transition: 200ms ease;
     --transition-slow: 420ms ease;
+    --font-hero: 'MontserratVariable', sans-serif;
 }
 
 @font-face {
@@ -31,6 +32,14 @@
     font-family: "Daisuky Fancy";
     src: url("fonts/Daisuky-Fancy.otf") format("opentype");
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MontserratVariable";
+    src: url("Montserrat-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
@@ -480,9 +489,9 @@ html[dir="rtl"] .nav-links ul {
     align-self: start;
     align-items: center;
     text-align: center;
-    margin-left: 4rem;
+    margin-left: 2.5rem;
     padding-left: 0;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .hero-copy p {
@@ -496,7 +505,7 @@ html[dir="rtl"] .nav-links ul {
 }
 
 .hero-logo {
-    width: clamp(180px, 26vw, 320px);
+    width: clamp(130px, 20vw, 220px);
     height: auto;
     animation: logoFloat 3.6s ease-in-out infinite;
 }
@@ -513,10 +522,11 @@ html[dir="rtl"] .nav-links ul {
 }
 
 .hero-copy h1 {
-    max-width: 20ch;
-    font-family: "Transcity DEMO", "Playfair Display", "Times New Roman", serif;
-    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-    font-weight: 400;
+    max-width: 22ch;
+    font-family: var(--font-hero);
+    font-size: clamp(1.6rem, 2.3vw, 2.2rem);
+    font-weight: 800;
+    font-style: normal;
 }
 
 .hero-section .hero-actions .btn {
@@ -530,6 +540,11 @@ html[dir="rtl"] .nav-links ul {
 .hero-section .metric,
 .hero-section .metric-label {
     font-weight: 600;
+}
+
+.text-gold {
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .hero-kicker {
@@ -3490,7 +3505,7 @@ html[dir="rtl"] .nav-links ul {
 @media (min-width: 901px) {
     .hero-copy {
         align-self: flex-start;
-        margin-top: -1rem; /* lift left column slightly */
+        margin-top: 2.5rem; /* slightly down on desktop */
     }
 }
 

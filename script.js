@@ -163,6 +163,188 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('headerLoaded', initStickyHeader);
     initHeroIntro();
 
+    // ---- GA4 helper and key events ----
+    const trackEvent = (action, params = {}) => {
+        if (typeof gtag === "function") {
+            gtag("event", action, params);
+        }
+    };
+
+    // Hero CTAs
+    const exploreMoreBtn = document.querySelector('.hero-actions .btn-primary[href^="#values"]');
+    if (exploreMoreBtn) {
+        exploreMoreBtn.addEventListener('click', () => {
+            trackEvent('cta_click', {
+                label: 'hero_explore_more',
+                lang: document.documentElement.lang || 'en'
+            });
+        });
+    }
+
+    const franchiseBtn = document.querySelector('.hero-actions .btn-outline[href*="franchising"]');
+    if (franchiseBtn) {
+        franchiseBtn.addEventListener('click', () => {
+            trackEvent('cta_click', {
+                label: 'hero_franchise',
+                lang: document.documentElement.lang || 'en'
+            });
+        });
+    }
+
+    // Navigation clicks
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+        link.addEventListener('click', () => {
+            trackEvent('nav_click', {
+                item: link.textContent?.trim() || 'nav_link',
+                destination: link.getAttribute('href') || '',
+                page_path: window.location.pathname
+            });
+        });
+    });
+
+    // Section view tracking (fires once per section per load)
+    const sectionIds = ['values', 'menu', 'community', 'faq', 'contact', 'franchise', 'benefits', 'investment', 'journey', 'options'];
+    const seenSections = new Set();
+    const sectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !seenSections.has(entry.target.id)) {
+                    seenSections.add(entry.target.id);
+                    trackEvent('section_view', {
+                        section: entry.target.id,
+                        page_path: window.location.pathname,
+                        lang: document.documentElement.lang || 'en'
+                    });
+                    sectionObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.35 }
+    );
+    sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) sectionObserver.observe(el);
+    });
+
+    // Scroll depth thresholds
+    const depthMarks = [25, 50, 75, 100];
+    const firedDepths = new Set();
+    const onScrollDepth = () => {
+        const scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+        depthMarks.forEach((mark) => {
+            if (scrolled >= mark && !firedDepths.has(mark)) {
+                firedDepths.add(mark);
+                trackEvent('scroll_depth', {
+                    percent: mark,
+                    page_path: window.location.pathname,
+                    lang: document.documentElement.lang || 'en'
+                });
+            }
+        });
+        if (firedDepths.size === depthMarks.length) {
+            window.removeEventListener('scroll', onScrollDepth);
+        }
+    };
+    window.addEventListener('scroll', onScrollDepth, { passive: true });
+
+    // Engagement heartbeat every 20s while page visible
+    let heartbeatTimer;
+    const startHeartbeat = () => {
+        heartbeatTimer = window.setInterval(() => {
+            if (document.visibilityState === 'visible') {
+                trackEvent('engagement_tick', {
+                    page_path: window.location.pathname,
+                    lang: document.documentElement.lang || 'en'
+                });
+            }
+        }, 20000);
+    };
+    const stopHeartbeat = () => heartbeatTimer && clearInterval(heartbeatTimer);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            stopHeartbeat();
+        } else {
+            stopHeartbeat();
+            startHeartbeat();
+        }
+    });
+    startHeartbeat();
+
+    // Contact form lifecycle
+    document.querySelectorAll('form[action*="contact"], #contact-form').forEach((form) => {
+        form.addEventListener('focusin', () => {
+            trackEvent('form_start', { form: form.id || 'contact', page_path: window.location.pathname });
+        }, { once: true });
+        form.addEventListener('submit', () => {
+            trackEvent('form_submit', {
+                form: form.id || 'contact',
+                page_path: window.location.pathname
+            });
+        });
+    });
+
+    // Button clicks with labels
+    document.querySelectorAll('[data-track]').forEach((el) => {
+        el.addEventListener('click', () => {
+            trackEvent('button_click', {
+                label: el.dataset.label || el.textContent?.trim() || 'button',
+                page_path: window.location.pathname
+            });
+        });
+    });
+
+    // Add-to-cart buttons (if present)
+    document.querySelectorAll('[data-add-to-cart]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            trackEvent('add_to_cart', {
+                item_id: btn.dataset.productId || btn.dataset.id || 'unknown',
+                item_name: btn.dataset.productName || btn.dataset.name || 'unknown',
+                price: Number(btn.dataset.productPrice || btn.dataset.price) || undefined,
+                currency: 'MAD'
+            });
+        });
+    });
+
+    // Proceed to order / checkout buttons (cart / checkout pages)
+    const proceedOrderBtn = document.querySelector('.cart-proceed-order-btn');
+    if (proceedOrderBtn) {
+        proceedOrderBtn.addEventListener('click', () => {
+            trackEvent('proceed_to_order', { page_path: window.location.pathname });
+        });
+    }
+    const proceedCheckoutBtn = document.getElementById('proceed-checkout-btn');
+    if (proceedCheckoutBtn) {
+        proceedCheckoutBtn.addEventListener('click', () => {
+            trackEvent('begin_checkout', { page_path: window.location.pathname });
+        });
+    }
+
+    // FAQ toggles
+    document.querySelectorAll('.faq-item summary, .faq-item button').forEach((el) => {
+        el.addEventListener('click', () => {
+            trackEvent('faq_toggle', {
+                question: el.textContent?.trim() || 'faq',
+                page_path: window.location.pathname
+            });
+        });
+    });
+
+    // JS error logging (non-blocking)
+    window.addEventListener('error', (e) => {
+        trackEvent('error_js', {
+            message: e.message || 'error',
+            file: e.filename || '',
+            line: e.lineno || 0
+        });
+    });
+    window.addEventListener('unhandledrejection', (e) => {
+        trackEvent('error_js', {
+            message: (e.reason && e.reason.message) || 'promise_rejection',
+            file: '',
+            line: 0
+        });
+    });
+
 
     const animated = document.querySelectorAll("[data-animate]");
     if (animated.length) {

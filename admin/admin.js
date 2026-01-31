@@ -282,7 +282,6 @@ const Admin = (() => {
                 const thumb = p.image ? `<img class="product-thumb" src="${p.image}" alt="${p.name}">` : '';
                 const featuredBadge = p.featured ? '<span class="badge badge-replied" style="font-size:0.75em; margin-left:8px">Featured</span>' : '';
                 const bestBadge = p.bestSeller ? '<span class="badge badge-active" style="font-size:0.75em; margin-left:8px">Best-seller</span>' : '';
-                const limitedBadge = p.limitedEdition ? '<span class="badge badge-danger" style="font-size:0.75em; margin-left:8px">Limited</span>' : '';
                 const inStock = p.inStock !== false;
                 const tags = Array.isArray(p.tags) ? p.tags : (p.tags ? [p.tags] : []);
                 return `
@@ -292,7 +291,7 @@ const Admin = (() => {
                                 ${thumb}
                                 <div class="product-meta">
                                     <strong>${p.name}</strong>
-                                    ${featuredBadge}${bestBadge}${limitedBadge}
+                                    ${featuredBadge}${bestBadge}
                                     ${tags.length ? `<small>${tags.join(', ')}</small>` : ''}
                                 </div>
                             </div>
@@ -331,7 +330,6 @@ const Admin = (() => {
             description: data.description || '',
             featured: data.featured === 'on',
             bestSeller: data.bestSeller === 'on',
-            limitedEdition: data.limitedEdition === 'on',
             inStock: data.inStock === 'on',
             image: data.image || '',
             tags: data.tags
@@ -721,10 +719,6 @@ const Admin = (() => {
                             <input type="checkbox" name="bestSeller" ${data?.bestSeller ? 'checked' : ''} style="width: auto; margin: 0;">
                             Best-seller
                         </label>
-                        <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: normal;">
-                            <input type="checkbox" name="limitedEdition" ${data?.limitedEdition ? 'checked' : ''} style="width: auto; margin: 0;">
-                            Limited Edition
-                        </label>
                     </div>
                     <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
                         <input type="checkbox" id="instock-check" name="inStock" ${data?.inStock !== false ? 'checked' : ''} style="width: auto; margin: 0;">
@@ -801,7 +795,6 @@ const Admin = (() => {
                             description: formData.get('description'),
                             featured: formData.get('featured'),
                             bestSeller: formData.get('bestSeller'),
-                            limitedEdition: formData.get('limitedEdition'),
                             inStock: formData.get('inStock'),
                             tags: formData.get('tags'),
                             image: formData.get('image')

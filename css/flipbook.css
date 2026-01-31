@@ -173,7 +173,7 @@
 }
 
 .logo-mark-large img {
-    height: 120px;
+    height: 160px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -839,7 +839,7 @@
     }
 
     .logo-mark-large img {
-        height: 70px;
+        height: 90px;
     }
 
     .story-title {

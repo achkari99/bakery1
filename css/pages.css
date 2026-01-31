@@ -21,9 +21,52 @@
     margin-bottom: 0.5rem;
 }
 
+.page-hero-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 700px;
+    margin: 0.75rem auto 0;
+}
+
 .page-hero .section-kicker {
     margin-bottom: 1.5rem;
 }
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.option-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.option-card h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.2rem;
+    color: #2c241b;
+}
+
+.option-card p {
+    margin: 0;
+    color: #4a4133;
+    line-height: 1.6;
+}
+
+.options-note {
+    margin: 0.5rem 0 2.5rem;
+    font-weight: 600;
+    color: #2c241b;
+    text-align: center;
+}
+
 
 /* =========================================
    Section Container
@@ -1525,6 +1568,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    text-align: center;
 }
 
 .franchise-hero h1 {
@@ -1867,5 +1911,88 @@
 
     .shops-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+.options-section {
+    background: linear-gradient(180deg, #fffaf2 0%, #fdf5e8 100%);
+    padding: 4.5rem 0;
+}
+
+.options-lead {
+    max-width: 760px;
+    margin: 0.5rem auto 0;
+    color: #4a4133;
+    line-height: 1.7;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.option-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option-card--accent {
+    box-shadow: 0 22px 44px rgba(237, 192, 31, 0.18);
+    border: 1px solid rgba(237, 192, 31, 0.35);
+}
+
+.option-card h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.2rem;
+    color: #2c241b;
+}
+
+.option-card p {
+    margin: 0;
+    color: #4a4133;
+    line-height: 1.6;
+}
+
+.option-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+.option-pill {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(237, 192, 31, 0.15);
+    color: #a57b12;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.options-note {
+    margin: 0.5rem 0 0;
+    font-weight: 600;
+    color: #2c241b;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .options-section {
+        padding: 3.5rem 0;
+    }
+    .options-grid {
+        gap: 1rem;
+    }
+    .option-card {
+        padding: 1.25rem;
     }
 }

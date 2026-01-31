@@ -159,7 +159,6 @@
 
             appendToSection('featured', activeProducts.filter((p) => p.featured), 'Featured');
             appendToSection('bestsellers', activeProducts.filter((p) => p.bestSeller), 'Best-seller');
-            appendToSection('seasonal', activeProducts.filter((p) => p.limitedEdition), 'Limited Edition');
 
             bindQuickView();
             bindCartButtons();

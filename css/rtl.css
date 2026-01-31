@@ -1,4 +1,4 @@
-/**
+﻿/**
  * RTL (Right-to-Left) Support for Arabic
  * Applied when html[dir="rtl"] is set
  */
@@ -49,7 +49,11 @@ html[dir="rtl"] .nav-links ul {
 
 /* Hero section */
 html[dir="rtl"] .hero-copy {
-    text-align: right;
+    text-align: center;
+}
+
+html[dir="rtl"] .hero-section {
+    direction: ltr;
 }
 
 
@@ -147,6 +151,29 @@ html[dir="rtl"] .product-badge {
 /* Section headers */
 html[dir="rtl"] .section-header {
     text-align: right;
+}
+
+/* Keep explicitly centered headers centered in RTL (e.g., franchising options/benefits) */
+html[dir="rtl"] .section-header.centered,
+html[dir="rtl"] .section-header.centered h1,
+html[dir="rtl"] .section-header.centered h2,
+html[dir="rtl"] .section-header.centered h3,
+html[dir="rtl"] .section-header.centered .section-kicker,
+html[dir="rtl"] .section-header.centered p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Franchise hero and hero-like intros should stay centered in RTL */
+html[dir="rtl"] .franchise-hero,
+html[dir="rtl"] .franchise-hero-content,
+html[dir="rtl"] .franchise-hero h1,
+html[dir="rtl"] .franchise-hero .section-kicker,
+html[dir="rtl"] .franchise-hero-lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Carousel */
@@ -470,3 +497,4 @@ html[dir="rtl"] .service-cta svg {
 html[dir="rtl"] .service-cta:hover svg {
     transform: rotate(180deg) translateX(5px);
 }
+
