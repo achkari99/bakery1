@@ -3673,8 +3673,8 @@ html[dir="rtl"] .nav-links ul {
     .hero-media--photo {
         margin-top: 0;
         min-height: clamp(180px, 42vw, 260px);
-        /* show more of the right side on mobile */
-        background-position: 80% center;
+        /* show more of the far right side on mobile */
+        background-position: 90% center;
     }
 
     /* Tighter hero on mobile */
@@ -3683,14 +3683,16 @@ html[dir="rtl"] .nav-links ul {
     }
 
     .hero-copy h1 {
-        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
-        line-height: 1.2;
-        max-width: 18ch;
+        font-size: clamp(1.35rem, 5vw, 2rem);
+        line-height: 1.18;
+        max-width: 20ch;
     }
 
     .hero-section .hero-actions .btn {
-        padding: 0.48rem 0.95rem;
-        font-size: 0.76rem;
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+        width: auto;
+        min-width: 180px;
     }
 
     .hero-copy {
@@ -3700,7 +3702,7 @@ html[dir="rtl"] .nav-links ul {
 
     .hero-media--photo {
         min-height: clamp(150px, 36vw, 220px);
-        background-position: 80% center;
+        background-position: 90% center;
     }
 
     .hero-logo {
@@ -3708,14 +3710,14 @@ html[dir="rtl"] .nav-links ul {
     }
 
     .hero-copy h1 {
-        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
-        line-height: 1.2;
-        max-width: 18ch;
+        font-size: clamp(1.35rem, 5vw, 2rem);
+        line-height: 1.18;
+        max-width: 20ch;
     }
 
     .hero-section {
-        padding: 2.4rem 0.85rem 1.9rem;
-        gap: 1.3rem;
+        padding: 2.6rem 0.95rem 2.1rem;
+        gap: 1.6rem;
     }
 
     .chef-spotlight {
