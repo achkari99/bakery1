@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mount routes at root so /api/auth/login works when function is at /api
-app.use('/', apiRouter);
+// Mount routes under /api (matches server.js and Vercel function path /api/*)
+app.use('/api', apiRouter);
 
 module.exports = serverless(app);

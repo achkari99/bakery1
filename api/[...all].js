@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mount all routes; Vercel will map /api/* to this function
-app.use('/', apiRouter);
+// Mount routes under /api so incoming /api/* paths match the router definitions
+app.use('/api', apiRouter);
 
 module.exports = serverless(app);
