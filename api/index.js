@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Mount routes at root; Vercel strips the /api prefix when invoking serverless functions
-app.use('/', apiRouter);
+// Mount routes under /api to match incoming paths like /api/auth/login
+app.use('/api', apiRouter);
 
 module.exports = serverless(app);
