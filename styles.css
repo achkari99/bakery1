@@ -3672,7 +3672,7 @@ html[dir="rtl"] .nav-links ul {
 
     .hero-media--photo {
         margin-top: 0;
-        min-height: clamp(280px, 60vw, 420px);
+        min-height: clamp(220px, 50vw, 320px);
         background-position: 65% center;
     }
 
@@ -3682,8 +3682,8 @@ html[dir="rtl"] .nav-links ul {
     }
 
     .hero-copy h1 {
-        font-size: clamp(0.95rem, 3.8vw, 1.3rem);
-        line-height: 1.15;
+        font-size: clamp(0.85rem, 3.4vw, 1.2rem);
+        line-height: 1.18;
     }
 
     .hero-section .hero-actions .btn {
