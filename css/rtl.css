@@ -86,6 +86,92 @@ html[dir="rtl"] .timeline article {
     text-align: right;
 }
 
+/* Timeline RTL: flip line and markers to the right */
+html[dir="rtl"] .timeline {
+    direction: rtl;
+    border-left: none;
+    border-right: 3px solid var(--accent);
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+html[dir="rtl"] .timeline article {
+    padding-left: 0;
+    padding-right: 1.25rem;
+}
+
+html[dir="rtl"] .timeline article::before {
+    left: auto;
+    right: -0.85rem;
+}
+
+html[dir="rtl"] .timeline article::after {
+    left: auto;
+    right: -1.5rem;
+}
+
+/* Vertical timeline (timeline-vertical) flip to the right in RTL */
+html[dir="rtl"] .timeline-vertical {
+    padding-left: 0 !important;
+    padding-right: 3rem !important;
+    border-left: none !important;
+    border-right: 3px solid rgba(237, 192, 31, 0.3) !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-content {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-item::before {
+    left: auto !important;
+    right: -3rem !important;
+    transform: translateX(calc(50% - 1.5px)) !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-year {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-content h3,
+html[dir="rtl"] .timeline-vertical .timeline-content p {
+    text-align: right !important;
+}
+
+/* Timeline immersive (full-width journey) RTL tweaks */
+html[dir="rtl"] .history-content {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline-immersive {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline-section {
+    flex-direction: column;
+}
+
+html[dir="rtl"] .timeline-section-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline-section::before {
+    right: auto;
+    left: 5%;
+}
+
+html[dir="rtl"] .timeline-section::after {
+    left: auto;
+    right: 8%;
+}
+
+/* Immersive timeline background positioning for RTL */
+html[dir="rtl"] .timeline-section {
+    background-position: right center, right center !important;
+}
+
 /* Provenance section */
 html[dir="rtl"] .provenance-content {
     direction: rtl;
