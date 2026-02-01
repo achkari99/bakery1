@@ -10,6 +10,13 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const apiRouter = require('./routes');
 
+process.on('unhandledRejection', (err) => {
+    console.error('Unhandled rejection:', err);
+});
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught exception:', err);
+});
+
 const app = express();
 app.use(compression());
 app.use(cors());
@@ -29,4 +36,14 @@ app.use((err, req, res, next) => {
     });
 });
 
-module.exports = serverless(app);
+const handler = serverless(app);
+module.exports = async (req, res) => {
+    try {
+        return await handler(req, res);
+    } catch (err) {
+        console.error('Unhandled API error:', err);
+        if (!res.headersSent) {
+            res.status(500).json({ success: false, error: 'Unhandled server error' });
+        }
+    }
+};

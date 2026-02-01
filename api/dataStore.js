@@ -8,7 +8,9 @@ const path = require('path');
 
 class DataStore {
     constructor() {
-        this.dataDir = path.join(__dirname, '..', 'data');
+        this.dataDir = process.env.VERCEL
+            ? path.join('/tmp', 'data')
+            : path.join(__dirname, '..', 'data');
         this.init();
     }
 
