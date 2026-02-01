@@ -1,5 +1,4 @@
 // Catch‑all serverless function so /api/* routes hit the Express API on Vercel
-const serverless = require('serverless-http');
 const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
@@ -36,14 +35,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-const handler = serverless(app);
-module.exports = async (req, res) => {
-    try {
-        return await handler(req, res);
-    } catch (err) {
-        console.error('Unhandled API error:', err);
-        if (!res.headersSent) {
-            res.status(500).json({ success: false, error: 'Unhandled server error' });
-        }
-    }
+module.exports = (req, res) => {
+    app(req, res);
 };
