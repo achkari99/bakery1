@@ -17,7 +17,7 @@ const store = new DataStore();
 // Multer config for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '..', 'images'));
+        cb(null, path.join(__dirname, '..', 'public', 'images'));
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -76,6 +76,16 @@ router.post('/auth/login', async (req, res) => {
     }
 
     res.status(401).json({ success: false, error: 'Invalid credentials' });
+});
+
+router.get('/health', (req, res) => {
+    res.json({
+        success: true,
+        status: 'ok',
+        hasAdminEmail: Boolean(process.env.ADMIN_EMAIL),
+        hasAdminPassword: Boolean(process.env.ADMIN_PASSWORD),
+        hasJwtSecret: Boolean(process.env.JWT_SECRET)
+    });
 });
 
 router.get('/auth/me', authMiddleware, (req, res) => {

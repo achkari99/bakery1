@@ -11,6 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ASSET_CACHE_MAX_AGE_SECONDS = 60 * 60 * 12;
 const ASSET_CACHE_REGEX = /\.(css|js|mjs|cjs|svg|png|jpg|jpeg|gif|webp|ico|ttf|otf|woff|woff2|eot)$/i;
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const ADMIN_DIR = path.join(PUBLIC_DIR, 'admin');
 
 const setAssetCacheHeaders = (res, filePath) => {
     if (ASSET_CACHE_REGEX.test(filePath)) {
@@ -29,14 +31,14 @@ const apiRouter = require('./api/routes');
 app.use('/api', apiRouter);
 
 // Serve admin panel static files
-app.use('/admin', express.static(path.join(__dirname, 'admin'), { setHeaders: setAssetCacheHeaders }));
+app.use('/admin', express.static(ADMIN_DIR, { setHeaders: setAssetCacheHeaders }));
 
 // Serve static files from root (for main website)
-app.use(express.static(path.join(__dirname), { setHeaders: setAssetCacheHeaders }));
+app.use(express.static(PUBLIC_DIR, { setHeaders: setAssetCacheHeaders }));
 
 // SPA fallback for admin routes
 app.get('/admin/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'admin', 'index.html'));
+    res.sendFile(path.join(ADMIN_DIR, 'index.html'));
 });
 
 // Error handling middleware
@@ -55,7 +57,7 @@ app.use((req, res) => {
     }
     // Only serve index.html for actual page requests (not CSS, JS, images, etc.)
     if (!req.path.includes('.')) {
-        return res.status(404).sendFile(path.join(__dirname, 'index.html'));
+        return res.status(404).sendFile(path.join(PUBLIC_DIR, 'index.html'));
     }
     // For missing assets, return 404
     res.status(404).send('File not found');
