@@ -530,6 +530,11 @@ html[dir="rtl"] .nav-links ul {
     font-size: clamp(1.6rem, 2.3vw, 2.2rem);
     font-weight: 800;
     font-style: normal;
+    white-space: pre-line;
+}
+
+html[dir="rtl"] .hero-copy h1 {
+    font-weight: 900;
 }
 
 .hero-section .hero-actions .btn {
@@ -1940,6 +1945,45 @@ html[dir="rtl"] .nav-links ul {
 
     .timeline-content p {
         padding: 1.2rem 1.5rem;
+    }
+
+    /* RTL (Arabic) - mirror the mobile timeline layout */
+    html[dir="rtl"] .timeline-line {
+        left: auto;
+        right: 1.5rem;
+        transform: translateX(-50%);
+    }
+
+    html[dir="rtl"] .timeline-item,
+    html[dir="rtl"] .timeline-item--left,
+    html[dir="rtl"] .timeline-item--right {
+        grid-template-columns: 1fr auto;
+    }
+
+    html[dir="rtl"] .timeline-item--left .timeline-content-wrapper,
+    html[dir="rtl"] .timeline-item--right .timeline-content-wrapper {
+        grid-column: 1;
+        text-align: right;
+        padding-right: 2rem;
+        padding-left: 0;
+    }
+
+    html[dir="rtl"] .timeline-item--left .timeline-node,
+    html[dir="rtl"] .timeline-item--right .timeline-node {
+        grid-column: 2;
+    }
+
+    html[dir="rtl"] .timeline-item--left .timeline-connector,
+    html[dir="rtl"] .timeline-item--right .timeline-connector {
+        left: auto;
+        right: 100%;
+        transform: translateX(0);
+        background: linear-gradient(270deg, rgba(237, 192, 31, 0.3), rgba(237, 192, 31, 0.6));
+    }
+
+    html[dir="rtl"] .timeline-item--left .timeline-header,
+    html[dir="rtl"] .timeline-item--right .timeline-header {
+        align-items: flex-end;
     }
 }
 

@@ -29,6 +29,18 @@
     margin: 0.75rem auto 0;
 }
 
+.lead-ar {
+    display: none;
+}
+
+html[dir="rtl"] .lead-en {
+    display: none;
+}
+
+html[dir="rtl"] .lead-ar {
+    display: block;
+}
+
 .page-hero .section-kicker {
     margin-bottom: 1.5rem;
 }
@@ -110,7 +122,7 @@
 }
 
 .history-image img {
-    width: 120%;
+    width:100%;
     max-width: 650px;
     height: auto;
     transform: translateX(-10%);
