@@ -40,7 +40,7 @@
         <!-- Dashboard (hidden until logged in) -->
         <div id="dashboard" class="dashboard hidden">
             <!-- Sidebar -->
-            <aside class="sidebar">
+            <aside id="admin-sidebar" class="sidebar">
                 <div class="sidebar-header">
                     <h2>Golden Sweet</h2>
                     <span>Business Control</span>
@@ -109,7 +109,10 @@
             <!-- Main Content -->
             <main class="main-content">
                 <header class="topbar">
-                    <h1 id="page-title">Dashboard</h1>
+                    <div class="topbar-left">
+                        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-controls="admin-sidebar" aria-expanded="false">&#9776;</button>
+                        <h1 id="page-title">Dashboard</h1>
+                    </div>
                     <div class="topbar-actions">
                         <a href="/" target="_blank" class="btn btn-outline btn-small">View Site</a>
                     </div>
@@ -286,6 +289,7 @@
 
             </main>
         </div>
+        <div id="mobile-sidebar-backdrop" class="mobile-sidebar-backdrop hidden" aria-hidden="true"></div>
 
         <!-- Modal -->
         <div id="modal" class="modal hidden">

@@ -22,6 +22,7 @@ const Admin = (() => {
     let shopsCache = [];
     let faqsCache = [];
     let contactsCache = [];
+    let mobileMenuOpen = false;
 
     async function apiFetch(path, options = {}) {
         const token = localStorage.getItem(KEYS.TOKEN);
@@ -140,6 +141,7 @@ const Admin = (() => {
     function logout() {
         localStorage.removeItem(KEYS.TOKEN);
         currentUser = null;
+        closeMobileMenu();
         showLogin();
     }
 
@@ -168,6 +170,36 @@ const Admin = (() => {
     function showDashboard() {
         document.getElementById('login-screen').classList.add('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
+    }
+
+    function openMobileMenu() {
+        const dashboard = document.getElementById('dashboard');
+        const backdrop = document.getElementById('mobile-sidebar-backdrop');
+        const btn = document.getElementById('mobile-menu-btn');
+        if (!dashboard || !backdrop || !btn) return;
+        mobileMenuOpen = true;
+        dashboard.classList.add('menu-open');
+        backdrop.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMobileMenu() {
+        const dashboard = document.getElementById('dashboard');
+        const backdrop = document.getElementById('mobile-sidebar-backdrop');
+        const btn = document.getElementById('mobile-menu-btn');
+        if (!dashboard || !backdrop || !btn) return;
+        mobileMenuOpen = false;
+        dashboard.classList.remove('menu-open');
+        backdrop.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMobileMenu() {
+        if (mobileMenuOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
     }
 
     // =====================
@@ -201,6 +233,7 @@ const Admin = (() => {
 
         // Load section data
         loadSectionData(section);
+        closeMobileMenu();
     }
 
     function loadSectionData(section) {
@@ -966,6 +999,20 @@ const Admin = (() => {
                 e.preventDefault();
                 showSection(item.dataset.section);
             });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        const mobileBackdrop = document.getElementById('mobile-sidebar-backdrop');
+        if (mobileBackdrop) {
+            mobileBackdrop.addEventListener('click', closeMobileMenu);
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) closeMobileMenu();
         });
 
         // Settings form

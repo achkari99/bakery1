@@ -256,6 +256,25 @@ body {
     border-bottom: 1px solid var(--sage-muted);
 }
 
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-menu-btn {
+    display: none;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--sage-muted);
+    background: var(--white);
+    color: var(--charcoal);
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
 .topbar h1 {
     font-size: 1.5rem;
     color: var(--charcoal);
@@ -503,6 +522,13 @@ body {
     padding: 1.5rem;
 }
 
+.mobile-sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 140;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .dashboard {
@@ -510,10 +536,85 @@ body {
     }
 
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: min(82vw, 320px);
+        z-index: 150;
+        transform: translateX(-105%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 18px 32px rgba(44, 36, 22, 0.28);
+    }
+
+    .dashboard.menu-open .sidebar {
+        transform: translateX(0);
+    }
+
+    .mobile-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-content {
+        max-height: none;
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .topbar {
+        padding: 1rem;
+    }
+
+    .topbar h1 {
+        font-size: 1.2rem;
+    }
+
+    .content-section {
+        padding: 1rem;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        gap: 0.75rem;
+        flex-direction: column;
+    }
+
+    .data-table-container {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        min-width: 720px;
+    }
+
+    .data-table .actions,
+    .table-actions {
+        flex-wrap: wrap;
+    }
+
+    .btn.btn-small {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        width: calc(100% - 1rem);
+        max-height: calc(100vh - 1rem);
+        margin: 0.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar-actions .btn {
+        padding: 0.45rem 0.8rem;
+        font-size: 0.78rem;
     }
 }

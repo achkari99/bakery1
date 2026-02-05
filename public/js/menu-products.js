@@ -50,7 +50,6 @@
                 <div class="product-media">
                     <span class="${badgeClass}">${escapeHtml(badgeText)}</span>
                     <img src="${escapeHtml(image)}" alt="${name}" loading="lazy">
-                    <span class="product-category-overlay">${escapeHtml(category.replace(/-/g, ' '))}</span>
                     <div class="product-actions-overlay">
                         <button class="btn-icon" aria-label="Add to Cart"
                             data-add-to-cart="${name}" ${inStock ? '' : 'disabled aria-disabled="true"'}>
