@@ -735,10 +735,11 @@ const Admin = (() => {
                     <div class="form-group">
                         <label>Category</label>
                         <select name="category">
-                            <option value="sugar-free" ${data?.category === 'sugar-free' ? 'selected' : ''}>Sugar-Free</option>
-                            <option value="gluten-free" ${data?.category === 'gluten-free' ? 'selected' : ''}>Gluten-Free</option>
-                            <option value="keto" ${data?.category === 'keto' ? 'selected' : ''}>Keto</option>
-                            <option value="low-carb" ${data?.category === 'low-carb' ? 'selected' : ''}>Low-Carb</option>
+                            <option value="gluten-vegetarian" ${data?.category === 'gluten-vegetarian' ? 'selected' : ''}>Gluten Vegetarian</option>
+                            <option value="gluten-free" ${data?.category === 'gluten-free' ? 'selected' : ''}>Gluten Free</option>
+                            <option value="low-carb" ${data?.category === 'low-carb' ? 'selected' : ''}>Low Carb</option>
+                            <option value="healthy" ${data?.category === 'healthy' ? 'selected' : ''}>Healthy</option>
+                            <option value="raw-materials" ${data?.category === 'raw-materials' ? 'selected' : ''}>Raw Materials</option>
                         </select>
                     </div>
                     <div class="form-group">

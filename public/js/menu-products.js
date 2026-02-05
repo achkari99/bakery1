@@ -32,20 +32,12 @@
 
         return `
             <article class="product-card" data-product data-product-id="${product.id || ''}"
-                data-category="${escapeHtml(category)}" data-description="${description}"
-                ${tagString ? `data-tags="${escapeHtml(tagString)}"` : ''}>
+                data-category="${escapeHtml(category)}">
                 <div class="product-media">
                     <span class="${badgeClass}">${escapeHtml(badgeText)}</span>
                     <img src="${escapeHtml(image)}" alt="${name}" loading="lazy">
                     <span class="product-category-overlay">${escapeHtml(category.replace(/-/g, ' '))}</span>
                     <div class="product-actions-overlay">
-                        <button class="btn-icon" aria-label="Quick View" data-quickview="${name}">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                <circle cx="12" cy="12" r="3" />
-                            </svg>
-                        </button>
                         <button class="btn-icon" aria-label="Add to Cart"
                             data-add-to-cart="${name}" ${inStock ? '' : 'disabled aria-disabled="true"'}>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -67,60 +59,27 @@
         `;
     };
 
-    const bindQuickView = () => {
-        if (!window.Modal) return;
-        document.querySelectorAll('[data-quickview]').forEach((btn) => {
-            if (btn.dataset.quickviewBound) return;
-            btn.dataset.quickviewBound = 'true';
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productCard = btn.closest('.product-card');
-                if (!productCard) return;
-
-                let description = productCard.dataset.description || productCard.querySelector('.product-desc')?.textContent || '';
-                if (window.I18n && window.I18n.t) {
-                    description = window.I18n.t(description);
-                }
-
-                let tags = [];
-                if (productCard.dataset.tags) {
-                    tags = productCard.dataset.tags.split(',').map(tag => {
-                        const tagKey = tag.trim();
-                        return (window.I18n && window.I18n.t) ? window.I18n.t(tagKey) : tagKey;
-                    });
-                } else if (productCard.querySelectorAll('.product-tags li').length > 0) {
-                    tags = Array.from(productCard.querySelectorAll('.product-tags li')).map(li => li.textContent);
-                }
-
-                const nameEl = productCard.querySelector('h3');
-                const productKey = nameEl?.dataset.i18n || null;
-
-                const product = {
-                    id: productCard.dataset.productId || Date.now(),
-                    name: nameEl?.textContent || 'Product',
-                    productKey: productKey,
-                    price: productCard.querySelector('.product-price')?.textContent?.replace(/&nbsp;/g, ' ').replace(' MAD', '') || '0',
-                    description: description,
-                    image: productCard.querySelector('img')?.src || '',
-                    tags: tags
-                };
-                window.Modal.quickView(product);
-            });
-        });
-    };
-
     const bindCartButtons = () => {
         if (window.cartManager && typeof window.cartManager.setupAddToCartButtons === 'function') {
             window.cartManager.setupAddToCartButtons();
         }
     };
 
+    const fetchProducts = async (url) => {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Fetch failed: ${url}`);
+        const result = await response.json();
+        return result.data || result;
+    };
+
     const loadProducts = async () => {
         try {
-            const response = await fetch('/api/products');
-            if (!response.ok) return;
-            const result = await response.json();
-            const products = result.data || [];
+            let products = [];
+            try {
+                products = await fetchProducts('/api/products');
+            } catch {
+                products = await fetchProducts('/data/products.json');
+            }
             const additions = products.filter((product) => {
                 if (product.status && product.status !== 'active') return false;
                 const name = (product.name || '').trim().toLowerCase();
@@ -135,7 +94,6 @@
                 if (name) existingNames.add(name);
             });
 
-            bindQuickView();
             bindCartButtons();
         } catch (err) {
             // Keep original menu if API is unavailable.
