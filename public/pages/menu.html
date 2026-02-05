@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Golden Sweet</title>
     <meta name="description"
-        content="Browse our full range of plant-based cinnamon rolls, cannelÃ©s, pastÃ©is de nata and drinks.">
+        content="Browse our full range of plant-based cinnamon rolls, cannelés, pastéis de nata and drinks.">
     <meta name="theme-color" content="#7f9c89">
     <link rel="icon" href="../images/logo1.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
             <!-- Filters -->
             <div class="catalog-filters">
                 <button class="filter-btn active" data-filter="all" data-i18n="menu.filter_all">All</button>
-                <button class="filter-btn" data-filter="gluten-vegetarian" data-i18n="menu.filter_gluten_vegetarian">Gluten Vegetarian</button>
+                <button class="filter-btn" data-filter="vegetarian" data-i18n="menu.filter_vegetarian">Vegetarian</button>
                 <button class="filter-btn" data-filter="gluten-free" data-i18n="menu.filter_gluten_free">Gluten Free</button>
                 <button class="filter-btn" data-filter="low-carb" data-i18n="menu.filter_low_carb">Low Carb</button>
                 <button class="filter-btn" data-filter="healthy" data-i18n="menu.filter_healthy">Healthy</button>
@@ -95,14 +95,21 @@
     <script>
 
         // Simple filter functionality with support for multiple categories
+        const normalizeCategory = (value) => {
+            return String(value || '')
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, '-');
+        };
+
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const filter = btn.dataset.filter;
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 document.querySelectorAll('.product-card').forEach(card => {
-                    const categories = card.dataset.category.split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
+                    const category = normalizeCategory(card.dataset.category);
+                    if (filter === 'all' || category === filter) {
                         card.style.display = '';
                     } else {
                         card.style.display = 'none';

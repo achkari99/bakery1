@@ -65,6 +65,20 @@
         }
     };
 
+    const applyActiveFilter = () => {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (!activeBtn) return;
+        const filter = activeBtn.dataset.filter || 'all';
+        document.querySelectorAll('.product-card').forEach((card) => {
+            const categories = (card.dataset.category || '').split(' ');
+            if (filter === 'all' || categories.includes(filter)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    };
+
     const fetchProducts = async (url) => {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Fetch failed: ${url}`);
@@ -95,6 +109,7 @@
             });
 
             bindCartButtons();
+            applyActiveFilter();
         } catch (err) {
             // Keep original menu if API is unavailable.
         }

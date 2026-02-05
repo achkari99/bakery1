@@ -735,7 +735,7 @@ const Admin = (() => {
                     <div class="form-group">
                         <label>Category</label>
                         <select name="category">
-                            <option value="gluten-vegetarian" ${data?.category === 'gluten-vegetarian' ? 'selected' : ''}>Gluten Vegetarian</option>
+                            <option value="gluten-vegetarian" ${data?.category === 'vegetarian' ? 'selected' : ''}>Vegetarian</option>
                             <option value="gluten-free" ${data?.category === 'gluten-free' ? 'selected' : ''}>Gluten Free</option>
                             <option value="low-carb" ${data?.category === 'low-carb' ? 'selected' : ''}>Low Carb</option>
                             <option value="healthy" ${data?.category === 'healthy' ? 'selected' : ''}>Healthy</option>
