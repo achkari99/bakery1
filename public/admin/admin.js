@@ -731,22 +731,41 @@ const Admin = (() => {
     // Export Data
     // =====================
 
-    function exportData() {
-        const data = {
-            products: loadData(KEYS.PRODUCTS),
-            shops: loadData(KEYS.SHOPS),
-            faqs: loadData(KEYS.FAQS),
-            settings: loadData(KEYS.SETTINGS)
-        };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'cinnamona-config.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+    async function exportData() {
+        try {
+            const [productsRes, shopsRes, faqsRes, contactsRes, settingsRes] = await Promise.all([
+                apiFetch('/products'),
+                apiFetch('/shops'),
+                apiFetch('/faqs'),
+                apiFetch('/contacts'),
+                apiFetch('/settings')
+            ]);
+
+            const backup = {
+                exportedAt: new Date().toISOString(),
+                data: {
+                    products: productsRes.data || [],
+                    shops: shopsRes.data || [],
+                    faqs: faqsRes.data || [],
+                    contacts: contactsRes.data || [],
+                    settings: settingsRes.data || {},
+                    orders: loadData(KEYS.ORDERS) || []
+                }
+            };
+
+            const stamp = new Date().toISOString().slice(0, 10);
+            const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `goldensweet-backup-${stamp}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        } catch (err) {
+            alert(err.message || 'Failed to export backup data.');
+        }
     }
 
     // =====================
