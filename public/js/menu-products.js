@@ -18,8 +18,20 @@
             .replace(/'/g, '&#39;');
     };
 
+    const getCurrentLang = () => document.documentElement.lang || (window.I18n && window.I18n.currentLang) || 'en';
+
+    const getProductName = (product) => {
+        const lang = getCurrentLang();
+        if (lang === 'ar') {
+            return product.nameAr || product.name_ar || product.nameArabic || product.name || 'Product';
+        }
+        return product.name || 'Product';
+    };
+
     const buildCard = (product) => {
-        const name = escapeHtml(product.name || 'Product');
+        const nameEn = product.name || 'Product';
+        const nameAr = product.nameAr || product.name_ar || product.nameArabic || '';
+        const name = escapeHtml(getProductName(product));
         const price = Number(product.price || 0);
         const image = product.image || '/images/logo1.png';
         const category = product.category || 'sugar-free';
@@ -32,7 +44,9 @@
 
         return `
             <article class="product-card" data-product data-product-id="${product.id || ''}"
-                data-category="${escapeHtml(category)}">
+                data-category="${escapeHtml(category)}"
+                data-name-en="${escapeHtml(nameEn)}"
+                data-name-ar="${escapeHtml(nameAr)}">
                 <div class="product-media">
                     <span class="${badgeClass}">${escapeHtml(badgeText)}</span>
                     <img src="${escapeHtml(image)}" alt="${name}" loading="lazy">
@@ -57,6 +71,24 @@
                 </div>
             </article>
         `;
+    };
+
+    const refreshLocalizedCards = () => {
+        const lang = getCurrentLang();
+        grid.querySelectorAll('.product-card[data-name-en]').forEach((card) => {
+            const nameEn = card.dataset.nameEn || 'Product';
+            const nameAr = card.dataset.nameAr || '';
+            const displayName = (lang === 'ar' && nameAr) ? nameAr : nameEn;
+
+            const nameEl = card.querySelector('h3');
+            if (nameEl) nameEl.textContent = displayName;
+
+            const img = card.querySelector('img');
+            if (img) img.alt = displayName;
+
+            const addBtn = card.querySelector('[data-add-to-cart]');
+            if (addBtn) addBtn.setAttribute('data-add-to-cart', displayName);
+        });
     };
 
     const bindCartButtons = () => {
@@ -96,7 +128,7 @@
             }
             const additions = products.filter((product) => {
                 if (product.status && product.status !== 'active') return false;
-                const name = (product.name || '').trim().toLowerCase();
+                const name = (getProductName(product) || '').trim().toLowerCase();
                 return name && !existingNames.has(name);
             });
 
@@ -104,16 +136,18 @@
 
             grid.insertAdjacentHTML('beforeend', additions.map(buildCard).join(''));
             additions.forEach((product) => {
-                const name = (product.name || '').trim().toLowerCase();
+                const name = (getProductName(product) || '').trim().toLowerCase();
                 if (name) existingNames.add(name);
             });
 
             bindCartButtons();
             applyActiveFilter();
+            refreshLocalizedCards();
         } catch (err) {
             // Keep original menu if API is unavailable.
         }
     };
 
+    document.addEventListener('i18n:applied', refreshLocalizedCards);
     loadProducts();
 })();

@@ -32,13 +32,25 @@
             .replace(/'/g, '&#39;');
     };
 
+    const getCurrentLang = () => document.documentElement.lang || (window.I18n && window.I18n.currentLang) || 'en';
+
+    const getProductName = (product) => {
+        const lang = getCurrentLang();
+        if (lang === 'ar') {
+            return product.nameAr || product.name_ar || product.nameArabic || product.name || 'Product';
+        }
+        return product.name || 'Product';
+    };
+
     const toLabel = (value) => {
         if (!value) return '';
         return String(value).replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
     };
 
     const buildCard = (product, badgeOverride) => {
-        const name = escapeHtml(product.name || 'Product');
+        const nameEn = product.name || 'Product';
+        const nameAr = product.nameAr || product.name_ar || product.nameArabic || '';
+        const name = escapeHtml(getProductName(product));
         const price = Number(product.price || 0);
         const image = product.image || 'images/logo1.png';
         const category = product.category || '';
@@ -49,6 +61,8 @@
 
         return `
             <article class="product-card" data-product data-description="${description}"
+                data-name-en="${escapeHtml(nameEn)}"
+                data-name-ar="${escapeHtml(nameAr)}"
                 ${tagString ? `data-tags="${escapeHtml(tagString)}"` : ''}>
                 <div class="product-media">
                     <span class="product-badge">${escapeHtml(badgeText)}</span>
@@ -80,6 +94,27 @@
                 </div>
             </article>
         `;
+    };
+
+    const refreshLocalizedCards = () => {
+        const lang = getCurrentLang();
+        document.querySelectorAll('#featured .product-card[data-name-en], #bestsellers .product-card[data-name-en], #seasonal .product-card[data-name-en]').forEach((card) => {
+            const nameEn = card.dataset.nameEn || 'Product';
+            const nameAr = card.dataset.nameAr || '';
+            const displayName = (lang === 'ar' && nameAr) ? nameAr : nameEn;
+
+            const nameEl = card.querySelector('h3');
+            if (nameEl) nameEl.textContent = displayName;
+
+            const img = card.querySelector('img');
+            if (img) img.alt = displayName;
+
+            const quickBtn = card.querySelector('[data-quickview]');
+            if (quickBtn) quickBtn.setAttribute('data-quickview', displayName);
+
+            const addBtn = card.querySelector('[data-add-to-cart]');
+            if (addBtn) addBtn.setAttribute('data-add-to-cart', displayName);
+        });
     };
 
     const bindQuickView = () => {
@@ -135,14 +170,14 @@
         if (!grid || !products.length) return;
 
         const newCards = products.filter((product) => {
-            const name = (product.name || '').trim().toLowerCase();
+            const name = (getProductName(product) || '').trim().toLowerCase();
             return name && !existingNames[key].has(name);
         });
 
         if (!newCards.length) return;
         grid.insertAdjacentHTML('beforeend', newCards.map((product) => buildCard(product, badgeOverride)).join(''));
         newCards.forEach((product) => {
-            const name = (product.name || '').trim().toLowerCase();
+            const name = (getProductName(product) || '').trim().toLowerCase();
             if (name) existingNames[key].add(name);
         });
     };
@@ -162,10 +197,12 @@
 
             bindQuickView();
             bindCartButtons();
+            refreshLocalizedCards();
         } catch (err) {
             // Keep original featured content if API is unavailable.
         }
     };
 
+    document.addEventListener('i18n:applied', refreshLocalizedCards);
     loadFeatured();
 })();

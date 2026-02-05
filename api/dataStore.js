@@ -33,7 +33,16 @@ class DataStore {
             return JSON.parse(data);
         } catch (err) {
             if (err.code === 'ENOENT') {
-                return [];
+                // Seed from public/data if available (useful for first deploy)
+                try {
+                    const seedPath = path.join(__dirname, '..', 'public', 'data', `${collection}.json`);
+                    const seedData = await fs.readFile(seedPath, 'utf8');
+                    const parsed = JSON.parse(seedData);
+                    await this.writeFile(collection, parsed);
+                    return parsed;
+                } catch {
+                    return [];
+                }
             }
             throw err;
         }
@@ -54,7 +63,8 @@ class DataStore {
 
     async getById(collection, id) {
         const items = await this.readFile(collection);
-        return items.find(item => item.id === id);
+        const targetId = String(id);
+        return items.find(item => String(item.id) === targetId);
     }
 
     async create(collection, data) {
@@ -72,14 +82,15 @@ class DataStore {
 
     async update(collection, id, data) {
         const items = await this.readFile(collection);
-        const index = items.findIndex(item => item.id === id);
+        const targetId = String(id);
+        const index = items.findIndex(item => String(item.id) === targetId);
         if (index === -1) {
             throw new Error('Item not found');
         }
         items[index] = {
             ...items[index],
             ...data,
-            id, // Preserve original ID
+            id: items[index].id, // Preserve original ID
             updatedAt: new Date().toISOString()
         };
         await this.writeFile(collection, items);
@@ -88,7 +99,8 @@ class DataStore {
 
     async delete(collection, id) {
         const items = await this.readFile(collection);
-        const index = items.findIndex(item => item.id === id);
+        const targetId = String(id);
+        const index = items.findIndex(item => String(item.id) === targetId);
         if (index === -1) {
             throw new Error('Item not found');
         }

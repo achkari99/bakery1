@@ -331,9 +331,13 @@ const Admin = (() => {
     async function saveProduct(data, id = null, imageFile = null) {
         const payload = {
             name: data.name?.trim(),
+            nameAr: data.nameAr?.trim() || '',
+            name_ar: data.name_ar?.trim() || '',
             category: data.category || '',
             price: Number(data.price || 0),
             description: data.description || '',
+            descriptionAr: data.descriptionAr?.trim() || '',
+            description_ar: data.description_ar?.trim() || '',
             featured: data.featured === 'on',
             bestSeller: data.bestSeller === 'on',
             inStock: data.inStock === 'on',
@@ -388,7 +392,8 @@ const Admin = (() => {
     }
 
     function editProduct(id) {
-        const product = productsCache.find(p => p.id === id);
+        const targetId = String(id);
+        const product = productsCache.find(p => String(p.id) === targetId);
         if (product) openModal('product', product);
     }
 
@@ -729,8 +734,12 @@ const Admin = (() => {
                     <input type="hidden" name="id" value="${data?.id || ''}">
                     <input type="hidden" name="image" value="${data?.image || ''}">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>English Name</label>
                         <input type="text" name="name" required value="${data?.name || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Arabic Name</label>
+                        <input type="text" name="nameAr" dir="rtl" value="${data?.nameAr || data?.name_ar || data?.nameArabic || ''}">
                     </div>
                     <div class="form-group">
                         <label>Category</label>
@@ -749,6 +758,10 @@ const Admin = (() => {
                     <div class="form-group">
                         <label>Description</label>
                         <textarea name="description" rows="3">${data?.description || ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Arabic Description</label>
+                        <textarea name="descriptionAr" rows="3" dir="rtl">${data?.descriptionAr || ''}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Tags (comma separated)</label>
@@ -882,9 +895,13 @@ const Admin = (() => {
                         const imageFile = formData.get('imageFile');
                         const data = {
                             name: formData.get('name'),
+                            nameAr: (formData.get('nameAr') || '').trim(),
+                            name_ar: (formData.get('nameAr') || '').trim(),
                             category: formData.get('category'),
                             price: formData.get('price'),
                             description: formData.get('description'),
+                            descriptionAr: (formData.get('descriptionAr') || '').trim(),
+                            description_ar: (formData.get('descriptionAr') || '').trim(),
                             featured: formData.get('featured'),
                             bestSeller: formData.get('bestSeller'),
                             inStock: formData.get('inStock'),
