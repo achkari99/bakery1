@@ -66,7 +66,7 @@
     "timeline_2026_title": "A global vision",
     "timeline_2026_desc": "Expansion through franchising, bringing the Golden Sweet experience to new cities while maintaining the same quality, recipes, and standards worldwide.",
     "provenance_kicker": "AVAILABILITY",
-    "provenance_heading": "International food with Moroccan hands",
+    "provenance_heading": "International food with Moroccan recipes",
     "provenance_desc": "Golden Sweet crafts international flavors with Moroccan hands, using 100% natural ingredients. To keep freshness and safety, delivery remains focused locally.",
     "provenance_why": "Why",
     "provenance_why_desc": "Delicate products, no preservatives.",
@@ -460,7 +460,7 @@
     "faq3_q": "How long does the training program last?",
     "faq3_a": "Our comprehensive training program can last up to four months. This includes a set period of training at our Morocco, Tetouan location, as well as on-site support at your location during the pre-opening phase.",
     "faq4_q": "Can I own multiple franchise locations?",
-    "faq4_a": "Yes. We prioritize Developer Area (multiple units in a city) and Master Area (country-wide) partners, while also offering individual single-unit franchises.",
+    "faq4_a": "Yes. We prioritize Developer Area (multiple units in a city) and Master Franchise (country-wide) partners, while also offering individual single-unit franchises.",
     "faq5_q": "What ongoing fees should I expect?",
     "faq5_a": "Our franchise model includes a 5% royalty fee on gross sales and a 2% social media agency fee. These fees support ongoing assistance, brand development, national marketing campaigns, and the continuous improvement of our systems and recipes.",
     "cta_heading": "Ready to Bring Golden Sweet to Your City?",
@@ -473,9 +473,9 @@
     "option1_desc": "Open and operate a single Golden Sweet location in your city.",
     "option2_title": "Developer Area",
     "option2_desc": "Develop multiple units within one city or metro area with structured rollouts.",
-    "option3_title": "Master Area",
+    "option3_title": "Master Franchise",
     "option3_desc": "Launch and oversee a network across an entire country with full support.",
-    "options_note": "We are especially interested in Developer and Master Area partners."
+    "options_note": "We are especially interested in Developer Area and Master Franchise partners."
   },
   "laboratoire": {
     "title": "The Laboratory | Golden Sweet",
@@ -545,7 +545,7 @@
   },
   "menu": {
     "hero_title": "Our Menu",
-    "hero_lead": "International food crafted by Moroccan hands. Every recipe meets all six pillars of healthy indulgence: lactose-free, sugar-free, uses white flour, no chemical yeast, gluten-free, and free from hydrogenated oil. While others hit one or two, Golden Sweet delivers all six in every bite.",
+    "hero_lead": "International food with Moroccan recipes. Every recipe meets all six pillars of healthy indulgence: lactose-free, sugar-free, uses white flour, no chemical yeast, gluten-free, and free from hydrogenated oil. While others hit one or two, Golden Sweet delivers all six in every bite.",
     "hero_subtitle": "Discover our full range of artisan treats",
     "filter_all": "All",
     "filter_sugar_free": "Sugar-Free",

@@ -651,6 +651,10 @@ html[dir="rtl"] .hero-copy h1 {
     box-shadow: 0 4px 15px rgba(237, 192, 31, 0.2);
 }
 
+.hero-actions .btn-hero-franchise {
+    background: #ffffff;
+}
+
 .hero-actions .btn-outline::after {
     content: '';
     position: absolute;
