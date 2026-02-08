@@ -1,749 +1,832 @@
 [
   {
     "id": 1,
-    "name": "Gluten Free Item 1",
-    "price": 0,
+    "name": "Barley Almond Honey Cake",
+    "price": 170,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/05f69abe-7df2-476f-a5e2-6666f7b06292.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كيك شعير اللوز والعسل الحر"
   },
   {
     "id": 2,
-    "name": "Gluten Free Item 2",
-    "price": 0,
+    "name": "CLOUD Candy Gluten Free Sugar Free",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/1ec0ad97-d212-4552-adae-6260e73dd6f7.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كلاود كاندي بدون غلوتين وبدون سكر"
   },
   {
     "id": 3,
-    "name": "Gluten Free Item 3",
-    "price": 0,
+    "name": "Rghifates Gluten Free",
+    "price": 12,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/21c31fea-55dc-412c-afbc-b3850f766604.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "رغيفات بدون غلوتين"
   },
   {
     "id": 4,
-    "name": "Gluten Free Item 4",
-    "price": 0,
+    "name": "Coco Sweet Oats Almond Seeds and Free Honey",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/3f6e0203-2bcf-4cd4-962b-d40e60d6de16.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "حلوة كوكو بالشوفان وبذور اللوز والعسل الحر"
   },
   {
     "id": 5,
-    "name": "Gluten Free Item 5",
-    "price": 0,
+    "name": "Dark Chocolate Brioche Gluten Free",
+    "price": 40,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/42999956-6398-47c0-9049-9e7c0bc30f40.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "بريوش شوكولاتة سوداء بدون غلوتين"
   },
   {
     "id": 6,
-    "name": "Gluten Free Item 6",
-    "price": 0,
+    "name": "Qfatel Rahim Barley No Added Sugar",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/44db2d16-c70b-471b-9fbc-c623cd729e16.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "قفاطل رحيم الشعير بدون سكر مضاف"
   },
   {
     "id": 7,
-    "name": "Gluten Free Item 7",
-    "price": 0,
+    "name": "Oat Fakkas with Nuts and Free Honey",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/614597eb-fb0e-4fb4-aa37-1520c5908db0.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "فقاص شوفان بالمكسرات والعسل الحر"
   },
   {
     "id": 8,
-    "name": "Gluten Free Item 8",
-    "price": 0,
+    "name": "Dambo Cake Sugar Free Gluten Free",
+    "price": 80,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/63ebd9ec-149f-4729-b6a4-4804a2f8a5ac.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كيك دامبو بدون سكر وبدون غلوتين"
   },
   {
     "id": 9,
-    "name": "Gluten Free Item 9",
-    "price": 0,
+    "name": "Mhina with Free Honey",
+    "price": 15,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/6adecf35-8291-428b-9d27-aa7f4352649c.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "محينة بالعسل الحر"
   },
   {
     "id": 10,
-    "name": "Gluten Free Item 10",
-    "price": 0,
+    "name": "Bastila Walnut with Free Honey and Corn Starch Sheet",
+    "price": 18,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/6bb389ab-874f-4209-84a2-3a15c0646d5b.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "بسطيلة الكركاع بالعسل الحر بورقة نشا الذرة"
   },
   {
     "id": 11,
-    "name": "Gluten Free Item 11",
-    "price": 0,
+    "name": "Golden Chocolate Dubai Mini No Sugar No Gluten",
+    "price": 100,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/6bb43777-09be-41a4-a93f-ceed44fefba6.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "غولدن شوكولا دبي ميني بدون سكر وبدون غلوتين"
   },
   {
     "id": 12,
-    "name": "Gluten Free Item 12",
-    "price": 0,
+    "name": "Mgalaa Bread Gluten Free",
+    "price": 15,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/6d53684b-7a79-48c6-bdc0-5c0df2624062.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "خبز المعقلة بدون غلوتين"
   },
   {
     "id": 13,
-    "name": "Gluten Free Item 13",
-    "price": 0,
+    "name": "Mini Baguette Gluten Free",
+    "price": 15,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/7f901c36-c0d4-4cf4-86c8-e503c09f117a%20(1).jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "ميني باغيت بدون غلوتين"
   },
   {
     "id": 14,
-    "name": "Gluten Free Item 14",
-    "price": 0,
+    "name": "Prestige Healthy Chocolate No Sugar No Gluten",
+    "price": 20,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/8f74c83e-b128-438b-b9e9-2a311feae66d.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شوكولاتة بريستيج صحي بدون سكر وبدون غلوتين"
   },
   {
     "id": 15,
-    "name": "Gluten Free Item 15",
-    "price": 0,
+    "name": "Almond Cookies Gluten Free",
+    "price": 18,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/9e3da259-84ca-40b8-bae9-e6f11dddcac2.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كوكيز اللوز بدون غلوتين"
   },
   {
     "id": 16,
-    "name": "Gluten Free Item 16",
-    "price": 0,
+    "name": "Tartelette Almond Gluten Free",
+    "price": 25,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/9e604ce1-6d9a-4444-abe1-cac029bcedca.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "تارطليت اللوز بدون غلوتين"
   },
   {
     "id": 17,
-    "name": "Gluten Free Item 17",
-    "price": 0,
+    "name": "Fakkas Gluten Free",
+    "price": 70,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/9ebfb78a-afe2-4e14-955e-cf8d49b65b56.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "فقاص بدون غلوتين"
   },
   {
     "id": 18,
-    "name": "Gluten Free Item 18",
-    "price": 0,
+    "name": "Boyo Creme Almond Gluten Free",
+    "price": 40,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/a7e4a513-b076-4cbf-a3bb-b30bc51b9506.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "بويو كريم اللوز بدون غلوتين"
   },
   {
     "id": 19,
-    "name": "Gluten Free Item 19",
-    "price": 0,
+    "name": "Ghoriba Rahim with Nuts No Added Sugar",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/aa632734-81cd-42e5-978d-03288d7f457d.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "الغريبة رحيم بالمكسرات بدون سكر مضاف"
   },
   {
     "id": 20,
-    "name": "Gluten Free Item 20",
-    "price": 0,
+    "name": "DATIMANDE Cake Low Carb",
+    "price": 70,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/b01c6d95-8a36-4cb7-a26c-dd0665441642.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "داتيماند كيك لو كارب"
   },
   {
     "id": 21,
-    "name": "Gluten Free Item 21",
-    "price": 0,
+    "name": "Cookies Lactose Free",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/ChatGPT%20Image%20Feb%204,%202026,%2004_02_31%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "كوكيز بدون لاكتوز"
   },
   {
     "id": 22,
-    "name": "Gluten Free Item 22",
-    "price": 0,
+    "name": "MARAVILLA Cake ganache Low Carb gluten free sugar free",
+    "price": 80,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/d1250e0f-55e1-450c-aa7d-22abd25da536.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كعكة مارافيلا غاناش منخفضة الكربوهيدرات خالية من الغلوتين وخالية من السكر"
   },
   {
     "id": 23,
-    "name": "Gluten Free Item 23",
-    "price": 0,
+    "name": "Dambo Cake Sugar Free Gluten Free",
+    "price": 80,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/d667b4aa-7ba0-4366-a8e5-441d78661c93.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كيك دامبو بدون سكر وبدون غلوتين"
   },
   {
     "id": 24,
-    "name": "Gluten Free Item 24",
-    "price": 0,
+    "name": "Pastaflora Oats Dark Chocolate and Free Honey",
+    "price": 40,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/e9465353-ad2c-4701-b762-53a16e454571.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "باسطفلورا شوفان شوكولاتة سوداء وعسل حر"
   },
   {
     "id": 25,
-    "name": "Gluten Free Item 25",
-    "price": 0,
+    "name": "Mini Baguette Gluten Free",
+    "price": 15,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/e9d7fda8-7388-428e-ad5b-31b141926355.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "ميني باغيت بدون غلوتين"
   },
   {
     "id": 26,
-    "name": "Gluten Free Item 26",
-    "price": 0,
+    "name": "Barley Rghaif Natural Yeast",
+    "price": 7,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/f08c444e-5463-4714-b05c-1ca6597880ff%20(1).jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "رغائف الشعير بالخميرة البلدية"
   },
   {
     "id": 27,
-    "name": "Healthy Item 27",
-    "price": 0,
+    "name": "Mixed Sweet Oats Walnut Almond with Free Honey",
+    "price": 50,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/123578a6-ebe2-41cd-8e97-e89bdb69677c.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "حلوة الخليط شوفان جوز ولوز بالعسل الحر"
   },
   {
     "id": 28,
-    "name": "Healthy Item 28",
-    "price": 0,
+    "name": "MARAVILLA Cake Low Carb gluten free sugar free",
+    "price": 70,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/16e4818d-01be-476f-b5d5-c4c8393b295f.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كعكة مارافيلا منخفضة الكربوهيدرات خالية من الغلوتين وخالية من السكر"
   },
   {
     "id": 29,
-    "name": "Healthy Item 29",
-    "price": 0,
+    "name": "Wajdi Mqorrot with Nmer No Added Sugar Corn Semolina",
+    "price": 400,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/3a0eff76-cc44-4629-82f1-69b24432c1e5.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "المقروط الوجدي بالنمر بدون سكر مضاف بسميد الذرة"
   },
   {
     "id": 30,
-    "name": "Healthy Item 30",
-    "price": 0,
+    "name": "Barley Harcha with Olive Oil and Natural Yeast",
+    "price": 6,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/3b1d8c7a-4f7e-440a-b175-1c79020ebfd5.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "حرشة الشعير بزيت الزيتون والخميرة البلدية"
   },
   {
     "id": 31,
-    "name": "Healthy Item 31",
-    "price": 0,
+    "name": "Healthy Savory Crunch Oats Barley and Seeds",
+    "price": 60,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/3cb55c6c-4015-4ea6-a727-bf0b85aab326.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "قرمشات مملحات صحية بالشوفان والشعير والزرائع"
   },
   {
     "id": 32,
-    "name": "Healthy Item 32",
-    "price": 0,
+    "name": "Qfatel Rahim Barley No Added Sugar",
+    "price": 50,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/44db2d16-c70b-471b-9fbc-c623cd729e16.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "قفاطل رحيم الشعير بدون سكر مضاف"
   },
   {
     "id": 33,
-    "name": "Healthy Item 33",
-    "price": 0,
+    "name": "Barley Stuffed Ring Bread with Kofta",
+    "price": 18,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/840269b3-8e68-47da-8aa0-45161506bbac.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "خبيرات شعير معمرين كفتة"
   },
   {
     "id": 34,
-    "name": "Healthy Item 34",
-    "price": 0,
+    "name": "Golden Chocolate Dubai Mini Box",
+    "price": 100,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/9484ae23-0388-4c84-82ca-dbbd89457bf5.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "غولدن شوكولا دبي ميني"
   },
   {
     "id": 35,
-    "name": "Healthy Item 35",
-    "price": 0,
+    "name": "IQUILIBRIUM Low Carb Sugar Free",
+    "price": 70,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/99b36e14-88d2-48a4-bab6-8c16ac16e409.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "إيكويليبريوم لو كارب بدون سكر"
   },
   {
     "id": 36,
-    "name": "Healthy Item 36",
-    "price": 0,
+    "name": "Briouates Almond with Free Carob Honey and Corn Starch Sheet",
+    "price": 15,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/a6b1560f-5819-45f1-ab18-978a0c82951a.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "بريوات اللوز وعسل الخروب الحر بورقة نشا الذرة"
   },
   {
     "id": 37,
-    "name": "Healthy Item 37",
-    "price": 0,
+    "name": "Ghoriba Rahim with Nuts No Added Sugar",
+    "price": 50,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/aa632734-81cd-42e5-978d-03288d7f457d.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "الغريبة رحيم بالمكسرات بدون سكر مضاف"
   },
   {
     "id": 38,
-    "name": "Healthy Item 38",
-    "price": 0,
+    "name": "Gluten Free Bread",
+    "price": 15,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_38_40%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "خبز بدون غلوتين"
   },
   {
     "id": 39,
-    "name": "Healthy Item 39",
-    "price": 0,
+    "name": "Pastaflora Oats Dark Chocolate and Free Honey Box 4 Pieces",
+    "price": 40,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_42_00%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "باسطفلورا شوفان شوكولاتة سوداء وعسل حر علبة 4 قطع"
   },
   {
     "id": 40,
-    "name": "Healthy Item 40",
-    "price": 0,
+    "name": "Golden Milk Chocolate Healthy",
+    "price": 100,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_48_39%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "غولدن شوكولات لايت صحي"
   },
   {
     "id": 41,
-    "name": "Healthy Item 41",
-    "price": 0,
+    "name": "Mini Bssilates Chicken Gluten Free",
+    "price": 20,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_50_11%20AM%20copy.png",
-    "description": ""
+    "description": "",
+    "nameAr": "ميني بسيلاتات الدجاج بدون غلوتين"
   },
   {
     "id": 42,
-    "name": "Healthy Item 42",
-    "price": 0,
+    "name": "Stuffed Rahim Rghaif Chicken Kofta Saffron",
+    "price": 20,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/d87cc838-c10b-4b7a-9c96-26eace9ea933.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "رغائف رحيم معمرين بالدجاج والكفتة والزعفران الحر"
   },
   {
     "id": 43,
-    "name": "Healthy Item 43",
-    "price": 0,
+    "name": "Barley Baghrir Natural Yeast",
+    "price": 6,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/dd8af654-0fc2-47d3-bb43-715c51c4909c.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "البغرير بالشعير والخميرة البلدية"
   },
   {
     "id": 44,
-    "name": "Healthy Item 44",
-    "price": 0,
+    "name": "Muchobuena Rahim",
+    "price": 60,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/e02767f2-bf8c-4fd6-b726-dd4afbecb54a.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "موتشوبوينا رحيم"
   },
   {
     "id": 45,
-    "name": "Healthy Item 45",
-    "price": 0,
+    "name": "Barley Mgalaa Bread Natural Yeast",
+    "price": 7,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/f009291d-4f10-4097-8c1c-4d5cad18b44b.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "خبز المعقلة بالشعير والخميرة البلدية"
   },
   {
     "id": 46,
-    "name": "Healthy Item 46",
-    "price": 0,
+    "name": "Almond Mhancha with Free Honey",
+    "price": 22,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/f01ef50d-10a8-4f60-92a0-5783e3520a85.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "محنشة اللوز والعسل الحر"
   },
   {
     "id": 47,
-    "name": "Healthy Item 47",
-    "price": 0,
+    "name": "Mini Oat Pizza with Kofta and Carob Seeds",
+    "price": 20,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/f4dd76d1-d265-41bc-9657-5e49474abf0e.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "ميني بيتزا شوفان بالكفتة وبزريعة الخروب"
   },
   {
     "id": 48,
-    "name": "Raw Materials Item 48",
-    "price": 0,
+    "name": "Organic Coconut Oil",
+    "price": 150,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/9ffba864-6b8a-44d4-8271-401964072aee.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "زيت جوز الهند العضوي"
   },
   {
     "id": 49,
-    "name": "Raw Materials Item 49",
-    "price": 0,
+    "name": "Dark Chocolate Spread No Sugar No Gluten (Almond)",
+    "price": 100,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/aca46f41-5694-4d9e-b257-50cb6a3a4e09.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شوكولاتة سوداء للدهن بدون سكر وبدون غلوتين (لوز)"
   },
   {
     "id": 50,
-    "name": "Raw Materials Item 50",
-    "price": 0,
+    "name": "Dark Chocolate Spread No Sugar No Gluten (Hazelnut)",
+    "price": 130,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/b0a32dac-2831-479d-b2ad-65c8e81e78ff.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شوكولاتة سوداء للدهن بدون سكر وبدون غلوتين (بندق)"
   },
   {
     "id": 51,
-    "name": "Raw Materials Item 51",
-    "price": 0,
+    "name": "Wild Oregano Honey",
+    "price": 100,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2001_38_50%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "عسل الزعتر الحر"
   },
   {
     "id": 52,
-    "name": "Raw Materials Item 52",
-    "price": 0,
+    "name": "Amlou Pumpkin Seeds",
+    "price": 60,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2001_57_10%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "أملو بذور اليقطين"
   },
   {
     "id": 53,
-    "name": "Raw Materials Item 53",
-    "price": 0,
+    "name": "Carob Honey",
+    "price": 100,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_08_22%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "عسل الخروب الحر"
   },
   {
     "id": 54,
-    "name": "Raw Materials Item 54",
+    "name": "Orange Blossom Water",
     "price": 0,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_08_53%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "ماء زهر البرتقال الطبيعي"
   },
   {
     "id": 55,
-    "name": "Raw Materials Item 55",
+    "name": "Euphorbia Honey",
     "price": 0,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_10_04%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "عسل الدغموس الحر"
   },
   {
     "id": 56,
-    "name": "Vegetarian Item 56",
-    "price": 0,
+    "name": "Barley Almond Honey Cake",
+    "price": 170,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/05f69abe-7df2-476f-a5e2-6666f7b06292.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كيك شعير اللوز والعسل الحر"
   },
   {
     "id": 57,
-    "name": "Vegetarian Item 57",
-    "price": 0,
+    "name": "SKY LIGHT Gluten Free Sugar Free",
+    "price": 80,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/305105cb-7bca-4a23-b8f7-cd9980d70ab9.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "سكاي لايت بدون غلوتين وبدون سكر"
   },
   {
     "id": 58,
-    "name": "Vegetarian Item 58",
-    "price": 0,
+    "name": "Wajdi Mqorrot with Nmer No Added Sugar Corn Semolina",
+    "price": 400,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/3a0eff76-cc44-4629-82f1-69b24432c1e5.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "المقروط الوجدي بالنمر بدون سكر مضاف بسميد الذرة"
   },
   {
     "id": 59,
-    "name": "Vegetarian Item 59",
-    "price": 0,
+    "name": "Coco Sweet Oats Almond Seeds and Free Honey",
+    "price": 50,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/3f6e0203-2bcf-4cd4-962b-d40e60d6de16.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "حلوة كوكو بالشوفان وبذور اللوز والعسل الحر"
   },
   {
     "id": 60,
-    "name": "Vegetarian Item 60",
-    "price": 0,
+    "name": "Oat Cookies with Nuts and Free Honey",
+    "price": 50,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/69039407-54e9-4e2e-9bab-1f54d2e9ad53.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كوكيز شوفان بالمكسرات والعسل الحر"
   },
   {
     "id": 61,
-    "name": "Vegetarian Item 61",
-    "price": 0,
+    "name": "Golden Chocolate Dubai Mini No Sugar No Gluten",
+    "price": 100,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/6bb43777-09be-41a4-a93f-ceed44fefba6.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "غولدن شوكولا دبي ميني بدون سكر وبدون غلوتين"
   },
   {
     "id": 62,
-    "name": "Vegetarian Item 62",
-    "price": 0,
+    "name": "Sello Tali Gluten Free Sugar Free Lactose Free",
+    "price": 500,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/71f1f6f7-621b-4d5f-a271-530410091772.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "سلو تالي بدون غلوتين وبدون سكر وبدون لاكتوز"
   },
   {
     "id": 63,
-    "name": "Vegetarian Item 63",
-    "price": 0,
+    "name": "Tartlet Dark Chocolate and Almond",
+    "price": 25,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/7c74e562-6ae3-4f8f-8792-ed2e9d06f3b3.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "طارطليط شوكولاتة سوداء واللوز"
   },
   {
     "id": 64,
-    "name": "Vegetarian Item 64",
-    "price": 0,
+    "name": "Oat Cookies with Nuts and Free Honey",
+    "price": 50,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/8614c514-5424-4b1c-b959-867c6a6bf562.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كوكيز شوفان بالمكسرات والعسل الحر"
   },
   {
     "id": 65,
-    "name": "Vegetarian Item 65",
-    "price": 0,
+    "name": "Almond Cookies Gluten Free",
+    "price": 18,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/9e3da259-84ca-40b8-bae9-e6f11dddcac2.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كوكيز اللوز بدون غلوتين"
   },
   {
     "id": 66,
-    "name": "Vegetarian Item 66",
-    "price": 0,
+    "name": "Fakkas Gluten Free",
+    "price": 70,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/9ebfb78a-afe2-4e14-955e-cf8d49b65b56.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "فقاص بدون غلوتين"
   },
   {
     "id": 67,
-    "name": "Vegetarian Item 67",
-    "price": 0,
+    "name": "Dark Chocolate Spread No Sugar No Gluten (Almond)",
+    "price": 100,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/aca46f41-5694-4d9e-b257-50cb6a3a4e09.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شوكولاتة سوداء للدهن بدون سكر وبدون غلوتين (لوز)"
   },
   {
     "id": 68,
-    "name": "Vegetarian Item 68",
-    "price": 0,
+    "name": "DATIMANDE Cake Low Carb",
+    "price": 70,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/b01c6d95-8a36-4cb7-a26c-dd0665441642.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "داتيماند كيك لو كارب"
   },
   {
     "id": 69,
-    "name": "Vegetarian Item 69",
-    "price": 0,
+    "name": "Dark Chocolate Spread No Sugar No Gluten (Hazelnut)",
+    "price": 130,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/b0a32dac-2831-479d-b2ad-65c8e81e78ff.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شوكولاتة سوداء للدهن بدون سكر وبدون غلوتين (بندق)"
   },
   {
     "id": 70,
-    "name": "Vegetarian Item 70",
-    "price": 0,
+    "name": "MOKACHOCA Cake Moka and Dark Chocolate Gluten Free",
+    "price": 80,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/c2327b60-57f0-4759-84bb-903849859901.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "موكاشوكا كيك موكا وشوكولاتة سوداء بدون غلوتين"
   },
   {
     "id": 71,
-    "name": "Vegetarian Item 71",
-    "price": 0,
+    "name": "Gluten Free Bread",
+    "price": 15,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/ChatGPT%20Image%20Feb%205,%202026,%2001_38_40%20AM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "خبز بدون غلوتين"
   },
   {
     "id": 72,
-    "name": "Vegetarian Item 72",
-    "price": 0,
+    "name": "Pastaflora Oats Dark Chocolate and Free Honey",
+    "price": 40,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/e9465353-ad2c-4701-b762-53a16e454571.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "باسطفلورا شوفان شوكولاتة سوداء وعسل حر"
   },
   {
     "id": 73,
-    "name": "Low Carb Item 73",
-    "price": 0,
+    "name": "MARAVILLA Cake Low Carb gluten free sugar free",
+    "price": 70,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/16e4818d-01be-476f-b5d5-c4c8393b295f.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كعكة مارافيلا منخفضة الكربوهيدرات خالية من الغلوتين وخالية من السكر"
   },
   {
     "id": 74,
-    "name": "Low Carb Item 74",
-    "price": 0,
+    "name": "IQUILIBRIUM Low Carb Sugar Free",
+    "price": 70,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/1f220625-6bb4-4f25-90d2-def8b17acd4c.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "إيكويليبريوم لو كارب بدون سكر"
   },
   {
     "id": 75,
-    "name": "Low Carb Item 75",
-    "price": 0,
+    "name": "Mini Almond Briouates Rahim Sugar Free Gluten Free",
+    "price": 500,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/4d3a9766-6b8f-475c-a960-013376a4ac6b.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "ميني بريوات اللوز رحيم بدون سكر وبدون غلوتين"
   },
   {
     "id": 76,
-    "name": "Low Carb Item 76",
-    "price": 0,
+    "name": "Chebakia Gluten Free Sugar Free",
+    "price": 500,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/aa070048-bc01-4f65-b784-8ee391bd691c.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "شباكية بدون غلوتين وبدون سكر"
   },
   {
     "id": 77,
-    "name": "Low Carb Item 77",
-    "price": 0,
+    "name": "MARAVILLA Cake ganache Low Carb gluten free sugar free",
+    "price": 80,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/d1250e0f-55e1-450c-aa7d-22abd25da536.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كعكة مارافيلا غاناش منخفضة الكربوهيدرات خالية من الغلوتين وخالية من السكر"
   },
   {
     "id": 78,
-    "name": "Low Carb Item 78",
-    "price": 0,
+    "name": "Almond Baklava Rahim",
+    "price": 500,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/d723c658-3fb7-42b9-b1dc-28a814140f89.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "بقلاوة اللوز رحيم"
   },
   {
     "id": 79,
-    "name": "Low Carb Item 79",
-    "price": 0,
+    "name": "Cashew Flour Cake Gluten Free",
+    "price": 80,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/df43a24e-05c4-4653-be8d-a4615790d936.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كيك بدقيق الكاجو بدون غلوتين"
   },
   {
     "id": 80,
-    "name": "Low Carb Item 80",
-    "price": 0,
+    "name": "MATILDA cake low carb gluten free sugar free",
+    "price": 80,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/f0ab0252-0a4d-4cd4-966a-6d96ab94b2bc.jpeg",
-    "description": ""
+    "description": "",
+    "nameAr": "كعكة ماتيلدا منخفضة الكربوهيدرات خالية من الغلوتين وخالية من السكر"
   },
   {
     "id": 81,
-    "name": "Vegetarian Item 81",
-    "price": 0,
+    "name": "CLOUD Candy Gluten Free Sugar Free",
+    "price": 50,
     "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/ChatGPT%20Image%20Feb%205,%202026,%2006_34_39%20PM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "كلاود كاندي بدون غلوتين وبدون سكر"
   },
   {
     "id": 82,
-    "name": "Low Carb Item 82",
-    "price": 0,
+    "name": "CLOUD Candy Gluten Free Sugar Free",
+    "price": 50,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/ChatGPT%20Image%20Feb%205,%202026,%2006_34_39%20PM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "كلاود كاندي بدون غلوتين وبدون سكر"
   },
   {
     "id": 83,
-    "name": "Gluten Free Item 83",
-    "price": 0,
+    "name": "CLOUD Candy Gluten Free Sugar Free",
+    "price": 50,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/ChatGPT%20Image%20Feb%205,%202026,%2006_34_39%20PM.png",
-    "description": ""
+    "description": "",
+    "nameAr": "كلاود كاندي بدون غلوتين وبدون سكر"
   }
 ]

@@ -16,13 +16,407 @@ const Admin = (() => {
     };
 
     const API_BASE = '/api';
+    const LANG_KEY = 'goldensweet-admin-lang';
     let currentUser = null;
     let currentSection = 'overview';
+    let currentLang = 'en';
     let productsCache = [];
     let shopsCache = [];
     let faqsCache = [];
     let contactsCache = [];
     let mobileMenuOpen = false;
+
+    const I18N = {
+        en: {
+            appTitle: 'Admin Dashboard | Golden Sweet',
+            dashboard: 'Dashboard',
+            products: 'Products',
+            shops: 'Shops',
+            faqs: 'FAQs',
+            messages: 'Messages',
+            settings: 'Settings',
+            orderHistory: 'Order History',
+            viewSite: 'View Site',
+            logout: 'Logout',
+            businessControl: 'Business Control',
+            totalActivity: 'Total Activity',
+            viewOrdersHistory: 'View Orders History',
+            manageStockLevels: 'Manage Stock Levels',
+            exportDataBackup: 'Export Data Backup',
+            trackedFromWhatsapp: 'Tracked from WhatsApp Clicks',
+            addOrder: '+ Add Order',
+            addProduct: '+ Add Product',
+            addShop: '+ Add Shop',
+            addFaq: '+ Add FAQ',
+            saveSettings: 'Save Settings',
+            loadingProducts: 'Loading products...',
+            noProducts: 'No products yet. Click "Add Product" to create one.',
+            featured: 'Featured',
+            bestSeller: 'Best-seller',
+            inStock: 'In Stock',
+            soldOut: 'Sold Out',
+            markSoldOut: 'Mark Sold Out',
+            restock: 'Restock',
+            edit: 'Edit',
+            del: 'Delete',
+            loadingShops: 'Loading shops...',
+            noShops: 'No shops yet.',
+            loadingFaqs: 'Loading FAQs...',
+            noFaqs: 'No FAQs yet.',
+            loadingMessages: 'Loading messages...',
+            noMessages: 'No messages yet.',
+            view: 'View',
+            markReplied: 'Mark Replied',
+            noOrders: 'No orders recorded yet. Orders are tracked when users click "Order on WhatsApp".',
+            whatsappSent: 'WhatsApp Sent',
+            updated: 'Updated',
+            deleteProductConfirm: 'Are you sure you want to delete this product?',
+            deleteShopConfirm: 'Delete this shop?',
+            deleteFaqConfirm: 'Delete this FAQ?',
+            failedUpdateStock: 'Failed to update product stock.',
+            failedDeleteProduct: 'Failed to delete product.',
+            settingsSaved: 'Settings saved successfully!',
+            exportFailed: 'Failed to export backup data.',
+            somethingWrong: 'Something went wrong. Please try again.',
+            invalidCredentials: 'Invalid credentials.',
+            from: 'From',
+            email: 'Email',
+            phone: 'Phone',
+            subject: 'Subject',
+            message: 'Message',
+            na: 'N/A',
+            add: 'Add',
+            saveProduct: 'Save Product',
+            saveShop: 'Save Shop',
+            saveFaq: 'Save FAQ',
+            saveOrder: 'Save Order',
+            englishName: 'English Name',
+            arabicName: 'Arabic Name',
+            category: 'Category',
+            glutenFree: 'Gluten Free',
+            lowCarb: 'Low Carb',
+            healthy: 'Healthy',
+            rawMaterials: 'Raw Materials',
+            vegetarian: 'Vegetarian',
+            priceMad: 'Price (MAD)',
+            description: 'Description',
+            arabicDescription: 'Arabic Description',
+            tags: 'Tags (comma separated)',
+            productImage: 'Product Image',
+            currentImage: 'Current image',
+            featuredHomepage: 'Featured on Homepage',
+            inStockAvailable: 'In Stock / Available',
+            name: 'Name',
+            address: 'Address',
+            hours: 'Hours',
+            open247: 'Open 24/7',
+            question: 'Question',
+            answer: 'Answer',
+            allergens: 'Allergens',
+            orders: 'Orders',
+            delivery: 'Delivery',
+            payment: 'Payment',
+            general: 'General',
+            customer: 'Customer',
+            items: 'Items',
+            totalMad: 'Total (MAD)',
+            deliveryAddress: 'Delivery Address',
+            specialInstructions: 'Special Instructions',
+            orderStatus: 'Status',
+            cityPlaceholder: 'City, neighborhood, street...',
+            instructionsPlaceholder: 'No sugar, call on arrival, gate code, etc.'
+        },
+        fr: {
+            appTitle: 'Tableau de bord Admin | Golden Sweet',
+            dashboard: 'Tableau de bord',
+            products: 'Produits',
+            shops: 'Boutiques',
+            faqs: 'FAQs',
+            messages: 'Messages',
+            settings: 'Parametres',
+            orderHistory: 'Historique des commandes',
+            viewSite: 'Voir le site',
+            logout: 'Deconnexion',
+            businessControl: 'Controle entreprise',
+            totalActivity: 'Activite totale',
+            viewOrdersHistory: 'Voir l historique des commandes',
+            manageStockLevels: 'Gerer le stock',
+            exportDataBackup: 'Exporter la sauvegarde',
+            trackedFromWhatsapp: 'Suivi depuis les clics WhatsApp',
+            addOrder: '+ Ajouter commande',
+            addProduct: '+ Ajouter produit',
+            addShop: '+ Ajouter boutique',
+            addFaq: '+ Ajouter FAQ',
+            saveSettings: 'Enregistrer les parametres',
+            loadingProducts: 'Chargement des produits...',
+            noProducts: 'Aucun produit. Cliquez sur "Ajouter produit".',
+            featured: 'Mis en avant',
+            bestSeller: 'Meilleure vente',
+            inStock: 'En stock',
+            soldOut: 'Rupture',
+            markSoldOut: 'Marquer en rupture',
+            restock: 'Reapprovisionner',
+            edit: 'Modifier',
+            del: 'Supprimer',
+            loadingShops: 'Chargement des boutiques...',
+            noShops: 'Aucune boutique.',
+            loadingFaqs: 'Chargement des FAQs...',
+            noFaqs: 'Aucune FAQ.',
+            loadingMessages: 'Chargement des messages...',
+            noMessages: 'Aucun message.',
+            view: 'Voir',
+            markReplied: 'Marquer repondu',
+            noOrders: 'Aucune commande enregistree. Les commandes sont suivies apres clic WhatsApp.',
+            whatsappSent: 'WhatsApp envoye',
+            updated: 'Mis a jour',
+            deleteProductConfirm: 'Supprimer ce produit ?',
+            deleteShopConfirm: 'Supprimer cette boutique ?',
+            deleteFaqConfirm: 'Supprimer cette FAQ ?',
+            failedUpdateStock: 'Echec mise a jour stock.',
+            failedDeleteProduct: 'Echec suppression produit.',
+            settingsSaved: 'Parametres enregistres.',
+            exportFailed: 'Echec export sauvegarde.',
+            somethingWrong: 'Une erreur est survenue. Reessayez.',
+            invalidCredentials: 'Identifiants invalides.',
+            from: 'De',
+            email: 'Email',
+            phone: 'Telephone',
+            subject: 'Sujet',
+            message: 'Message',
+            na: 'N/D',
+            add: 'Ajouter',
+            saveProduct: 'Enregistrer produit',
+            saveShop: 'Enregistrer boutique',
+            saveFaq: 'Enregistrer FAQ',
+            saveOrder: 'Enregistrer commande',
+            englishName: 'Nom anglais',
+            arabicName: 'Nom arabe',
+            category: 'Categorie',
+            glutenFree: 'Sans gluten',
+            lowCarb: 'Low Carb',
+            healthy: 'Sain',
+            rawMaterials: 'Matieres premieres',
+            vegetarian: 'Vegetarien',
+            priceMad: 'Prix (MAD)',
+            description: 'Description',
+            arabicDescription: 'Description arabe',
+            tags: 'Etiquettes (separees par virgules)',
+            productImage: 'Image produit',
+            currentImage: 'Image actuelle',
+            featuredHomepage: 'Mis en avant accueil',
+            inStockAvailable: 'En stock / Disponible',
+            name: 'Nom',
+            address: 'Adresse',
+            hours: 'Horaires',
+            open247: 'Ouvert 24/7',
+            question: 'Question',
+            answer: 'Reponse',
+            allergens: 'Allergenes',
+            orders: 'Commandes',
+            delivery: 'Livraison',
+            payment: 'Paiement',
+            general: 'General',
+            customer: 'Client',
+            items: 'Articles',
+            totalMad: 'Total (MAD)',
+            deliveryAddress: 'Adresse de livraison',
+            specialInstructions: 'Instructions speciales',
+            orderStatus: 'Statut',
+            cityPlaceholder: 'Ville, quartier, rue...',
+            instructionsPlaceholder: 'Sans sucre, appeler a l arrivee, code portail, etc.'
+        },
+        ar: {
+            appTitle: 'لوحة تحكم الادمن | Golden Sweet',
+            dashboard: 'لوحة التحكم',
+            products: 'المنتجات',
+            shops: 'المتاجر',
+            faqs: 'الاسئلة الشائعة',
+            messages: 'الرسائل',
+            settings: 'الاعدادات',
+            orderHistory: 'سجل الطلبات',
+            viewSite: 'عرض الموقع',
+            logout: 'تسجيل الخروج',
+            businessControl: 'التحكم التجاري',
+            totalActivity: 'اجمالي النشاط',
+            viewOrdersHistory: 'عرض سجل الطلبات',
+            manageStockLevels: 'ادارة المخزون',
+            exportDataBackup: 'تصدير نسخة احتياطية',
+            trackedFromWhatsapp: 'متابعة من نقرات واتساب',
+            addOrder: '+ اضافة طلب',
+            addProduct: '+ اضافة منتج',
+            addShop: '+ اضافة متجر',
+            addFaq: '+ اضافة سؤال',
+            saveSettings: 'حفظ الاعدادات',
+            loadingProducts: 'جاري تحميل المنتجات...',
+            noProducts: 'لا توجد منتجات بعد. اضغط "اضافة منتج".',
+            featured: 'مميز',
+            bestSeller: 'الاكثر مبيعا',
+            inStock: 'متوفر',
+            soldOut: 'نفد المخزون',
+            markSoldOut: 'تحديد كنفد المخزون',
+            restock: 'اعادة التخزين',
+            edit: 'تعديل',
+            del: 'حذف',
+            loadingShops: 'جاري تحميل المتاجر...',
+            noShops: 'لا توجد متاجر.',
+            loadingFaqs: 'جاري تحميل الاسئلة...',
+            noFaqs: 'لا توجد اسئلة بعد.',
+            loadingMessages: 'جاري تحميل الرسائل...',
+            noMessages: 'لا توجد رسائل.',
+            view: 'عرض',
+            markReplied: 'تم الرد',
+            noOrders: 'لا توجد طلبات مسجلة بعد. يتم تسجيل الطلبات عند الضغط على "الطلب عبر واتساب".',
+            whatsappSent: 'تم الارسال عبر واتساب',
+            updated: 'تم التحديث',
+            deleteProductConfirm: 'هل انت متاكد من حذف هذا المنتج؟',
+            deleteShopConfirm: 'حذف هذا المتجر؟',
+            deleteFaqConfirm: 'حذف هذا السؤال؟',
+            failedUpdateStock: 'فشل تحديث المخزون.',
+            failedDeleteProduct: 'فشل حذف المنتج.',
+            settingsSaved: 'تم حفظ الاعدادات بنجاح.',
+            exportFailed: 'فشل تصدير النسخة الاحتياطية.',
+            somethingWrong: 'حدث خطا. حاول مرة اخرى.',
+            invalidCredentials: 'بيانات الدخول غير صحيحة.',
+            from: 'من',
+            email: 'البريد الالكتروني',
+            phone: 'الهاتف',
+            subject: 'الموضوع',
+            message: 'الرسالة',
+            na: 'غير متوفر',
+            add: 'اضافة',
+            saveProduct: 'حفظ المنتج',
+            saveShop: 'حفظ المتجر',
+            saveFaq: 'حفظ السؤال',
+            saveOrder: 'حفظ الطلب',
+            englishName: 'الاسم بالانجليزية',
+            arabicName: 'الاسم بالعربية',
+            category: 'الفئة',
+            glutenFree: 'بدون غلوتين',
+            lowCarb: 'قليل الكربوهيدرات',
+            healthy: 'صحي',
+            rawMaterials: 'مواد خام',
+            vegetarian: 'نباتي',
+            priceMad: 'السعر (درهم)',
+            description: 'الوصف',
+            arabicDescription: 'الوصف بالعربية',
+            tags: 'الوسوم (مفصولة بفواصل)',
+            productImage: 'صورة المنتج',
+            currentImage: 'الصورة الحالية',
+            featuredHomepage: 'مميز في الصفحة الرئيسية',
+            inStockAvailable: 'متوفر / جاهز',
+            name: 'الاسم',
+            address: 'العنوان',
+            hours: 'ساعات العمل',
+            open247: 'مفتوح 24/7',
+            question: 'السؤال',
+            answer: 'الجواب',
+            allergens: 'الحساسية',
+            orders: 'الطلبات',
+            delivery: 'التوصيل',
+            payment: 'الدفع',
+            general: 'عام',
+            customer: 'الزبون',
+            items: 'المنتجات',
+            totalMad: 'المجموع (درهم)',
+            deliveryAddress: 'عنوان التوصيل',
+            specialInstructions: 'تعليمات خاصة',
+            orderStatus: 'الحالة',
+            cityPlaceholder: 'المدينة، الحي، الشارع...',
+            instructionsPlaceholder: 'بدون سكر، اتصل عند الوصول، رمز البوابة، الخ.'
+        }
+    };
+
+    function t(key) {
+        return I18N[currentLang]?.[key] || I18N.en[key] || key;
+    }
+
+    function setText(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.textContent = value;
+    }
+
+    function setInputPlaceholder(selector, value) {
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute('placeholder', value);
+    }
+
+    function applyStaticTranslations() {
+        document.title = t('appTitle');
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+        setText('#login-screen .login-header p', t('businessControl'));
+        setText('#login-screen label[for="email"]', t('email'));
+        setText('#login-screen label[for="password"]', t('orderStatus'));
+        setText('#login-form button[type="submit"]', 'Sign In');
+        setInputPlaceholder('#email', 'admin@goldensweet.ma');
+
+        const navMap = {
+            overview: t('dashboard'),
+            orders: t('orders'),
+            products: t('products'),
+            shops: t('shops'),
+            faqs: t('faqs'),
+            contacts: t('messages'),
+            settings: t('settings')
+        };
+        document.querySelectorAll('.nav-item').forEach((el) => {
+            const section = el.dataset.section;
+            const textNode = Array.from(el.childNodes).find((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
+            if (textNode && navMap[section]) textNode.textContent = ` ${navMap[section]}`;
+        });
+        setText('#logout-btn', t('logout'));
+        setText('.topbar-actions a.btn', t('viewSite'));
+
+        const statLabels = document.querySelectorAll('#section-overview .stat-card p');
+        if (statLabels[0]) statLabels[0].textContent = t('products');
+        if (statLabels[1]) statLabels[1].textContent = t('shops');
+        if (statLabels[2]) statLabels[2].textContent = t('faqs');
+        if (statLabels[3]) statLabels[3].textContent = t('totalActivity');
+
+        setText('#section-overview .quick-actions h2', t('businessControl'));
+        const quickBtns = document.querySelectorAll('#section-overview .quick-actions .action-buttons .btn');
+        if (quickBtns[0]) quickBtns[0].textContent = t('viewOrdersHistory');
+        if (quickBtns[1]) quickBtns[1].textContent = t('manageStockLevels');
+        if (quickBtns[2]) quickBtns[2].textContent = t('exportDataBackup');
+
+        setText('#section-orders .section-header h2', t('orderHistory'));
+        setText('#section-orders .badge', t('trackedFromWhatsapp'));
+        setText('#section-orders .section-actions .btn', t('addOrder'));
+        setText('#section-products .section-header h2', t('products'));
+        setText('#section-products .section-header .btn', t('addProduct'));
+        setText('#section-shops .section-header h2', t('shops'));
+        setText('#section-shops .section-header .btn', t('addShop'));
+        setText('#section-faqs .section-header h2', t('faqs'));
+        setText('#section-faqs .section-header .btn', t('addFaq'));
+        setText('#section-contacts .section-header h2', t('messages'));
+        setText('#section-settings .section-header h2', t('settings'));
+        setText('#settings-form button[type="submit"]', t('saveSettings'));
+
+        document.querySelector('#section-orders thead').innerHTML = `
+            <tr><th>Date</th><th>${t('customer')}</th><th>${t('items')}</th><th>Total</th><th>${t('orderStatus')}</th><th>Actions</th></tr>
+        `;
+        document.querySelector('#section-products thead').innerHTML = `
+            <tr><th>${t('name')}</th><th>${t('category')}</th><th>Price</th><th>Inventory</th><th>Actions</th></tr>
+        `;
+        document.querySelector('#section-shops thead').innerHTML = `
+            <tr><th>${t('name')}</th><th>${t('address')}</th><th>${t('phone')}</th><th>Actions</th></tr>
+        `;
+        document.querySelector('#section-faqs thead').innerHTML = `
+            <tr><th>${t('question')}</th><th>${t('category')}</th><th>Actions</th></tr>
+        `;
+        document.querySelector('#section-contacts thead').innerHTML = `
+            <tr><th>Date</th><th>${t('name')}</th><th>${t('email')}</th><th>${t('subject')}</th><th>${t('orderStatus')}</th><th>Actions</th></tr>
+        `;
+
+        showSection(currentSection);
+    }
+
+    function setLanguage(lang) {
+        currentLang = I18N[lang] ? lang : 'en';
+        localStorage.setItem(LANG_KEY, currentLang);
+        applyStaticTranslations();
+    }
 
     async function apiFetch(path, options = {}) {
         const token = localStorage.getItem(KEYS.TOKEN);
@@ -365,12 +759,10 @@ const Admin = (() => {
         const payload = {
             name: data.name?.trim(),
             nameAr: data.nameAr?.trim() || '',
-            name_ar: data.name_ar?.trim() || '',
             category: data.category || '',
             price: Number(data.price || 0),
             description: data.description || '',
             descriptionAr: data.descriptionAr?.trim() || '',
-            description_ar: data.description_ar?.trim() || '',
             featured: data.featured === 'on',
             bestSeller: data.bestSeller === 'on',
             inStock: data.inStock === 'on',
@@ -948,12 +1340,10 @@ const Admin = (() => {
                         const data = {
                             name: formData.get('name'),
                             nameAr: (formData.get('nameAr') || '').trim(),
-                            name_ar: (formData.get('nameAr') || '').trim(),
                             category: formData.get('category'),
                             price: formData.get('price'),
                             description: formData.get('description'),
                             descriptionAr: (formData.get('descriptionAr') || '').trim(),
-                            description_ar: (formData.get('descriptionAr') || '').trim(),
                             featured: formData.get('featured'),
                             bestSeller: formData.get('bestSeller'),
                             inStock: formData.get('inStock'),
