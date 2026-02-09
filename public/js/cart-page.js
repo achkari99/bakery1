@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getDeliveryFee() {
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        return subtotal >= 300 ? 0 : 40; // Free delivery above 300 MAD
+        return subtotal >= 500 ? 0 : 40; // Free delivery from 500 MAD (based on subtotal only)
     }
 
     function getTotal() {

@@ -161,6 +161,13 @@
     opacity: 0.8;
 }
 
+.cover-footer-text {
+    display: inline-block;
+    letter-spacing: 0.24em;
+    color: var(--gold-light);
+    opacity: 0.95;
+}
+
 .cover-center {
     text-align: center;
 }

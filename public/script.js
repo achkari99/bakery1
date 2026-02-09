@@ -362,12 +362,76 @@ document.addEventListener("DOMContentLoaded", () => {
         const filterButtons = Array.from(catalogFilters.querySelectorAll('.filter-btn'));
         const productCards = Array.from(document.querySelectorAll('.product-card'));
 
+        const resolveCategories = (rawCategory) => {
+            const raw = String(rawCategory || '').trim().toLowerCase();
+            if (!raw) return [];
+
+            const valid = ['vegetarian', 'gluten-free', 'low-carb', 'healthy', 'raw-materials'];
+            const validSet = new Set(valid);
+            const normalized = raw.replace(/[_\s]+/g, '-');
+            const set = new Set();
+
+            const tryExpandComposite = (part) => {
+                if (part === 'gluten-vegetarian' || part === 'vegetarian-gluten') {
+                    set.add('gluten-free');
+                    set.add('vegetarian');
+                    return true;
+                }
+                for (let i = 0; i < valid.length; i++) {
+                    for (let j = i + 1; j < valid.length; j++) {
+                        const a = valid[i];
+                        const b = valid[j];
+                        if (part === `${a}-${b}` || part === `${b}-${a}`) {
+                            set.add(a);
+                            set.add(b);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            };
+
+            normalized
+                .split(/[|,/]+/)
+                .map((part) => part.trim())
+                .filter(Boolean)
+                .forEach((part) => {
+                    if (validSet.has(part)) {
+                        set.add(part);
+                        return;
+                    }
+                    tryExpandComposite(part);
+                });
+
+            return Array.from(set);
+        };
+
+        const formatCategoryLabel = (value) => String(value || '').replace(/-/g, ' ');
+
+        const applyBadgeLabel = (card, filter) => {
+            const badge = card.querySelector('.product-badge');
+            if (!badge) return;
+            const inStock = !card.querySelector('[aria-disabled="true"]');
+            if (!inStock) {
+                badge.textContent = 'Sold Out';
+                return;
+            }
+            const categories = resolveCategories(card.dataset.category);
+            const label = filter === 'all'
+                ? categories.map(formatCategoryLabel).join(', ')
+                : formatCategoryLabel(filter);
+            badge.textContent = label || formatCategoryLabel(card.dataset.category);
+        };
+
         const applyFilter = (filter) => {
             filterButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.filter === filter));
             productCards.forEach((card) => {
-                const categories = (card.dataset.category || '').split(/[\s,]+/).filter(Boolean);
-                const match = filter === 'all' || filter === 'healthy' || categories.includes(filter);
+                const categories = resolveCategories(card.dataset.category);
+                const match =
+                    filter === 'all' ||
+                    categories.includes(filter);
                 card.style.display = match ? '' : 'none';
+                applyBadgeLabel(card, filter);
             });
         };
 

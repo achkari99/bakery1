@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "lang": "en",
     "dir": "ltr",
@@ -129,6 +129,7 @@
     "catalog_cover_year": "Est. 2019",
     "catalog_cover_title": "Golden Sweet",
     "catalog_cover_subtitle": "Purely Natural",
+    "catalog_cover_footer": "Dietary Pastry",
     "catalog_cover_location": "Morocco, Tetouan \u00b7 Morocco",
     "catalog_page1_chapter": "01",
     "catalog_page1_label": "Philosophy",
@@ -303,13 +304,13 @@
     "community_gallery_6_note": "#sansgluten #sanslactose #sans_sucre_ajout\u00e9",
     "community_gallery_7_alt": "Dietary amlou dark chocolate fondant",
     "community_gallery_7_note": "Fondant_di\u00e9tetique amlou_choco_noir #healthyfood",
-    "product_classic_name": "Classic Cinnamon Roll",
+    "product_classic_name": "MOKACHOCA Cake Moka and Dark Chocolate Gluten Free",
     "product_classic_desc": "Our signature roll with Ceylon cinnamon and creamy vanilla glaze.",
-    "product_classic_badge": "Classic",
-    "product_choco_name": "Chocolate Hazelnut Roll",
+    "product_classic_badge": "Signature",
+    "product_choco_name": "Dark Chocolate and Almond Tartlet",
     "product_choco_desc": "Belgian dark chocolate melted on fluffy dough, topped with roasted hazelnuts.",
-    "product_choco_badge": "Hazelnut",
-    "product_caramel_name": "Caramel Pecan Roll",
+    "product_choco_badge": "Signature",
+    "product_caramel_name": "White Snow",
     "product_caramel_desc": "Salted caramel and crunchy pecans on a golden cinnamon base.",
     "product_caramel_badge": "Signature",
     "product_pasteis_name": "Plant-Based Past\u00e9is de Nata",
@@ -320,15 +321,15 @@
     "product_canneles_badge": "Cannel\u00e9s",
     "bestsellers_kicker": "Best-sellers",
     "bestsellers_heading": "Sweet Treats That Return Every Night",
-    "product_box_name": "Discovery Box 6 Rolls",
+    "product_box_name": "MARAVILLA Cake ganache Low Carb gluten free sugar free",
     "product_box_desc": "A shareable assortment of our iconic rolls: vanilla, caramel, chocolate, raspberry and pistachio.",
-    "product_box_badge": "Box",
-    "product_raspberry_name": "Raspberry Roll",
+    "product_box_badge": "Best Sellers",
+    "product_raspberry_name": "Mini Diet Almond Briouates (No Sugar, No Hydrogenated Oils, No White Flour)",
     "product_raspberry_desc": "Light vanilla cream, raspberry coulis and pink glaze on a soft roll.",
-    "product_raspberry_badge": "Raspberry",
-    "product_mocha_name": "Mocha Coffee Roll",
+    "product_raspberry_badge": "Best Sellers",
+    "product_mocha_name": "Diet Ghoriba with Nuts Sugar Free 200g",
     "product_mocha_desc": "Mocha glaze with Gu\u00e9liz coffee beans, blonde caramel and a touch of orange blossom.",
-    "product_mocha_badge": "Mocha",
+    "product_mocha_badge": "Best Sellers",
     "testimonials_kicker": "Customer Love",
     "testimonials_heading_pre": "Golden",
     "testimonials_heading_highlight": "Sweet",
@@ -405,9 +406,9 @@
     "benefit3_title": "Comprehensive Support",
     "benefit3_desc": "From training to marketing, we provide end-to-end support to help you thrive. You're never alone on this journey.",
     "benefit4_title": "100% Healthy Promise",
-    "benefit4_desc": "Tap into the growing market for vegan and health-conscious consumers. Our unique positioning sets you apart from competitors.",
+    "benefit4_desc": "Tap into the growing market for health-conscious consumers. Our unique positioning sets you apart from competitors.",
     "benefit5_title": "Attractive Returns",
-    "benefit5_desc": "With low overhead, premium pricing, and loyal customers, our franchise model delivers strong profit margins and sustainable growth.",
+    "benefit5_desc": "With reasonable overhead, premium pricing, and loyal customers, our franchise model delivers strong profit margins and sustainable growth.",
     "benefit6_title": "Flexible Locations",
     "benefit6_desc": "Whether it's a cozy caf\u00e9, mall kiosk, or cloud kitchen, we adapt our model to fit your market and investment capacity.",
     "investment_kicker": "Investment Overview",
@@ -1066,3 +1067,5 @@
     "thank_you": "Thank you for confirming my order!"
   }
 }
+
+

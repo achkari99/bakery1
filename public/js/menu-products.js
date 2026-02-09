@@ -2,9 +2,18 @@
     const grid = document.querySelector('.product-grid');
     if (!grid) return;
 
+    const normalizeName = (value) => {
+        if (!value) return '';
+        return String(value)
+            .toLowerCase()
+            .replace(/[_,-]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    };
+
     const existingNames = new Set(
         Array.from(grid.querySelectorAll('.product-card h3'))
-            .map((el) => el.textContent.trim().toLowerCase())
+            .map((el) => normalizeName(el.textContent))
             .filter(Boolean)
     );
 
@@ -96,18 +105,142 @@
         }
     };
 
+    const CATEGORY_ORDER = ['vegetarian', 'gluten-free', 'low-carb', 'healthy', 'raw-materials'];
+    const formatCategoryLabel = (value) => String(value || '').replace(/-/g, ' ');
+
+    const resolveCategories = (rawCategory) => {
+        const raw = String(rawCategory || '').trim().toLowerCase();
+        if (!raw) return [];
+
+        const valid = CATEGORY_ORDER;
+        const validSet = new Set(valid);
+        const normalized = raw.replace(/[_\s]+/g, '-');
+        const set = new Set();
+
+        const tryExpandComposite = (part) => {
+            if (part === 'gluten-vegetarian' || part === 'vegetarian-gluten') {
+                set.add('gluten-free');
+                set.add('vegetarian');
+                return true;
+            }
+            for (let i = 0; i < valid.length; i++) {
+                for (let j = i + 1; j < valid.length; j++) {
+                    const a = valid[i];
+                    const b = valid[j];
+                    if (part === `${a}-${b}` || part === `${b}-${a}`) {
+                        set.add(a);
+                        set.add(b);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        normalized
+            .split(/[|,/]+/)
+            .map((part) => part.trim())
+            .filter(Boolean)
+            .forEach((part) => {
+                if (validSet.has(part)) {
+                    set.add(part);
+                    return;
+                }
+                tryExpandComposite(part);
+            });
+
+        return Array.from(set);
+    };
+
+    const getCardNameKey = (card) => {
+        const keySource = card.dataset.nameEn || card.dataset.nameAr || card.querySelector('h3')?.textContent || '';
+        return normalizeName(keySource);
+    };
+
+    const buildMergedCategoryIndex = () => {
+        const index = new Map();
+
+        document.querySelectorAll('.product-card').forEach((card) => {
+            const key = getCardNameKey(card);
+            if (!key) return;
+
+            const categories = resolveCategories(card.dataset.category);
+            if (!index.has(key)) {
+                index.set(key, new Set());
+            }
+            categories.forEach((category) => index.get(key).add(category));
+        });
+
+        const orderedIndex = new Map();
+        index.forEach((set, key) => {
+            const ordered = CATEGORY_ORDER.filter((category) => set.has(category));
+            orderedIndex.set(key, ordered);
+        });
+        return orderedIndex;
+    };
+
+    const applyBadgeLabel = (card, filter, mergedCategoryIndex) => {
+        const inStock = !card.querySelector('[aria-disabled="true"]');
+        const badge = card.querySelector('.product-badge');
+        if (!badge) return;
+        if (!inStock) {
+            badge.textContent = 'Sold Out';
+            return;
+        }
+
+        let badgeText = '';
+        if (filter === 'all') {
+            const key = getCardNameKey(card);
+            const categories = (key && mergedCategoryIndex.get(key)) || resolveCategories(card.dataset.category);
+            badgeText = categories.map(formatCategoryLabel).join(', ');
+        } else {
+            badgeText = formatCategoryLabel(filter);
+        }
+        badge.textContent = badgeText || formatCategoryLabel(card.dataset.category);
+    };
+
     const applyActiveFilter = () => {
         const activeBtn = document.querySelector('.filter-btn.active');
         if (!activeBtn) return;
         const filter = activeBtn.dataset.filter || 'all';
+
+        const matchesFilter = (targetFilter, categories) => {
+            if (targetFilter === 'all') return true;
+            if (targetFilter === 'vegetarian') {
+                return categories.includes('vegetarian');
+            }
+            if (targetFilter === 'gluten-free') {
+                return categories.includes('gluten-free');
+            }
+            return categories.includes(targetFilter);
+        };
+
+        const mergedCategoryIndex = buildMergedCategoryIndex();
         document.querySelectorAll('.product-card').forEach((card) => {
-            const categories = (card.dataset.category || '').split(' ');
-            if (filter === 'all' || categories.includes(filter)) {
+            const categories = resolveCategories(card.dataset.category);
+            if (matchesFilter(filter, categories)) {
                 card.style.display = '';
             } else {
                 card.style.display = 'none';
             }
+            applyBadgeLabel(card, filter, mergedCategoryIndex);
         });
+
+        // In "all", show only one card per normalized product name.
+        if (filter === 'all') {
+            const seen = new Set();
+            document.querySelectorAll('.product-card').forEach((card) => {
+                if (card.style.display === 'none') return;
+                const keySource = card.dataset.nameEn || card.dataset.nameAr || card.querySelector('h3')?.textContent || '';
+                const key = normalizeName(keySource);
+                if (!key) return;
+                if (seen.has(key)) {
+                    card.style.display = 'none';
+                    return;
+                }
+                seen.add(key);
+            });
+        }
     };
 
     const fetchProducts = async (url) => {
@@ -127,7 +260,7 @@
             }
             const additions = products.filter((product) => {
                 if (product.status && product.status !== 'active') return false;
-                const name = (getProductName(product) || '').trim().toLowerCase();
+                const name = normalizeName(getProductName(product));
                 return name && !existingNames.has(name);
             });
 
@@ -135,7 +268,7 @@
 
             grid.insertAdjacentHTML('beforeend', additions.map(buildCard).join(''));
             additions.forEach((product) => {
-                const name = (getProductName(product) || '').trim().toLowerCase();
+                const name = normalizeName(getProductName(product));
                 if (name) existingNames.add(name);
             });
 
