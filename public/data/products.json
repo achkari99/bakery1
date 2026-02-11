@@ -51,7 +51,7 @@
     "id": 4,
     "name": "Chebakia with Almond, Barley, Natural Carob Honey and Natural Fermentation 1kg",
     "price": 400,
-    "category": "gluten-free",
+    "category": "healthy",
     "status": "active",
     "image": "/images/gluten%20free/3f6e0203-2bcf-4cd4-962b-d40e60d6de16.jpeg",
     "description": "",
@@ -61,7 +61,7 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T03:43:01.365Z"
+    "updatedAt": "2026-02-11T18:04:43.691Z"
   },
   {
     "id": 5,
@@ -128,22 +128,6 @@
     "updatedAt": "2026-02-08T03:45:50.152Z"
   },
   {
-    "id": 9,
-    "name": "Mjabna with Natural Honey",
-    "price": 15,
-    "category": "gluten-free",
-    "status": "active",
-    "image": "/images/gluten%20free/6adecf35-8291-428b-9d27-aa7f4352649c.jpeg",
-    "description": "",
-    "nameAr": "مجبنة بالعسل الحر",
-    "descriptionAr": "",
-    "featured": false,
-    "bestSeller": false,
-    "inStock": true,
-    "tags": [],
-    "updatedAt": "2026-02-08T02:57:35.829Z"
-  },
-  {
     "id": 10,
     "name": "CLOUD Candy Gluten free Sugar Free",
     "price": 50,
@@ -167,13 +151,13 @@
     "status": "active",
     "image": "/images/gluten%20free/6bb43777-09be-41a4-a93f-ceed44fefba6.jpeg",
     "description": "",
-    "nameAr": "حلوى بدون غلوتين مكسرات",
+    "nameAr": "حلوى بالمكسرات بدون غلوتين",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T03:46:38.839Z"
+    "updatedAt": "2026-02-09T03:28:35.040Z"
   },
   {
     "id": 12,
@@ -278,7 +262,7 @@
   {
     "id": 19,
     "name": "Diet Ghoriba with Nuts Sugar Free 200g",
-    "price": 50,
+    "price": 70,
     "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/aa632734-81cd-42e5-978d-03288d7f457d.jpeg",
@@ -289,7 +273,7 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T03:50:55.695Z"
+    "updatedAt": "2026-02-11T22:54:24.103Z"
   },
   {
     "id": 20,
@@ -350,22 +334,6 @@
     "updatedAt": "2026-02-08T03:56:29.286Z"
   },
   {
-    "id": 24,
-    "name": "Sello with almonds, barley, honey, and carob spices",
-    "price": 400,
-    "category": "gluten-free",
-    "status": "active",
-    "image": "/images/gluten%20free/e9465353-ad2c-4701-b762-53a16e454571.jpeg",
-    "description": "",
-    "nameAr": "سلو باللوز، الشعير، العسل و حار الخرووب",
-    "descriptionAr": "",
-    "featured": false,
-    "bestSeller": false,
-    "inStock": true,
-    "tags": [],
-    "updatedAt": "2026-02-08T04:00:42.277Z"
-  },
-  {
     "id": 25,
     "name": "Mini Baguette Gluten Free",
     "price": 15,
@@ -393,19 +361,19 @@
   },
   {
     "id": 27,
-    "name": "Mixed Sweet Oats Walnut Almond with Free Honey",
+    "name": "Mixed Sweet Oats Walnut Almond with Natural Honey",
     "price": 50,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/123578a6-ebe2-41cd-8e97-e89bdb69677c.jpeg",
     "description": "",
-    "nameAr": "حلوة الخليط شوفان جوز ولوز بالعسل الحر",
+    "nameAr": "حلوة الخليط شوفان بالجوز و لوز و العسل الحر",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:03:36.893Z"
+    "updatedAt": "2026-02-10T13:31:15.810Z"
   },
   {
     "id": 28,
@@ -431,13 +399,13 @@
     "status": "active",
     "image": "/images/healthy/3a0eff76-cc44-4629-82f1-69b24432c1e5.jpeg",
     "description": "",
-    "nameAr": "سلو باللوز، الشعير، العسل و حار الخرووب",
+    "nameAr": "سلو باللوز، الشعير، العسل الخروب الحر",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:07:22.206Z"
+    "updatedAt": "2026-02-09T03:43:21.589Z"
   },
   {
     "id": 30,
@@ -459,17 +427,17 @@
     "id": 31,
     "name": "Gluten Free Sugar Free Chebakia 1kg",
     "price": 500,
-    "category": "healthy",
+    "category": "gluten-free",
     "status": "active",
     "image": "/images/healthy/3cb55c6c-4015-4ea6-a727-bf0b85aab326.jpeg",
     "description": "",
-    "nameAr": "شباكية بدون غلوتين بدون سكر 1كيلو غرام",
+    "nameAr": "شباكية بدون غلوتين و بدون سكر 1كيلو غرام",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:12:31.384Z"
+    "updatedAt": "2026-02-11T18:04:27.347Z"
   },
   {
     "id": 32,
@@ -495,13 +463,13 @@
     "status": "active",
     "image": "/images/healthy/840269b3-8e68-47da-8aa0-45161506bbac.jpeg",
     "description": "",
-    "nameAr": "فقاص شوفان مكسرات عسل حر 200غرام",
+    "nameAr": "فقاص شوفان بالمكسرات و العسل الحر 200غرام",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:20:35.854Z"
+    "updatedAt": "2026-02-09T03:46:42.076Z"
   },
   {
     "id": 34,
@@ -521,7 +489,7 @@
   },
   {
     "id": 35,
-    "name": "Diet Date Cake (Barley, No Added Sugar) 200g",
+    "name": "Diet Date Candy (Barley, No Added Sugar) 200g",
     "price": 50,
     "category": "healthy",
     "status": "active",
@@ -533,7 +501,7 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:24:24.862Z"
+    "updatedAt": "2026-02-09T19:46:38.978Z"
   },
   {
     "id": 36,
@@ -601,35 +569,35 @@
   },
   {
     "id": 40,
-    "name": "شوكولاتة دبي",
+    "name": "mini Golden chocolat Dubai no sugar no gluten (hazelnut)",
     "price": 100,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_48_39%20AM.png",
     "description": "",
-    "nameAr": "chocolat Dubai",
+    "nameAr": "غولدن شوكولات دبي صغيرة بدون سكر وبدون غلوتين (بالبندق)",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:33:07.646Z"
+    "updatedAt": "2026-02-09T19:51:20.969Z"
   },
   {
     "id": 41,
-    "name": "mini Golden chocolat Dubai no sugar no gluten",
+    "name": "mini Golden chocolat Dubai no sugar no gluten (pistachios)",
     "price": 100,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/ChatGPT%20Image%20Feb%205,%202026,%2001_50_11%20AM%20copy.png",
     "description": "",
-    "nameAr": "غولدن شوكولات دبي صغيرة بدون سكر وبدون غلوتين",
+    "nameAr": "غولدن شوكولات دبي صغيرة بدون سكر وبدون غلوتين (بالفستق)",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:31:43.375Z"
+    "updatedAt": "2026-02-09T19:53:18.776Z"
   },
   {
     "id": 42,
@@ -659,7 +627,7 @@
   },
   {
     "id": 44,
-    "name": "Oat Sablé with Dark Chocolate Sugar Free",
+    "name": "Oat SablÃ© with Dark Chocolate Sugar Free",
     "price": 60,
     "category": "healthy",
     "status": "active",
@@ -692,7 +660,7 @@
   {
     "id": 46,
     "name": "Diet Almond Baklawa",
-    "price": 50,
+    "price": 500,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/f01ef50d-10a8-4f60-92a0-5783e3520a85.jpeg",
@@ -703,7 +671,7 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:38:44.016Z"
+    "updatedAt": "2026-02-11T18:00:53.784Z"
   },
   {
     "id": 47,
@@ -785,39 +753,57 @@
   },
   {
     "id": 53,
-    "name": "Carob Honey",
-    "price": 100,
+    "name": "Arbutus Honey",
+    "price": 150,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_08_22%20AM.png",
     "description": "",
-    "nameAr": "عسل الخروب الحر"
+    "nameAr": "عسل المرونة",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "tags": [],
+    "updatedAt": "2026-02-10T13:40:19.109Z"
   },
   {
     "id": 54,
     "name": "Orange Blossom Water",
-    "price": 0,
+    "price": 100,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_08_53%20AM.png",
     "description": "",
-    "nameAr": "ماء زهر البرتقال الطبيعي"
+    "nameAr": "ماء زهر البرتقال الطبيعي",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "tags": [],
+    "updatedAt": "2026-02-10T13:40:50.198Z"
   },
   {
     "id": 55,
     "name": "Euphorbia Honey",
-    "price": 0,
+    "price": 100,
     "category": "raw-materials",
     "status": "active",
     "image": "/images/raw%20materials/ChatGPT%20Image%20Feb%205,%202026,%2002_10_04%20AM.png",
     "description": "",
-    "nameAr": "عسل الدغموس الحر"
+    "nameAr": "عسل الدغموس الحر",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "tags": [],
+    "updatedAt": "2026-02-10T13:41:15.668Z"
   },
   {
     "id": 56,
     "name": "MATILDA cake low carb gluten free sugar free",
     "price": 80,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/05f69abe-7df2-476f-a5e2-6666f7b06292.jpeg",
     "description": "",
@@ -827,13 +813,13 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:51:25.328Z"
+    "updatedAt": "2026-02-11T18:18:38.961Z"
   },
   {
     "id": 57,
     "name": "Almond Mhancha with Natural Honey",
     "price": 22,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/305105cb-7bca-4a23-b8f7-cd9980d70ab9.jpeg",
     "description": "",
@@ -847,19 +833,25 @@
   },
   {
     "id": 58,
-    "name": "Wajdi Mqorrot with Nmer No Added Sugar Corn Semolina",
-    "price": 400,
+    "name": "Vegan Sello, gluten-free, sugar-free, lactose-free",
+    "price": 500,
     "category": "vegetarian",
     "status": "active",
-    "image": "/images/vegetarian/3a0eff76-cc44-4629-82f1-69b24432c1e5.jpeg",
+    "image": "/images/1770729753958-428950399.png",
     "description": "",
-    "nameAr": "المقروط الوجدي بالنمر بدون سكر مضاف بسميد الذرة"
+    "nameAr": "سلو نباتي بدون غلوتين بدون سكر بدون لاكتوز",
+    "inStock": true,
+    "featured": false,
+    "bestSeller": false,
+    "updatedAt": "2026-02-10T13:22:33.977Z",
+    "descriptionAr": "",
+    "tags": []
   },
   {
     "id": 59,
     "name": "Chebakia with Almond, Barley, Natural Carob Honey and Natural Fermentation 1kg",
     "price": 400,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/3f6e0203-2bcf-4cd4-962b-d40e60d6de16.jpeg",
     "description": "",
@@ -875,23 +867,23 @@
     "id": 60,
     "name": "Barley Harcha with Olive Oil and Natural Yeast",
     "price": 6,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/69039407-54e9-4e2e-9bab-1f54d2e9ad53.jpeg",
     "description": "",
-    "nameAr": "كوكيز شوفان بالمكسرات والعسل حرشة الشعير بزيت الزيتون و الخميرة البلدية",
+    "nameAr": "حرشة الشعير بزيت الزيتون و الخميرة البلدية",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:57:09.723Z"
+    "updatedAt": "2026-02-10T13:39:20.357Z"
   },
   {
     "id": 61,
     "name": "Gluten Free Nut Candy",
     "price": 15,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/6bb43777-09be-41a4-a93f-ceed44fefba6.jpeg",
     "description": "",
@@ -907,7 +899,7 @@
     "id": 62,
     "name": "IQUILIBRIUM Low Carb Sugar Free",
     "price": 70,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/71f1f6f7-621b-4d5f-a271-530410091772.jpeg",
     "description": "",
@@ -921,25 +913,25 @@
   },
   {
     "id": 63,
-    "name": "Mjabna with Natural Honey",
+    "name": "Mjabna made with cornstarch and Natural honey",
     "price": 15,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/7c74e562-6ae3-4f8f-8792-ed2e9d06f3b3.jpeg",
     "description": "",
-    "nameAr": "مجبنة بالعسل الحر",
+    "nameAr": "مجبنة بورقة نشا الذرة و العسل الحر",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T05:00:31.102Z"
+    "updatedAt": "2026-02-09T04:30:51.142Z"
   },
   {
     "id": 64,
     "name": "Lactose Free Cookies 200g",
     "price": 50,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/8614c514-5424-4b1c-b959-867c6a6bf562.jpeg",
     "description": "",
@@ -965,7 +957,7 @@
     "id": 66,
     "name": "Muchobuena Gluten Free 200g",
     "price": 70,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/9ebfb78a-afe2-4e14-955e-cf8d49b65b56.jpeg",
     "description": "",
@@ -991,7 +983,7 @@
     "id": 68,
     "name": "DATIMANDE Cake Low Carb",
     "price": 70,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/b01c6d95-8a36-4cb7-a26c-dd0665441642.jpeg",
     "description": "",
@@ -1027,7 +1019,7 @@
     "id": 71,
     "name": "Barley Bread with Natural Yeast",
     "price": 7,
-    "category": "gluten-vegetarian",
+    "category": "vegetarian",
     "status": "active",
     "image": "/images/vegetarian/ChatGPT%20Image%20Feb%205,%202026,%2001_38_40%20AM.png",
     "description": "",
@@ -1041,19 +1033,19 @@
   },
   {
     "id": 72,
-    "name": "Sello with almonds, barley, honey, and carob spices",
+    "name": "Vegan Sello, gluten-free, sugar-free, lactose-free",
     "price": 400,
-    "category": "gluten-vegetarian",
+    "category": "gluten-free",
     "status": "active",
-    "image": "/images/vegetarian/e9465353-ad2c-4701-b762-53a16e454571.jpeg",
+    "image": "/images/1770729742494-71570988.png",
     "description": "",
-    "nameAr": "سلو باللوز، الشعير، العسل و حار الخرووب",
+    "nameAr": "سلو نباتي بدون غلوتين بدون سكر بدون لاكتوز",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:53:19.439Z"
+    "updatedAt": "2026-02-10T13:22:22.520Z"
   },
   {
     "id": 73,
@@ -1073,19 +1065,19 @@
   },
   {
     "id": 74,
-    "name": "Cashew and Almond Croissant with Natural Honey and Pastry Sheet",
+    "name": "Cashew and Almond Croissant with Natural Honey",
     "price": 35,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/1f220625-6bb4-4f25-90d2-def8b17acd4c.jpeg",
     "description": "",
-    "nameAr": "كرواسون كاجو لوز بالعسل حر و ورقة",
+    "nameAr": "كرواسون كاجو لوز بالعسل حر",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T05:08:31.639Z"
+    "updatedAt": "2026-02-09T19:59:25.504Z"
   },
   {
     "id": 75,
@@ -1111,13 +1103,13 @@
     "status": "active",
     "image": "/images/low%20carb/aa070048-bc01-4f65-b784-8ee391bd691c.jpeg",
     "description": "",
-    "nameAr": "طارطليط شوفان لوز بندق بالعسل الحر",
+    "nameAr": "طارطليط بالشوفان و اللوز و البندق بالعسل الحر",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T05:12:03.381Z"
+    "updatedAt": "2026-02-09T04:33:33.013Z"
   },
   {
     "id": 77,
@@ -1137,29 +1129,29 @@
     "status": "active",
     "image": "/images/low%20carb/d723c658-3fb7-42b9-b1dc-28a814140f89.jpeg",
     "description": "",
-    "nameAr": "بسطيلة د الكركاع بالعسل الحر بالفرن ورقة نشا الذرة",
+    "nameAr": "بسطيلة الكركاع بالعسل الحر بالفرن مع ورقة نشا بالذرة",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T05:13:34.551Z"
+    "updatedAt": "2026-02-09T04:35:08.999Z"
   },
   {
     "id": 79,
-    "name": "Cashew Flour Cake Gluten Free",
+    "name": "SALOMÈ Cake Low carb & gluten free",
     "price": 80,
     "category": "low-carb",
     "status": "active",
     "image": "/images/low%20carb/df43a24e-05c4-4653-be8d-a4615790d936.jpeg",
     "description": "",
-    "nameAr": "كعك بدقيق الكاجو بدون غلوتين",
+    "nameAr": "كعكة سالومي قليلة الكربوهيدرات وخالية من الغلوتين",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T05:14:07.726Z"
+    "updatedAt": "2026-02-11T22:58:02.011Z"
   },
   {
     "id": 80,
@@ -1176,5 +1168,53 @@
     "inStock": true,
     "tags": [],
     "updatedAt": "2026-02-08T05:16:31.391Z"
+  },
+  {
+    "id": "mlgmfo9be6zpr0o6m",
+    "name": "Makrout El-Oujdi baked in the oven with dates and Corn semolina, without added sugar 1kg",
+    "nameAr": "المقروط الوجدي من الفرن بالتمر و سميدة الدرة بدون سكر مضاف 1كيلو غرام",
+    "category": "healthy",
+    "price": 400,
+    "description": "",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "image": "/images/1770729180785-54629406.png",
+    "tags": [],
+    "createdAt": "2026-02-10T13:13:00.815Z",
+    "updatedAt": "2026-02-10T13:13:00.815Z"
+  },
+  {
+    "id": "mlgpk9yllqtrh7abt",
+    "name": "Snow White",
+    "nameAr": "سنو وايت",
+    "category": "gluten-free",
+    "price": 80,
+    "description": "",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "image": "/images/1770734434386-40823157.png",
+    "tags": [],
+    "createdAt": "2026-02-10T14:40:34.413Z",
+    "updatedAt": "2026-02-10T14:40:34.413Z"
+  },
+  {
+    "id": "mlgpl2fo3udww44xo",
+    "name": "Snow White",
+    "nameAr": "سنو وايت",
+    "category": "low-carb",
+    "price": 80,
+    "description": "",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "image": "/images/1770734471302-542784941.png",
+    "tags": [],
+    "createdAt": "2026-02-10T14:41:11.316Z",
+    "updatedAt": "2026-02-10T14:41:11.316Z"
   }
 ]
