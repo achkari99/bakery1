@@ -818,6 +818,32 @@
         font-size: 1.02rem !important;
         line-height: 1.65 !important;
     }
+
+    /* Impact page (08): enlarge content for desktop, keep title size unchanged */
+    .page-content.ebook-page-13-impact .story-text {
+        font-size: 1rem;
+        line-height: 1.68;
+    }
+
+    .page-content.ebook-page-13-impact .promise-list {
+        margin-top: 2.4rem !important;
+        gap: 1.5rem;
+    }
+
+    .page-content.ebook-page-13-impact .promise-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.45rem;
+    }
+
+    .page-content.ebook-page-13-impact .promise-text strong {
+        font-size: 1.28rem;
+    }
+
+    .page-content.ebook-page-13-impact .promise-text p {
+        font-size: 1.04rem;
+        line-height: 1.62;
+    }
 }
 
 /* === FLIPBOOK NAVIGATION CONTROLS === */
