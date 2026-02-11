@@ -566,6 +566,7 @@ html[dir="rtl"] .service-card-content {
 html[dir="rtl"] .service-feature {
     flex-direction: row;
     gap: 0.75rem;
+    align-self: flex-end;
 }
 
 html[dir="rtl"] .service-feature svg {

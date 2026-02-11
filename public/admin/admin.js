@@ -1214,12 +1214,13 @@ const Admin = (() => {
                     <div class="form-group">
                         <label>Product Image</label>
                         ${data?.image ? `
-                            <div class="image-preview">
+                            <div class="image-preview" data-image-preview>
                                 <img src="${data.image}" alt="${data.name || 'Product image'}">
                                 <span>Current image</span>
+                                <button type="button" class="image-remove-btn" data-remove-image aria-label="Remove current image">x</button>
                             </div>
                         ` : ''}
-                        <input type="file" name="imageFile" accept="image/*">
+                        <input type="file" name="imageFile" accept="image/*" ${data?.image ? '' : 'required'}>
                     </div>
                     <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                         <input type="checkbox" id="featured-check" name="featured" ${data?.featured ? 'checked' : ''} style="width: auto; margin: 0;">
@@ -1326,6 +1327,21 @@ const Admin = (() => {
 
         body.innerHTML = forms[type] || '';
         modal.classList.remove('hidden');
+
+        if (type === 'product') {
+            const form = document.getElementById('modal-form');
+            const removeImageBtn = form.querySelector('[data-remove-image]');
+            if (removeImageBtn) {
+                removeImageBtn.addEventListener('click', () => {
+                    const hiddenImageInput = form.querySelector('input[name="image"]');
+                    const imagePreview = form.querySelector('[data-image-preview]');
+                    const imageFileInput = form.querySelector('input[name="imageFile"]');
+                    if (hiddenImageInput) hiddenImageInput.value = '';
+                    if (imagePreview) imagePreview.remove();
+                    if (imageFileInput) imageFileInput.required = true;
+                });
+            }
+        }
 
         // Form submit handler
         document.getElementById('modal-form').addEventListener('submit', async (e) => {

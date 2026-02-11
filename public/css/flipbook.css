@@ -764,6 +764,62 @@
     color: var(--emerald-deep);
 }
 
+/* Desktop-only upscale for e-book pages 11, 12, 13 */
+@media (min-width: 1024px) {
+    .ebook-page-11 .story-title {
+        font-size: 2.35rem;
+    }
+
+    .ebook-page-11 .story-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .ebook-page-11 .promise-text strong {
+        font-size: 1.2rem;
+    }
+
+    .ebook-page-11 .promise-text p {
+        font-size: 1rem;
+    }
+
+    .page-content.ebook-page-12 .elegant-heading {
+        font-size: 2.35rem !important;
+    }
+
+    .page-content.ebook-page-12 .service-row {
+        padding: 1rem !important;
+        margin-bottom: 1.45rem !important;
+    }
+
+    .page-content.ebook-page-12 .service-icon-lg {
+        font-size: 1.75rem !important;
+    }
+
+    .page-content.ebook-page-12 .service-data h4 {
+        font-size: 1.35rem !important;
+    }
+
+    .page-content.ebook-page-12 .service-data p {
+        font-size: 1.04rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .page-content.ebook-page-13 .eyebrow-accent {
+        font-size: 0.9rem !important;
+    }
+
+    .page-content.ebook-page-13 .story-text-lead {
+        font-size: 1.35rem !important;
+        line-height: 1.6;
+    }
+
+    .page-content.ebook-page-13 .story-text {
+        font-size: 1.02rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
 /* === FLIPBOOK NAVIGATION CONTROLS === */
 .flipbook-controls {
     display: flex;
@@ -916,6 +972,32 @@
 
     .ci-desc {
         font-size: 0.5rem;
+    }
+
+    /* Make e-book pages 8 and 9 (product-page spreads) lighter on phone */
+    .page-content.product-page .catalog-grid {
+        gap: 0.2rem;
+    }
+
+    .page-content.product-page .catalog-item {
+        gap: 0.15rem;
+    }
+
+    .page-content.product-page .ci-image {
+        height: 72px;
+    }
+
+    .page-content.product-page .ci-details h4 {
+        font-size: 0.56rem;
+        line-height: 1.2;
+    }
+
+    .page-content.product-page .ci-line {
+        margin: 0 0.35rem;
+    }
+
+    .page-content.product-page .ci-price {
+        font-size: 0.54rem;
     }
 
     .feature-title {
