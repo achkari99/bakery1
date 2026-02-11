@@ -51,6 +51,13 @@ class DataStore {
     async writeFile(collection, data) {
         const filePath = this.getFilePath(collection);
         await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8');
+
+        // Local development: mirror products into public/data so edits are deployable.
+        // In serverless (VERCEL), /tmp is ephemeral, so we skip mirroring.
+        if (!process.env.VERCEL && collection === 'products') {
+            const publicSeedPath = path.join(__dirname, '..', 'public', 'data', `${collection}.json`);
+            await fs.writeFile(publicSeedPath, JSON.stringify(data, null, 2), 'utf8');
+        }
     }
 
     generateId() {
