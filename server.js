@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const ASSET_CACHE_MAX_AGE_SECONDS = 60 * 60 * 12;
+const ASSET_CACHE_MAX_AGE_SECONDS = 60 * 5;
 const ASSET_CACHE_REGEX = /\.(css|js|mjs|cjs|svg|png|jpg|jpeg|gif|webp|ico|ttf|otf|woff|woff2|eot)$/i;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const ADMIN_DIR = path.join(PUBLIC_DIR, 'admin');

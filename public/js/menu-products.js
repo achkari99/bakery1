@@ -118,11 +118,6 @@
         const set = new Set();
 
         const tryExpandComposite = (part) => {
-            if (part === 'gluten-vegetarian' || part === 'vegetarian-gluten') {
-                set.add('gluten-free');
-                set.add('vegetarian');
-                return true;
-            }
             for (let i = 0; i < valid.length; i++) {
                 for (let j = i + 1; j < valid.length; j++) {
                     const a = valid[i];
