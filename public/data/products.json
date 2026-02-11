@@ -237,7 +237,7 @@
     "id": 17,
     "name": "Muchobuena Gluten Free 200g",
     "price": 70,
-    "category": "healthy",
+    "category": "gluten-free",
     "status": "active",
     "image": "/images/gluten%20free/9ebfb78a-afe2-4e14-955e-cf8d49b65b56.jpeg",
     "description": "",
@@ -247,7 +247,7 @@
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-11T23:11:45.528Z"
+    "updatedAt": "2026-02-11T23:15:21.376Z"
   },
   {
     "id": 18,
