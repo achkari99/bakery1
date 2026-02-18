@@ -39,6 +39,11 @@ const upload = multer({
     }
 });
 
+const getEntityId = (req) => {
+    const rawId = req.params?.id ?? req.query?.id;
+    return rawId == null ? '' : String(rawId).trim();
+};
+
 // JWT Auth Middleware
 const authMiddleware = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
@@ -58,7 +63,7 @@ const authMiddleware = (req, res, next) => {
 // AUTH ROUTES
 // =====================
 
-router.post('/auth/login', async (req, res) => {
+router.post(['/auth/login', '/auth-login'], async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -99,7 +104,7 @@ router.get('/health', (req, res) => {
     });
 });
 
-router.get('/auth/me', authMiddleware, (req, res) => {
+router.get(['/auth/me', '/auth-me'], authMiddleware, (req, res) => {
     res.json({ success: true, user: req.user });
 });
 
@@ -116,9 +121,13 @@ router.get('/products', async (req, res) => {
     }
 });
 
-router.get('/products/:id', async (req, res) => {
+router.get(['/products/:id', '/product'], async (req, res) => {
     try {
-        const product = await store.getById('products', req.params.id);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Product id is required' });
+        }
+        const product = await store.getById('products', id);
         if (!product) {
             return res.status(404).json({ success: false, error: 'Product not found' });
         }
@@ -137,18 +146,26 @@ router.post('/products', authMiddleware, async (req, res) => {
     }
 });
 
-router.put('/products/:id', authMiddleware, async (req, res) => {
+router.put(['/products/:id', '/product'], authMiddleware, async (req, res) => {
     try {
-        const product = await store.update('products', req.params.id, req.body);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Product id is required' });
+        }
+        const product = await store.update('products', id, req.body);
         res.json({ success: true, data: product });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
     }
 });
 
-router.delete('/products/:id', authMiddleware, async (req, res) => {
+router.delete(['/products/:id', '/product'], authMiddleware, async (req, res) => {
     try {
-        await store.delete('products', req.params.id);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Product id is required' });
+        }
+        await store.delete('products', id);
         res.json({ success: true, message: 'Product deleted' });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
@@ -177,18 +194,26 @@ router.post('/shops', authMiddleware, async (req, res) => {
     }
 });
 
-router.put('/shops/:id', authMiddleware, async (req, res) => {
+router.put(['/shops/:id', '/shop'], authMiddleware, async (req, res) => {
     try {
-        const shop = await store.update('shops', req.params.id, req.body);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Shop id is required' });
+        }
+        const shop = await store.update('shops', id, req.body);
         res.json({ success: true, data: shop });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
     }
 });
 
-router.delete('/shops/:id', authMiddleware, async (req, res) => {
+router.delete(['/shops/:id', '/shop'], authMiddleware, async (req, res) => {
     try {
-        await store.delete('shops', req.params.id);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Shop id is required' });
+        }
+        await store.delete('shops', id);
         res.json({ success: true, message: 'Shop deleted' });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
@@ -217,18 +242,26 @@ router.post('/faqs', authMiddleware, async (req, res) => {
     }
 });
 
-router.put('/faqs/:id', authMiddleware, async (req, res) => {
+router.put(['/faqs/:id', '/faq'], authMiddleware, async (req, res) => {
     try {
-        const faq = await store.update('faqs', req.params.id, req.body);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'FAQ id is required' });
+        }
+        const faq = await store.update('faqs', id, req.body);
         res.json({ success: true, data: faq });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
     }
 });
 
-router.delete('/faqs/:id', authMiddleware, async (req, res) => {
+router.delete(['/faqs/:id', '/faq'], authMiddleware, async (req, res) => {
     try {
-        await store.delete('faqs', req.params.id);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'FAQ id is required' });
+        }
+        await store.delete('faqs', id);
         res.json({ success: true, message: 'FAQ deleted' });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
@@ -313,9 +346,13 @@ router.get('/contacts', authMiddleware, async (req, res) => {
     }
 });
 
-router.put('/contacts/:id', authMiddleware, async (req, res) => {
+router.put(['/contacts/:id', '/contact-admin'], authMiddleware, async (req, res) => {
     try {
-        const contact = await store.update('contacts', req.params.id, req.body);
+        const id = getEntityId(req);
+        if (!id) {
+            return res.status(400).json({ success: false, error: 'Contact id is required' });
+        }
+        const contact = await store.update('contacts', id, req.body);
         res.json({ success: true, data: contact });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });

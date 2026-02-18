@@ -522,7 +522,7 @@ const Admin = (() => {
         const normalizedPassword = String(password || '');
 
         try {
-            const result = await apiFetch('/auth/login', {
+            const result = await apiFetch('/auth-login', {
                 method: 'POST',
                 body: JSON.stringify({ email: normalizedEmail, password: normalizedPassword })
             });
@@ -550,7 +550,7 @@ const Admin = (() => {
         }
 
         try {
-            const result = await apiFetch('/auth/me');
+            const result = await apiFetch('/auth-me');
             currentUser = result.user;
             showDashboard();
             loadStats();
@@ -780,7 +780,7 @@ const Admin = (() => {
         }
 
         if (id) {
-            await apiFetch(`/products/${id}`, {
+            await apiFetch(`/product?id=${encodeURIComponent(id)}`, {
                 method: 'PUT',
                 body: JSON.stringify(payload)
             });
@@ -798,7 +798,7 @@ const Admin = (() => {
 
     async function toggleStock(id, currentInStock) {
         try {
-            await apiFetch(`/products/${id}`, {
+            await apiFetch(`/product?id=${encodeURIComponent(id)}`, {
                 method: 'PUT',
                 body: JSON.stringify({ inStock: !currentInStock })
             });
@@ -811,7 +811,7 @@ const Admin = (() => {
     async function deleteProduct(id) {
         if (!confirm('Are you sure you want to delete this product?')) return;
         try {
-            await apiFetch(`/products/${id}`, { method: 'DELETE' });
+            await apiFetch(`/product?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
             renderProducts();
             loadStats();
         } catch (err) {
@@ -868,7 +868,7 @@ const Admin = (() => {
         };
 
         if (id) {
-            await apiFetch(`/shops/${id}`, {
+            await apiFetch(`/shop?id=${encodeURIComponent(id)}`, {
                 method: 'PUT',
                 body: JSON.stringify(payload)
             });
@@ -885,7 +885,7 @@ const Admin = (() => {
 
     async function deleteShop(id) {
         if (!confirm('Delete this shop?')) return;
-        await apiFetch(`/shops/${id}`, { method: 'DELETE' });
+        await apiFetch(`/shop?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
         renderShops();
         loadStats();
     }
@@ -936,7 +936,7 @@ const Admin = (() => {
         };
 
         if (id) {
-            await apiFetch(`/faqs/${id}`, {
+            await apiFetch(`/faq?id=${encodeURIComponent(id)}`, {
                 method: 'PUT',
                 body: JSON.stringify(payload)
             });
@@ -953,7 +953,7 @@ const Admin = (() => {
 
     async function deleteFaq(id) {
         if (!confirm('Delete this FAQ?')) return;
-        await apiFetch(`/faqs/${id}`, { method: 'DELETE' });
+        await apiFetch(`/faq?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
         renderFaqs();
         loadStats();
     }
@@ -1007,7 +1007,7 @@ const Admin = (() => {
     }
 
     async function markReplied(id) {
-        await apiFetch(`/contacts/${id}`, {
+        await apiFetch(`/contact-admin?id=${encodeURIComponent(id)}`, {
             method: 'PUT',
             body: JSON.stringify({ status: 'replied' })
         });
