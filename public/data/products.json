@@ -441,19 +441,19 @@
   },
   {
     "id": 32,
-    "name": "Savory Pastries Gluten Free 180g",
+    "name": "Healthy Savory Pastries 180g",
     "price": 60,
     "category": "healthy",
     "status": "active",
     "image": "/images/healthy/44db2d16-c70b-471b-9fbc-c623cd729e16.jpeg",
     "description": "",
-    "nameAr": "مملحات بدون غلوتين 180غرام",
+    "nameAr": "مملحات صحية 180غرام",
     "descriptionAr": "",
     "featured": false,
     "bestSeller": false,
     "inStock": true,
     "tags": [],
-    "updatedAt": "2026-02-08T04:19:19.202Z"
+    "updatedAt": "2026-02-18T02:36:28.005Z"
   },
   {
     "id": 33,
