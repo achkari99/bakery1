@@ -65,14 +65,25 @@ router.post('/auth/login', async (req, res) => {
         return res.status(400).json({ success: false, error: 'Email and password required' });
     }
 
+    const expectedEmail = String(process.env.ADMIN_EMAIL || '').trim().toLowerCase();
+    const expectedPassword = String(process.env.ADMIN_PASSWORD || '');
+    const jwtSecret = String(process.env.JWT_SECRET || '');
+
+    if (!expectedEmail || !expectedPassword || !jwtSecret) {
+        return res.status(500).json({ success: false, error: 'Server auth is not configured' });
+    }
+
+    const inputEmail = String(email).trim().toLowerCase();
+    const inputPassword = String(password);
+
     // Check against env credentials (simple auth for now)
-    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+    if (inputEmail === expectedEmail && inputPassword === expectedPassword) {
         const token = jwt.sign(
-            { email, role: 'admin' },
-            process.env.JWT_SECRET,
+            { email: inputEmail, role: 'admin' },
+            jwtSecret,
             { expiresIn: '24h' }
         );
-        return res.json({ success: true, token, user: { email, role: 'admin' } });
+        return res.json({ success: true, token, user: { email: inputEmail, role: 'admin' } });
     }
 
     res.status(401).json({ success: false, error: 'Invalid credentials' });

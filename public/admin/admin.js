@@ -518,10 +518,13 @@ const Admin = (() => {
         const errorEl = document.getElementById('login-error');
         errorEl.textContent = '';
 
+        const normalizedEmail = String(email || '').trim();
+        const normalizedPassword = String(password || '');
+
         try {
             const result = await apiFetch('/auth/login', {
                 method: 'POST',
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email: normalizedEmail, password: normalizedPassword })
             });
             localStorage.setItem(KEYS.TOKEN, result.token);
             currentUser = result.user;
@@ -1410,7 +1413,7 @@ const Admin = (() => {
         // Login form
         document.getElementById('login-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             login(email, password);
         });

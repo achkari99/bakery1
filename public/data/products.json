@@ -1216,5 +1216,21 @@
     "tags": [],
     "createdAt": "2026-02-10T14:41:11.316Z",
     "updatedAt": "2026-02-10T14:41:11.316Z"
+  },
+  {
+    "id": "mls47h9w1p9gbqndr",
+    "name": "almond oil",
+    "nameAr": "زيت اللوز",
+    "category": "raw-materials",
+    "price": 250,
+    "description": "",
+    "descriptionAr": "",
+    "featured": false,
+    "bestSeller": false,
+    "inStock": true,
+    "image": "/images/1771424159524-877007572.png",
+    "tags": [],
+    "createdAt": "2026-02-18T14:15:59.540Z",
+    "updatedAt": "2026-02-18T14:17:02.076Z"
   }
 ]
