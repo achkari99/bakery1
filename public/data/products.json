@@ -1219,8 +1219,8 @@
   },
   {
     "id": "mls47h9w1p9gbqndr",
-    "name": "almond oil",
-    "nameAr": "زيت اللوز",
+    "name": "almond oil 1/2l",
+    "nameAr": "زيت اللوز 1/2لتر",
     "category": "raw-materials",
     "price": 250,
     "description": "",
@@ -1231,6 +1231,6 @@
     "image": "/images/1771424159524-877007572.png",
     "tags": [],
     "createdAt": "2026-02-18T14:15:59.540Z",
-    "updatedAt": "2026-02-18T14:17:02.076Z"
+    "updatedAt": "2026-02-18T14:42:36.053Z"
   }
 ]
