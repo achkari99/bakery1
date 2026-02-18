@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Access the CartManager instance
     const storageKey = 'cinnamona-cart';
+    const DEFAULT_DELIVERY_FEE = 40;
+    const FREE_DELIVERY_THRESHOLD = 500;
+    let deliveryFee = DEFAULT_DELIVERY_FEE;
     let cart = loadCart();
 
     function loadCart() {
@@ -36,6 +39,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    async function loadDeliverySettings() {
+        try {
+            const response = await fetch('/api/settings', { cache: 'no-store' });
+            if (!response.ok) return;
+
+            const payload = await response.json().catch(() => null);
+            const parsedDeliveryFee = Number(payload?.data?.deliveryFee);
+            if (!Number.isFinite(parsedDeliveryFee) || parsedDeliveryFee < 0) return;
+
+            if (parsedDeliveryFee !== deliveryFee) {
+                deliveryFee = parsedDeliveryFee;
+                renderCart();
+            }
+        } catch (e) {
+            // Keep default delivery fee if settings endpoint is unavailable.
+        }
+    }
+
     function removeItem(productName) {
         cart = cart.filter(item => item.name !== productName);
         saveCart();
@@ -53,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getDeliveryFee() {
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        return subtotal >= 500 ? 0 : 40; // Free delivery from 500 MAD (based on subtotal only)
+        return subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : deliveryFee;
     }
 
     function getTotal() {
@@ -445,6 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial render
     renderCart();
     updateCartBadge();
+    loadDeliverySettings();
 
     // i18n listener removed to prevent loops - MutationObserver handles updates
 });

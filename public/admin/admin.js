@@ -470,7 +470,8 @@ const Admin = (() => {
             siteName: 'Golden Sweet',
             phone: '+212 637-629395',
             email: 'contact@goldensweet.co',
-            address: 'Tetouan & Tangier, Morocco'
+            address: 'Tetouan & Tangier, Morocco',
+            deliveryFee: 40
         },
         orders: [
             { id: 'o1', customer: 'John Doe', items: '2x Original Cinnamon Roll', total: 50, date: new Date().toISOString(), status: 'WhatsApp Sent' }
@@ -499,6 +500,11 @@ const Admin = (() => {
                 parsed.email = 'contact@goldensweet.co';
                 dirty = true;
             }
+            const parsedDeliveryFee = Number(parsed?.deliveryFee);
+            if (!Number.isFinite(parsedDeliveryFee) || parsedDeliveryFee < 0) {
+                parsed.deliveryFee = 40;
+                dirty = true;
+            }
             if (dirty) {
                 localStorage.setItem(key, JSON.stringify(parsed));
             }
@@ -508,6 +514,18 @@ const Admin = (() => {
 
     function saveData(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    function normalizeSettings(raw = {}) {
+        const parsedDeliveryFee = Number(raw.deliveryFee);
+        const deliveryFee = Number.isFinite(parsedDeliveryFee) && parsedDeliveryFee >= 0
+            ? parsedDeliveryFee
+            : 40;
+
+        return {
+            ...raw,
+            deliveryFee
+        };
     }
 
     // =====================
@@ -1107,19 +1125,52 @@ const Admin = (() => {
     // Settings
     // =====================
 
-    function renderSettings() {
-        const settings = loadData(KEYS.SETTINGS);
-        if (settings) {
-            document.getElementById('site-name').value = settings.siteName || '';
-            document.getElementById('site-phone').value = settings.phone || '';
-            document.getElementById('site-email').value = settings.email || '';
-            document.getElementById('site-address').value = settings.address || '';
+    function applySettingsToForm(settings = {}) {
+        document.getElementById('site-name').value = settings.siteName || '';
+        document.getElementById('site-phone').value = settings.phone || '';
+        document.getElementById('site-email').value = settings.email || '';
+        document.getElementById('site-address').value = settings.address || '';
+        document.getElementById('delivery-fee').value = settings.deliveryFee ?? 40;
+    }
+
+    async function renderSettings() {
+        const localSettings = normalizeSettings(loadData(KEYS.SETTINGS) || {});
+        applySettingsToForm(localSettings);
+
+        try {
+            const result = await apiFetch('/settings');
+            const remoteSettings = result?.data && typeof result.data === 'object'
+                ? normalizeSettings({ ...localSettings, ...result.data })
+                : localSettings;
+            saveData(KEYS.SETTINGS, remoteSettings);
+            applySettingsToForm(remoteSettings);
+        } catch (err) {
+            // Keep local values if API settings cannot be loaded.
         }
     }
 
-    function saveSettings(data) {
-        saveData(KEYS.SETTINGS, data);
-        alert('Settings saved successfully!');
+    async function saveSettings(data) {
+        try {
+            const payload = normalizeSettings({
+                siteName: data.siteName,
+                phone: data.phone,
+                email: data.email,
+                address: data.address,
+                deliveryFee: data.deliveryFee
+            });
+
+            const result = await apiFetch('/settings', {
+                method: 'PUT',
+                body: JSON.stringify(payload)
+            });
+
+            const savedSettings = normalizeSettings(result?.data || payload);
+            saveData(KEYS.SETTINGS, savedSettings);
+            applySettingsToForm(savedSettings);
+            alert(t('settingsSaved', 'Settings saved successfully!'));
+        } catch (err) {
+            alert(err.message || t('somethingWrong', 'Something went wrong. Please try again.'));
+        }
     }
 
     // =====================
@@ -1444,10 +1495,10 @@ const Admin = (() => {
         });
 
         // Settings form
-        document.getElementById('settings-form').addEventListener('submit', (e) => {
+        document.getElementById('settings-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
-            saveSettings(Object.fromEntries(formData));
+            await saveSettings(Object.fromEntries(formData));
         });
 
         // Modal close on backdrop click
