@@ -4,7 +4,7 @@
     const footerPath = '/components/footer.html';
 
     // Load footer component
-    fetch(footerPath)
+    fetch(footerPath, { cache: 'no-cache' })
         .then(response => response.text())
         .then(html => {
             const footerPlaceholder = document.getElementById('footer-placeholder');

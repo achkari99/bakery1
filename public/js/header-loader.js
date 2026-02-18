@@ -4,7 +4,7 @@
     const headerPath = '/components/header.html';
 
     // Load header component
-    fetch(headerPath)
+    fetch(headerPath, { cache: 'no-cache' })
         .then(response => response.text())
         .then(html => {
             const headerPlaceholder = document.getElementById('header-placeholder');

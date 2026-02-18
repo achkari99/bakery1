@@ -239,7 +239,7 @@
     };
 
     const fetchProducts = async (url) => {
-        const response = await fetch(url);
+        const response = await fetch(url, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Fetch failed: ${url}`);
         const result = await response.json();
         return result.data || result;

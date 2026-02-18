@@ -184,7 +184,7 @@
 
     const loadFeatured = async () => {
         try {
-            const response = await fetch('/api/products');
+            const response = await fetch('/api/products', { cache: 'no-cache' });
             if (!response.ok) return;
             const result = await response.json();
             const products = result.data || [];

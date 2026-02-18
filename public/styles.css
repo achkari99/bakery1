@@ -55,8 +55,18 @@ html {
 }
 
 html.i18n-loading body {
-    visibility: hidden;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Keep text readable first; reveal images after i18n initialization. */
+html.i18n-loading img {
     opacity: 0;
+}
+
+html:not(.i18n-loading) img {
+    opacity: 1;
+    transition: opacity 180ms ease;
 }
 
 body {

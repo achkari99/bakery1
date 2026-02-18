@@ -44,7 +44,7 @@ const I18n = (() => {
 
         try {
             // Use absolute path to ensure correct loading from any subdirectory
-            const response = await fetch(`/locales/${lang}.json`);
+            const response = await fetch(`/locales/${lang}.json`, { cache: 'no-cache' });
 
             if (!response.ok) {
                 throw new Error(`Failed to load ${lang} translations`);
@@ -226,6 +226,24 @@ const I18n = (() => {
             if (translation && Array.isArray(translation)) {
                 el.setAttribute('data-typing-words', JSON.stringify(translation));
                 window.dispatchEvent(new CustomEvent('typing-update', { detail: { words: translation } }));
+            }
+        });
+
+        // Keep product action labels aligned with the visible translated product name.
+        document.querySelectorAll('[data-product]').forEach((card) => {
+            const nameEl = card.querySelector('h3[data-i18n], h3');
+            if (!nameEl) return;
+            const displayName = nameEl.textContent.trim();
+            if (!displayName) return;
+
+            const addBtn = card.querySelector('[data-add-to-cart]');
+            if (addBtn) {
+                addBtn.setAttribute('data-add-to-cart', displayName);
+            }
+
+            const quickBtn = card.querySelector('[data-quickview]');
+            if (quickBtn) {
+                quickBtn.setAttribute('data-quickview', displayName);
             }
         });
 
